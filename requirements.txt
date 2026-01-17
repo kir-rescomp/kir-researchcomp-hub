@@ -1,0 +1,11 @@
+mergedeep
+mkdocs-material
+cairosvg
+pillow
+mkdocs-get-deps
+mkdocs-git-revision-date-localized-plugin
+mkdocs-glightbox
+mkdocs-material-extensions
+mkdocs-awesome-pages-plugin
+mkdocs-rss-plugin
+mkdocs-macros-plugin
