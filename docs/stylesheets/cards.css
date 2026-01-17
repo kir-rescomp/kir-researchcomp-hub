@@ -1,0 +1,54 @@
+/* Force 3 columns for grid cards */
+.md-typeset .grid.cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* Clickable card hover effect */
+.grid.cards > ul > li {
+    transition: all 0.3s ease;
+}
+
+.grid.cards > ul > li:hover {
+    background-color: rgba(var(--md-primary-fg-color--rgb), 0.05);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Make card links fill the card */
+.grid.cards > ul > li a {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Truncate description to ~3 lines with fade effect */
+.grid.cards > ul > li a span[style*="font-size: 0.7rem"] {
+    display: block;
+    max-height: 4.2em; /* approximately 3 lines (1.4em per line) */
+    overflow: hidden;
+    position: relative;
+    line-height: 1.6em;
+}
+
+/* Fade gradient at bottom of truncated text */
+.grid.cards > ul > li a span[style*="font-size: 0.7rem"]::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 1.4em;
+    background: linear-gradient(to bottom, transparent, var(--md-default-bg-color));
+    pointer-events: none;
+}
+
+/* Show full description on hover */
+.grid.cards > ul > li:hover a span[style*="font-size: 0.7rem"] {
+    max-height: none;
+}
+
+/* Remove fade effect on hover */
+.grid.cards > ul > li:hover a span[style*="font-size: 0.7rem"]::after {
+    display: none;
+}
