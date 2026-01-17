@@ -1,1 +1,151 @@
-site_name: My Docs
+site_name: KIR - Research Computing Hub
+site_author: The Kennedy Institute of Rheumatology, NDORMS, University of Oxford
+site_dir: public
+site_url: "https://kir-rescomp.github.io/kir-researchcomp/"
+#use_directory_urls: true  # Important for clean URLs
+
+
+#Repository information
+repo_name:  kir-rescomp/kir-researchcomp
+repo_url: https://github.com/kir-rescomp/kir-researchcomp
+
+
+theme:
+  name: material
+  logo: assets/images/icons/kir_techincal_insights_essays_favicon_grayscale_color_stripes.svg
+  favicon: assets/images/icons/kir_standalone_logo.png
+   # 404 page
+  static_templates:
+    - 404.html
+
+  palette:
+
+  # Palette toggle for automatic mode
+  - media: "(prefers-color-scheme)"
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+    primary: custom
+
+  # Palette toggle for light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: custom
+
+
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+
+  # Palette toggle for dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to system preference
+    primary: custom
+  
+  features:
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+
+
+  # Necessary for search to work properly
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  font:
+    text: Mukta
+    code: Fira Code
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      pygments_style: monokai
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.snippets
+  - pymdownx.blocks.caption
+
+plugins: 
+  - glightbox:
+      effect: zoom
+      zoomable: true
+  - search:
+      lang: en
+  - macros
+  - blog:
+      blog_dir: blog          # Directory where blog lives
+      post_dir: "{blog}/posts"
+      post_date_format: medium
+      post_url_format: "{slug}"
+      pagination_per_page: 1
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - javascripts/featured-toggle.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+copyright : KIR - Research Computing Technical Essays/Insights is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
+
+
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/cards.css
+  - stylesheets/colors.css
+  - stylesheets/side_bar_menu.css
+  - stylesheets/background_colors.css
+  - stylesheets/header_alignment.css
+  - stylesheets/landing_page_hero.css
+  - stylesheets/code_block.css
+  - stylesheets/code_block_colour_dracula.css
+  - stylesheets/code_block_colour_monokai.css
+  - stylesheets/code_block_colour_github_dark.css
+  - stylesheets/code_block_colour_nord.css
+  - stylesheets/code_block_colour_onedark.css
+  - stylesheets/indexpage_featured_scroll_behavoiour.css
+  - stylesheets/indexpage_cards_buttons.css
