@@ -1,13 +1,13 @@
 site_name: KIR - Research Computing Hub
 site_author: The Kennedy Institute of Rheumatology, NDORMS, University of Oxford
 site_dir: public
-site_url: "https://kir-rescomp.github.io/kir-researchcomp/"
+site_url: "https://kir-rescomp.github.io/kir-researchcomp-hub/"
 #use_directory_urls: true  # Important for clean URLs
 
 
 #Repository information
-repo_name:  kir-rescomp/kir-researchcomp
-repo_url: https://github.com/kir-rescomp/kir-researchcomp
+repo_name:  kir-rescomp/kir-researchcomp-hub
+repo_url: https://github.com/kir-rescomp/kir-researchcomp-hub
 
 
 theme:
