@@ -126,6 +126,7 @@ plugins:
 
 extra_javascript:
   - javascripts/mathjax.js
+  - javascripts//morphing-dna-network-targeted.js
   - javascripts/featured-toggle.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
@@ -149,3 +150,4 @@ extra_css:
   - stylesheets/code_block_colour_onedark.css
   - stylesheets/indexpage_featured_scroll_behavoiour.css
   - stylesheets/indexpage_cards_buttons.css
+  - stylesheets/morphing-dna-network.css
