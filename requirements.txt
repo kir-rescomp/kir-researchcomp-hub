@@ -9,3 +9,4 @@ mkdocs-material-extensions
 mkdocs-awesome-pages-plugin
 mkdocs-rss-plugin
 mkdocs-macros-plugin
+mkdocs-awesome-nav
