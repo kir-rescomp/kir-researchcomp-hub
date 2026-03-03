@@ -123,6 +123,8 @@ plugins:
       post_date_format: medium
       post_url_format: "{slug}"
       pagination_per_page: 1
+  - awesome-nav:
+      filename: .pages.yml
 
 extra_javascript:
   - javascripts/mathjax.js
