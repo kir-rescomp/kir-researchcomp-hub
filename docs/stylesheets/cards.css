@@ -52,3 +52,9 @@
 .grid.cards > ul > li:hover a span[style*="font-size: 0.7rem"]::after {
     display: none;
 }
+
+.landing-hub.grid.cards {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 800px;   /* controls how wide the two cards stretch */
+  width: 100%;
+}

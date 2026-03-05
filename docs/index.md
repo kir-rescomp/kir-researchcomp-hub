@@ -11,3 +11,45 @@ title: Home
 </p>
 
 
+<div class="landing-page">
+  <div class="hero">
+    <p class="description">
+      Research computing infrastructure, tools, and technical resources 
+      for the Kennedy Institute of Rheumatology
+    </p>
+  </div>
+</div>
+
+!!! circle-info ""
+
+<div style="display: flex; justify-content: center;" markdown>
+<div class="landing-hub grid cards" align="center" markdown>
+
+-   :material-server-network:{ .lg .middle } **HPC Support Docs**
+
+    ---
+
+    Everything you need to use the BMRC cluster — connecting, submitting jobs,
+    software modules, storage quotas, and interactive sessions.
+
+    [:material-arrow-right-circle: Go to Docs](getting-started/)
+
+-   :material-pencil-box-outline:{ .lg .middle } **Technical Blog**
+
+    ---
+
+    In-depth articles on HPC, bioinformatics, containers, and scientific 
+    computing from the KIR research computing team.
+
+    [:material-rss: Go to Blog](blog/)
+
+</div>
+</div>
+
+
+<div class="topics-bar" markdown>
+[:fontawesome-solid-square-binary: Programming](blog/category/programming/){ .topic-chip }
+[:material-server-network: HPC](blog/category/high-performance-computing/){ .topic-chip }
+[:material-dna: Bioinformatics](blog/category/bioinformatics/){ .topic-chip }
+[:material-docker: Containers](blog/category/containers/){ .topic-chip }
+</div>
