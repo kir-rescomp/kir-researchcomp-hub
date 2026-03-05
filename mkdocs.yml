@@ -122,7 +122,7 @@ plugins:
       post_dir: "{blog}/posts"
       post_date_format: medium
       post_url_format: "{slug}"
-      pagination_per_page: 1
+      pagination_per_page: 10
   - awesome-nav:
       filename: .pages.yml
 
