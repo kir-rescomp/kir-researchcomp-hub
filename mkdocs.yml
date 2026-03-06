@@ -47,12 +47,14 @@ theme:
   
   features:
     - navigation.tracking
-    - navigation.sections
-    - navigation.expand
+  # - navigation.tabs      This is for top meny bar tabs
+  #  - navigation.sections Also caused menu to be expanded by default
+    - navigation.expand   Removing this for the moment to avoid the meny being expanded by default 
     - navigation.top
     - navigation.footer
     - content.code.copy
     - content.code.annotate
+    - navigation.prune    # Only renders the visible portion of the nav treein the HTML. 
 
 
   # Necessary for search to work properly
