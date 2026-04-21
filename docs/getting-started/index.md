@@ -5,16 +5,15 @@ New to BMRC? These guides take you from zero to running your first job.
 
 <div class="grid cards section-index" markdown>
 
--   :material-account-key:{ .lg .middle } **Account & Access**
+-   :material-account-key:{ .lg .middle } **1. Account & Access**
 
     ---
-    Request your BMRC account, set up VPN, and configure SSH keys.
-
+    Request your BMRC account, set up VPN
     :material-clock-outline: 15 min · :material-signal: Beginner
 
     [Apply for an account →](account.md)
 
--   :material-console:{ .lg .middle } **Connecting to the Cluster**
+-   :material-console:{ .lg .middle } **2. Connecting to the Cluster**
 
     ---
     SSH configuration, login nodes, and file transfer with `rsync`/`scp`.
