@@ -20,9 +20,9 @@ where `<group>` is your research group name.
 
 ## Where to store raw data
 
-Use `/well/<group>/projects/archive` for raw, unprocessed data files. This directory is **backed up** by Research Computing.
+Use `/well/<group>/projects/archive` for raw, unprocessed data files. This directory is **backed up** by KIR Research Computing.
 
-!!! circle-info-2 "Shared space — not personal"
+!!! circle-info-2 "This is a Shared space — not personal"
     `archive/` is a group-wide directory. Everyone in `<group>` can read and write here. It is **not** an individual allocation, so coordinate with your colleagues before writing large datasets.
 
 ## Where to do your work
@@ -53,4 +53,4 @@ The symlinks mean you can reach them as `~/devel` and `~/work` immediately after
 
 `/well/sansom/shared` is available for cross-institute collaboration, but access requires special group membership to be configured.
 
-**Contact the Research Computing Manager** to request access before trying to use this path.
+**Contact KIR  Research Computing Manager** to create shared groups. 
