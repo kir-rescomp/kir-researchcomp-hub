@@ -14,7 +14,9 @@ where `<group>` is your research group name.
 
 ## Quick-reference diagram
 
-<!-- embed your schematic here -->
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../assets/images/material/bmrc_filesystem_layout.svg" alt="kir-oxford-logo" width="700" style="opacity: 0.9;"/>
+</p>
 
 ## Where to store raw data
 
