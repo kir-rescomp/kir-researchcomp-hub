@@ -12,7 +12,7 @@ New to BMRC? These guides take you from zero to running your first job.
 
     :material-clock-outline: 15 min · :material-signal: Beginner
 
-    [Get started →](account.md)
+    [Apply for an account →](account.md)
 
 -   :material-console:{ .lg .middle } **Connecting to the Cluster**
 
@@ -21,7 +21,7 @@ New to BMRC? These guides take you from zero to running your first job.
 
     :material-clock-outline: 20 min · :material-signal: Beginner
 
-    [Get started →](access.md)
+    [Connect to Cluster →](connect_ssh_config.md)
 
 -   :material-play-circle:{ .lg .middle } **Your First Job**
 
