@@ -155,3 +155,4 @@ extra_css:
   - stylesheets/indexpage_cards_buttons.css
   - stylesheets/morphing-dna-network.css
   - stylesheets/indexpage_episodes_cards.css
+  - stylesheets/tables.css
