@@ -77,5 +77,25 @@ title: Home
       <div class="kp-footer-val"></div>
     </div>
   </a>
-  
+
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/file-system" class="kp-card kp-ep2">
+    <div class="kp-header">
+      <div class="kp-num">02</div>
+      <div class="kp-meta">
+        <div class="kp-label">Filesystem Layout</div>
+        <p class="kp-title">Overview of BMRC Filesystem</p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li>Where to store your raw data</li>
+        <li>Where to do your work</li>
+        <li>How to share data between the group or non-KIR BMRC groups</li>
+      </ul>
+    </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
+
 </div>
