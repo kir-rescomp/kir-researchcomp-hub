@@ -61,22 +61,20 @@ title: Home
     <div class="kp-header">
       <div class="kp-num">01</div>
       <div class="kp-meta">
-        <div class="kp-label">Project structure</div>
-        <p class="kp-title">pyproject.toml &amp; the src/ layout</p>
+        <div class="kp-label">Getting Started</div>
+        <p class="kp-title">Setup an account &amp; Login</p>
       </div>
-      <span class="kp-duration">~45 min</span>
     </div>
     <div class="kp-body">
       <ul class="kp-topics">
-        <li>pyproject.toml vs setup.py</li>
-        <li>The src/ layout pattern</li>
-        <li>Package metadata &amp; configuration</li>
-        <li>Installing in editable mode</li>
+        <li>How to request a BMRC HPC account</li>
+        <li>Access the cluster for the first time</li>
+        <li>Set up your <code>ssh</code> clients</li>
       </ul>
     </div>
     <div class="kp-footer">
-      <div class="kp-footer-label">You'll create</div>
-      <div class="kp-footer-val">A basic installable package</div>
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
     </div>
   </a>
   
