@@ -135,7 +135,7 @@ title: Home
       <div class="kp-num">06</div>
       <div class="kp-meta">
         <div class="kp-label">Data Transfer</div>
-        <p class="kp-title">How to transfer data to/from BMRC file system</p>
+        <p class="kp-title">How to transfer data to/from BMRC filesystem</p>
       </div>
     </div>
     <div class="kp-body">
