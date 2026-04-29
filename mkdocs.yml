@@ -119,12 +119,12 @@ plugins:
   - search:
       lang: en
   - macros
-  - blog:
-      blog_dir: blog          # Directory where blog lives
-      post_dir: "{blog}/posts"
-      post_date_format: medium
-      post_url_format: "{slug}"
-      pagination_per_page: 1
+#  - blog:
+#      blog_dir: blog          # Directory where blog lives
+#      post_dir: "{blog}/posts"
+#      post_date_format: medium
+#      post_url_format: "{slug}"
+#      pagination_per_page: 1
   - awesome-nav:
       filename: .pages.yml
 
@@ -154,3 +154,4 @@ extra_css:
   - stylesheets/indexpage_featured_scroll_behavoiour.css
   - stylesheets/indexpage_cards_buttons.css
   - stylesheets/morphing-dna-network.css
+  - stylesheets/indexpage_episodes_cards.css

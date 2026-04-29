@@ -7,7 +7,7 @@ title: Home
 
 <h1></h1>
 <p align="center" style="margin-bottom: -50px;">
-    <img src="assets/images/icons/kir_reseach_computing_colour_with_coloured_stripes.svg" alt="rotating_dna" width="450" style="opacity: 0.9;"/>
+    <img src="assets/images/icons/kir_reseach_computing_colour_with_coloured_stripes.svg" alt="kir-oxford-logo" width="450" style="opacity: 0.9;"/>
 </p>
 
 
@@ -53,4 +53,29 @@ title: Home
 [:material-server-network: HPC](blog/category/high-performance-computing/){ .topic-chip }
 [:material-dna: Bioinformatics](blog/category/bioinformatics/){ .topic-chip }
 [:material-docker: Containers](blog/category/containers/){ .topic-chip }
+</div>
+
+<div class="kp=episodes-grid">
+
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/getting-started" class="kp-card kp-ep1">
+    <div class="kp-header">
+      <div class="kp-num">01</div>
+      <div class="kp-meta">
+        <div class="kp-label">Getting Started</div>
+        <p class="kp-title">Setup an account &amp; Login</p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li>How to request a BMRC HPC account</li>
+        <li>Access the cluster for the first time</li>
+        <li>Set up your <code>ssh</code> clients</li>
+      </ul>
+    </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
+  </a>
+  
 </div>

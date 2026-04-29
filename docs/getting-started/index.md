@@ -22,13 +22,4 @@ New to BMRC? These guides take you from zero to running your first job.
 
     [Connect to Cluster →](connect_ssh_config.md)
 
--   :material-play-circle:{ .lg .middle } **Your First Job**
-
-    ---
-    Write a SLURM batch script, submit it, and interpret the output.
-
-    :material-clock-outline: 30 min · :material-signal: Beginner
-
-    [Get started →](first-job.md)
-
 </div>
