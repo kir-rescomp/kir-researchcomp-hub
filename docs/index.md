@@ -24,7 +24,7 @@ title: Home
 
 <div class="kp-episode-grid">
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/getting-started" class="kp-card kp-ep1">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/getting-started/account" class="kp-card kp-ep1">
     <div class="kp-header">
       <div class="kp-num">01</div>
       <div class="kp-meta">
@@ -66,7 +66,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/file-system" class="kp-card kp-ep3">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/software" class="kp-card kp-ep3">
     <div class="kp-header">
       <div class="kp-num">03</div>
       <div class="kp-meta">
@@ -88,7 +88,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/file-system" class="kp-card kp-ep4">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/batch-computing" class="kp-card kp-ep4">
     <div class="kp-header">
       <div class="kp-num">04</div>
       <div class="kp-meta">
