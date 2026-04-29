@@ -3,4 +3,6 @@ nav:
     - file-system
     - software
     - batch-computing
+    - interactive-computing
+    - data-transfer
     - blog
