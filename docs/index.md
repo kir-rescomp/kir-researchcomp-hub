@@ -66,6 +66,69 @@ title: Home
     </div>
   </a>
 
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/file-system" class="kp-card kp-ep3">
+    <div class="kp-header">
+      <div class="kp-num">03</div>
+      <div class="kp-meta">
+        <div class="kp-label">Software</div>
+        <p class="kp-title">Managing Software on BMRC</p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li>Search and access software with modules</li>
+        <li>Notes on specific software</li>
+        <li>How to create your own Python virtual environment</li>
+        <li><code>pixi</code> in favour of </code>conda</code></li>
+      </ul>
+    </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
+  </a>
+
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/file-system" class="kp-card kp-ep4">
+    <div class="kp-header">
+      <div class="kp-num">04</div>
+      <div class="kp-meta">
+        <div class="kp-label">Batch Computing</div>
+        <p class="kp-title">Introduction to Slurm</p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li>What is Slurm</li>
+        <li>Slurm variables</li>
+        <li>Slurm Life cycle</li>
+        <li>Slurm templates</li>
+      </ul>
+    </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
+  </a>
+
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/file-system" class="kp-card kp-ep5">
+    <div class="kp-header">
+      <div class="kp-num">05</div>
+      <div class="kp-meta">
+        <div class="kp-label">Interactive Computing</div>
+        <p class="kp-title">Interactive HPC with OnDemand and <code>srun</code></p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li>Introduction to OnDemand and it's apps</li>
+        <li>Interactive computing with <code>srun</code></li>
+      </ul>
+    </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
+
 </div>
 
 
