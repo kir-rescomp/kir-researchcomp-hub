@@ -128,6 +128,28 @@ title: Home
       <div class="kp-footer-label"></div>
       <div class="kp-footer-val"></div>
     </div>
+  </a>
+
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/file-system" class="kp-card kp-ep6">
+    <div class="kp-header">
+      <div class="kp-num">06</div>
+      <div class="kp-meta">
+        <div class="kp-label">Data Transfer</div>
+        <p class="kp-title">How to transfer data to/from BMRC file system</p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li>Data transfer with CLI tools such as scp,rsync</li>
+        <li>How to use FileZilla</li>
+        <li>Data transfer with Globus</li>
+      </ul>
+    </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
+  </a>
 
 </div>
 
