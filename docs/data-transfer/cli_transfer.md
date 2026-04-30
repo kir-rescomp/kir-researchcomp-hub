@@ -2,7 +2,7 @@
 
 Transfer files between your local machine and the BMRC cluster using `scp` or `rsync` over SSH.
 
-!!! tip "Set up your SSH config first"
+!!! lightbulb "Set up your SSH config first"
     Follow the [recommended terminal setup guide](https://kir-rescomp.github.io/kir-researchcomp-hub/getting-started/connect_ssh_config/) before using the commands on this page. This configures short hostnames (`bmrc4`, `bmrc5`, etc.) so you can use them directly in `scp` and `rsync` — no need to type `username@cluster4.hpc.in.bmrc.ox.ac.uk` every time.
 
 ---
@@ -11,7 +11,9 @@ Transfer files between your local machine and the BMRC cluster using `scp` or `r
 
 All file transfers run over SSH, following the same **local → remote** or **remote → local** direction. The source always comes first, the destination second.
 
-
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/data_transfer/local_remote_transfer_schematic.svg" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
 
 ## `scp` — secure copy
 
@@ -19,7 +21,8 @@ All file transfers run over SSH, following the same **local → remote** or **re
 
 ### Upload (local → remote)
 
-```bash
+<div class="nord" markdown=1>
+```py
 # Single file
 scp ./myfile.txt bmrc4:~/data/
 
@@ -29,7 +32,7 @@ scp -r ./results/ bmrc4:~/results/
 
 ### Download (remote → local)
 
-```bash
+```py
 # Single file — copy to current directory
 scp bmrc4:~/results/output.csv ./
 
@@ -37,7 +40,7 @@ scp bmrc4:~/results/output.csv ./
 scp -r bmrc4:~/results/ ./local_results/
 ```
 
-!!! note
+!!! note-sticky "Note"
     `scp` does not resume interrupted transfers. For large files, prefer `rsync` (see below).
 
 ---
@@ -48,7 +51,7 @@ scp -r bmrc4:~/results/ ./local_results/
 
 ### Upload (local → remote)
 
-```bash
+```py
 # Sync a directory
 rsync -av ./results/ bmrc4:~/results/
 
@@ -58,7 +61,7 @@ rsync -av --progress --partial ./large_dataset/ bmrc4:~/data/large_dataset/
 
 ### Download (remote → local)
 
-```bash
+```py
 # Sync results back to your machine
 rsync -av bmrc4:~/results/ ./local_results/
 ```
@@ -67,7 +70,7 @@ rsync -av bmrc4:~/results/ ./local_results/
 
 Use `-n` (`--dry-run`) to preview what will be transferred before committing:
 
-```bash
+```py
 rsync -avn ./results/ bmrc4:~/results/
 ```
 
@@ -91,7 +94,7 @@ rsync -avn ./results/ bmrc4:~/results/
 
 ## Quick reference
 
-```bash
+```py
 # scp upload
 scp [options] <local_source>  <host>:<remote_dest>
 
