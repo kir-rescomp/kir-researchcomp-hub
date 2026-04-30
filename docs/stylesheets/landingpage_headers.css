@@ -10,6 +10,7 @@
   letter-spacing: -0.01em;
 }
 
+
 .section-heading {
   display: flex;
   align-items: center;
@@ -61,4 +62,11 @@
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
+}
+
+.training-description {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.95rem;
+  max-width: 65ch;
+  margin-bottom: 1.25rem;
 }

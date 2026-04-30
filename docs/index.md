@@ -156,11 +156,37 @@ title: Home
 </div>
 
 - - - 
+
 <div class="section-title" markdown>
 ## :material-school: Training Catalogue
 </div>
 
-Refer to https://kir-rescomp.github.io/kir-training-home/
+<p class="training-description">
+The KIR Research Computing team runs hands-on training workshops covering HPC, 
+bioinformatics workflows, software packaging, and scientific computing. 
+All materials are freely available and self-paced.
+</p>
+
+<div>
+<a href="https://kir-rescomp.github.io/kir-training-home/" class="kp-card kp-training" style="max-width: 480px; text-decoration: none;">
+  <div class="kp-header">
+    <div class="kp-num">🎓</div>
+    <div class="kp-meta">
+      <div class="kp-label">KIR Research Computing</div>
+      <p class="kp-title">Browse the Training Catalogue →</p>
+    </div>
+  </div>
+  <div class="kp-body">
+    <ul class="kp-topics">
+      <li>Introduction to Linux..</li>
+      <li>Python, R, and software packaging</li>
+      <li>Snakemake</li>
+      <li>Self-paced materials, freely available</li>
+    </ul>
+  </div>
+</a>
+</div>
+
 
 !!! circle-info ""
 
