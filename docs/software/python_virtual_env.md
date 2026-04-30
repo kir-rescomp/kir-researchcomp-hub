@@ -82,7 +82,7 @@ uv pip list
 uv pip freeze > requirements.txt
 ```
 
-!!! tip "Shared project environments"
+!!! lightbulb "Shared project environments"
     For environments shared across a group, create them under `/well/{group}/projects/{project}/` and ensure group read permissions are set. The shared `uv` cache means collaborators benefit from already-downloaded wheels automatically.
 
 ---
