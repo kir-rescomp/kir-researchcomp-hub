@@ -31,10 +31,10 @@ On `torch` — one of the largest Python packages at ~2 GB of wheels — `uv` co
 ### No Python module? No problem.
 
 One of `uv`'s most practical advantages on BMRC: **it ships its own Python**. You no longer need to load a Python module before creating a virtual environment. `uv` will download and manage the right Python version automatically — including versions not currently provided as cluster modules.
-
+<div class="nord" markdown=1>
 === ":x: Old way (pip)"
-
-    ```
+    
+    ```py
     # Must load a Python module first
     module load Python/3.11.3-GCCcore-12.3.0
     
@@ -48,7 +48,7 @@ One of `uv`'s most practical advantages on BMRC: **it ships its own Python**. Yo
 
 === ":white_check_mark: New way (uv)"
 
-    ```bash
+    ```py
     # No module load needed — uv manages Python for you
     uv venv ~/devel/virtual_envs/myenv --python 3.12
     source ~/devel/virtual_envs/myenv/bin/activate
@@ -56,6 +56,7 @@ One of `uv`'s most practical advantages on BMRC: **it ships its own Python**. Yo
     
     # Python 3.12 downloaded automatically if not present
     ```
+</div>
 
 ### Quick start on BMRC
 
