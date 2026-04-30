@@ -68,4 +68,16 @@ pip freeze > requirements.txt
 deactivate
 ```
 
+### Reusing the environment in future sessions
+
+You must reload the Python module **and** re-activate the environment at the start of each session:
+
+```py
+module load Python/3.11.3-GCCcore-12.3.0
+source /well/{group}/{user}/devel/myenv/bin/activate
+```
+
+!!! note-sticky "Slurm jobs"
+    In Slurm job scripts, include both the `module load` and `source activate` lines before calling any Python commands.
+
 ### 
