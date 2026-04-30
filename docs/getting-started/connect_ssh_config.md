@@ -89,8 +89,7 @@ ssh bmrc1
 
 ## Remote Access
 
-For remote connections (when away from the University), you will need to connect to University VPN  (such as MSD IT VPN) before running the command in your local computer's terminal: 
-
+For remote connections (when away from the University), you will need to connect to Oxford VPN (**vpn.ox.ac.uk**) OR one of the MSD vpns
 
 ## Two-factor authentication
 
@@ -98,18 +97,3 @@ The BMRC cluster employs two-factor authentication. After your account has been 
 
 More information on available methods can be found [here](https://help.it.ox.ac.uk/how-to-use-mfa). 
 
-## Terminal multiplexer
-
-After logging in to the cluster, it is recommended to start a terminal multiplexer, a software that allows creating and working in multiple terminal windows in the same single ssh session. There are two terminal multiplexers, `tmux` and `screen` on the cluster. To start a multiplexer session, run, for example:
-
-```py
-tmux
-```
-
-Using a multiplexer has an advantage that if your ssh connection to the cluster breaks down or disconnects because of ssh session timeout, the mulitplexer session continues to run in the background. You can simply reconnect to the running multiplexer session after opening ssh connection to the cluster again. 
-
-```py
-tmux attach
-```
-
-Both tmux and screen have a wide range of options and commands to manage terminal and multiplexer sessions. 

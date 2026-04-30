@@ -16,7 +16,7 @@ A description of the facility and  details of the current access charges can be 
 
 ## Linux command line experience
 
-If you do not have experience with using the Linux command line, it is recommended that you complete an online training course, such as this one: https://swcarpentry.github.io/shell-novice/, before requesting an account.
+If you do not have experience with using the Linux command line, it is recommended that you complete an online training course, such as this one:https://kir-rescomp.github.io/training-intro-to-linux-cli/, ( Or contact KIR Research Computing Manager to arrange a session).
 
 ## BMRC cluster user induction
  
