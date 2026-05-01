@@ -79,4 +79,14 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
     ```py
     wget -c https://github.com/kir-rescomp/kir-researchcomp-hub/releases/download/v1.0/slurm_examples.zip && slurm_examples.zip
     ```
-    
+
+    - Content of the directory
+    ```py
+    slurm_examples
+    ├── python_slurm
+    │   └── pi.py
+    └── r_slurm
+        ├── power_analysis_demo.R
+        ├── README.md
+        └── submit.sl
+    ```
