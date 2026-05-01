@@ -84,30 +84,32 @@ Use the following command to remove the kernel:
 If you prefer direct control, you can register a virtual environment as a Jupyter kernel manually.
 Note that this requires `ipykernel` to be installed into the environment itself.
 
-=== "uv (recommended)"
+!!! lightbulb ""
 
-    ```py
-        uv venv myenv
-        source myenv/bin/activate
-        uv pip install ipykernel <your-other-packages>
-
-        python -m ipykernel install --user --name myenv --display-name "My Env"
-    ```
-
-=== "pip"
-
-    ```py
-        python -m venv myenv
-        source myenv/bin/activate
-        pip install ipykernel <your-other-packages>
+    === "uv (recommended)"
     
-        python -m ipykernel install --user --name myenv --display-name "My Env"
-    ```
+        ```py
+            uv venv myenv
+            source myenv/bin/activate
+            uv pip install ipykernel <your-other-packages>
     
-    The `--user` flag installs the kernel spec to `~/.local/share/jupyter/kernels/`, which JupyterLab
-    on BMRC picks up automatically. You can verify registered kernels and remove unwanted ones with:
+            python -m ipykernel install --user --name myenv --display-name "My Env"
+        ```
     
-    ```py
-    jupyter kernelspec list
-    jupyter kernelspec uninstall myenv
-    ```
+    === "pip"
+    
+        ```py
+            python -m venv myenv
+            source myenv/bin/activate
+            pip install ipykernel <your-other-packages>
+    
+            python -m ipykernel install --user --name myenv --display-name "My Env"
+        ```
+    
+        The `--user` flag installs the kernel spec to `~/.local/share/jupyter/kernels/`, which JupyterLab
+        on BMRC picks up automatically. You can verify registered kernels and remove unwanted ones with:
+    
+        ```py
+        jupyter kernelspec list
+        jupyter kernelspec uninstall myenv
+        ```
