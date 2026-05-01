@@ -22,7 +22,7 @@ where `<group>` is your research group name.
 
 Use `/well/<group>/projects/archive` for raw, unprocessed data files. This directory is **backed up** by KIR Research Computing.
 
-!!! circle-info-2 "This is a Shared space — not personal"
+!!! circle-info-2 "This is a Shared space for your group"
     `archive/` is a group-wide directory. Everyone in `<group>` can read and write here. It is **not** an individual allocation, so coordinate with your colleagues before writing large datasets.
 
 ## Where to do your work
