@@ -1,5 +1,5 @@
 # Adding Jupyter Kernels
-
+<div class="nord" markdown=1>
 <p align="center" style="margin-bottom: -1px;">
     <img src="../../assets/images/material/software/compare_kiraddkernel_vs_manual_kernel.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
 </p>
@@ -34,13 +34,13 @@ makes the kernel available to all group members without each person needing to c
 
 `kir-add-kernel` is bundled with the `JupyterLab` module — load it first:
 
-```bash
+```py
 module load JupyterLab/4.5.6-GCCcore-12.3.0
 ```
 
 Then register your environment as a kernel:
 
-```bash
+```py
 kir-add-kernel <kernel-name> <module(s)> [--venv | --conda-name | --conda-path | --container]
 ```
 
@@ -57,14 +57,14 @@ Suppose you have a virtual environment with the following:
 
 Register it with:
 
-```bash
+```py
 kir-add-kernel singlecell Python/3.11.3-GCCcore-12.3.0 \
     --venv /users/group/myname/devel/Singlecell_venv
 ```
 
 Expected output:
 
-```
+```py
 Testing wrapper script
 Checking & installing ipykernel package in the kernel environment
 Installing kernel: python -m ipykernel install --name singlecell --user
@@ -86,28 +86,28 @@ Note that this requires `ipykernel` to be installed into the environment itself.
 
 === "uv (recommended)"
 
-```bash
-    uv venv myenv
-    source myenv/bin/activate
-    uv pip install ipykernel <your-other-packages>
+    ```py
+        uv venv myenv
+        source myenv/bin/activate
+        uv pip install ipykernel <your-other-packages>
 
-    python -m ipykernel install --user --name myenv --display-name "My Env"
-```
+        python -m ipykernel install --user --name myenv --display-name "My Env"
+    ```
 
 === "pip"
 
-```bash
-    python -m venv myenv
-    source myenv/bin/activate
-    pip install ipykernel <your-other-packages>
-
-    python -m ipykernel install --user --name myenv --display-name "My Env"
-```
-
-The `--user` flag installs the kernel spec to `~/.local/share/jupyter/kernels/`, which JupyterLab
-on BMRC picks up automatically. You can verify registered kernels and remove unwanted ones with:
-
-```bash
-jupyter kernelspec list
-jupyter kernelspec uninstall myenv
-```
+    ```py
+        python -m venv myenv
+        source myenv/bin/activate
+        pip install ipykernel <your-other-packages>
+    
+        python -m ipykernel install --user --name myenv --display-name "My Env"
+    ```
+    
+    The `--user` flag installs the kernel spec to `~/.local/share/jupyter/kernels/`, which JupyterLab
+    on BMRC picks up automatically. You can verify registered kernels and remove unwanted ones with:
+    
+    ```py
+    jupyter kernelspec list
+    jupyter kernelspec uninstall myenv
+    ```
