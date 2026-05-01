@@ -1,4 +1,7 @@
-# Pixi - a faster, reproducible replacement for `conda`/`mamba`
+# Pixi
+
+>a faster, reproducible replacement for `conda`/`mamba`
+
 
 [Pixi](https://pixi.prefix.dev/latest/) is a package manager built on the conda ecosystem — it resolves packages from the same channels (conda-forge, bioconda) and produces fully compatible environments. It is written in Rust, uses a significantly faster solver, and is designed around project-level reproducibility from the start.
 
@@ -6,12 +9,12 @@
     If you already use conda or mamba, the learning curve is minimal. The payoff is faster installs, exact reproducibility, and no base environment cluttering your shell.
 
 ---
-
+<div class="nord" markdown=1>
 ## Loading Pixi on BMRC
 
 Pixi is available as a module — there is no base environment to activate, no `conda init`, and no changes to your `.bashrc`:
 
-```bash
+```py
 module load Pixi
 ```
 
@@ -25,7 +28,7 @@ Each project carries its own isolated environment stored in a `.pixi/` directory
 
 In your project directory:
 
-```bash
+```py
 pixi init .
 ```
 
@@ -33,7 +36,7 @@ This creates a `pixi.toml` file that describes your project's dependencies, chan
 
 ### 2. Add packages
 
-```bash
+```py
 # From conda-forge (default)
 pixi add numpy scipy scanpy
 
@@ -47,27 +50,27 @@ Every `pixi add` resolves the full dependency graph and updates `pixi.lock` — 
 
 Rather than activating an environment, use `pixi run`:
 
-```bash
+```py
 pixi run python my_analysis.py
 pixi run jupyter lab
 ```
 
 For interactive sessions (e.g. debugging, exploratory work), you can drop into a shell with the environment active:
 
-```bash
+```py
 pixi shell
 ```
 
 ### 4. Commit your lock file to Git
 
-```bash
+```py
 git add pixi.toml pixi.lock
 git commit -m "Add pixi environment"
 ```
 
 Anyone cloning the repository can then reproduce the exact environment with:
 
-```bash
+```py
 pixi install
 ```
 
@@ -79,7 +82,7 @@ Replace `conda activate` with `pixi run` in your job scripts:
 
 === "conda / mamba"
 
-```bash
+```py
     #!/bin/bash
     #SBATCH ...
 
@@ -89,7 +92,7 @@ Replace `conda activate` with `pixi run` in your job scripts:
 
 === "Pixi"
 
-```bash
+```py
     #!/bin/bash
     #SBATCH ...
 
@@ -99,7 +102,7 @@ Replace `conda activate` with `pixi run` in your job scripts:
 
 If your script runs many commands and you want to avoid prefixing each one with `pixi run`, use the shell hook to activate the environment in-place:
 
-```bash
+```py
 module load Pixi
 eval "$(pixi shell-hook)"
 
@@ -120,10 +123,10 @@ my-package = ">=1.2.0"
 
 Or via the command line:
 
-```bash
+```py
 pixi add --pypi my-package
 ```
-
+</div>
 Pixi resolves conda and PyPI dependencies together, avoiding the silent conflicts that can arise from mixing `conda install` and `pip install`.
 
 ---
@@ -142,14 +145,14 @@ Pixi resolves conda and PyPI dependencies together, avoiding the silent conflict
 | Remove environment | `conda env remove -n myenv` | `rm -rf .pixi/` |
 
 ---
-
+<div class="nord" markdown=1>
 ## Migrating from conda
 
 ### From an `environment.yml`
 
 If you have an existing conda environment file, Pixi can import it directly:
 
-```bash
+```py
 pixi init --import environment.yml
 ```
 
@@ -159,24 +162,24 @@ This creates a `pixi.toml` from your channels, dependencies, and constraints, th
 
 If you do not have an `environment.yml` but have an active environment, export it first:
 
-```bash
+```py
 conda activate myenv
 conda env export --from-history > environment.yml
 pixi init --import environment.yml
 ```
 
-!!! note "`--from-history`"
+!!! note-sticky "`--from-history`"
     This exports only the packages you explicitly requested, not the full transitive dependency tree. Pixi will re-resolve dependencies from scratch, which gives a cleaner result than exporting the entire pinned environment.
 
 ### Verifying the migration
 
 Once imported, check that everything resolves as expected:
 
-```bash
+```py
 pixi install
 pixi run python -c "import scanpy; print(scanpy.__version__)"
 ```
-
+</div>
 ---
 
 ## Why Pixi is faster and more reproducible
@@ -203,6 +206,3 @@ Pixi solves this with `pixi.lock`, which records the exact URL and hash of every
 
 ---
 
-## Getting help
-
-If you run into problems migrating a project or want advice on structuring a multi-environment setup, [contact the KIR Research Computing team](mailto:rescomp@kennedy.ox.ac.uk).
