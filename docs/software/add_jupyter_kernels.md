@@ -1,5 +1,10 @@
 # Adding Jupyter Kernels
 
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/software/compare_kiraddkernel_vs_manual_kernel.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
+
+
 There are two approaches to registering custom kernels with JupyterLab on the cluster:
 **tool-assisted management** via `kir-jupyter-helpers`, or **manual registration** using
 `ipykernel` directly. Both are supported — choose whichever fits your workflow.
