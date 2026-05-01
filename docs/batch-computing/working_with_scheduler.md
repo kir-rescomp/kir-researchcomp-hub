@@ -77,6 +77,6 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
 
     - We have prepared few examples to practise writing and review template scripts. 
     ```py
-    git clone --single-branch --branch slurm_example https://github.com/kir-rescomp/kir-researchcomp-hub.git 
+    wget -c https://github.com/kir-rescomp/kir-researchcomp-hub/releases/download/v1.0/slurm_examples.zip && slurm_examples.zip
     ```
     
