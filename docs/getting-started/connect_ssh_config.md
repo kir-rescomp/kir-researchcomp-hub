@@ -10,6 +10,10 @@ dateCreated: 2021-08-20T13:18:06.993Z
 
 # Connecting to the cluster
 
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/getting-started/ssh_process.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
+
 ## Local Access
 
 To connect to the BMRC cluster, while connected to a local wired network at the Kennedy Institute or Eduroam, run the following command replacing `username` with your username for the cluster in your local computer terminal. You can connect to either `cluster1`, `cluster2` , `cluster3` or `cluster4` by changing the command accordingly: 

@@ -20,7 +20,7 @@ A description of the facility and  details of the current access charges can be 
  
 Once your registration form has been processed, an account will be created and you will receive a welcome message notifying you about your user name on the cluster. An induction session with the BMRC cluster team will be arranged to set up two-factor authentification.
 
-## Linux command line experience
+!!! note-sticky "Linux command line experience"
 
-If you do not have experience with using the Linux command line, it is recommended that you complete an online training course, such as this one:https://kir-rescomp.github.io/training-intro-to-linux-cli/, ( Or contact KIR Research Computing Manager to arrange a session).
+    If you do not have experience with using the Linux command line, it is recommended that you complete an online training course, such as this one:https://kir-rescomp.github.io/training-intro-to-linux-cli/, ( Or contact KIR Research Computing Manager to arrange a session).
 
