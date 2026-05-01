@@ -1,4 +1,4 @@
-<h1 align="center"> Working with job scheduler</h1>
+# Working with job scheduler
 
 <p align="center" style="margin-bottom: -1px;">
     <img src="../../assets/images/material/batch-computing/scheduler_image.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
@@ -68,3 +68,15 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
     <img src="../../assets/images/material/batch-computing/slurm_lifecycle.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
 </p>
 
+
+
+## Example scripts
+
+<div class="nord" markdown=1>
+!!! file-code "Example scripts"
+
+    - We have prepared few examples to practise writing and review template scripts. 
+    ```py
+    git clone --single-branch --branch slurm_example https://github.com/kir-rescomp/kir-researchcomp-hub.git 
+    ```
+    
