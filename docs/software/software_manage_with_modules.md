@@ -1,5 +1,10 @@
 # Environment Modules
 
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/software/lmod_modules.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
+
+
 Software on BMRC is managed through the **Lmod** module system. Rather than installing packages globally or managing conflicting dependencies yourself, modules let you load pre-built, version-specific software into your shell environment on demand — and unload it just as easily.
 
 Each module sets the necessary environment variables (`PATH`, `LD_LIBRARY_PATH`, `PYTHONPATH`, etc.) for a given piece of software, so tools are immediately available without any manual configuration.
