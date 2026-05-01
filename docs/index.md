@@ -90,7 +90,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/batch-computing" class="kp-card kp-ep4">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/batch-computing/working_with_scheduler/" class="kp-card kp-ep4">
     <div class="kp-header">
       <div class="kp-num">04</div>
       <div class="kp-meta">
