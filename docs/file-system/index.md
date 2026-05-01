@@ -42,7 +42,7 @@ This is where you should run jobs, install software, and store intermediate file
 
 The symlinks mean you can reach them as `~/devel` and `~/work` immediately after login.
 
-!!! tip
+!!! lightbulb "Tip"
     `work/` exists to encourage a project-based layout, but you are free to create your own subdirectory structure inside it as needed.
 
 ## Sharing within your group
