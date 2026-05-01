@@ -54,3 +54,28 @@ his snippet detects your current R version and CPU platform at startup, and cons
 ```
 
 Keeping libraries version-stamped this way avoids binary incompatibility issues when you **switch** between R versions.
+
+## R package installs
+
+Compute nodes on BMRC do not have internet access, so package installations must be done on a **login node**. To install packages:
+
+!!! quote ""
+    1. SSH into the cluster (or Open **OnDemand** shell) 
+    2. Load your desired R module:
+
+        ```py
+        module load R/4.4.0-foss-2023a
+        ```
+    3. Launch the R console:
+
+        ```py
+        R
+        ```
+    4. Install packages as normal, e.g.:
+        ```r
+        install.packages("ggplot2")
+        ```
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../../assets/images/material/software/r_packageinstall_login_compute.png" alt="r-package-install" width="700" style="opacity: 0.9;"/>
+</p>
