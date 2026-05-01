@@ -512,7 +512,7 @@
   }
   .md-typeset .admonition.file-code,
   .md-typeset details.file-code {
-    border-color: rgb(235, 184, 90);
+    border-color: rgb(250, 228, 189);
   }
   .md-typeset .file-code > .admonition-title,
   .md-typeset .file-code > summary {
