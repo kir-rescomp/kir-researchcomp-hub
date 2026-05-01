@@ -14,12 +14,13 @@ Kennedy Institute of Rheumatology researchers can access the [Medical Sciences D
 
 A description of the facility and  details of the current access charges can be found here:  [The KIR BMRC shared research facility for high performance computing](/the_kir_bmrc_srf_for_high_performance_computing.pdf). 
 
-## Linux command line experience
 
-If you do not have experience with using the Linux command line, it is recommended that you complete an online training course, such as this one:https://kir-rescomp.github.io/training-intro-to-linux-cli/, ( Or contact KIR Research Computing Manager to arrange a session).
 
 ## BMRC cluster user induction
  
 Once your registration form has been processed, an account will be created and you will receive a welcome message notifying you about your user name on the cluster. An induction session with the BMRC cluster team will be arranged to set up two-factor authentification.
 
+## Linux command line experience
+
+If you do not have experience with using the Linux command line, it is recommended that you complete an online training course, such as this one:https://kir-rescomp.github.io/training-intro-to-linux-cli/, ( Or contact KIR Research Computing Manager to arrange a session).
 
