@@ -1,4 +1,4 @@
-# Working with job scheduler
+<h1 align="center"> Working with job scheduler</h1>
 
 <p align="center" style="margin-bottom: -1px;">
     <img src="../../assets/images/material/batch-computing/scheduler_image.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
