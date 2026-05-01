@@ -1,5 +1,5 @@
 ---
-title: Opening an account on the KIR BMRC SRF
+title: Opening an account on the KIR BMRC 
 description: How to get an account on the BMRC cluster and usage charges
 published: true
 date: 2025-09-19T11:04:33.661Z
