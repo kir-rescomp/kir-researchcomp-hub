@@ -38,3 +38,18 @@ An HPC system might have thousands of nodes and thousands of users. How do we de
     </p>
 
     <small>Researchers can not communicate directly to  Compute nodes from the login node. Only way to establish a connection OR send scripts to compute nodes is to use scheduler as the carrier/manager</small>
+
+## Anatomy of a slurm script and submitting first slurm job 🧐
+
+As with most other scheduler systems, job submission scripts in Slurm consist of a header section with the shell specification and options to the submission command (`sbatch` in this case) followed by the body of the script that actually runs the commands you want. In the header section, options to `sbatch` should be prepended with `#SBATCH`.
+
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/batch-computing/anatomy_of_slurm_script.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
+
+
+
+!!! square-pen "Commented lines `#`"
+
+    Commented lines are ignored by the bash interpreter, but they are not ignored by slurm. The `#SBATCH` parameters are read by slurm when we submit the job. When the job starts, the bash interpreter will ignore all lines starting with `#`. This is very similar to the shebang mentioned earlier, when you run your script, the system looks at the `#!`, then uses the program at the subsequent path to interpret the script, in our case `/bin/bash` (the program `bash` found in the */bin* directory
