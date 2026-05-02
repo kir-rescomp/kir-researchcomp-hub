@@ -70,6 +70,16 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
 
 
 
+## Try it yourself
+
+Adjust the fields below and hit **Generate script** to see a real submission script.
+
+
+<slurm-generator></slurm-generator>
+
+
+
+
 ## Example scripts
 
 <div class="nord" markdown=1>
@@ -90,3 +100,4 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
         ├── README.md
         └── submit.sl
     ```
+
