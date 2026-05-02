@@ -14,8 +14,8 @@ title: Home
 <div class="landing-page">
   <div class="hero">
     <p class="description">
-      Research computing infrastructure, tools, and technical resources 
-      for the Kennedy Institute of Rheumatology
+      Research computing Support docs, tools, and technical resources 
+      for the Kennedy Institute of Rheumatology, University of Oxford
     </p>
   </div>
 </div>
