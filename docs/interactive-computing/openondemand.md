@@ -1,4 +1,4 @@
-# Interactive Computing with OnDemand and `srun`
+# Interactive Computing with OnDemand
 
 
 !!! exclamation "Make sure you are connected to VPN"
