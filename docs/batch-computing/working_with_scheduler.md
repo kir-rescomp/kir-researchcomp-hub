@@ -65,7 +65,6 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
 
 Adjust the fields below and hit **Generate script** to see a real submission script.
 
-
 <slurm-generator></slurm-generator>
 
 <br/>
