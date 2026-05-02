@@ -61,15 +61,6 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
     </p>
 
 
-## Life cycle of a slurm job
-
-
-<p align="center" style="margin-bottom: -1px;">
-    <img src="../../assets/images/material/batch-computing/slurm_lifecycle.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
-</p>
-
-
-
 ## Try it yourself
 
 Adjust the fields below and hit **Generate script** to see a real submission script.
@@ -77,6 +68,14 @@ Adjust the fields below and hit **Generate script** to see a real submission scr
 
 <slurm-generator></slurm-generator>
 
+<br/>
+
+## Life cycle of a slurm job
+
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/batch-computing/slurm_lifecycle.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
 
 
 
