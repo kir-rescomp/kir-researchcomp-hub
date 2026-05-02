@@ -61,6 +61,15 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
     </p>
 
 
+## Try it yourself
+
+Adjust the fields below and hit **Generate script** to see a real submission script.
+
+
+<slurm-generator></slurm-generator>
+
+<br/>
+
 ## Life cycle of a slurm job
 
 
@@ -90,3 +99,4 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
         ├── README.md
         └── submit.sl
     ```
+
