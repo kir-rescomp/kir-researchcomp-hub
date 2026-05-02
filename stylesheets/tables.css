@@ -1,0 +1,47 @@
+/* ─── Tables ─────────────────────────────────────────────────────────────── */
+
+.md-typeset table:not([class]) {
+  display: table;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Header row */
+.md-typeset table:not([class]) thead tr {
+  background: linear-gradient(
+    135deg,
+    var(--md-primary-fg-color),
+    var(--md-accent-fg-color)
+  );
+}
+
+.md-typeset table:not([class]) th {
+  color: var(--md-primary-bg-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.8rem 1rem;
+  border: none;
+}
+
+/* Zebra stripes */
+.md-typeset table:not([class]) tr:nth-child(even) {
+  background-color: var(--md-code-bg-color);
+}
+
+/* Hover highlight */
+.md-typeset table:not([class]) tbody tr:hover {
+  background-color: var(--md-accent-fg-color--transparent);
+  transition: background-color 0.15s ease;
+}
+
+/* Cell padding */
+.md-typeset table:not([class]) td {
+  padding: 0.65rem 1rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
