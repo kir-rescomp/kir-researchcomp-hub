@@ -103,3 +103,7 @@ By default, the scroll wheel does not work inside `tmux`. You need to enter **co
 
 !!! lightbulb "Typical multiplexing workflow"
     A common pattern on the cluster is to open one pane for an interactive `srun` job, a second pane to monitor it with `squeue` or `nvidia-smi`, and a third for editing scripts — all within a single detachable `tmux` session.
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/interactive-commputing/tmux_multiplexing.png" alt="srun" width="700" style="opacity: 0.9;"/>
+</p>
