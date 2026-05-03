@@ -79,3 +79,14 @@ Compute nodes on BMRC do not have internet access, so package installations must
 <p align="center" style="margin-bottom: -1px;">
     <img src="../../../assets/images/material/software/r_packageinstall_login_compute.png" alt="r-package-install" width="700" style="opacity: 0.9;"/>
 </p>
+
+<br/>
+
+!!! exclamation "CMake dependency for some R packages"
+    Some R packages (e.g. those wrapping C++ libraries) require **CMake** during compilation. CMake is not available by default on BMRC login nodes, nor is it bundled with any R module up to and including `R/4.5.1-gfbf-2023a-bare-noSciPy1`. If a package installation fails with a CMake-related error, load the module before launching R:
+     
+    ```py
+        module load CMake
+    ```
+
+    You do not need to specify a version — the latest available CMake is always the right choice. This requirement will be resolved from `R/4.6*` onwards, where CMake will be included as a module dependency automatically.

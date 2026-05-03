@@ -1,5 +1,5 @@
 ---
-title: Opening an account on the KIR BMRC 
+title: Opening an account on the BMRC 
 description: How to get an account on the BMRC cluster and usage charges
 published: true
 date: 2025-09-19T11:04:33.661Z
@@ -7,6 +7,11 @@ tags: account, fees, charges
 editor: markdown
 dateCreated: 2021-11-05T09:43:13.554Z
 ---
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/getting-started/access_and_induction.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
+
 
 ## Applying for an account
 

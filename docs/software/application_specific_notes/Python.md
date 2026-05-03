@@ -1,4 +1,16 @@
-# Python Virtual Environments
+# Python
+
+Python is available as a module and there are a number of different versions to choose from. If possible, try to use the latest version of R
+at all times as some of the libraries in both CRAN and Bioconductor can drop support for older versions of R during release cycles.
+
+- Search for available `Python` modules with 
+
+<div class="nord" markdown=1>
+```py
+module spider Python
+```
+</div>
+## Python Virtual Environments
 
 Virtual environments are isolated Python installations that let you manage packages on a per-project basis — without affecting the system Python or other users' work. On BMRC, all package installation should happen inside a virtual environment.
 
