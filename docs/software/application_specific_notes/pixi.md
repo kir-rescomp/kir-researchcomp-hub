@@ -82,33 +82,31 @@ Replace `conda activate` with `pixi run` in your job scripts:
 
 === "conda / mamba"
 
-```py
+    ```py
     #!/bin/bash
     #SBATCH ...
-
     source activate myenv
     python my_analysis.py
-```
+    ```
 
 === "Pixi"
 
-```py
+    ```py
     #!/bin/bash
     #SBATCH ...
-
     module load Pixi
     pixi run python my_analysis.py
-```
+    ```
 
-If your script runs many commands and you want to avoid prefixing each one with `pixi run`, use the shell hook to activate the environment in-place:
+    If your script runs many commands and you want to avoid prefixing each one with `pixi run`, use the shell hook to activate the environment in-place:
 
-```py
-module load Pixi
-eval "$(pixi shell-hook)"
+    ```py
+    module load Pixi
+    eval "$(pixi shell-hook)"
 
-python step_one.py
-Rscript step_two.R
-```
+    python step_one.py
+    Rscript step_two.R
+    ```
 
 ---
 
