@@ -12,13 +12,13 @@ They're the right tool for **embarrassingly parallel** work: tasks that are full
 ## Basic syntax
 
 <div class="nord" markdown=1>
-```py
+```rust
 #SBATCH --array 1-10
 ```
 
 This submits 10 tasks. Each receives a unique value of `SLURM_ARRAY_TASK_ID` from 1 to 10. You can also specify step sizes or throttle the number of concurrently running tasks:
 
-```py
+```rust
 #SBATCH --array 0-99        # 100 tasks, zero-indexed
 #SBATCH --array 1-20:2      # step of 2: indices 1, 3, 5 ... 19
 #SBATCH --array 1-100%5     # at most 5 tasks running simultaneously
@@ -30,7 +30,7 @@ The `%N` throttle is particularly useful when tasks are memory- or I/O-intensive
 
 ## A minimal example
 
-```py
+```rust
 #!/bin/bash
 
 #SBATCH --job-name    array-demo
@@ -197,7 +197,7 @@ python run.py \
 
 To sweep across two independent axes, encode both into a single array index using integer division and modulo:
 
-```{% raw %}{% endraw %} bash
+```{% raw %}{% endraw %} rust
 #!/bin/bash
 
 #SBATCH --array 0-11    # 3 models × 4 lambda values
