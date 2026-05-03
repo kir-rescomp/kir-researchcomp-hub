@@ -8,7 +8,7 @@
     The module system is how all software is made available on BMRC.
     Understand this first before anything else.
 
-    [Read the guide →](lmod-basics.md){ .md-button .md-button--primary }
+    [Read the guide →](software_manage_with_modules.md){ .md-button .md-button--primary }
 
 </div>
 
@@ -24,12 +24,12 @@
 
     `venv`, `conda`, and kernel setup for Jupyter.
 
-    [Read →](python-envs.md)
+    [Read →](./application_specific_notes/Python.md)
 
 -   :material-language-r:{ .lg } **R Packages**
 
     Library paths, version management, Bioconductor.
 
-    [Read →](r-packages.md)
+    [Read →](./application_specific_notes/R.md)
 
 </div>
