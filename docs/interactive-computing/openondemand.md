@@ -3,7 +3,7 @@
 
 !!! exclamation "Make sure you are connected to VPN"
 
-    Similar to accessing the cluster via `ssh`, OnDemand requires the device you are using to be connected to either the Oxford VPN or the MSD VPN
+    Similar to ssh access, OnDemand requires your device to be on Oxford VPN, MSD VPN, or eduroam (no VPN needed if already on eduroam WiFi)
 
 
     <div style="
