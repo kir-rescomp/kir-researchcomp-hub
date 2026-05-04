@@ -35,6 +35,12 @@ This submits 10 tasks. Each receives a unique value of `SLURM_ARRAY_TASK_ID` fro
 
 The `%N` throttle is particularly useful when tasks are memory- or I/O-intensive and you want to avoid saturating the filesystem or node.
 
+<br/>
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/batch-computing/slurm_array_resource_allocation.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
+
 ---
 
 ## A minimal example
