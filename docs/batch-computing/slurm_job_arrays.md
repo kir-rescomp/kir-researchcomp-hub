@@ -7,6 +7,15 @@ They're the right tool for **embarrassingly parallel** work: tasks that are full
 !!! note-sticky "Array size limit"
     The maximum number of tasks in a single array is **60000**. If your workload exceeds this, contact the [KIR Research Computing Team](mailto:kir-rc@kennedy.ox.ac.uk).
 
+<br/>
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/batch-computing/slurm_array_life_cycle.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
+
+<center>
+<small>Life cycle of a Slurm job array</small>
+</center>
 ---
 
 ## Basic syntax
@@ -25,6 +34,12 @@ This submits 10 tasks. Each receives a unique value of `SLURM_ARRAY_TASK_ID` fro
 ```
 
 The `%N` throttle is particularly useful when tasks are memory- or I/O-intensive and you want to avoid saturating the filesystem or node.
+
+<br/>
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/batch-computing/slurm_array_resource_allocation.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
 
 ---
 

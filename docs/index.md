@@ -5,6 +5,21 @@ hide:
 title: Home
 ---
 
+<div class="admonition spinner" style="text-align: center;">
+  <p class="admonition-title">
+    <span style="display: inline-block; animation: pulse 2s ease-in-out infinite;">🚧</span>
+    Work in Progress
+  </p>
+  <p>This repository is under active development.<br>Expected completion: <strong>TBD</strong></p>
+</div>
+
+<style>
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+</style>
+
 <h1></h1>
 <p align="center" style="margin-bottom: -50px;">
     <img src="assets/images/icons/kir_reseach_computing_colour_with_coloured_stripes.svg" alt="kir-oxford-logo" width="450" style="opacity: 0.9;"/>
