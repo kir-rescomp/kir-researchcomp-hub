@@ -7,6 +7,15 @@ They're the right tool for **embarrassingly parallel** work: tasks that are full
 !!! note-sticky "Array size limit"
     The maximum number of tasks in a single array is **60000**. If your workload exceeds this, contact the [KIR Research Computing Team](mailto:kir-rc@kennedy.ox.ac.uk).
 
+<br/>
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/batch-computing/slurm_array_life_cycle.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
+
+<center>
+<small>Life cycle of a Slurm job array</small>
+</center>
 ---
 
 ## Basic syntax
