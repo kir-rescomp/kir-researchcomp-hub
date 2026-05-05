@@ -202,6 +202,9 @@ All materials are freely available and self-paced.
 </a>
 </div>
 
+- - - 
+
+# Ignore the following legacy section :
 
 !!! circle-info ""
 
