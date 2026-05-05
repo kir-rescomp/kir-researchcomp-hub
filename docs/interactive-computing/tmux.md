@@ -9,7 +9,6 @@ When you connect to the cluster via SSH, your session is tied to that connection
     <img src="../../assets/images/material/interactive-commputing/tmux_overview.png" alt="srun" width="700" style="opacity: 0.9;"/>
 </p>
 
-
 ---
 
 ### Managing sessions

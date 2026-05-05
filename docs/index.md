@@ -117,8 +117,8 @@ title: Home
       <ul class="kp-topics">
         <li>What is Slurm</li>
         <li>Slurm variables</li>
-        <li>Slurm Life cycle</li>
-        <li>Slurm templates</li>
+        <li>Slurm Life cycle and templates</li>
+        <li>Slurm job arrays</li>
       </ul>
     </div>
     <div class="kp-footer">
@@ -202,6 +202,9 @@ All materials are freely available and self-paced.
 </a>
 </div>
 
+- - - 
+
+# Ignore the following legacy section :
 
 !!! circle-info ""
 
