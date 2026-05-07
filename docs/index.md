@@ -83,7 +83,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/software" class="kp-card kp-ep3">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/software/software_manage_with_modules/" class="kp-card kp-ep3">
     <div class="kp-header">
       <div class="kp-num">03</div>
       <div class="kp-meta">
@@ -147,7 +147,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/data-transfer" class="kp-card kp-ep6">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/data-transfer/cli_transfer" class="kp-card kp-ep6">
     <div class="kp-header">
       <div class="kp-num">06</div>
       <div class="kp-meta">

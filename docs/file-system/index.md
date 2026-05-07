@@ -51,6 +51,6 @@ The symlinks mean you can reach them as `~/devel` and `~/work` immediately after
 
 ## Collaborating with groups outside KIR
 
-`/well/sansom/shared` is available for cross-institute collaboration, but access requires special group membership to be configured.
+`/well/<group>/shared` is available for cross-institute collaboration, but access requires special group membership to be configured.
 
 **Contact KIR  Research Computing Manager** to create shared groups. 
