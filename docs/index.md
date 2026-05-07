@@ -22,7 +22,7 @@ title: Home
 
 <h1></h1>
 <p align="center" style="margin-bottom: -50px;">
-    <img src="assets/images/icons/kir_reseach_computing_colour_with_coloured_stripes.svg" alt="kir-oxford-logo" width="450" style="opacity: 0.9;"/>
+    <img src="assets/images/icons/KIR_Research_Computing_Hub_layered_logo.svg" alt="kir-oxford-logo" width="450" style="opacity: 0.9;"/>
 </p>
 
 

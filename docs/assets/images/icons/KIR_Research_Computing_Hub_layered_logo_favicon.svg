@@ -5,9 +5,9 @@
    viewBox="0 0 917 917"
    version="1.1"
    id="svg21"
-   sodipodi:docname="KIR_Research_Computing_Hub_layered_logo.svg"
+   sodipodi:docname="KIR_Research_Computing_Hub_layered_logo_favicon.svg"
    inkscape:version="1.4.3 (1:1.4.3+202512261034+0d15f75042)"
-   inkscape:export-filename="KIR_Research_Computing_Hub_layered_logo.png"
+   inkscape:export-filename="KIR_Research_Computing_Hub_layered_logo_favicon.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -25,7 +25,7 @@
      inkscape:deskcolor="#505050"
      inkscape:zoom="0.71544715"
      inkscape:cx="615"
-     inkscape:cy="612.90341"
+     inkscape:cy="611.50569"
      inkscape:window-width="2560"
      inkscape:window-height="1403"
      inkscape:window-x="0"
@@ -75,16 +75,16 @@
   </defs>
   <!-- transparent background -->
   <rect
-     style="fill:#ffffff;stroke:#ffffff;stroke-width:1.01671;fill-opacity:1"
+     style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1.01671"
      id="rect21"
      width="939.25604"
      height="929.47198"
-     x="-11.173467"
-     y="-4.1848307"
+     x="-9.7757397"
+     y="-6.9802852"
      rx="30.731161" />
   <g
      id="logo"
-     transform="translate(0,24)">
+     transform="matrix(2.262622,0,0,2.2929709,-581.27017,-133.7647)">
     <!-- emblem -->
     <g
        id="emblem"
@@ -251,45 +251,6 @@
     <g
        id="text"
        text-anchor="middle"
-       transform="translate(-156.54545,-145.29545)">
-      <text
-         id="kir"
-         x="615"
-         y="768"
-         class="textBlue"
-         font-size="92px"
-         style="font-size:149.333px">KIR</text>
-      <text
-         id="research-computing"
-         x="615"
-         y="860"
-         class="textBlue"
-         font-size="74px"
-         style="font-size:96px">Research Computing</text>
-      <g
-         id="hub-group">
-        <line
-           x1="170"
-           y1="941"
-           x2="510"
-           y2="941"
-           class="thinGold"
-           id="line20" />
-        <line
-           x1="720"
-           y1="941"
-           x2="1060"
-           y2="941"
-           class="thinGold"
-           id="line21" />
-        <text
-           id="hub"
-           x="615"
-           y="958"
-           class="textGold"
-           font-size="72px"
-           style="font-size:85.3333px">Hub</text>
-      </g>
-    </g>
+       transform="translate(-156.54545,-145.29545)" />
   </g>
 </svg>
