@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="917"
+   height="917"
+   viewBox="0 0 917 917"
+   version="1.1"
+   id="svg21"
+   sodipodi:docname="KIR_Research_Computing_Hub_layered_editable.svg"
+   inkscape:version="1.4.3 (1:1.4.3+202512261034+0d15f75042)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview21"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="0.71544715"
+     inkscape:cx="615"
+     inkscape:cy="614.30114"
+     inkscape:window-width="2560"
+     inkscape:window-height="1403"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg21" />
+  <defs
+     id="defs2">
+    <filter
+       id="softGlow"
+       x="-0.30000001"
+       y="-0.30000001"
+       width="1.6"
+       height="1.6">
+      <feGaussianBlur
+         stdDeviation="10"
+         result="blur"
+         id="feGaussianBlur1" />
+      <feMerge
+         id="feMerge2">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode1" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode2" />
+      </feMerge>
+    </filter>
+    <style
+       id="style2">
+      .blueFill { fill: #0B2D5B; }
+      .blueStroke { stroke: #0B2D5B; stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .goldStroke { stroke: #F2B318; stroke-width: 12; fill: none; stroke-linecap: round; }
+      .goldFill { fill: #F2B318; }
+      .thinGold { stroke: #F2B318; stroke-width: 4; fill: none; stroke-linecap: round; }
+      .textBlue {
+        fill: #0B2D5B;
+        font-family: &quot;Georgia&quot;, &quot;Times New Roman&quot;, serif;
+        font-weight: 400;
+      }
+      .textGold {
+        fill: #F2B318;
+        font-family: &quot;Georgia&quot;, &quot;Times New Roman&quot;, serif;
+        font-weight: 400;
+      }
+    </style>
+  </defs>
+  <!-- transparent background -->
+  <rect
+     style="fill:#f9f9f9;stroke:#ffffff;stroke-width:1.01671"
+     id="rect21"
+     width="939.25604"
+     height="929.47198"
+     x="-11.173467"
+     y="-4.1848307"
+     rx="30.731161" />
+  <g
+     id="logo"
+     transform="translate(0,24)">
+    <!-- emblem -->
+    <g
+       id="emblem"
+       transform="translate(-156.54545,-145.29545)">
+      <!-- halo / arc -->
+      <path
+         id="gold-arc"
+         class="goldStroke"
+         d="m 443,483 a 190,190 0 1 1 345,0" />
+      <!-- server racks -->
+      <g
+         id="server-racks">
+        <path
+           id="server-left"
+           class="blueFill"
+           d="m 487,324 69,-29 v 192 h -69 z" />
+        <path
+           id="server-center"
+           class="blueFill"
+           d="m 573,267 h 85 v 256 h -85 z" />
+        <path
+           id="server-right"
+           class="blueFill"
+           d="m 674,324 69,-29 v 192 h -69 z" />
+        <!-- rack details -->
+        <g
+           id="rack-lines">
+          <rect
+             x="505"
+             y="367"
+             width="40"
+             height="8"
+             rx="3"
+             fill="#f5f5f5"
+             id="rect2" />
+          <rect
+             x="505"
+             y="395"
+             width="40"
+             height="8"
+             rx="3"
+             fill="#f5f5f5"
+             id="rect3" />
+          <rect
+             x="606"
+             y="330"
+             width="40"
+             height="8"
+             rx="3"
+             fill="#f5f5f5"
+             id="rect4" />
+          <rect
+             x="606"
+             y="362"
+             width="40"
+             height="8"
+             rx="3"
+             fill="#f5f5f5"
+             id="rect5" />
+          <rect
+             x="606"
+             y="394"
+             width="40"
+             height="8"
+             rx="3"
+             fill="#f5f5f5"
+             id="rect6" />
+          <rect
+             x="692"
+             y="367"
+             width="40"
+             height="8"
+             rx="3"
+             fill="#f5f5f5"
+             id="rect7" />
+          <rect
+             x="692"
+             y="395"
+             width="40"
+             height="8"
+             rx="3"
+             fill="#f5f5f5"
+             id="rect8" />
+        </g>
+        <!-- status dots -->
+        <circle
+           cx="522"
+           cy="445"
+           r="9"
+           class="goldFill"
+           id="circle8" />
+        <circle
+           cx="616"
+           cy="445"
+           r="9"
+           class="goldFill"
+           id="circle9" />
+        <circle
+           cx="711"
+           cy="445"
+           r="9"
+           class="goldFill"
+           id="circle10" />
+      </g>
+      <!-- circuit lines -->
+      <g
+         id="circuit"
+         class="blueStroke">
+        <path
+           d="m 468,537 h 85"
+           id="path10" />
+        <path
+           d="m 677,537 h 83"
+           id="path11" />
+        <path
+           d="m 615,524 v 65"
+           id="path12" />
+        <path
+           d="m 597,541 -35,35"
+           id="path13" />
+        <path
+           d="m 633,541 35,35"
+           id="path14" />
+        <path
+           d="M 545,562 H 488"
+           id="path15" />
+        <path
+           d="m 685,562 h 57"
+           id="path16" />
+        <!-- circuit nodes -->
+        <circle
+           cx="468"
+           cy="537"
+           r="10"
+           fill="#ffffff"
+           id="circle16" />
+        <circle
+           cx="760"
+           cy="537"
+           r="10"
+           fill="#ffffff"
+           id="circle17" />
+        <circle
+           cx="615"
+           cy="589"
+           r="10"
+           fill="#ffffff"
+           id="circle18" />
+        <circle
+           cx="488"
+           cy="562"
+           r="10"
+           fill="#ffffff"
+           id="circle19" />
+        <circle
+           cx="742"
+           cy="562"
+           r="10"
+           fill="#ffffff"
+           id="circle20" />
+      </g>
+    </g>
+    <!-- text -->
+    <g
+       id="text"
+       text-anchor="middle"
+       transform="translate(-156.54545,-145.29545)">
+      <text
+         id="kir"
+         x="615"
+         y="768"
+         class="textBlue"
+         font-size="92px"
+         style="font-size:149.333px">KIR</text>
+      <text
+         id="research-computing"
+         x="615"
+         y="860"
+         class="textBlue"
+         font-size="74px"
+         style="font-size:96px">Research Computing</text>
+      <g
+         id="hub-group">
+        <line
+           x1="170"
+           y1="941"
+           x2="510"
+           y2="941"
+           class="thinGold"
+           id="line20" />
+        <line
+           x1="720"
+           y1="941"
+           x2="1060"
+           y2="941"
+           class="thinGold"
+           id="line21" />
+        <text
+           id="hub"
+           x="615"
+           y="958"
+           class="textGold"
+           font-size="72px"
+           style="font-size:85.3333px">Hub</text>
+      </g>
+    </g>
+  </g>
+</svg>
