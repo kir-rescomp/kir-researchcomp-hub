@@ -110,7 +110,10 @@ I 2026-05-08 18:53:03.587 ServerApp] jupyter_lsp | extension was successfully li
 
 On your **local machine** (not the cluster), open a new terminal and run:
 
-```bash
+* If you have setup the local terminal  `~/.ssh/config` according to [these instructions](../getting-started/connect_ssh_config.md), replace  `username@cluster1.bmrc.ox.ac.uk`
+   with the shorter hostname .i.e.`bmrc1` ,etc. 
+
+```py
 ssh -L 8888:compe023:8888 username@cluster1.bmrc.ox.ac.uk
 ```
 
@@ -128,7 +131,7 @@ Substitute:
     If port `8888` is already occupied on your laptop, use a different local port,
     for example `9999`:
 
-    ```bash
+    ```py
     ssh -L 9999:compe023:8888 username@cluster1.bmrc.ox.ac.uk
     ```
 
@@ -149,15 +152,10 @@ your local machine. Jupyter will load.
     If you used a different local port (e.g. `9999`) in Step 4, edit the port in
     the URL before opening it:
 
-    ```
+    ```py
     http://127.0.0.1:9999/lab?token=abc123...
     ```
 
-!!! info "Choosing the right kernel in Jupyter Lab"
-    When running a Jupyter Lab session started this way, always select the
-    **`Python 3 (ipykernel)`** kernel. Do not use kernels that were registered
-    for use inside RStudio Server (e.g. a kernel named `Python-3.8.2`) — these
-    will not work correctly in a cluster Jupyter Lab session.
 
 ---
 
@@ -171,6 +169,6 @@ When you are finished:
 3. Exit the interactive Slurm session: `exit`
 4. Close the SSH tunnel terminal.
 
-!!! tip
+!!! lightbulb "Tip"
     Leaving an interactive Slurm session idle wastes cluster resources and counts
     against your allocation. Always exit when you are done.
