@@ -22,7 +22,7 @@ title: Home
 
 <h1></h1>
 <p align="center" style="margin-bottom: -50px;">
-    <img src="assets/images/icons/kir_reseach_computing_colour_with_coloured_stripes.svg" alt="kir-oxford-logo" width="450" style="opacity: 0.9;"/>
+    <img src="assets/images/icons/KIR_Research_Computing_Hub_layered_logo.svg" alt="kir-oxford-logo" width="450" style="opacity: 0.9;"/>
 </p>
 
 
@@ -83,7 +83,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/software" class="kp-card kp-ep3">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/software/software_manage_with_modules/" class="kp-card kp-ep3">
     <div class="kp-header">
       <div class="kp-num">03</div>
       <div class="kp-meta">
@@ -147,7 +147,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/data-transfer" class="kp-card kp-ep6">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/data-transfer/cli_transfer" class="kp-card kp-ep6">
     <div class="kp-header">
       <div class="kp-num">06</div>
       <div class="kp-meta">

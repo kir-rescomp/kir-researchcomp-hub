@@ -12,7 +12,7 @@ repo_url: https://github.com/kir-rescomp/kir-researchcomp-hub
 
 theme:
   name: material
-  logo: assets/images/icons/kir_techincal_insights_essays_favicon_grayscale_color_stripes.svg
+  logo: assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg
   favicon: assets/images/icons/kir_standalone_logo.png
    # 404 page
   static_templates:
