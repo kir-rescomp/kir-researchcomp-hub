@@ -50,17 +50,12 @@ hostname
 Load the Python module and activate the matching virtual environment.
 Select the tab for the toolchain you are using:
 
-=== "Python 3.10 (GCCcore-12.2.0)"
+=== "Using `Python/3.11.3-GCCcore-12.3.0` module as an example"
 
     ```py
-    module load Python/3.10.8-GCCcore-12.2.0
-    source ~/devel/venv/Python-3.10.8-GCCcore-12.2.0/${MODULE_CPU_TYPE}/bin/activate
+    module Python/3.11.3-GCCcore-12.3.0
+    source ~/devel/venv/Python/3.11.3-GCCcore-12.3.0/bin/activate
     ```
-
-The `MODULE_CPU_TYPE` environment variable is set automatically by Lmod and
-resolves to the correct architecture subdirectory (`skylake`, `ivybridge`, etc.)
-for the node you are on.
-
 ---
 
 ## Step 3 — Start the Jupyter server
@@ -72,34 +67,24 @@ Select the tab for the interface you want:
 
     Load a compatible Node.js module before starting Lab:
 
-    === "Python 3.10 (GCCcore-12.2.0)"
-
-        ```bash
-        cd ~/notebooks
-        module load nodejs/18.12.1-GCCcore-12.2.0
-        jupyter lab --no-browser --ip=*
-        ```
-
-    === "Python 3.8 (GCCcore-9.3.0)"
-
-        ```bash
-        cd ~/notebooks
-        module load nodejs/12.16.1-GCCcore-9.3.0
-        jupyter lab --no-browser --ip=*
-        ```
+    ```py
+    cd ~/notebooks
+    module load nodejs/18.12.1-GCCcore-12.2.0
+    jupyter lab --no-browser --ip=*
+    ```
 
 === "Jupyter Notebook"
 
     No additional modules are needed:
 
-    ```bash
+    ```py
     cd ~/notebooks
     jupyter notebook --no-browser --ip=*
     ```
 
 Once the server starts you will see output similar to:
 
-```
+```py
 To access the server, open this file in a browser:
     ...
 Or copy and paste one of these URLs:
