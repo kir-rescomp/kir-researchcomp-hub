@@ -2,6 +2,7 @@ nav:
  - openondemand.md
  - add_jupyter_kernels.md
  - srun.md
+ - srun_jupyterlab.md
  - tmux.md
  - notebook_to_slurm.md
 
