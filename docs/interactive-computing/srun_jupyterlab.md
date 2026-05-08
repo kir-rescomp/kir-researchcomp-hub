@@ -92,10 +92,9 @@ Or copy and paste one of these URLs:
     http://127.0.0.1:8888/lab?token=abc123...
 ```
 
-**Note down two things:**
-
-1. The **port number** (e.g. `8888`) — it may differ if that port is already in use on the node.
-2. The full URL beginning with `http://127.0.0.1:` — you will paste this into your browser later.
+!!! note "Note down two things"
+    1. The **port number** (e.g. `8888`) — it may differ if that port is already in use on the node.
+    2. The full URL beginning with `http://127.0.0.1:` — you will paste this into your browser later.
 
 ---
 
