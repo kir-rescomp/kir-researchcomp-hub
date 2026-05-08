@@ -33,7 +33,7 @@ Log into  any of the BMRC login nodes and request an interactive node. For examp
 
 <div class="nord" markdown=1>
 ```py
-srun -p short -c 2 --mem=30G --pty bash
+srun -p short --cpus-per-task 2 --mem=30G --pty bash
 ```
 
 Once the session starts, note the hostname of the node you have been assigned:
@@ -85,14 +85,22 @@ Select the tab for the interface you want:
 Once the server starts you will see output similar to:
 
 ```py
-To access the server, open this file in a browser:
-    ...
-Or copy and paste one of these URLs:
-    http://compe023:8888/lab?token=abc123...
-    http://127.0.0.1:8888/lab?token=abc123...
+I 2026-05-08 18:53:03.587 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-05-08 18:53:03.592 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-05-08 18:53:03.596 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-05-08 18:53:03.600 ServerApp] notebook | extension was successfully linked.
+[I 2026-05-08 18:53:04.492 ServerApp] notebook_shim | extension was successfully linked.
+[W 2026-05-08.....................
+.........................
+    To access the server, open this file in a browser:
+        ...
+
+    Or copy and paste one of these URLs:
+        http://localhost:8888/lab?token=b358a08f791d96bdd3ff8139a...............
+        http://127.0.0.1:8888/lab?token=b358a08f791d96bdd3ff8139a...............
 ```
 
-!!! note "Note down two things"
+!!! square-pen "Note down two things"
     1. The **port number** (e.g. `8888`) — it may differ if that port is already in use on the node.
     2. The full URL beginning with `http://127.0.0.1:` — you will paste this into your browser later.
 
