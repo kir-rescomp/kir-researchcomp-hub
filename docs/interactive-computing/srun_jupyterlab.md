@@ -45,15 +45,24 @@ hostname
 
 ---
 
-## Step 2 — Activate your Python environment
+## Step 2 — Load JupterLab module OR activate your Python virtual environment
 
 Load the Python module and activate the matching virtual environment.
 Select the tab for the toolchain you are using:
 
-=== "Using `Python/3.11.3-GCCcore-12.3.0` module as an example"
+=== "Using `JupyterLab`module"
 
     ```py
-    module Python/3.11.3-GCCcore-12.3.0
+    `module load JupyterLab/4.5.6-GCCcore-12.3.0
+    ```
+
+=== "Using `Python/3.11.3-GCCcore-12.3.0` module as an example"
+     
+     - If you are not using the `JupyterLab` module, make sure to load a `nodejs` module with the matching toolchain
+
+    ```py
+    module load Python/3.11.3-GCCcore-12.3.0
+    module load nodejs/18.17.1-GCCcore-12.3.0
     source ~/devel/venv/Python/3.11.3-GCCcore-12.3.0/bin/activate
     ```
 ---
@@ -69,7 +78,6 @@ Select the tab for the interface you want:
 
     ```py
     cd ~/notebooks
-    module load nodejs/18.12.1-GCCcore-12.2.0
     jupyter lab --no-browser --ip=*
     ```
 
@@ -161,13 +169,13 @@ your local machine. Jupyter will load.
 
 ## Ending your session
 
-When you are finished:
+!!! flag-checkered "When you are finished:"
 
-1. Shut down the Jupyter server from the Lab/Notebook interface, or press
-   `Ctrl+C` twice in the terminal running the server.
-2. Deactivate the virtual environment: `deactivate`
-3. Exit the interactive Slurm session: `exit`
-4. Close the SSH tunnel terminal.
+    1. Shut down the Jupyter server from the Lab/Notebook interface, or press
+       `Ctrl+C` twice in the terminal running the server.
+    2. If you were using a `Python` virtual environment, deactivate the virtual environment: `deactivate`
+    3. Exit the interactive Slurm session: `exit`
+    4. Close the SSH tunnel terminal.
 
 !!! lightbulb "Tip"
     Leaving an interactive Slurm session idle wastes cluster resources and counts
