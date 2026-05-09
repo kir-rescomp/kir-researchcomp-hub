@@ -71,3 +71,109 @@ When you submit an `srun` job, you must specify how long you need the session (`
     </div>
 
 As a rule of thumb: **request the time you expect to need, plus a small buffer** — and don't leave sessions running overnight unless you genuinely intend to use them.
+
+
+
+
+## Advanced topics
+
+### Scheduling a delayed start with `--begin`
+
+By default, `srun` starts your session as soon as resources are available. If you want to delay the
+start — for example, to avoid a session being allocated while you are away from your desk — you can
+use the `--begin` flag.
+
+`--begin` accepts both absolute and relative time values:
+
+| Value | Meaning |
+|---|---|
+| `--begin=14:00` | Start no earlier than 2 p.m. today (24-hour format) |
+| `--begin=2025-06-01T09:00:00` | Start no earlier than 9 a.m. on 1 June 2025 |
+| `--begin=now+2hours` | Wait at least 2 hours before starting |
+| `--begin=now+30minutes` | Wait at least 30 minutes before starting |
+
+!!! warning "A session with `--begin` is still queued and consuming your allocation"
+    The job will appear in `squeue` as pending (`PD`). If you no longer need the session,
+    cancel it with `scancel <jobid>` rather than leaving it in the queue.
+
+---
+
+### Modifying a pending `srun` session
+
+If your session is still waiting in the queue, you can adjust its start time using `scontrol`
+without needing to cancel and resubmit.
+
+#### Postponing the start
+
+A common scenario: you submitted an interactive session but now realise you won't have time to use
+it before the end of the day. Rather than leave it running overnight, postpone it:
+
+<div class="nord" markdown=1>
+```py
+# Delay start until at least 9:30 a.m. tomorrow
+scontrol update jobid=<jobid> StartTime=tomorrowT09:30:00
+```
+</div>
+
+!!! warning "Avoid setting `StartTime=tomorrow` without a time component — Slurm will interpret this as  midnight, and your session may start while you are asleep"
+
+#### Bringing the start forward
+
+If a session was previously postponed and you want it to start immediately:
+
+<div class="nord" markdown=1>
+```py
+scontrol update jobid=<jobid> StartTime=now
+```
+</div>
+
+#### Finding your session's job ID
+
+<div class="nord" markdown=1>
+```py
+squeue --me --states=PD
+```
+
+---
+
+### Cancelling your `srun` session
+
+If you are finished with your interactive session, always release the resources rather than letting
+the allocation run to its time limit.
+
+**From within the session**, simply type:
+
+```py
+exit
+```
+
+**From outside the session** (e.g. after reconnecting via tmux), find the job ID and cancel it:
+
+```py
+# List your running interactive sessions
+squeue --me --states=R
+
+# Cancel by job ID
+scancel <jobid>
+```
+
+**To cancel all your running interactive sessions at once:**
+
+```py
+squeue --me --states=R -o "%A %j" | grep "interactive" | \
+awk '{print $1}' | \
+xargs -I {} scancel {}
+```
+</div>
+
+!!! lightbulb "Name your sessions for easier management"
+
+    Passing `--job-name=interactive` to your `srun` command makes it straightforward to identify
+    and bulk-cancel sessions with the `grep` approach above:
+    <div class="nord" markdown==1>
+    ```py
+    srun --job-name=interactive --partition=short --cpus-per-task=4 --mem=16G --time=02:00:00 --pty bash
+    ```
+    </div>
+
+
