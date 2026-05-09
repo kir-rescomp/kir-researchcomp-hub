@@ -1,4 +1,7 @@
-# `RStudio-Server` with `srun`
+# `RStudio-Server` on BMRC
+
+RStudio is available on BMRC through three different access methods.
+Choose the one that best fits your need/workflow:
 
 <div class="grid cards" markdown>
 
@@ -22,7 +25,7 @@
     via SSH tunnel. Useful for fine-grained control over resources or
     debugging environment issues outside of OnDemand.
     </span>
-    [:octicons-arrow-right-24: Set up manually](#rstudio-server-via-srun)
+    [:octicons-arrow-right-24: Launch with srun](#rstudio-server-via-srun)
 
 -   :material-server:{ .lg .middle } **RStudio Workbench**
 
@@ -35,15 +38,6 @@
     [:octicons-arrow-right-24: Access Workbench](#rstudio-workbench)
 </div>
 
-
-!!! lightbulb "Recommended approach"
-    The easiest and recommended way to run RStudio-Server on BMRC is through
-    **[Open OnDemand](./openondemand.md)**, which handles session management,
-    port forwarding, and environment setup automatically — no terminal tunnelling required.
-
-    The manual method described on this page is useful when you need finer control
-    over your session (e.g. memory layouts, or debugging
-    environment issues outside of OnDemand).
 
 !!! clipboard-list "Prerequisites"
 
