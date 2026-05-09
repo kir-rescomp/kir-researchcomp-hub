@@ -111,6 +111,6 @@ Choose the one that best fits your need/workflow:
         <img src="../../assets/images/material/interactive-commputing/posit_workbench_login.png" alt="srun" width="300" style="opacity: 0.9;"/>
     </p>
 
-    !!! exlamation "Before you start your workflow"
+    !!! exclamation "Before you start your workflow"
         Please remember that RStudio server has a limited capacity (CPUs and memory). It should be used primarily for lightweight calculations, visualising results and code development. All heavy calculations should be run on the cluster either via **OpenOnDemand** or `srun`
 
