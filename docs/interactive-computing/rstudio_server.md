@@ -47,7 +47,7 @@ Choose the one that best fits your need/workflow:
 
 
 === "Open OnDemand"
- 
+
     <div style="
       background: var(--md-primary-fg-color--light, #f0f4ff);
       border-left: 4px solid var(--md-primary-fg-color);
@@ -103,11 +103,15 @@ Choose the one that best fits your need/workflow:
 
 === "Posit Workbench" 
     
-    The server is accessible at: https://rstudio-kir.bmrc.ox.ac.uk through Chrome or Firefox browser. Do not use Safari browser to access the server, as it has been identified to have problems with connection.
+    The server is accessible at: https://rstudio-kir.bmrc.ox.ac.uk through Chrome or Firefox browser. Do not use Safari browser to access the server, as it has been identified to have problems with connection. 
+    
+    >Please remember that RStudio server has a limited capacity (CPUs and memory). It should be used primarily for lightweight calculations, visualising results and code development. All heavy calculations should be run on the cluster either via **OpenOnDemand** or `srun`
 
     To log in to the server, enter your BMRC user name and then your BMRC password immediately followed by 6-digit second authentication factor in the same password field.
 
+    <p align="center" style="margin-bottom: -1px;">
+        <img src="../../assets/images/material/interactive-commputing/posit_workbench_login.png" alt="srun" width="300" style="opacity: 0.9;"/>
+    </p>
 
-    Please remember that RStudio server has a limited capacity (CPUs and memory). It should be used primarily for lightweight calculations, visualising results and code development. All heavy calculations should be run on the cluster.
 
 
