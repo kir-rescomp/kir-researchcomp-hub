@@ -5,33 +5,33 @@
 -   :material-open-in-app:{ .lg .middle } **Open OnDemand**
 
     ---
-
+    <span style="font-size: 0.7rem;"> 
     Launch RStudio directly in your browser with a few clicks.
     No SSH tunnels or terminal setup required. Best for everyday interactive work.
 
     **Recommended for most users.**
 
     [:octicons-arrow-right-24: Launch via OnDemand](#open-ondemand)
-
+    </span>
 
 -   :material-console:{ .lg .middle } **Manual via `srun`**
 
     ---
-
+    <span style="font-size: 0.7rem;">
     Start RStudio Server from an interactive Slurm session and connect
     via SSH tunnel. Useful for fine-grained control over resources or
     debugging environment issues outside of OnDemand.
-
+    </span>
     [:octicons-arrow-right-24: Set up manually](#rstudio-server-via-srun)
 
 -   :material-server:{ .lg .middle } **RStudio Workbench**
 
     ---
-
+    <span style="font-size: 0.7rem;">
     A shared, always-on RStudio environment accessible at a fixed URL.
     Supports multiple concurrent sessions and persistent projects.
     Best for users who prefer a persistent workspace.
-
+    </span>
     [:octicons-arrow-right-24: Access Workbench](#rstudio-workbench)
 </div>
 
