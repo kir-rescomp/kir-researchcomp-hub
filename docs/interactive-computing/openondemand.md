@@ -3,7 +3,7 @@
 
 !!! exclamation "Make sure you are connected to VPN"
 
-    Similar to ssh access, OnDemand requires your device to be on Oxford VPN, MSD VPN, or eduroam (no VPN needed if already on eduroam WiFi)
+    Similar to [ssh access](../getting-started/connect_ssh_config.md), OnDemand requires your device to be on Oxford VPN, MSD VPN, or eduroam (no VPN needed if already on eduroam WiFi)
 
 
     <div style="
