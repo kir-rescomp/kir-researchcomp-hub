@@ -1,5 +1,41 @@
 # `RStudio-Server` with `srun`
 
+<div class="grid cards" markdown>
+
+-   :material-open-in-app:{ .lg .middle } **Open OnDemand**
+
+    ---
+
+    Launch RStudio directly in your browser with a few clicks.
+    No SSH tunnels or terminal setup required. Best for everyday interactive work.
+
+    **Recommended for most users.**
+
+    [:octicons-arrow-right-24: Launch via OnDemand](#open-ondemand)
+
+
+-   :material-console:{ .lg .middle } **Manual via `srun`**
+
+    ---
+
+    Start RStudio Server from an interactive Slurm session and connect
+    via SSH tunnel. Useful for fine-grained control over resources or
+    debugging environment issues outside of OnDemand.
+
+    [:octicons-arrow-right-24: Set up manually](#rstudio-server-via-srun)
+
+-   :material-server:{ .lg .middle } **RStudio Workbench**
+
+    ---
+
+    A shared, always-on RStudio environment accessible at a fixed URL.
+    Supports multiple concurrent sessions and persistent projects.
+    Best for users who prefer a persistent workspace.
+
+    [:octicons-arrow-right-24: Access Workbench](#rstudio-workbench)
+</div>
+
+
 !!! lightbulb "Recommended approach"
     The easiest and recommended way to run RStudio-Server on BMRC is through
     **[Open OnDemand](./openondemand.md)**, which handles session management,
@@ -41,7 +77,8 @@
 
 5. In your browser, navigate to the address shown in the instructions and you should see the RStudio login screen.
 
-    > Login is required to access RStudio sessions. Please use your BMRC credentials and follow the instructions on how to log in into the session. 
+    !!! circle-info-2 "Login is required to access RStudio sessions. Please use your BMRC credentials and follow the instructions on how to log into the session."
+         
 
 
 
