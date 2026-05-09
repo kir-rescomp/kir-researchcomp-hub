@@ -115,3 +115,10 @@ Choose the one that best fits your need/workflow:
     !!! exclamation "Before you start your workflow"
         Please remember that RStudio server has a limited capacity (CPUs and memory). It should be used primarily for lightweight calculations, visualising results and code development. All heavy calculations should be run on the cluster either via **OpenOnDemand** or `srun`
 
+    **RStudio Startup Sequence in Posit Workbench**
+    <div style="display: flex; justify-content: center;">
+    <video width="70%" controls>
+      <source src="https://raw.githubusercontent.com/kir-rescomp/kir-researchcomp-hub/main/docs/assets/images/material/interactive-commputing/posit_workbench_rstudio_startupsequence.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+    </div>
