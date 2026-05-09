@@ -55,6 +55,7 @@ theme:
     - content.code.copy
     - content.code.annotate
     - navigation.prune    # Only renders the visible portion of the nav treein the HTML. 
+    - content.tabs.link
 
 
   # Necessary for search to work properly
@@ -132,6 +133,7 @@ extra_javascript:
   - javascripts/mathjax.js
 #  - javascripts//morphing-dna-network-targeted.js
   - javascripts/featured-toggle.js
+  - javascripts/link_content_tabs_to_cards.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - path: javascripts/slurm-generator.js
@@ -159,3 +161,4 @@ extra_css:
   - stylesheets/indexpage_episodes_cards.css
   - stylesheets/tables.css
   - stylesheets/gradient_peek.css
+  - stylesheets/tabs_shading.css

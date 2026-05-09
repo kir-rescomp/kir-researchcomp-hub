@@ -33,7 +33,7 @@ Log into  any of the BMRC login nodes and request an interactive node. For examp
 
 <div class="nord" markdown=1>
 ```py
-srun -p short -c 2 --mem=30G --pty bash
+srun -p short --cpus-per-task 2 --mem=30G --pty bash
 ```
 
 Once the session starts, note the hostname of the node you have been assigned:
@@ -45,15 +45,24 @@ hostname
 
 ---
 
-## Step 2 — Activate your Python environment
+## Step 2 — Load JupterLab module OR activate your Python virtual environment
 
 Load the Python module and activate the matching virtual environment.
 Select the tab for the toolchain you are using:
 
-=== "Using `Python/3.11.3-GCCcore-12.3.0` module as an example"
+=== "Using `JupyterLab`module"
 
     ```py
-    module Python/3.11.3-GCCcore-12.3.0
+    `module load JupyterLab/4.5.6-GCCcore-12.3.0
+    ```
+
+=== "Using `Python/3.11.3-GCCcore-12.3.0` module as an example"
+     
+     - If you are not using the `JupyterLab` module, make sure to load a `nodejs` module with the matching toolchain
+
+    ```py
+    module load Python/3.11.3-GCCcore-12.3.0
+    module load nodejs/18.17.1-GCCcore-12.3.0
     source ~/devel/venv/Python/3.11.3-GCCcore-12.3.0/bin/activate
     ```
 ---
@@ -69,7 +78,6 @@ Select the tab for the interface you want:
 
     ```py
     cd ~/notebooks
-    module load nodejs/18.12.1-GCCcore-12.2.0
     jupyter lab --no-browser --ip=*
     ```
 
@@ -85,14 +93,22 @@ Select the tab for the interface you want:
 Once the server starts you will see output similar to:
 
 ```py
-To access the server, open this file in a browser:
-    ...
-Or copy and paste one of these URLs:
-    http://compe023:8888/lab?token=abc123...
-    http://127.0.0.1:8888/lab?token=abc123...
+I 2026-05-08 18:53:03.587 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-05-08 18:53:03.592 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-05-08 18:53:03.596 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-05-08 18:53:03.600 ServerApp] notebook | extension was successfully linked.
+[I 2026-05-08 18:53:04.492 ServerApp] notebook_shim | extension was successfully linked.
+[W 2026-05-08.....................
+.........................
+    To access the server, open this file in a browser:
+        ...
+
+    Or copy and paste one of these URLs:
+        http://localhost:8888/lab?token=b358a08f791d96bdd3ff8139a...............
+        http://127.0.0.1:8888/lab?token=b358a08f791d96bdd3ff8139a...............
 ```
 
-!!! note "Note down two things"
+!!! square-pen "Note down two things"
     1. The **port number** (e.g. `8888`) — it may differ if that port is already in use on the node.
     2. The full URL beginning with `http://127.0.0.1:` — you will paste this into your browser later.
 
@@ -102,7 +118,10 @@ Or copy and paste one of these URLs:
 
 On your **local machine** (not the cluster), open a new terminal and run:
 
-```bash
+* If you have setup the local terminal  `~/.ssh/config` according to [these instructions](../getting-started/connect_ssh_config.md), replace  `username@cluster1.bmrc.ox.ac.uk`
+   with the shorter hostname .i.e.`bmrc1` ,etc. 
+
+```py
 ssh -L 8888:compe023:8888 username@cluster1.bmrc.ox.ac.uk
 ```
 
@@ -120,7 +139,7 @@ Substitute:
     If port `8888` is already occupied on your laptop, use a different local port,
     for example `9999`:
 
-    ```bash
+    ```py
     ssh -L 9999:compe023:8888 username@cluster1.bmrc.ox.ac.uk
     ```
 
@@ -141,28 +160,23 @@ your local machine. Jupyter will load.
     If you used a different local port (e.g. `9999`) in Step 4, edit the port in
     the URL before opening it:
 
-    ```
+    ```py
     http://127.0.0.1:9999/lab?token=abc123...
     ```
 
-!!! info "Choosing the right kernel in Jupyter Lab"
-    When running a Jupyter Lab session started this way, always select the
-    **`Python 3 (ipykernel)`** kernel. Do not use kernels that were registered
-    for use inside RStudio Server (e.g. a kernel named `Python-3.8.2`) — these
-    will not work correctly in a cluster Jupyter Lab session.
 
 ---
 
 ## Ending your session
 
-When you are finished:
+!!! flag-checkered "When you are finished:"
 
-1. Shut down the Jupyter server from the Lab/Notebook interface, or press
-   `Ctrl+C` twice in the terminal running the server.
-2. Deactivate the virtual environment: `deactivate`
-3. Exit the interactive Slurm session: `exit`
-4. Close the SSH tunnel terminal.
+    1. Shut down the Jupyter server from the Lab/Notebook interface, or press
+       `Ctrl+C` twice in the terminal running the server.
+    2. If you were using a `Python` virtual environment, deactivate the virtual environment: `deactivate`
+    3. Exit the interactive Slurm session: `exit`
+    4. Close the SSH tunnel terminal.
 
-!!! tip
+!!! lightbulb "Tip"
     Leaving an interactive Slurm session idle wastes cluster resources and counts
     against your allocation. Always exit when you are done.

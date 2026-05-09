@@ -3,6 +3,7 @@ nav:
  - add_jupyter_kernels.md
  - srun.md
  - srun_jupyterlab.md
+ - rstudio_server.md
  - tmux.md
  - notebook_to_slurm.md
 
