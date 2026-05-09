@@ -161,3 +161,4 @@ extra_css:
   - stylesheets/indexpage_episodes_cards.css
   - stylesheets/tables.css
   - stylesheets/gradient_peek.css
+  - stylesheets/tabs_shading.css

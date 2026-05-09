@@ -45,6 +45,7 @@ Choose the one that best fits your need/workflow:
     Prior to launching `RStudio-server` via `srun`, make sure to setup your `~/.Rprofile` according to [these
     instructions](https://kir-rescomp.github.io/kir-researchcomp-hub/software/application_specific_notes/R/#setting-up-rprofile-dynamic-r-library-paths-version-aware-rprofile-configuration) 
 
+- - - 
 
 === "Open OnDemand"
 
