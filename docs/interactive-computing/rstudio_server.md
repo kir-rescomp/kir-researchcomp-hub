@@ -6,7 +6,7 @@ Choose the one that best fits your need/workflow:
 <div class="grid cards" markdown>
 
 -   :material-open-in-app:{ .lg .middle } **Open OnDemand**
-
+    
     ---
     <span style="font-size: 0.7rem;"> 
     Launch RStudio directly in your browser with a few clicks.
@@ -28,13 +28,13 @@ Choose the one that best fits your need/workflow:
     <br/>
     [:octicons-arrow-right-24: Launch with srun](?tab=rstudio-server-via-srun)
 
--   :material-server:{ .lg .middle } **RStudio Workbench**
+-   :material-server:{ .lg .middle } **Posit Workbench**
 
     ---
     <span style="font-size: 0.7rem;">
     A shared, always-on RStudio environment accessible at a fixed URL.
     Supports multiple concurrent sessions and persistent projects.
-    Best for users who prefer a persistent workspace.
+    However, this has limited capacity (CPUs and memory).
     </span>
     [:octicons-arrow-right-24: Access Workbench](?tab=posit-workbench)
 </div>
@@ -79,8 +79,15 @@ Choose the one that best fits your need/workflow:
     5. In your browser, navigate to the address shown in the instructions and you should see the RStudio login screen.
 
         !!! circle-info-2 "Login is required to access RStudio sessions. Please use your BMRC credentials and follow the instructions on how to log into the session."
-         
+    </div>     
 
 === "Posit Workbench" 
     
-    Some content
+    The server is accessible at: https://rstudio-kir.bmrc.ox.ac.uk through Chrome or Firefox browser. Do not use Safari browser to access the server, as it has been identified to have problems with connection.
+
+    To log in to the server, enter your BMRC user name and then your BMRC password immediately followed by 6-digit second authentication factor in the same password field.
+
+
+    Please remember that RStudio server has a limited capacity (CPUs and memory). It should be used primarily for lightweight calculations, visualising results and code development. All heavy calculations should be run on the cluster.
+
+
