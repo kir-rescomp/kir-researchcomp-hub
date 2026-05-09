@@ -126,7 +126,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/interactive-computing" class="kp-card kp-ep5">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/interactive-computing/openondemand/" class="kp-card kp-ep5">
     <div class="kp-header">
       <div class="kp-num">05</div>
       <div class="kp-meta">
