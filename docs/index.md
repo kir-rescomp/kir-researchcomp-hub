@@ -209,10 +209,8 @@ All materials are freely available and self-paced.
   </div>
   <div class="kp-body">
     <ul class="kp-topics">
-      <li>Introduction to Linux..</li>
-      <li>Python, R, and software packaging</li>
-      <li>Snakemake</li>
-      <li>Self-paced materials, freely available</li>
+      <li>In-depth articles on HPC, bioinformatics, containers, and scientific 
+          computing from the KIR research computing team.</li>
     </ul>
   </div>
     <div class="kp-footer">
@@ -247,8 +245,7 @@ All materials are freely available and self-paced.
 
     ---
 
-    In-depth articles on HPC, bioinformatics, containers, and scientific 
-    computing from the KIR research computing team.
+    
 
     [:material-rss: Go to Blog](blog/)
 
@@ -256,10 +253,5 @@ All materials are freely available and self-paced.
 </div>
 
 
-<div class="topics-bar" markdown>
-[:fontawesome-solid-square-binary: Programming](blog/category/programming/){ .topic-chip }
-[:material-server-network: HPC](blog/category/high-performance-computing/){ .topic-chip }
-[:material-dna: Bioinformatics](blog/category/bioinformatics/){ .topic-chip }
-[:material-docker: Containers](blog/category/containers/){ .topic-chip }
-</div>
+
 
