@@ -79,6 +79,47 @@ GPU resources are available through the following Slurm partitions:
 - `gpu_gh200_144gb` is a high-capability partition; runtime limits are still to be confirmed
 - `gpu_v100_32gb` has a very high default memory allocation (750 GB) — only request what your job actually needs
 
+### Example Sl
+
+
+## The `gpu_interactive` Partition is Heterogeneous
+
+Unlike the batch partitions — where the partition name implies a single GPU type — `gpu_interactive` contains multiple GPU models across its nodes. If you submit without specifying a type, Slurm will assign whichever GPU is available.
+
+To see what is currently in the partition:
+
+<div class="nord" markdown=1>
+```py
+sinfo -p gpu_interactive -o "%N %G" -N
+```
+```rust
+NODELIST GRES
+compg019 gpu:quadro-rtx6000:4
+compg020 gpu:quadro-rtx6000:4
+compg021 gpu:quadro-rtx6000:4
+compg047 gpu:l4-24gb:6
+```
+</div>
+
+!!! file-code "Select a Specific GPU type from `gpu_interactive` partition" 
+
+    If you need a specific GPU model, use the full GRES type name as reported by `sinfo`:
+    <div class="nord" markdown=1>
+    ```py
+    # Interactive session pinned to a Quadro RTX 6000
+    srun --account gpu_kir.prj -p gpu_interactive --gres gpu:quadro-rtx6000:1 --pty bash
+    ```
+
+    ```rust
+    # Or in a batch script
+    #SBATCH --account    gpu_kir.prj
+    #SBATCH --partition  gpu_interactive
+    #SBATCH --gres       gpu:quadro-rtx6000:1
+    ```
+    </div>
+
+    The string between `gpu:` and `:N` must match the `GRES` column in `sinfo` exactly. If you omit this and just request `--gres gpu:1`, Slurm will schedule you on whichever node has a free GPU — which may or may not be the model you need.
+
 ---
 
 ## Selecting Runtime and QOS
@@ -123,24 +164,7 @@ Both approaches also improve resilience against unexpected job interruption.
 
 ---
 
-## Available GPU Hardware
-
-### GPU Distribution by Node
-
-```bash
-# View GPUs in a partition
-sinfo -p gpu_interactive -o "%N %G" -N
-```
-
-| GPU Type | GPU Memory | Nodes | GPUs/Node | Total GPUs |
-|---|---|---|---|---|
-| p100-sxm2-16gb | 16 GB | compg009, compg010, compg011, compg013 | 4 | 16 |
-| v100-pcie-32gb | 32 GB | compg016 | 2 | 2 |
-| v100-sxm2-16gb | 16 GB | compg027 | 4 | 4 |
-| quadro-rtx8000 | 48 GB | compg028, compg029, compg030 | 4 | 12 |
-| a100-pcie-40gb | 40 GB | compg031, compg032 | 4 | 8 |
-| a100-pcie-80gb | 80 GB | compg035, compg036, compg039–042 | 4 | 24 |
-
+# `gpu_interactive` partition 
 
 ---
 
