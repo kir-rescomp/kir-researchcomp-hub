@@ -275,27 +275,31 @@ Both approaches also improve resilience against unexpected job interruption.
 
 Each GPU slot comes with a default number of CPU cores (see partition table above). To override:
 
-```bash
+<div class="nord" markdown=1>
+```py
 # Specify CPUs per GPU
 sbatch --account gpu_kir.prj -p gpu_a100_40gb --gres gpu:2 --cpus-per-gpu 4 your_script.sh
 
 # Or specify total CPUs for the job
 sbatch --account gpu_kir.prj -p gpu_a100_40gb --gres gpu:2 -c 16 your_script.sh
 ```
+</div>
 
 ### System Memory (RAM)
 
 Total RAM available scales with the number of GPUs requested: `RAM per slot × number of GPUs`.
 
-```bash
+<div class="nord" markdown=1>
+```py
 # Specify RAM per GPU
 sbatch --account gpu_kir.prj -p gpu_a100_40gb --gres gpu:2 --mem-per-gpu 80G your_script.sh
 
 # Or specify total RAM for the job
 sbatch --account gpu_kir.prj -p gpu_a100_40gb --gres gpu:2 --mem 160G your_script.sh
 ```
+</div>
 
-!!! info
+!!! circle-info
     You can request up to the RAM-per-slot limit shown in the detailed node specifications. For example, compg028 has 187 GB per slot, so requesting 4 GPUs on that node could give you up to 748 GB total RAM.
 
 ---
