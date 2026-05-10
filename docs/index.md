@@ -166,43 +166,15 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-training-home/" class="kp-card kp-techessays" style="max-width: 480px; text-decoration: none;">
-  <div class="kp-header">
-    <div class="kp-num">✒️</div>
-    <div class="kp-meta">
-      <div class="kp-label">KIR Research Computing</div>
-      <p class="kp-title">Browse Technical Essays →</p>
-    </div>
-  </div>
-  <div class="kp-body">
-    <ul class="kp-topics">
-      <li>Introduction to Linux..</li>
-      <li>Python, R, and software packaging</li>
-      <li>Snakemake</li>
-      <li>Self-paced materials, freely available</li>
-    </ul>
-  </div>
-    <div class="kp-footer">
-      <div class="kp-footer-label"></div>
-      <div class="kp-footer-val"></div>
-    </div>
-</a>
-
 </div>
 
 - - - 
 
 <div class="section-title" markdown>
-## :material-school: Training Catalogue
+## :material-school: Training Catalogue & Technical Essays
 </div>
 
-<p class="training-description">
-The KIR Research Computing team runs hands-on training workshops covering HPC, 
-bioinformatics workflows, software packaging, and scientific computing. 
-All materials are freely available and self-paced.
-</p>
-
-<div>
+<div style="display: flex; flex-wrap: wrap; gap: 1rem;">
 <a href="https://kir-rescomp.github.io/kir-training-home/" class="kp-card kp-training" style="max-width: 480px; text-decoration: none;">
   <div class="kp-header">
     <div class="kp-num">🎓</div>
@@ -213,13 +185,29 @@ All materials are freely available and self-paced.
   </div>
   <div class="kp-body">
     <ul class="kp-topics">
-      <li>Introduction to Linux..</li>
-      <li>Python, R, and software packaging</li>
-      <li>Snakemake</li>
-      <li>Self-paced materials, freely available</li>
+      <li>The KIR Research Computing team runs hands-on training workshops covering HPC, 
+          bioinformatics workflows, software packaging, and scientific computing. 
+          All materials are freely available and self-paced.</li>
     </ul>
   </div>
-</a>
+  </a>
+
+  <a href="https://kir-rescomp.github.io/kir-training-home/" class="kp-card kp-techessays" style="max-width: 480px; text-decoration: none;">
+  <div class="kp-header">
+    <div class="kp-num">✒️</div>
+    <div class="kp-meta">
+      <div class="kp-label">KIR Research Computing</div>
+      <p class="kp-title">Browse Technical Essays →</p>
+    </div>
+  </div>
+  <div class="kp-body">
+    <ul class="kp-topics">
+      <li>In-depth articles on HPC, bioinformatics, containers, and scientific 
+          computing from the KIR research computing team.</li>
+    </ul>
+  </div>
+  </a>
+
 </div>
 
 - - - 
@@ -245,8 +233,7 @@ All materials are freely available and self-paced.
 
     ---
 
-    In-depth articles on HPC, bioinformatics, containers, and scientific 
-    computing from the KIR research computing team.
+    
 
     [:material-rss: Go to Blog](blog/)
 
@@ -254,10 +241,5 @@ All materials are freely available and self-paced.
 </div>
 
 
-<div class="topics-bar" markdown>
-[:fontawesome-solid-square-binary: Programming](blog/category/programming/){ .topic-chip }
-[:material-server-network: HPC](blog/category/high-performance-computing/){ .topic-chip }
-[:material-dna: Bioinformatics](blog/category/bioinformatics/){ .topic-chip }
-[:material-docker: Containers](blog/category/containers/){ .topic-chip }
-</div>
+
 
