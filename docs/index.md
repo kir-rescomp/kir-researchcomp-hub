@@ -166,28 +166,6 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-training-home/" class="kp-card kp-techessays" style="max-width: 480px; text-decoration: none;">
-  <div class="kp-header">
-    <div class="kp-num">✒️</div>
-    <div class="kp-meta">
-      <div class="kp-label">KIR Research Computing</div>
-      <p class="kp-title">Browse Technical Essays →</p>
-    </div>
-  </div>
-  <div class="kp-body">
-    <ul class="kp-topics">
-      <li>Introduction to Linux..</li>
-      <li>Python, R, and software packaging</li>
-      <li>Snakemake</li>
-      <li>Self-paced materials, freely available</li>
-    </ul>
-  </div>
-    <div class="kp-footer">
-      <div class="kp-footer-label"></div>
-      <div class="kp-footer-val"></div>
-    </div>
-</a>
-
 </div>
 
 - - - 
@@ -220,6 +198,30 @@ All materials are freely available and self-paced.
     </ul>
   </div>
 </a>
+
+  <a href="https://kir-rescomp.github.io/kir-training-home/" class="kp-card kp-techessays" style="max-width: 480px; text-decoration: none;">
+  <div class="kp-header">
+    <div class="kp-num">✒️</div>
+    <div class="kp-meta">
+      <div class="kp-label">KIR Research Computing</div>
+      <p class="kp-title">Browse Technical Essays →</p>
+    </div>
+  </div>
+  <div class="kp-body">
+    <ul class="kp-topics">
+      <li>Introduction to Linux..</li>
+      <li>Python, R, and software packaging</li>
+      <li>Snakemake</li>
+      <li>Self-paced materials, freely available</li>
+    </ul>
+  </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
+</a>
+
+
 </div>
 
 - - - 
