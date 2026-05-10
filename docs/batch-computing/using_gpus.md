@@ -306,12 +306,14 @@ sbatch --account gpu_kir.prj -p gpu_a100_40gb --gres gpu:2 --mem 160G your_scrip
 
 ## Best Practices
 
-1. **Choose the right partition** — use `gpu_interactive` for development and testing; use a batch partition for production workloads
-2. **Apply a QOS** — if your job will finish in under 4 or 24 hours, use `--qos gpu_bmrc_4hr` or `--qos gpu_bmrc_24hr` to improve queue priority
-3. **Request appropriate resources** — don't over-request GPUs, CPUs, or RAM; test with 1 GPU before scaling up
-4. **Exclude P100s for modern ML/DL** — always add `--constraint "v100|rtx6000|rtx8000|a100"` for PyTorch 2.0+ / TensorFlow 2.12+ jobs
-5. **Monitor your jobs** — use `nvidia-smi` in interactive sessions; review efficiency after completion with `seff <job_id>`
-6. **Plan for heterogeneity** — different nodes have different CPU/RAM allocations; check the node specs table if you need specific resources
+!!! ranking-star ""
+
+    1. **Choose the right partition** — use `gpu_interactive` for development and testing; use a batch partition for production workloads
+    2. **Apply a QOS** — if your job will finish in under 4 or 24 hours, use `--qos gpu_bmrc_4hr` or `--qos gpu_bmrc_24hr` to improve queue priority
+    3. **Request appropriate resources** — don't over-request GPUs, CPUs, or RAM; test with 1 GPU before scaling up
+    4. **Exclude P100s for modern ML/DL** — always add `--constraint "v100|rtx6000|rtx8000|a100"` for PyTorch 2.0+ / TensorFlow 2.12+ jobs
+    5. **Monitor your jobs** — use `nvidia-smi` in interactive sessions; review efficiency after completion with `seff <job_id>`
+    6. **Plan for heterogeneity** — different nodes have different CPU/RAM allocations; check the node specs table if you need specific resources
 
 ---
 
@@ -331,9 +333,6 @@ sbatch --account gpu_kir.prj -p gpu_a100_80gb --qos gpu_bmrc_4hr --gres gpu:1 sc
 
 # Interactive session
 srun --account gpu_kir.prj -p gpu_interactive --gres gpu:1 --pty bash
-
-# Check GPU usage (when on a GPU node)
-nvidia-smi
 ```
 
 ### GPU GRES Quick Reference
