@@ -125,19 +125,6 @@ Both approaches also improve resilience against unexpected job interruption.
 
 ## Available GPU Hardware
 
-### GPU Models Overview
-
-BMRC includes five generations of NVIDIA GPUs:
-
-| GPU Model | Memory | Architecture | CUDA Compute | Best For |
-|---|---|---|---|---|
-| **A100** (80 GB) | 80 GB | Ampere | 8.0 | Large models, highest performance |
-| **A100** (40 GB) | 40 GB | Ampere | 8.0 | Modern ML/DL workloads |
-| **Quadro RTX 8000** | 48 GB | Turing | 7.5 | Memory-intensive workloads |
-| **Quadro RTX 6000** | 24 GB | Turing | 7.5 | General ML/DL tasks |
-| **V100** | 16–32 GB | Volta | 7.0 | Older generation, still compatible |
-| **P100** | 16 GB | Pascal | 6.0 | ⚠️ Not compatible with PyTorch 2.0+ |
-
 ### GPU Distribution by Node
 
 ```bash
@@ -154,31 +141,6 @@ sinfo -p gpu_interactive -o "%N %G" -N
 | a100-pcie-40gb | 40 GB | compg031, compg032 | 4 | 8 |
 | a100-pcie-80gb | 80 GB | compg035, compg036, compg039–042 | 4 | 24 |
 
-### Detailed Node Specifications
-
-??? note "Click to expand full node specifications"
-
-    | Node | GPU Type | GPUs | GPU RAM/card | CPU cores/slot | RAM/slot | CPU Arch |
-    |---|---|---|---|---|---|---|
-    | compg009 | p100-sxm2-16gb | 4 | 16 GB | 6 | 91 GB | Skylake |
-    | compg010 | p100-sxm2-16gb | 4 | 16 GB | 6 | 91 GB | Skylake |
-    | compg011 | p100-sxm2-16gb | 4 | 16 GB | 6 | 91 GB | Skylake |
-    | compg013 | p100-sxm2-16gb | 4 | 16 GB | 6 | 91 GB | Skylake |
-    | compg016 | v100-pcie-32gb | 2 | 32 GB | 6 | 750 GB | Skylake |
-    | compg019 | quadro-rtx6000 | 4 | 24 GB | 10 | 91 GB | Skylake |
-    | compg027 | v100-sxm2-16gb | 4 | 16 GB | 12 | 60 GB | Skylake |
-    | compg028 | quadro-rtx8000 | 4 | 48 GB | 8 | 187 GB | Skylake |
-    | compg029 | quadro-rtx8000 | 4 | 48 GB | 8 | 187 GB | Skylake |
-    | compg030 | quadro-rtx8000 | 4 | 48 GB | 8 | 187 GB | Skylake |
-    | compg031 | a100-pcie-40gb | 4 | 40 GB | 8 | 91 GB | Skylake |
-    | compg032 | a100-pcie-40gb | 4 | 40 GB | 8 | 91 GB | Skylake |
-    | compg033 | a100-pcie-40gb | 4 | 40 GB | 8 | 91 GB | Skylake |
-    | compg035 | a100-pcie-80gb | 4 | 80 GB | 8 | 91 GB | Skylake |
-    | compg036 | a100-pcie-80gb | 4 | 80 GB | 8 | 91 GB | Skylake |
-    | compg039 | a100-pcie-80gb | 4 | 80 GB | 12 | 128 GB | Skylake |
-    | compg040 | a100-pcie-80gb | 4 | 80 GB | 12 | 128 GB | Skylake |
-    | compg041 | a100-pcie-80gb | 4 | 80 GB | 12 | 128 GB | Skylake |
-    | compg042 | a100-pcie-80gb | 4 | 80 GB | 12 | 128 GB | Skylake |
 
 ---
 
