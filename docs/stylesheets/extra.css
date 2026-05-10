@@ -613,7 +613,7 @@
   }
   .md-typeset .circle-info > .admonition-title::before,
   .md-typeset .circle-info > summary::before {
-    background-color: rgb(247, 189, 32);
+    background-color: rgb(208, 213, 250);
     -webkit-mask-image: var(--md-admonition-icon--circle-info);
             mask-image: var(--md-admonition-icon--circle-info);
   }

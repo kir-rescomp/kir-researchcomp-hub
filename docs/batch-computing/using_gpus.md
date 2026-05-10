@@ -91,24 +91,22 @@ The priority boost is greatest for jobs under 4 hours, followed by 24 hours — 
 
 | QOS Name | Runtime (hrs) | Notes |
 |---|---|---|
-| **Partition QOS (applied automatically)** | | |
-| `gpu_bmrc_partition_limits` | 60 | Default for batch partitions |
-| `gpu_bmrc_interactive_limits` | 12 | Default for `gpu_interactive` |
-| **User-selectable QOS** | | |
 | `gpu_bmrc_4hr` | 4 | Highest priority boost |
 | `gpu_bmrc_24hr` | 24 | Moderate priority boost |
 
-Partition QOS are applied automatically when you select a partition. To apply a user-selectable QOS at submission:
+To apply a one of the above QOS at submission:
 
-```bash
+<div class="nord" markdown=1>
+```py
 sbatch --account gpu_kir.prj -p gpu_a100_80gb --qos gpu_bmrc_4hr --gres gpu:1 your_script.sh
 ```
+</div>
 
 ---
 
 ## Resource Limits
 
-!!! info "GPU usage limits"
+!!! circle-info "GPU usage limits"
     GPUs are a limited resource under considerable demand. Limits are applied to ensure fair throughput across all projects and to allow for scheduled maintenance.
 
     - **Per-project GPU limit:** 24 GPUs in use simultaneously (across all partitions)
