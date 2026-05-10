@@ -167,7 +167,8 @@ title: Home
 
 </div>
 
-- - - 
+!!! circle-info-2 ""
+
 
 <div class="section-title" markdown>
 ## :material-school: Training Catalogue & Technical Essays
