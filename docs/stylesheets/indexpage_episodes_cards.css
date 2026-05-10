@@ -131,6 +131,8 @@
 .kp-ep5 .kp-label { color: #4a3db0; }
 .kp-training .kp-num { background: #fdecd8; color: #7a4808; font-size: 1.2rem; }
 .kp-training .kp-label { color: #7a4808; }
+.kp-techessays .kp-num { background: #53d3f394; color: #7a4808; font-size: 1.2rem; }
+.kp-techessays .kp-label { color: #164a6d; }
 
 /* Dark mode overrides */
 [data-md-color-scheme="slate"] .kp-ep1 .kp-num { background: #0b3d2a; color: #5fd4a8; }
@@ -145,3 +147,5 @@
 [data-md-color-scheme="slate"] .kp-ep5 .kp-label { color: #b4aaff; }
 [data-md-color-scheme="slate"] .kp-training .kp-num { background: #3d2200; color: #f0b460; }
 [data-md-color-scheme="slate"] .kp-training .kp-label { color: #f0b460; }
+[data-md-color-scheme="slate"] .kp-techessays .kp-num { background: #3d2200; color: #f0b460; }
+[data-md-color-scheme="slate"] .kp-techessays .kp-label { color: #f0b460; }
