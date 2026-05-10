@@ -100,8 +100,14 @@ Choose the one that best fits your need/workflow:
     5. In your browser, navigate to the address shown in the instructions and you should see the RStudio login screen.
 
         !!! circle-info-2 "Login is required to access RStudio sessions. Please use your BMRC credentials and follow the instructions on how to log into the session."
-    </div>     
+    </div>    
 
+    <p align="center" style="margin-bottom: -1px;">
+        <img src="../../assets/images/material/interactive-commputing/rstudio_via_srun_sequence.svg" alt="srun" width="100%" style="opacity: 0.9;"/>
+    </p>
+    <center> 
+    <small>RStudio via `srun` - Steps</small>
+    </center>
 === "Posit Workbench" 
     
     The server is accessible at: https://rstudio-kir.bmrc.ox.ac.uk through Chrome or Firefox browser. Do not use Safari browser to access the server, as it has been identified to have problems with connection. 
