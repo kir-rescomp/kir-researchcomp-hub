@@ -114,9 +114,8 @@ title: Home
     </div>
     <div class="kp-body">
       <ul class="kp-topics">
-        <li>What is Slurm</li>
-        <li>Slurm variables</li>
-        <li>Slurm Life cycle and templates</li>
+        <li>What is Slurm and Slurm variables</li>
+        <li>Using GPUs via Slurm</li>
         <li>Slurm job arrays</li>
       </ul>
     </div>
