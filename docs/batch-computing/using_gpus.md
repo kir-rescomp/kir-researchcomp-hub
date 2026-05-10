@@ -79,7 +79,7 @@ GPU resources are available through the following Slurm partitions:
 - `gpu_gh200_144gb` is a high-capability partition; runtime limits are still to be confirmed
 - `gpu_v100_32gb` has a very high default memory allocation (750 GB) — only request what your job actually needs
 
-### Example Sl
+### How to request 
 
 
 ## The `gpu_interactive` Partition is Heterogeneous
@@ -161,10 +161,6 @@ Runtime limits cannot be extended for jobs in normal operation. If your workload
 - **Parallelisation** — break work into smaller independent chunks that fit within shorter runtimes
 
 Both approaches also improve resilience against unexpected job interruption.
-
----
-
-# `gpu_interactive` partition 
 
 ---
 
