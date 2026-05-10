@@ -22,9 +22,8 @@ title: Home
 
 <h1></h1>
 <p align="center" style="margin-bottom: -50px;">
-    <img src="assets/images/icons/KIR_Research_Computing_Hub_layered_logo.svg" alt="kir-oxford-logo" width="450" style="opacity: 0.9;"/>
+    <img src="assets/images/icons/KIR_Research_Computing_Hub_layered_logo.svg" alt="kir-oxford-logo" width="400" style="opacity: 0.9;"/>
 </p>
-
 
 <div class="landing-page">
   <div class="hero">
@@ -211,35 +210,4 @@ title: Home
 </div>
 
 - - - 
-
-
-# Ignore the following legacy section :
-
-!!! circle-info ""
-
-<div style="display: flex; justify-content: center;" markdown>
-<div class="landing-hub grid cards" align="center" markdown>
-
--   :material-server-network:{ .lg .middle } **HPC Support Docs**
-
-    ---
-
-    Everything you need to use the BMRC cluster — connecting, submitting jobs,
-    software modules, storage quotas, and interactive sessions.
-
-    [:material-arrow-right-circle: Go to Docs](getting-started/)
-
--   :material-pencil-box-outline:{ .lg .middle } **Technical Blog**
-
-    ---
-
-    
-
-    [:material-rss: Go to Blog](blog/)
-
-</div>
-</div>
-
-
-
 
