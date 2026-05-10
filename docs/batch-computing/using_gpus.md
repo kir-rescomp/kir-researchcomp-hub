@@ -205,88 +205,68 @@ Both approaches also improve resilience against unexpected job interruption.
     **Always exclude P100s for modern ML/DL workloads**
 ---
 
-
-### Using GPU Constraints (Recommended for `gpu_interactive`)
-
-Constraints let you specify acceptable GPU classes, giving the scheduler flexibility while ensuring your requirements are met:
-
-```bash
-sbatch --account gpu_kir.prj -p gpu_interactive --gpus-per-node 1 \
-    --constraint "a100|rtx8000" your_script.sh
-```
-
-**Available constraint features:**
-
-| Constraint | GPU | Memory |
-|---|---|---|
-| `p100` | P100 | 16 GB |
-| `v100` | V100 | 16–32 GB |
-| `rtx6000` | Quadro RTX 6000 | 24 GB |
-| `rtx8000` | Quadro RTX 8000 | 48 GB |
-| `a100` | A100 | 40 GB or 80 GB |
-
-
-
----
-
 ## Example Job Scripts
 
-### Basic PyTorch Training Job
+=== "Basic PyTorch Training Job"
 
-```bash
-#!/bin/bash
+    <div class="nord" markdown=1>
+    ```rust
+    #!/bin/bash
 
-#SBATCH --account        gpu_kir.prj
-#SBATCH --partition      gpu_a100_80gb
-#SBATCH --qos            gpu_bmrc_4hr
-#SBATCH --gpus-per-node  1
-#SBATCH --mem            64G
-#SBATCH --cpus-per-task  8
-#SBATCH --job-name       my_training_job
-#SBATCH --output         logs/%j.out
+    #SBATCH --account        gpu_kir.prj
+    #SBATCH --partition      gpu_a100_80gb
+    #SBATCH --qos            gpu_bmrc_4hr
+    #SBATCH --gpus-per-node  1
+    #SBATCH --mem            64G
+    #SBATCH --cpus-per-task  8
+    #SBATCH --job-name       my_training_job
+    #SBATCH --output         logs/%j.out
 
-module load Python/3.11.3-GCCcore-12.3.0
-source ~/venvs/pytorch/bin/activate
+    module load Python/3.11.3-GCCcore-12.3.0
+    module load CUDA
+    source ~/venvs/pytorch/bin/activate
 
-python train_model.py --epochs 50 --batch-size 32
-```
+    python train_model.py --epochs 50 --batch-size 32
+    ```
+    </div>
 
-### Multi-GPU Training Job
+=== "Multi-GPU Training Job"
+    <div class="nord" markdown=1>
+    ```rust
+    #!/bin/bash
 
-```bash
-#!/bin/bash
+    #SBATCH --account        gpu_kir.prj
+    #SBATCH --partition      gpu_a100_40gb
+    #SBATCH --gres           gpu:4
+    #SBATCH --mem            200G
+    #SBATCH --cpus-per-task  32
+    #SBATCH --job-name       multi_gpu_training
 
-#SBATCH --account        gpu_kir.prj
-#SBATCH --partition      gpu_a100_40gb
-#SBATCH --gres           gpu:4
-#SBATCH --mem            200G
-#SBATCH --cpus-per-task  32
-#SBATCH --job-name       multi_gpu_training
+    module load Python/3.11.3-GCCcore-12.3.0 CUDA
+    source ~/venvs/pytorch/bin/activate
 
-module load Python/3.11.3-GCCcore-12.3.0
-source ~/venvs/pytorch/bin/activate
+    torchrun --nproc_per_node=4 train_distributed.py
+    ```
+    </div>
 
-torchrun --nproc_per_node=4 train_distributed.py
-```
+=== "Memory-Intensive Job"
+    <div class="nord" markdown=1>
+    ```rust
+    #!/bin/bash
 
-### Memory-Intensive Job
+    #SBATCH --account        gpu_kir.prj
+    #SBATCH --partition      gpu_rtx8000_48gb
+    #SBATCH --gpus-per-node  2
+    #SBATCH --mem-per-gpu    150G
+    #SBATCH --cpus-per-task  16
+    #SBATCH --job-name       memory_intensive
 
-```bash
-#!/bin/bash
+    module load Python/3.11.3-GCCcore-12.3.0
+    source ~/venvs/tensorflow/bin/activate
 
-#SBATCH --account        gpu_kir.prj
-#SBATCH --partition      gpu_rtx8000_48gb
-#SBATCH --gpus-per-node  2
-#SBATCH --mem-per-gpu    150G
-#SBATCH --cpus-per-task  16
-#SBATCH --job-name       memory_intensive
-
-module load Python/3.11.3-GCCcore-12.3.0
-source ~/venvs/tensorflow/bin/activate
-
-python train_large_model.py
-```
-
+    python train_large_model.py
+    ```
+    </div>
 ---
 
 ## Resource Allocation
