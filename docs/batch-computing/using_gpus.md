@@ -62,12 +62,12 @@ GPU resources are available through the following Slurm partitions:
 | Partition | GPUs | GPU Memory (GB) | Max Runtime (hrs) | Default CPUs | Default Memory (GB) |
 |---|---|---|---|---|---|
 | **Batch partitions** | | | | | |
-| `gpu_a100_80gb` | 24 | 80 | 60 | 11 | 120 |
-| `gpu_rtx8000_48gb` | 12 | 48 | 60 | 7 | 185 |
-| `gpu_a100_40gb` | 16 | 40 | 60 | 7 | 90 |
-| `gpu_v100_32gb` | 2 | 32 | 60 | 7 | 750 |
 | `gpu_p100_16gb` | 12 | 16 | 60 | 5 | 90 |
 | `gpu_v100_16gb` | 4 | 16 | 60 | 11 | 60 |
+| `gpu_v100_32gb` | 2 | 32 | 60 | 7 | 750 |
+| `gpu_rtx8000_48gb` | 12 | 48 | 60 | 7 | 185 |
+| `gpu_a100_40gb` | 16 | 40 | 60 | 7 | 90 |
+| `gpu_a100_80gb` | 24 | 80 | 60 | 11 | 120 |
 | `gpu_gh200_144gb` | 40 | 144 | TBD | 72 | TBD |
 | **Interactive partition** | | | | | |
 | `gpu_interactive` | 18 | 24 | 12 | 7 | 80 |
