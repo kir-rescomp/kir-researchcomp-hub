@@ -5,6 +5,7 @@
 
     Similar to [ssh access](../getting-started/connect_ssh_config.md), OnDemand requires your device to be on Oxford VPN, MSD VPN, or eduroam (no VPN needed if already on eduroam WiFi)
 
+    To log in to OnDemand, enter your BMRC user name and then your ==BMRC password immediately followed by 6-digit second authentication factor in the same password field==.
 
     <div style="
       background: var(--md-primary-fg-color--light, #f0f4ff);
