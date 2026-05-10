@@ -81,6 +81,10 @@ GPU resources are available through the following Slurm partitions:
 
 ## How to request a GPU on a script  for `sbatch` or via `srun`
 
+The recommended methods for requesting GPUs are `--gres` or `--gpus-per-node`:
+
+**Using `--gres` (Generic Resource Scheduling):**
+
 === "`sbatch`"
     <div class="nord" markdown=1>
     ```rust
@@ -136,10 +140,19 @@ compg047 gpu:l4-24gb:6
     #SBATCH --partition  gpu_interactive
     #SBATCH --gres       gpu:quadro-rtx6000:1
     ```
-    </div>
-
     The string between `gpu:` and `:N` must match the `GRES` column in `sinfo` exactly. If you omit this and just request `--gres gpu:1`, Slurm will schedule you on whichever node has a free GPU — which may or may not be the model you need.
 
+    **Using GPU Constraints**
+
+    Another way to request **a** GPU type of interest is to use `--constraint`
+
+    ```rust
+    #SBATCH --account    gpu_kir.prj
+    #SBATCH --partition  gpu_interactive
+    #SBATCH --gres       gpu:1
+    #SBATCH --constraint quadro-rtx6000
+    ```
+    </div>
 ---
 
 ## Selecting Runtime and QOS
@@ -186,71 +199,12 @@ Both approaches also improve resilience against unexpected job interruption.
 
 ## ⚠️ P100 GPU Compatibility Warning
 
-!!! danger "P100 GPUs are not compatible with PyTorch 2.0+ or modern ML frameworks"
+!!! cloud-bolt "P100 GPUs are not compatible with PyTorch 2.0+ or modern ML frameworks"
     P100 GPUs have CUDA Compute Capability 6.0. PyTorch 2.0+, TensorFlow 2.12+, JAX, and similar frameworks require Compute Capability 7.0 or higher. Jobs will **fail with cryptic CUDA errors** if inadvertently scheduled on P100 nodes.
 
-    **Always exclude P100s for modern ML/DL workloads** (see below).
-
-### How to Exclude P100 GPUs
-
-**Method 1: Use constraints (recommended)**
-
-```bash
-sbatch --account gpu_kir.prj -p gpu_interactive --gpus-per-node 1 \
-    --constraint "v100|rtx6000|rtx8000|a100" your_script.sh
-```
-
-**Method 2: Request a specific GPU type**
-
-```bash
-# Request A100 80 GB
-sbatch --account gpu_kir.prj -p gpu_interactive --gres gpu:a100-pcie-80gb:1 your_script.sh
-
-# Request RTX 8000
-sbatch --account gpu_kir.prj -p gpu_interactive --gres gpu:quadro-rtx8000:1 your_script.sh
-```
-
-### Recommended GPUs for ML/DL Workloads
-
-| Priority | GPU Model | Memory | Use Case |
-|---|---|---|---|
-| 🥇 Best | A100 (80 GB) | 80 GB | Large language models, massive datasets |
-| 🥇 Best | A100 (40 GB) | 40 GB | General ML/DL, best performance |
-| 🥈 Good | Quadro RTX 8000 | 48 GB | Large models, memory-intensive workloads |
-| 🥈 Good | Quadro RTX 6000 | 24 GB | Standard ML/DL workloads |
-| 🥉 Compatible | V100 | 16–32 GB | Older generation, still works |
-| ❌ Avoid | P100 | 16 GB | Will not work with PyTorch 2.0+ |
-
+    **Always exclude P100s for modern ML/DL workloads**
 ---
 
-## Submitting GPU Jobs
-
-### Basic GPU Request
-
-The recommended methods for requesting GPUs are `--gres` or `--gpus-per-node`:
-
-**Using `--gres` (Generic Resource Scheduling):**
-
-```bash
-sbatch --account gpu_kir.prj -p gpu_a100_40gb --gres gpu:1 your_script.sh
-```
-
-**Using `--gpus-per-node`:**
-
-```bash
-sbatch --account gpu_kir.prj -p gpu_a100_40gb --gpus-per-node 1 your_script.sh
-```
-
-Where `N` is the number of GPUs required per node (maximum of 4 on most nodes).
-
-### Requesting Specific GPU Types
-
-Specific GPU types are primarily useful when submitting to `gpu_interactive`, which is the only partition containing multiple GPU models. For all other partitions, the GPU type is fixed by the partition name.
-
-```bash
-# Request a specific GPU type on gpu_interactive
-sbatch --account gpu_kir.prj -p gpu_interactive --gres gpu:a100-pcie-80gb:1 your_script.sh
-```
 
 ### Using GPU Constraints (Recommended for `gpu_interactive`)
 
@@ -271,24 +225,7 @@ sbatch --account gpu_kir.prj -p gpu_interactive --gpus-per-node 1 \
 | `rtx8000` | Quadro RTX 8000 | 48 GB |
 | `a100` | A100 | 40 GB or 80 GB |
 
----
 
-## Interactive GPU Sessions
-
-For development, debugging, and testing:
-
-```bash
-srun --account gpu_kir.prj -p gpu_interactive --gres gpu:1 --pty bash
-```
-
-- Time limit: 12 hours
-- Maximum: 1 GPU per user
-
-You can also open interactive sessions on batch partitions if you need access to a specific GPU type:
-
-```bash
-srun --account gpu_kir.prj -p gpu_a100_40gb --gres gpu:a100-pcie-40gb:1 --pty bash
-```
 
 ---
 
@@ -438,7 +375,7 @@ nvidia-smi
 
 ## Advanced Options
 
-!!! warning "Contact KIR Research Computing before using these options"
+!!! exclamation "Contact KIR Research Computing before using these options"
     The flags `--gpus`, `--gpus-per-task`, and `--gpus-per-socket` are relevant for MPI workloads and can create blocking reservations that affect other users. **Please contact KIR Research Computing Manager before using these options.**
 
 ---
