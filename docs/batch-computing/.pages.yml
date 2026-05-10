@@ -1,3 +1,4 @@
 nav:
  - working_with_scheduler.md
  - slurm_job_arrays.md
+ - using_gpus.md
