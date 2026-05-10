@@ -79,12 +79,32 @@ GPU resources are available through the following Slurm partitions:
 - `gpu_gh200_144gb` is a high-capability partition; runtime limits are still to be confirmed
 - `gpu_v100_32gb` has a very high default memory allocation (750 GB) — only request what your job actually needs
 
-### How to request 
+## How to request a GPU on a script  for `sbatch` or via `srun`
+
+=== "`sbatch`"
+    <div class="nord" markdown=1>
+    ```rust
+    #SBATCH --account       gpu_kir.prj
+    #SBATCH --partition     gpu_rtx8000_48gb
+    #SBATCH --gres          gpu:1
+    ```
+    </div>
+    
+    * `#SBATCH --gres gpu:1` can be replaced with `#SBATCH --gpus-per-node 1`
+
+=== "`srun`"
+    <div class="nord" markdown=1>
+    ```py
+    srun --account gpu_kir.prj --partition gpu_rtx8000_48gb --gres gpu:1...
+    ```
+    </div>
+    
 
 
 ## The `gpu_interactive` Partition is Heterogeneous
 
-Unlike the batch partitions — where the partition name implies a single GPU type — `gpu_interactive` contains multiple GPU models across its nodes. If you submit without specifying a type, Slurm will assign whichever GPU is available.
+Unlike the batch partitions — where the partition name implies a single GPU type — `gpu_interactive` contains multiple GPU models across its nodes. 
+If you submit without specifying a type, Slurm will assign whichever GPU is available.
 
 To see what is currently in the partition:
 
