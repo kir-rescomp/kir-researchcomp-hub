@@ -109,6 +109,7 @@
     ```py
     ~/notebooks
     ```
+    </div>
     !!! lightbulb  "Choose your startup folder carefully"
         Set this to the top-level directory that contains your project files. For example, if your work
         lives under `/well/<group>/users/$USER/`, setting the startup folder to that path means you can
