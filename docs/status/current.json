@@ -1,0 +1,20 @@
+{
+  "last_updated": "2025-12-19T07:47:00Z",
+  "services": [
+    {"name": "Login/Head Nodes", "status": "operational"},
+    {"name": "Submitting new HPC jobs", "status": "operational"},
+    {"name": "Job running on HPC", "status": "operational"},
+    {"name": "CPU/GPU nodes", "status": "operational"},
+    {"name": "HPC Storage", "status": "operational"},
+    {"name": "BMRC OpenOnDemand", "status": "maintenance"},
+    {"name": "Posit Workbench", "status": "maintenance"}
+  ],
+
+  "upcoming_maintenance": [
+    {
+      "date": "Late January,2026",
+      "service": "All Systems",
+      "description": "Scheduled maintenance window"
+    }
+  ]
+}
