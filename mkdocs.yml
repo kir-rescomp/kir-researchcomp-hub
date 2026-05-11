@@ -134,6 +134,8 @@ extra_javascript:
 #  - javascripts//morphing-dna-network-targeted.js
   - javascripts/featured-toggle.js
   - javascripts/link_content_tabs_to_cards.js
+  - javascripts/status.js
+  - javascripts/status-card.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - path: javascripts/slurm-generator.js
@@ -162,3 +164,5 @@ extra_css:
   - stylesheets/tables.css
   - stylesheets/gradient_peek.css
   - stylesheets/tabs_shading.css
+  - stylesheets/status.css
+  - stylesheets/status-card.css
