@@ -1,0 +1,35 @@
+/*
+    This is to server the mini-status update to docs/index.md card 
+    under HPC support documentation
+*/
+.kp-status-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.kp-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.kp-dot--ok        { background: #4caf82; }
+.kp-dot--degraded  { background: #f0a500; }
+.kp-dot--down      { background: #e05c5c; }
+.kp-dot--unknown   { background: #888; }
+.kp-dot--loading   { background: #555; animation: kp-pulse 1.2s infinite; }
+
+@keyframes kp-pulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1;   }
+}
+
+.kp-status-label {
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+  margin-left: 0.2rem;
+}

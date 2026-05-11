@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!panel) return;
 
   // Point this at your existing status JSON
-  fetch("/kir-researchcomp-hub/assets/status.json")
+  fetch("/kir-researchcomp-hub/status/current.json")
     .then(r => r.json())
     .then(data => {
       // Expects: { services: [ { name: "GPFS", status: "ok" }, ... ] }

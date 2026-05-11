@@ -174,13 +174,12 @@ title: Home
       </div>
     </div>
     <div class="kp-body">
-      <ul class="kp-topics">
-        <li></li>
-      </ul>
-    </div>
-    <div class="kp-footer">
-      <div class="kp-footer-label"></div>
-      <div class="kp-footer-val"></div>
+        <div class="kp-status-mini" id="kp-status-ep6">
+          <span class="kp-status-dot kp-dot--loading"></span>
+          <span class="kp-status-dot kp-dot--loading"></span>
+          <span class="kp-status-dot kp-dot--loading"></span>
+          <span class="kp-status-label">Checking services…</span>
+        </div>
     </div>
   </a>
 
