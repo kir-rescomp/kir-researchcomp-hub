@@ -135,3 +135,19 @@
     <p align="center" style="margin-bottom: -1px;">
         <img src="../../assets/images/material/interactive-commputing/ood_remote_desktop_icon.png" alt="srun" width="350" style="opacity: 0.9;"/>
     </p>
+
+    The Virtual Desktop app launches a full graphical desktop environment on a BMRC compute node,
+    accessible directly from your browser. No SSH tunnelling or local X11 setup required.
+
+    This is useful when you need to:
+
+    - Run applications with a graphical user interface (GUI), such as IGV, QuPath, or  data interactively using tools that don't work well in a notebook environment
+    - Use desktop-based workflow tools or file managers on the cluster
+
+    The launch form lets you select your partition, number of CPUs, memory, and walltime — fill these
+    in as you would for any other Slurm job.
+
+    !!! lightbulb "Tip"
+        If you only need a terminal on a compute node, use the [Jupyter](#) or [srun](#) options
+        instead — Virtual Desktop has a higher resource overhead and should be reserved for work that
+        genuinely requires a GUI.
