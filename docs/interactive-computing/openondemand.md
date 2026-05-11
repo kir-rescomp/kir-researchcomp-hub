@@ -131,6 +131,44 @@
         <img src="../../assets/images/material/interactive-commputing/ood_codeserver_icon.png" alt="srun" width="250" style="opacity: 0.9;"/>
     </p>
 
+    The Code Server app launches a [VS Code](https://code.visualstudio.com/) environment running
+    directly on a BMRC compute node, accessible from your browser — no local VS Code installation
+    required.
+
+    ### How this differs from the VS Code Remote extension
+
+    If you have used the
+    [VS Code Remote - SSH extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
+    from your local machine, the experience will feel familiar, but there is an important distinction:
+
+    - **Remote - SSH** runs VS Code locally and tunnels into the cluster over SSH. Your local machine
+      handles the interface; the cluster handles computation.
+    - **Code Server** runs VS Code entirely on the cluster, served through your browser. There is no
+      dependency on your local VS Code installation or SSH tunnel — the session is managed by
+      OpenOnDemand like any other job.
+
+    ### Installing extensions
+
+    Because the Code Server session runs on a compute node with no internet access, you cannot install
+    extensions directly from the marketplace in the usual way.
+
+    You can still install extensions manually by downloading the `.vsix` file from outside the cluster
+    and installing it via the command line:
+
+    1. Download the `.vsix` file for your extension from the
+       [VS Code Marketplace](https://marketplace.visualstudio.com/) on your local machine
+    2. Transfer it to BMRC (e.g. via `scp` or the OOD file browser)
+    3. Install it with:
+
+    <div class="nord" markdown=1>
+    ```py
+    code-server --install-extension /path/to/extension.vsix
+    ```
+    </div>
+
+    The extension will then be available the next time you launch a Code Server session.
+
+
 === "Virtual Desktop" 
     <p align="center" style="margin-bottom: -1px;">
         <img src="../../assets/images/material/interactive-commputing/ood_remote_desktop_icon.png" alt="srun" width="350" style="opacity: 0.9;"/>
