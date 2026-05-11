@@ -28,3 +28,25 @@
       </a>
     </div>
 
+## OnDemand Apps
+
+=== "JupyterLab"
+    <p align="center" style="margin-bottom: -1px;">
+        <img src="../../assets/images/material/interactive-commputing/ood_jupyter_icon.png" alt="srun" width="250" style="opacity: 0.9;"/>
+    </p>
+
+
+=== "RStudio"
+    <p align="center" style="margin-bottom: -1px;">
+        <img src="../../assets/images/material/interactive-commputing/ood_rstudio_icon.png" alt="srun" width="250" style="opacity: 0.9;"/>
+    </p>
+
+=== "VScode (server)"
+    <p align="center" style="margin-bottom: -1px;">
+        <img src="../../assets/images/material/interactive-commputing/ood_codeserver_icon.png" alt="srun" width="250" style="opacity: 0.9;"/>
+    </p>
+
+=== "Virtual Desktop" 
+    <p align="center" style="margin-bottom: -1px;">
+        <img src="../../assets/images/material/interactive-commputing/ood_remote_desktop_icon.png" alt="srun" width="350" style="opacity: 0.9;"/>
+    </p>
