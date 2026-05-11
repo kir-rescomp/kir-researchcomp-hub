@@ -8,7 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(r => r.json())
     .then(data => {
       // Expects: { services: [ { name: "GPFS", status: "ok" }, ... ] }
-      const services = data.services.slice(0, 5); // show up to 5 dots
+      const services = data.services;  //remove the original slice in favour of show all
+      const allOk    = services.every(s => s.status === "operational");
+      const anyDown  = services.some(s => s.status === "degraded" || s.status === "down");
+      const anyMaint = services.some(s => s.status === "maintenance");
+          
+      const label = allOk     ? "All systems operational" :
+                    anyDown   ? "Service disruption"       :
+                    anyMaint  ? "Scheduled maintenance"    :
+                                "Some services affected";
       const allOk = services.every(s => s.status === "ok");
 
       panel.innerHTML = services.map(s => `
