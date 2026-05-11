@@ -165,7 +165,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/service-status" class="kp-card kp-ep6">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/status" class="kp-card kp-ep6">
     <div class="kp-header">
       <div class="kp-num">06</div>
       <div class="kp-meta">

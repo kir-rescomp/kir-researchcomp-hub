@@ -12,16 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Determine the correct path based on current location
   function getStatusPath() {
-    const path = window.location.pathname;
-    
-    // If we're at the root index page
-    if (path.endsWith('/') || path.endsWith('/index.html')) {
-      return 'status/current.json';
-    }
-    // If we're in a subdirectory
-    else {
-      return '../status/current.json';
-    }
+    const base = document.querySelector('base')?.href || location.href;
+    return new URL('current.json', base).href;
   }
   
   fetch(getStatusPath())
