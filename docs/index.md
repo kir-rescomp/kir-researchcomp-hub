@@ -165,6 +165,25 @@ title: Home
     </div>
   </a>
 
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/service-status" class="kp-card kp-ep6">
+    <div class="kp-header">
+      <div class="kp-num">06</div>
+      <div class="kp-meta">
+        <div class="kp-label">Service Status</div>
+        <p class="kp-title">BMRC Cluster/Data service status</p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li></li>
+      </ul>
+    </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
+  </a>
+
 </div>
 
 !!! circle-info-2 ""
