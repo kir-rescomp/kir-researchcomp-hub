@@ -8,6 +8,8 @@
   gap: 0.45rem;
   margin-top: 0.5rem;
   flex-wrap: wrap;
+  text-align: left;
+  justify-content: flex-start;
 }
 
 .kp-status-dot {
