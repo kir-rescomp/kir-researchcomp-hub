@@ -99,9 +99,20 @@
     Select either **Jupyter Notebook** or **JupyterLab** depending on your preference. JupyterLab is
     recommended for most users as it provides a more fully featured interface.
     
-    #### 
-      
+    #### Jupyter Startup Folder
 
+    This is the directory that Jupyter will open in, and it also acts as the **root of the file
+    browser** within your session. You will not be able to navigate above this folder from within
+    Jupyter. For an example, 
+
+    <div class="nord" markdown=1>
+    ```py
+    ~/notebooks
+    ```
+    !!! lightbulb  "Choose your startup folder carefully"
+        Set this to the top-level directory that contains your project files. For example, if your work
+        lives under `/well/<group>/users/$USER/`, setting the startup folder to that path means you can
+        browse your full project structure from within Jupyter without having to navigate around it.
 
 
 
