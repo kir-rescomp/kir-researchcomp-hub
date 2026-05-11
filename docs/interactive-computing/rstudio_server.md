@@ -70,6 +70,12 @@ Choose the one that best fits your need/workflow:
       </a>
     </div>
 
+    !!! note-sticky "There are three RStudio apps in the OnDemand dashboard. Please choose the one with the custom logo below; the other two are legacy and support only up to R/4.3*"
+
+    <p align="center" style="margin-bottom: -1px;">
+        <img src="../../assets/images/material/interactive-commputing/ood_rstudio_icon.png" alt="srun" width="250" style="opacity: 0.9;"/>
+    </p>
+
 === "Rstudio server via srun" 
 
     <div class="nord" markdown=1> 
