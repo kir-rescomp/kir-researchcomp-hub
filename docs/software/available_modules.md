@@ -55,12 +55,12 @@ updated automatically twice daily.
 (async () => {
   const INDEX_URL = "../../data/modules.json";
 
-  const searchEl  = document.getElementById("mod-search");
-  const eraDiv    = document.getElementById("mod-era-filters");
-  const metaEl    = document.getElementById("mod-meta");
-  const tbody     = document.getElementById("mod-tbody");
-  const statusEl  = document.getElementById("mod-status");
-  const tableEl   = document.getElementById("mod-table");
+  const searchEl = document.getElementById("mod-search");
+  const eraDiv   = document.getElementById("mod-era-filters");
+  const metaEl   = document.getElementById("mod-meta");
+  const tbody    = document.getElementById("mod-tbody");
+  const statusEl = document.getElementById("mod-status");
+  const tableEl  = document.getElementById("mod-table");
 
   let data;
   try {
@@ -94,23 +94,57 @@ updated automatically twice daily.
     eraDiv.appendChild(btn);
   });
 
+  function scoreMatch(m, words) {
+    const name = m.name.toLowerCase();
+    const desc = (m.description || "").toLowerCase();
+    let score = 0;
+    for (const w of words) {
+      if (name === w)              score += 100;  // exact:    "python" -> Python
+      else if (name.startsWith(w)) score += 50;   // prefix:   "py"    -> Python, PyTorch
+      else if (name.includes(w))   score += 20;   // contains: anywhere in name
+      else if (desc.includes(w))   score += 1;    // fallback: description only
+    }
+    return score;
+  }
+
   function render() {
     const words = searchEl.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
 
-    const filtered = data.modules.filter(m => {
-      if (activeEra && !m.eras.includes(activeEra)) return false;
-      if (!words.length) return true;
-      const hay = (m.name + " " + m.description).toLowerCase();
-      return words.every(w => hay.includes(w));
-    });
+    const filtered = data.modules
+      .filter(m => {
+        if (activeEra && !m.eras.includes(activeEra)) return false;
+        if (!words.length) return true;
+        return words.every(w => {
+          if (w.length <= 2) {
+            return m.name.toLowerCase().startsWith(w);
+          }
+          return (m.name + " " + (m.description || "")).toLowerCase().includes(w);
+        });
+      })
+      .map(m => ({ m, score: words.length ? scoreMatch(m, words) : 0 }))
+      .sort((a, b) => b.score - a.score || a.m.name.localeCompare(b.m.name))
+      .map(({ m }) => m);
 
     metaEl.textContent =
       `Showing ${filtered.length} of ${data.n_packages} packages` +
       ` (${data.n_versions} total versions)`;
 
+    if (!filtered.length) {
+      tbody.innerHTML = "";
+      tableEl.style.display = "none";
+      statusEl.textContent =
+        `No modules found for "${searchEl.value.trim()}". ` +
+        `Try a different name or clear the search.`;
+      statusEl.style.display = "";
+      return;
+    }
+
+    statusEl.style.display = "none";
+    tableEl.style.display = "";
+
     tbody.innerHTML = filtered.map(m => {
       const pills = m.versions.map(v =>
-          `<span class="mod-pill${v.default ? " is-default" : ""}">${v.version}</span>`
+        `<span class="mod-pill${v.default ? " is-default" : ""}">${v.version}</span>`
       ).join("");
 
       const nameCell = m.url
@@ -126,8 +160,6 @@ updated automatically twice daily.
         <td>${m.description || "—"}</td>
       </tr>`;
     }).join("");
-
-    tableEl.style.display = filtered.length ? "" : "none";
   }
 
   searchEl.addEventListener("input", render);
