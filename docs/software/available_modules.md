@@ -7,10 +7,10 @@ hide:
 
 # Module Catalogue
 
-All software modules available on the BMRC cluster, generated from the Lmod spider cache and
-updated automatically twice daily.
-
-    Use `module spider <Name>` on the cluster for full details and dependencies.
+!!! lightbulb ""
+    - All software modules available on the BMRC cluster, generated from the Lmod spider cache and
+    updated automatically once per day
+    - If you are doing this search on a terminal, run the command `module spider MODULENAME` as described in [the previous page](./software_manage_with_modules.md) 
 
 <div id="mod-ui">
 
