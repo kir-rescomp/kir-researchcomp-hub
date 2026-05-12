@@ -1,6 +1,4 @@
-#mod-ui {
-  margin-top: 1rem;
-}
+/* ── Module Catalogue ────────────────────────────────── */
 
 #mod-search {
   width: 100%;
@@ -55,6 +53,7 @@
 }
 
 #mod-table-wrap { overflow-x: auto; }
+
 #mod-table {
   width: 100%;
   border-collapse: collapse;
@@ -90,6 +89,7 @@
   text-decoration: none;
 }
 .mod-name a:hover { text-decoration: underline; }
+
 .mod-n-ver {
   display: block;
   font-family: var(--md-code-font);
@@ -114,8 +114,6 @@
   color: var(--md-primary-bg-color);
   font-weight: 700;
 }
-
-/* era badge on pill */
 .mod-pill-era {
   font-size: .65rem;
   opacity: .65;
