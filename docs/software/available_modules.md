@@ -10,12 +10,6 @@ hide:
 All software modules available on the BMRC cluster, generated from the Lmod spider cache and
 updated automatically twice daily.
 
-!!! tip "Loading a module"
-```bash
-    module load <Name>/<Version>
-    # e.g.
-    module load Python/3.11.3-GCCcore-12.3.0
-```
     Use `module spider <Name>` on the cluster for full details and dependencies.
 
 <div id="mod-ui">
