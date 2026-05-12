@@ -28,7 +28,7 @@ For a full walkthrough, see our dedicated Apptainer training material: (click be
 </a>
 </div>
 
-## Local container repository 
+## Local Apptainer Repository 
 
 * Some applications are built and served via Apptainer. These are stored in `/well/kir/mirror/containers`, to which all Kennedy 
   researchers have read access.
