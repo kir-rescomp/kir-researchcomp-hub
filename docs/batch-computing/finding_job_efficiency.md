@@ -108,11 +108,10 @@ This job uses Python's `multiprocessing.Pool` to spawn exactly `SLURM_CPUS_PER_T
     • Excellent CPU utilization!
     • Memory usage is very low. Consider reducing memory request.
     ```
+
+     * **CPU Efficiency** is > 100% ? . Refer to above not on **Hyperthreading and values above 100%**
     </div>
 
-```
-# add your efficiency output here
-```
 
 ---
 
