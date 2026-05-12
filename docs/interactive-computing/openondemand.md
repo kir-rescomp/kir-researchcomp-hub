@@ -121,7 +121,9 @@
     !!! clipboard-list "Prerequisites"
 
         Prior to launching `RStudio-server` via **OnDemand**, make sure to setup your `~/.Rprofile` according to [these
-        instructions](https://kir-rescomp.github.io/kir-researchcomp-hub/software/application_specific_notes/R/#setting-up-rprofile-dynamic-r-library-paths-version-aware-rprofile-configuration) 
+        instructions](https://kir-rescomp.github.io/kir-researchcomp-hub/software/application_specific_notes/R/#setting-up-rprofile-dynamic-r-library-paths-version-aware-rprofile-configuration)
+        
+    !!! note-sticky "There are three RStudio apps in the OnDemand dashboard. Please choose the one with the custom logo below; the other two are legacy and support only up to R/4.3*" 
     <p align="center" style="margin-bottom: -1px;">
         <img src="../../assets/images/material/interactive-commputing/ood_rstudio_icon.png" alt="srun" width="250" style="opacity: 0.9;"/>
     </p>

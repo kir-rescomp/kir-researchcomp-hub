@@ -17,7 +17,7 @@ hide:
 <input
   id="mod-search"
   type="text"
-  placeholder="Search modules… (e.g. Python, STAR, SAMtools, GCC)"
+  placeholder="Search modules… (e.g. Python, R, CellRanger, XeniumRanger)"
   autocomplete="off"
   spellcheck="false"
 />
