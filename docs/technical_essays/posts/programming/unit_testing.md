@@ -12,7 +12,7 @@ tags:
 <div class="dracula" markdown="1">
 
 <p align="center">
-    <img src="{{ config.site_url }}assets/images/posts/unit_testing_logo.png" alt="unit-test-logo" width="350"/>
+    <img src="{{ config.site_url }}assets/images/technnical_essays/unit_testing_logo.png" alt="unit-test-logo" width="350"/>
 </p>
 
 
