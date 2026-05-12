@@ -11,7 +11,7 @@ tags:
 ---
 
 <p align="center">
-    <img src="{{ config.site_url }}assets/images/posts/demytifying_compiler_toolchains_logo.png" alt="compiler-toolchains-logo" width="350"/>
+    <img src="{{ config.site_url }}assets/images/technical_essays/demytifying_compiler_toolchains_logo.png" alt="compiler-toolchains-logo" width="350"/>
 </p>
 
 <div class="nord" markdown="1">

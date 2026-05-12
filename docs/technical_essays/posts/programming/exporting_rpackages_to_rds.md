@@ -12,7 +12,7 @@ tags:
 <div class="dracula" markdown="1">
 
 <p align="center">
-    <img src="{{ config.site_url }}assets/images/posts/r_package_export_to_rds.png" alt="r-package-logo" width="350"/>
+    <img src="{{ config.site_url }}assets/images/technical_essays/r_package_export_to_rds.png" alt="r-package-logo" width="350"/>
 </p>
 
 

@@ -166,3 +166,4 @@ extra_css:
   - stylesheets/tabs_shading.css
   - stylesheets/status.css
   - stylesheets/status-card.css
+  - stylesheets/modules.css

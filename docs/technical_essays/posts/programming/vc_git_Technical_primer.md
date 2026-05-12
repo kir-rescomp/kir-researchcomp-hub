@@ -11,7 +11,7 @@ tags:
 <div class="dracula" markdown="1">
  
 <p align="center">
-    <img src="{{ config.site_url }}assets/images/posts/git_technical_primer_logo.png" alt="git-page_logo" width="300">
+    <img src="{{ config.site_url }}assets/images/technical_essays/git_technical_primer_logo.png" alt="git-page_logo" width="300">
 </p>
 
 !!! circle-info-2 ""

@@ -181,6 +181,10 @@ title: Home
           <span class="kp-status-label">Checking services…</span>
         </div>
     </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
   </a>
 
 </div>
