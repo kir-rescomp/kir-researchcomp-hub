@@ -82,7 +82,33 @@ This job uses Python's `multiprocessing.Pool` to spawn exactly `SLURM_CPUS_PER_T
     ```
     </div>
 
-**Expected `efficiency` output:**
+!!! filter "Expected `efficiency` output"
+
+    <div class="github-dark" markdown=1>
+    ```py
+    $ efficiency 18819086
+
+    Job Efficiency Report
+    Cluster: cluster
+    Job ID: 18819086
+    User: mat611
+    State: COMPLETED
+    Cores: 4
+    Tasks: 1
+    Nodes: 1
+
+    Job Wall-time:
+      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0.7% 00:00:06 of 00:15:00 time limit
+    CPU Efficiency:
+      █████████████████████████████████████████████ 190.0% 00:00:36 of 00:00:24 core-walltime
+    Memory Efficiency:
+      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   1.2% 23.7 MB of 2.00 GB
+
+    Recommendations:
+    • Excellent CPU utilization!
+    • Memory usage is very low. Consider reducing memory request.
+    ```
+    </div>
 
 ```
 # add your efficiency output here
@@ -128,7 +154,7 @@ This job requests **4 CPUs** but runs a single-threaded Python loop over a ~10 G
 !!! filter "Expected `efficiency` output"
 
     <div class="github-dark" markdown=1>
-    ```rust
+    ```py
     $ efficiency 18817817
 
     Job Efficiency Report
