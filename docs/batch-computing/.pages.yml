@@ -1,5 +1,7 @@
-inav:
+nav:
  - working_with_scheduler.md
  - finding_job_efficiency.md
  - slurm_job_arrays.md
  - using_gpus.md
+
+
