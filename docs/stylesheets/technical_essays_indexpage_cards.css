@@ -1,6 +1,5 @@
 /* ── Technical Essays cards ─────────────────────────────── */
 
-/* Section header row */
 .essays-section-header {
     display: flex;
     align-items: center;
@@ -8,11 +7,6 @@
     border-bottom: 1px solid var(--md-default-fg-color--lightest);
     padding-bottom: 0.4rem;
     margin-bottom: 1rem;
-}
-
-.essays-section-header .md-icon,
-.essays-section-header .twemoji {
-    opacity: 0.55;
 }
 
 .essays-section-header span {
@@ -23,28 +17,25 @@
     color: var(--md-default-fg-color--light);
 }
 
-/* Card grid — 3 col on wide, 2 col on tablet, 1 on mobile */
 .essays-grid.grid.cards {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 0.75rem;
 }
 
 @media (max-width: 960px) {
-    .essays-grid.grid.cards { grid-template-columns: repeat(2, 1fr); }
+    .essays-grid.grid.cards { grid-template-columns: repeat(2, 1fr) !important; }
 }
 @media (max-width: 600px) {
-    .essays-grid.grid.cards { grid-template-columns: 1fr; }
+    .essays-grid.grid.cards { grid-template-columns: 1fr !important; }
 }
 
-/* Base card */
-.essays-grid.grid.cards > ul > li {
+.essays-grid.grid.cards li {
     position: relative;
     overflow: hidden;
     transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Accent top bar */
-.essays-grid.grid.cards > ul > li::before {
+.essays-grid.grid.cards li::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
@@ -54,19 +45,17 @@
     transition: opacity 0.2s ease;
 }
 
-/* Hover: lift + shadow + accent reveal */
-.essays-grid.grid.cards > ul > li:hover {
+.essays-grid.grid.cards li:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
     transform: translateY(-2px);
     border-color: var(--md-default-fg-color--lighter);
 }
 
-.essays-grid.grid.cards > ul > li:hover::before {
+.essays-grid.grid.cards li:hover::before {
     opacity: 1;
 }
 
-/* Description truncation + expand */
-.essays-grid.grid.cards > ul > li p:last-of-type {
+.essays-grid.grid.cards li p:nth-of-type(2) {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -76,7 +65,7 @@
     transition: all 0.2s ease;
 }
 
-.essays-grid.grid.cards > ul > li:hover p:last-of-type {
+.essays-grid.grid.cards li:hover p:nth-of-type(2) {
     display: block;
     overflow: visible;
     -webkit-line-clamp: unset;
