@@ -16,12 +16,58 @@ document.addEventListener('DOMContentLoaded', function() {
     return new URL('current.json', base).href;
   }
   
+  function createEmailBody(data, lastUpdated) {
+    let body = "Current Cluster Status\n";
+    body += "=".repeat(50) + "\n\n";
+    
+    data.services.forEach(service => {
+      body += `${service.name}: ${formatStatusText(service.status)}\n`;
+    });
+    
+    if (data.upcoming_maintenance && data.upcoming_maintenance.length > 0) {
+      body += "\n" + "=".repeat(50) + "\n";
+      body += "Upcoming Maintenance:\n\n";
+      data.upcoming_maintenance.forEach(maintenance => {
+        body += `Date: ${maintenance.date}\n`;
+        body += `Service: ${maintenance.service}\n`;
+        body += `Description: ${maintenance.description}\n\n`;
+      });
+    }
+    
+    body += "\n" + "=".repeat(50) + "\n";
+    body += `Last updated: ${lastUpdated}\n`;
+    
+    return encodeURIComponent(body);
+  }
+  
+  function sendStatusEmail(data, lastUpdated) {
+    const recipient = "hpc-admin@example.ac.uk"; // Change this to your email
+    const subject = encodeURIComponent("Cluster Status Update - " + new Date().toLocaleDateString());
+    const body = createEmailBody(data, lastUpdated);
+    
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+  }
+  
   fetch(getStatusPath())
     .then(response => {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      return response.json();
+      
+      // Get the Last-Modified header from the response
+      const lastModified = response.headers.get('Last-Modified');
+      
+      return response.json().then(data => ({
+        data: data,
+        lastModified: lastModified
+      }));
     })
-    .then(data => {
+    .then(result => {
+      const data = result.data;
+      
+      // Use Last-Modified header, fallback to current time if not available
+      const lastUpdated = result.lastModified 
+        ? new Date(result.lastModified).toLocaleString()
+        : new Date().toLocaleString();
+      
       let html = '<div class="cluster-status">';
       
       data.services.forEach(service => {
@@ -55,47 +101,26 @@ document.addEventListener('DOMContentLoaded', function() {
         html += '</div>';
       }
       
-      const lastUpdated = new Date(data.last_updated).toLocaleString();
       html += `<p class="last-updated">Last updated: ${lastUpdated}</p>`;
       
+      // Add email button
+      html += `
+        <div style="margin-top: 1.5em;">
+          <button id="email-status-btn" class="status-email-button">
+            📧 Send Status Update
+          </button>
+        </div>
+      `;
+      
       statusContainer.innerHTML = html;
+      
+      // Add click handler for the email button
+      document.getElementById('email-status-btn').addEventListener('click', () => {
+        sendStatusEmail(data, lastUpdated);
+      });
     })
     .catch(error => {
       statusContainer.innerHTML = '<p style="color: #f44336;">Unable to load cluster status. Please try again later.</p>';
       console.error('Error loading status:', error);
     });
 });
-
-
-function createEmailBody(data) {
-  let body = "Current Cluster Status\n";
-  body += "=".repeat(50) + "\n\n";
-  
-  data.services.forEach(service => {
-    body += `${service.name}: ${formatStatusText(service.status)}\n`;
-  });
-  
-  if (data.upcoming_maintenance && data.upcoming_maintenance.length > 0) {
-    body += "\n" + "=".repeat(50) + "\n";
-    body += "Upcoming Maintenance:\n\n";
-    data.upcoming_maintenance.forEach(maintenance => {
-      body += `Date: ${maintenance.date}\n`;
-      body += `Service: ${maintenance.service}\n`;
-      body += `Description: ${maintenance.description}\n\n`;
-    });
-  }
-  
-  const lastUpdated = new Date(data.last_updated).toLocaleString();
-  body += "\n" + "=".repeat(50) + "\n";
-  body += `Last updated: ${lastUpdated}\n`;
-  
-  return encodeURIComponent(body);
-}
-
-function sendStatusEmail(data) {
-  const recipient = "hpc-admin@example.ac.uk"; // Change this to your email
-  const subject = encodeURIComponent("Cluster Status Update - " + new Date().toLocaleDateString());
-  const body = createEmailBody(data);
-  
-  window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-}
