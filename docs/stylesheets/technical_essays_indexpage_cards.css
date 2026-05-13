@@ -70,3 +70,8 @@
     overflow: visible;
     -webkit-line-clamp: unset;
 }
+
+.essays-grid.grid.cards li p:last-of-type {
+    font-size: 0.55rem;
+    margin-top: auto;
+}

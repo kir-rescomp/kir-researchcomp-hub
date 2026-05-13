@@ -37,16 +37,11 @@ deserve more than a how-to guide but don't belong in the main docs.
 
 -   **Unit Testing for Scientific Code**
 
-    ...
+    What is Unit Testing and Why It Matters for Research Software¶
+
 
     [:octicons-arrow-right-24: Read](./programming/unit_testing.md)
 
--   **SSH on Ghostty**
-
-    Getting Ghostty's terminfo and italics working correctly over SSH to remote
-    HPC login nodes, without corrupting your remote `TERM` environment.
-
-    [:octicons-arrow-right-24: Read](./programming/ssh_on_ghostty.md)
 
 -   **Migrating R Packages Between Versions**
 
@@ -54,6 +49,19 @@ deserve more than a how-to guide but don't belong in the main docs.
     environment, so you don't end up with mixed library states across sessions.
 
     [:octicons-arrow-right-24: Read](./programming/exporting_rpackages_to_rds.md)
+
+- **Version Control with Git - A Technical Primer**
+
+    Understanding the core concepts of Git version control
+
+    [:octicons-arrow-right-24: Read](./programming/vc_git_Technical_primer.md)
+
+-   **SSH on Ghostty**
+
+    Getting Ghostty's terminfo and italics working correctly over SSH to remote
+    HPC login nodes, without corrupting your remote `TERM` environment.
+
+    [:octicons-arrow-right-24: Read](./programming/ssh_on_ghostty.md)
 
 
 
