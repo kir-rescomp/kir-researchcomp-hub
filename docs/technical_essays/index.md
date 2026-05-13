@@ -1,8 +1,10 @@
-# Technical Essays
+# Technical Essays { .essays-title }
 
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../assets/images/technical_essays/tech_essays.png" alt="storage_quota" width="500" style="opacity: 0.9;"/>
+</p>
 Longer-form writing on HPC, scientific computing, and programming — things that
 deserve more than a how-to guide but don't belong in the main docs.
-
 ---
 
 <div class="essays-section-header" markdown>
