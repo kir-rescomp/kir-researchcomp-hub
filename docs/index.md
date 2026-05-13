@@ -214,7 +214,7 @@ title: Home
   </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-training-home/" class="kp-card kp-techessays" style="max-width: 480px; text-decoration: none;">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/technical_essays/" class="kp-card kp-techessays" style="max-width: 480px; text-decoration: none;">
   <div class="kp-header">
     <div class="kp-num">✒️</div>
     <div class="kp-meta">
@@ -224,7 +224,7 @@ title: Home
   </div>
   <div class="kp-body">
     <ul class="kp-topics">
-      <li>In-depth articles on HPC, bioinformatics, containers, and scientific 
+      <li>Articles on HPC, bioinformatics, containers, and scientific 
           computing from the KIR research computing team.</li>
     </ul>
   </div>
