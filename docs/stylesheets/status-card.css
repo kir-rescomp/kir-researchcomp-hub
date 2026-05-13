@@ -13,8 +13,8 @@
 }
 
 .kp-status-dot {
-  width: 10px;
-  height: 10px;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -23,8 +23,8 @@
 .kp-dot--unknown   { background: #888; }
 .kp-dot--loading   { background: #555; animation: kp-pulse 1.2s infinite; }
 .kp-dot--operational  { background: #4caf82; }
-.kp-dot--maintenance  { background: #f0a500; }
-.kp-dot--degraded     { background: #e05c5c; }
+.kp-dot--maintenance  { background: #f0c742; animation: kp-pulse 1.5s infinite; }
+.kp-dot--degraded     { background: #f88604de; animation: kp-pulse 1.5s infinite }
 
 @keyframes kp-pulse {
   0%, 100% { opacity: 0.3; }
