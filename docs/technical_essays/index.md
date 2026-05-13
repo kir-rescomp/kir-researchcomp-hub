@@ -48,12 +48,12 @@ deserve more than a how-to guide but don't belong in the main docs.
 
     [:octicons-arrow-right-24: Read](./programming/ssh_on_ghostty.md)
 
--   **.Rprofile & Dynamic R Library Paths**
+-   **Migrating R Packages Between Versions**
 
     Using `.Rprofile` to switch R library paths dynamically depending on module
     environment, so you don't end up with mixed library states across sessions.
 
-    [:octicons-arrow-right-24: Read](./programming/rprofile_dynamic_r_library_path.md)
+    [:octicons-arrow-right-24: Read](./programming/exporting_rpackages_to_rds.md)
 
 
 
