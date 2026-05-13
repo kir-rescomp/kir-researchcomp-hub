@@ -20,7 +20,7 @@
 
 .status-item.degraded {
   border-left-color: #ff9800;
-  background: rgba(255, 152, 0, 0.1);
+  background: rgba(255, 153, 0, 0.616);
 }
 
 .status-item.major-outage {
@@ -30,8 +30,8 @@
 }
 
 .status-item.maintenance {
-  border-left-color: #2196f3;
-  background: rgba(33, 150, 243, 0.1);
+  border-left-color: #ff9800;
+  background: rgba(255, 152, 0, 0.1);
 }
 
 .status-item.partial-outage {
@@ -58,8 +58,8 @@
   color: white;
 }
 
-.status-badge.degraded-performance {
-  background: #ff9800;
+.status-badge.degraded {
+  background: #f88604de;
   color: white;
 }
 
@@ -74,8 +74,8 @@
 }
 
 .status-badge.maintenance {
-  background: #2196f3;
-  color: white;
+  background: #f0c742;
+  color: rgb(82, 72, 27);
 }
 
 .maintenance-notice {
