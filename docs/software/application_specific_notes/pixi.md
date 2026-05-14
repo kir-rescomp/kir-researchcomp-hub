@@ -3,10 +3,10 @@
 >a faster, reproducible replacement for `conda`/`mamba`
 
 
-[Pixi](https://pixi.prefix.dev/latest/) is a package manager built on the conda ecosystem — it resolves packages from the same channels (conda-forge, bioconda) and produces fully compatible environments. It is written in Rust, uses a significantly faster solver, and is designed around project-level reproducibility from the start.
+[Pixi](https://pixi.prefix.dev/latest/) is a package manager built on the **conda** ecosystem — it resolves packages from the same channels (`conda-forge`, `bioconda`) and produces fully compatible environments. It is written in Rust, uses a significantly faster solver, and is designed around project-level reproducibility from the start.
 
 !!! lightbulb "Why switch?"
-    If you already use conda or mamba, the learning curve is minimal. The payoff is faster installs, exact reproducibility, and no base environment cluttering your shell.
+    If you already use `conda` or `mamba`, the learning curve is minimal. The payoff is faster installs, exact reproducibility, and no base environment cluttering your shell.
 
 ---
 <div class="nord" markdown=1>

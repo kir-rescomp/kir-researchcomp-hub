@@ -11,9 +11,9 @@
 
   "upcoming_maintenance": [
     {
-      "date": "11-13 May 2026",
+      "date": "11-15 May 2026",
       "service": "Posit Workbench",
-      "description": "Scheduled maintenance window"
+      "description": "Scheduled maintenance window for OpenStack upgrade followed by an update to R versions served in Posit RStudio"
     }
   ]
 }
