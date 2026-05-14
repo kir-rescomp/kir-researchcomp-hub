@@ -191,3 +191,27 @@
         If you only need a terminal on a compute node, use the [Jupyter](#) or [srun](#) options
         instead — Virtual Desktop has a higher resource overhead and should be reserved for work that
         genuinely requires a GUI.
+
+
+## Troubleshooting 
+
+### RStudio stuck on grey screen after connecting
+
+If you click **Connect** on an RStudio OnDemand session but are greeted with a
+persistent grey screen, the previous session likely saved a large object to its
+workspace and RStudio is attempting to restore it on launch — which can stall or
+hang indefinitely.
+
+**Fix:** Delete the active session state to clear the saved workspace:
+
+!!! exclamation "warning"
+    This will discard any unsaved objects from your previous R session.
+    Scripts and files on disk are unaffected.
+
+<div class="nord" markdown=1>
+```py
+rm -rf ~/.local/share/rstudio/sessions/active/
+```
+</div>
+Once done, relaunch your RStudio session from OnDemand as normal.
+
