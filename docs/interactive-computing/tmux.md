@@ -114,12 +114,12 @@ By default, the scroll wheel does not work inside `tmux`. You need to enter **co
 
     This warning appears when you run `tmux new -s <name>` from **inside an existing tmux session** 
 
-    If you're unsure whether you're already inside tmux ( Or check the for <span style="color: green;">green</span> strip on the bottom of the terminal), check:
+    If you're unsure whether you're already inside tmux, check with following command  : ( Or check the for <span style="color: green;">green</span> strip on the bottom of the terminal), 
 
     <div class="nord" markdown=1>
-    ```rust
+    ```py
     echo $TMUX
     ```
     </div>
-    
+
     A non-empty value means you're in an active session.
