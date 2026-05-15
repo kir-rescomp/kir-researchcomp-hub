@@ -106,3 +106,20 @@ By default, the scroll wheel does not work inside `tmux`. You need to enter **co
 <p align="center" style="margin-bottom: -1px;">
     <img src="../../assets/images/material/interactive-commputing/tmux_multiplexing.png" alt="srun" width="700" style="opacity: 0.9;"/>
 </p>
+
+
+## Troubleshooting
+
+1. "`sessions should be nested with care, unset $TMUX to force`"
+
+    This warning appears when you run `tmux new -s <name>` from **inside an existing tmux session** 
+
+    If you're unsure whether you're already inside tmux ( Or check the for <span style="color: green;">green</span> strip on the bottom of the terminal), check:
+
+    <div class="nord" markdown=1>
+    ```rust
+    echo $TMUX
+    ```
+    </div>
+    
+    A non-empty value means you're in an active session.
