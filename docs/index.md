@@ -165,6 +165,25 @@ title: Home
     </div>
   </a>
 
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/parallel-computing/scaling_limits/" class="kp-card kp-ep6">
+    <div class="kp-header">
+      <div class="kp-num">06</div>
+      <div class="kp-meta">
+        <div class="kp-label">Parallel Computing</div>
+        <p class="kp-title">Parallel Speedup and Scaling</p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li>Scaling Limits</li>
+      </ul>
+    </div>
+    <div class="kp-footer">
+      <div class="kp-footer-label"></div>
+      <div class="kp-footer-val"></div>
+    </div>
+  </a>
+
   <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/status" class="kp-card kp-ep7">
     <div class="kp-header">
       <div class="kp-num">07</div>
