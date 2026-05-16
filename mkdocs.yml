@@ -52,6 +52,7 @@ theme:
     - navigation.expand   Removing this for the moment to avoid the meny being expanded by default 
     - navigation.top
     - navigation.footer
+    - navigation.instant # this was enabled for js app on scaling_limits.md
     - content.code.copy
     - content.code.annotate
     - navigation.prune    # Only renders the visible portion of the nav treein the HTML. 
@@ -140,6 +141,8 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - path: javascripts/slurm-generator.js
     defer: true
+  - path: javascripts/parallel-laws.js
+    defer: true
 
 copyright : KIR - Research Computing Hub is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
 
@@ -168,3 +171,4 @@ extra_css:
   - stylesheets/status-card.css
   - stylesheets/modules.css
   - stylesheets/technical_essays_indexpage_cards.css
+  - stylesheets/parallel-laws.css

@@ -1236,16 +1236,16 @@
 }
 .md-typeset .admonition.square-pen,
 .md-typeset details.square-pen {
-  border-color: rgb(70,130,180);
+  border-color: rgb(255, 255, 255);
 }
 .md-typeset .square-pen > .admonition-title,
 .md-typeset .square-pen > summary {
   color:rgb(37, 36, 36);
-  background-color: rgb(236, 196, 110);
+  background-color: rgb(255, 229, 171);
 }
 .md-typeset .square-pen > .admonition-title::before,
 .md-typeset .square-pen > summary::before {
-  background-color: rgb(237, 250, 165);
+  background-color: rgb(243, 133, 8);
   -webkit-mask-image: var(--md-admonition-icon--square-pen);
           mask-image: var(--md-admonition-icon--square-pen);
 }
