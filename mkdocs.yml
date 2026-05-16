@@ -172,3 +172,4 @@ extra_css:
   - stylesheets/status-card.css
   - stylesheets/modules.css
   - stylesheets/technical_essays_indexpage_cards.css
+  - stylesheets/parallel-laws.css
