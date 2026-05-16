@@ -134,6 +134,8 @@
 .kp-ep5 .kp-label { color: #4a3db0; }
 .kp-ep6 .kp-num { background: #e6e9e8; color: #141414; }
 .kp-ep6 .kp-label { color: #0a6647; }
+.kp-ep7 .kp-num { background: #96f0e17a; color: #141414; }
+.kp-ep7 .kp-label { color: #0da1bb; }
 .kp-ep8 .kp-num { background: #f5f399; color: #d4a522; }
 .kp-ep8 .kp-label { color: #b3b002; }
 .kp-training .kp-num { background: #fdecd8; color: #7a4808; font-size: 1.2rem; }

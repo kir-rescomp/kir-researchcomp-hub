@@ -165,9 +165,9 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/parallel-computing/scaling_limits/" class="kp-card kp-ep6">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/parallel-computing/scaling_limits/" class="kp-card kp-ep7">
     <div class="kp-header">
-      <div class="kp-num">06</div>
+      <div class="kp-num">07</div>
       <div class="kp-meta">
         <div class="kp-label">Parallel Computing</div>
         <p class="kp-title">Parallel Speedup and Scaling</p>
