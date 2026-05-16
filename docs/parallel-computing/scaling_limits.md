@@ -53,7 +53,7 @@ but the underlying assumption is fundamentally different. Gustafson observed tha
 
 The result is a much more optimistic scaling curve. There is no hard ceiling — speedup scales roughly linearly with $p$ when $s$ is small.
 
-!!! tip "When Gustafson applies"
+!!! lightbulb "When Gustafson applies"
     Gustafson's framing fits most real HPC workloads well: running a finer-resolution simulation, processing more samples in a cohort, using a larger training dataset. The question isn't "how fast can I finish this specific job?" but "how much science can I do in a given allocation window?"
 
 ---
@@ -139,7 +139,7 @@ Adjust the sliders to see how both laws respond to changes in the serial fractio
 
 Amdahl's law is most relevant when your job has a hard serial phase you cannot avoid — for example, a pipeline step that reads and indexes a large file before the parallel processing begins. In these cases, requesting hundreds of cores will not help if that indexing step takes 30 minutes regardless.
 
-Profile first. Tools like [Slurm's job efficiency reports](../efficiency.md) and `sacct` can tell you whether your jobs are actually using the cores they request.
+Profile first. Tools like [Slurm's job efficiency reports](../batch-computing/finding_job_efficiency.md) and `sacct` can tell you whether your jobs are actually using the cores they request.
 
 ### Scaling out vs. scaling up
 
@@ -154,7 +154,7 @@ Profile first. Tools like [Slurm's job efficiency reports](../efficiency.md) and
 
 In MPI jobs, communication and synchronisation overhead act as an *additional* serial penalty on top of whatever is inherently sequential in your code. This is why strong scaling (same problem, more cores) typically plateaus well before Amdahl's theoretical ceiling — the effective $s$ is higher than the code alone suggests.
 
-!!! note "Rule of thumb"
+!!! square-pen "Rule of thumb"
     For most bioinformatics pipelines on BMRC, requesting more than 16–32 cores per step rarely helps unless you have profiled the job and confirmed the parallel fraction justifies it. Over-requesting cores wastes allocation and increases queue wait time.
 
 ---

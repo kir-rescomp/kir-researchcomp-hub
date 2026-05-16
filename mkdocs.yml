@@ -52,6 +52,7 @@ theme:
     - navigation.expand   Removing this for the moment to avoid the meny being expanded by default 
     - navigation.top
     - navigation.footer
+    - navigation.instant # this was enabled for js app on scaling_limits.md
     - content.code.copy
     - content.code.annotate
     - navigation.prune    # Only renders the visible portion of the nav treein the HTML. 
@@ -139,8 +140,6 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - path: javascripts/slurm-generator.js
-    defer: true
-  - url: https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js
     defer: true
   - path: javascripts/parallel-laws.js
     defer: true
