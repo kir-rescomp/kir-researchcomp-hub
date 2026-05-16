@@ -184,9 +184,9 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/status" class="kp-card kp-ep7">
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/status" class="kp-card kp-ep8">
     <div class="kp-header">
-      <div class="kp-num">07</div>
+      <div class="kp-num">08</div>
       <div class="kp-meta">
         <div class="kp-label">Service Status</div>
         <p class="kp-title">BMRC Cluster/Data service status</p>
