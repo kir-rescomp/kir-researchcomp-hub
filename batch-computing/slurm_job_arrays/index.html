@@ -1,0 +1,1514 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="The Kennedy Institute of Rheumatology, NDORMS, University of Oxford">
+      
+      
+        <link rel="canonical" href="https://kir-rescomp.github.io/kir-researchcomp-hub/batch-computing/slurm_job_arrays/">
+      
+      
+        <link rel="prev" href="../finding_job_efficiency/">
+      
+      
+        <link rel="next" href="../using_gpus/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/icons/kir_standalone_logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Slurm job arrays - KIR - Research Computing Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Mukta";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/colors.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/side_bar_menu.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/background_colors.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/header_alignment.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/landing_page_hero.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_dracula.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_monokai.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_github_dark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_nord.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_onedark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_featured_scroll_behavoiour.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_cards_buttons.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/morphing-dna-network.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_episodes_cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tables.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/gradient_peek.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tabs_shading.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/status.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/status-card.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/modules.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/technical_essays_indexpage_cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/parallel-laws.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#slurm-job-arrays" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KIR - Research Computing Hub" class="md-header__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KIR - Research Computing Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Slurm job arrays
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KIR - Research Computing Hub" class="md-nav__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    KIR - Research Computing Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../getting-started/account/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../file-system/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File system
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../software/software_manage_with_modules/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch computing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Batch computing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with job scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finding_job_efficiency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finding Job Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slurm job arrays
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slurm job arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#basic-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic syntax
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-minimal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A minimal example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-slurm_array_task_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using SLURM_ARRAY_TASK_ID
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using SLURM_ARRAY_TASK_ID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-file-per-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One file per task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-the-index-to-r-or-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passing the index to R or Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-random-seeds-for-reproducibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting random seeds for reproducibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avoiding-conflicts-between-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avoiding conflicts between tasks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multidimensional-parameter-sweeps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multidimensional parameter sweeps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-array-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring array jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using_gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Resources on BMRC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../interactive-computing/openondemand/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../data-transfer/cli_transfer/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data transfer
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../parallel-computing/scaling_limits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallel computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../status/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../technical_essays/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical essays
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#basic-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic syntax
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-minimal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A minimal example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-slurm_array_task_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using SLURM_ARRAY_TASK_ID
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using SLURM_ARRAY_TASK_ID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-file-per-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One file per task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-the-index-to-r-or-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passing the index to R or Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-random-seeds-for-reproducibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting random seeds for reproducibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avoiding-conflicts-between-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avoiding conflicts between tasks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multidimensional-parameter-sweeps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multidimensional parameter sweeps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-array-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring array jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="slurm-job-arrays">Slurm job arrays<a class="headerlink" href="#slurm-job-arrays" title="Permanent link">¶</a></h1>
+<p>Job arrays let you submit many similar jobs with a single <code>sbatch</code> command. Each task in the array runs the same script but receives a unique index — <code>SLURM_ARRAY_TASK_ID</code> — which you use to vary inputs, filenames, parameters, or random seeds.</p>
+<p>They're the right tool for <strong>embarrassingly parallel</strong> work: tasks that are fully independent, share no state, and could run in any order. Common examples include parameter sweeps, bootstrap resampling, per-sample processing pipelines, and simulation replicates.</p>
+<div class="admonition note-sticky">
+<p class="admonition-title">Array size limit</p>
+<p>The maximum number of tasks in a single array is <strong>60000</strong>. If your workload exceeds this, contact the <a href="mailto:kir-rc@kennedy.ox.ac.uk">KIR Research Computing Team</a>.</p>
+</div>
+<p><br></p>
+<p align="center" style="margin-bottom: -1px;">
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/material/batch-computing/slurm_array_life_cycle.png" data-desc-position="bottom"><img src="../../assets/images/material/batch-computing/slurm_array_life_cycle.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"></a>
+</p>
+
+<center>
+<small>Life cycle of a Slurm job array</small>
+</center>
+<hr>
+<h2 id="basic-syntax">Basic syntax<a class="headerlink" href="#basic-syntax" title="Permanent link">¶</a></h2>
+<div class="nord">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">array</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="mi">10</span>
+</span></code></pre></div>
+<p>This submits 10 tasks. Each receives a unique value of <code>SLURM_ARRAY_TASK_ID</code> from 1 to 10. You can also specify step sizes or throttle the number of concurrently running tasks:</p>
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">array</span><span class="w"> </span><span class="mi">0</span><span class="o">-</span><span class="mi">99</span><span class="w">        </span><span class="p">#</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="n">tasks</span><span class="p">,</span><span class="w"> </span><span class="n">zero</span><span class="o">-</span><span class="n">indexed</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">array</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mi">2</span><span class="w">      </span><span class="p">#</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="nc">indices</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">..</span><span class="p">.</span><span class="w"> </span><span class="mi">19</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">array</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="mi">100</span><span class="o">%</span><span class="mi">5</span><span class="w">     </span><span class="p">#</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">most</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">tasks</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">simultaneously</span>
+</span></code></pre></div>
+<p>The <code>%N</code> throttle is particularly useful when tasks are memory- or I/O-intensive and you want to avoid saturating the filesystem or node.</p>
+<p><br></p>
+<p align="center" style="margin-bottom: -1px;">
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/material/batch-computing/slurm_array_resource_allocation.png" data-desc-position="bottom"><img src="../../assets/images/material/batch-computing/slurm_array_resource_allocation.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"></a>
+</p>
+<hr>
+<h2 id="a-minimal-example">A minimal example<a class="headerlink" href="#a-minimal-example" title="Permanent link">¶</a></h2>
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">name</span><span class="w">    </span><span class="n">array</span><span class="o">-</span><span class="n">demo</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">time</span><span class="w">        </span><span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">00</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">mem</span><span class="w">         </span><span class="mi">4</span><span class="n">G</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">array</span><span class="w">       </span><span class="mi">1</span><span class="o">-</span><span class="mi">5</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">output</span><span class="w">      </span><span class="n">logs</span><span class="o">/</span><span class="n">job_</span><span class="o">%</span><span class="n">a</span><span class="p">.</span><span class="n">out</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">error</span><span class="w">       </span><span class="n">logs</span><span class="o">/</span><span class="n">job_</span><span class="o">%</span><span class="n">a</span><span class="p">.</span><span class="n">err</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">echo</span><span class="w"> </span><span class="s">"Task ${SLURM_ARRAY_TASK_ID} running on $(hostname)"</span>
+</span></code></pre></div>
+<div class="admonition lightbulb">
+<p class="admonition-title">Tip</p>
+<p>Inside <code>#SBATCH</code> headers, <code>SLURM_ARRAY_TASK_ID</code> is not yet available as a shell variable. Use the token <code>%a</code> in your <code>--output</code> and <code>--error</code> paths instead.</p>
+</div>
+<hr>
+<h2 id="using-slurm_array_task_id">Using <code>SLURM_ARRAY_TASK_ID</code><a class="headerlink" href="#using-slurm_array_task_id" title="Permanent link">¶</a></h2>
+<h3 id="one-file-per-task">One file per task<a class="headerlink" href="#one-file-per-task" title="Permanent link">¶</a></h3>
+<p>The most common pattern in bioinformatics — one sample, one task:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">SAMPLES</span><span class="o">=</span><span class="p">(</span><span class="n">sample_A</span> <span class="n">sample_B</span> <span class="n">sample_C</span> <span class="n">sample_D</span> <span class="n">sample_E</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">SAMPLE</span><span class="o">=</span><span class="err">$</span><span class="p">{</span><span class="n">SAMPLES</span><span class="p">[</span><span class="err">$</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">]}</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">echo</span> <span class="s2">"Processing $</span><span class="si">{SAMPLE}</span><span class="s2">"</span>
+</span></code></pre></div>
+<p>Set <code>--array 0-4</code> to match bash's zero-based array indices.</p>
+<p>If your files follow a naming convention, reference them directly:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">INPUT</span><span class="o">=</span><span class="n">data</span><span class="o">/</span><span class="n">sample_</span><span class="err">$</span><span class="p">{</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">}</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
+</span></code></pre></div>
+<p>Or glob them dynamically:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">FILES</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="o">/*.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">INPUT</span><span class="o">=</span><span class="err">$</span><span class="p">{</span><span class="n">FILES</span><span class="p">[</span><span class="err">$</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">]}</span>
+</span></code></pre></div>
+<p>The glob expands in alphabetical order, so the task-to-file mapping is deterministic. Set <code>--array</code> to match the number of files.</p>
+<hr>
+<h3 id="passing-the-index-to-r-or-python">Passing the index to R or Python<a class="headerlink" href="#passing-the-index-to-r-or-python" title="Permanent link">¶</a></h3>
+<p>A clean pattern is to pass the task ID as a command-line argument and look up parameters from a config file:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">R</label><label for="__tabbed_1_2">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Rscript</span> <span class="n">analysis</span><span class="o">.</span><span class="n">R</span> <span class="o">--</span><span class="n">task</span> <span class="err">$</span><span class="p">{</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">optparse</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">option_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nf">make_option</span><span class="p">(</span><span class="s">"--task"</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"integer"</span><span class="p">)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">)</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">parse_args</span><span class="p">(</span><span class="nf">OptionParser</span><span class="p">(</span><span class="n">option_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">option_list</span><span class="p">))</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">params</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"params.csv"</span><span class="p">)</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">row</span><span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="n">args</span><span class="o">$</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1"># use row$alpha, row$beta, etc.</span>
+</span></code></pre></div>
+<p>Or read the environment variable directly:</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">task_id</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">(</span><span class="nf">Sys.getenv</span><span class="p">(</span><span class="s">"SLURM_ARRAY_TASK_ID"</span><span class="p">))</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">params</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"params.csv"</span><span class="p">)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">row</span><span class="w">     </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="n">task_id</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">python</span> <span class="n">run_sim</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">task</span> <span class="err">$</span><span class="p">{</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"--task"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">params</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"params.csv"</span><span class="p">)</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="n">row</span>    <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">task</span><span class="p">]</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># use row["alpha"], row["beta"], etc.</span>
+</span></code></pre></div>
+<p>Or read the environment variable directly:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">task_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"SLURM_ARRAY_TASK_ID"</span><span class="p">])</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<hr>
+<h3 id="setting-random-seeds-for-reproducibility">Setting random seeds for reproducibility<a class="headerlink" href="#setting-random-seeds-for-reproducibility" title="Permanent link">¶</a></h3>
+<p>When running stochastic simulations, each task needs a distinct seed. Without one, tasks that start simultaneously may draw from the same pseudo-random sequence.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">R</label><label for="__tabbed_2_2">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-r highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">task_id</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">(</span><span class="nf">Sys.getenv</span><span class="p">(</span><span class="s">"SLURM_ARRAY_TASK_ID"</span><span class="p">))</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">set.seed</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">random</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">task_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"SLURM_ARRAY_TASK_ID"</span><span class="p">])</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<hr>
+<h2 id="avoiding-conflicts-between-tasks">Avoiding conflicts between tasks<a class="headerlink" href="#avoiding-conflicts-between-tasks" title="Permanent link">¶</a></h2>
+<p>All tasks in an array can run simultaneously, so any shared resource — a working directory, a fixed output filename, a database connection — is a potential conflict. The fix is always the same: make everything per-task.</p>
+<p><strong>Give each task its own working directory</strong> when a tool writes to fixed paths you can't control:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">WORKDIR</span><span class="o">=</span><span class="n">tmp</span><span class="o">/</span><span class="n">run_</span><span class="err">$</span><span class="p">{</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">}</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="s2">"$WORKDIR"</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">cd</span> <span class="s2">"$WORKDIR"</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">bash</span> <span class="o">../</span><span class="n">job</span><span class="o">.</span><span class="n">sh</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">mv</span> <span class="n">output</span><span class="o">.</span><span class="n">tsv</span> <span class="o">../../</span><span class="n">results</span><span class="o">/</span><span class="n">output_</span><span class="err">$</span><span class="p">{</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">}</span><span class="o">.</span><span class="n">tsv</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="n">cd</span> <span class="o">../..</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="s2">"$WORKDIR"</span>
+</span></code></pre></div>
+<p><strong>Use per-task paths directly</strong> when your tool accepts them:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">python</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span> \
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>  <span class="o">--</span><span class="nb">input</span>  <span class="n">data</span><span class="o">/</span><span class="n">sample_</span><span class="err">$</span><span class="p">{</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">}</span><span class="o">.</span><span class="n">csv</span> \
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>  <span class="o">--</span><span class="n">output</span> <span class="n">results</span><span class="o">/</span><span class="n">sample_</span><span class="err">$</span><span class="p">{</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">}</span><span class="o">.</span><span class="n">csv</span>
+</span></code></pre></div>
+<hr>
+<h2 id="multidimensional-parameter-sweeps">Multidimensional parameter sweeps<a class="headerlink" href="#multidimensional-parameter-sweeps" title="Permanent link">¶</a></h2>
+<p>To sweep across two independent axes, encode both into a single array index using integer division and modulo:</p>
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">array</span><span class="w"> </span><span class="mi">0</span><span class="o">-</span><span class="mi">11</span><span class="w">    </span><span class="p">#</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">values</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">MODELS</span><span class="o">=</span><span class="p">(</span><span class="s">"lasso"</span><span class="w"> </span><span class="s">"ridge"</span><span class="w"> </span><span class="s">"elastic"</span><span class="p">)</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">LAMBDAS</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="mf">10.0</span><span class="p">)</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">N_LAMBDA</span><span class="o">=</span><span class="cp">$</span><span class="p">{#</span><span class="n">LAMBDAS</span><span class="p">[</span><span class="o">@</span><span class="p">]}</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">MODEL</span><span class="o">=</span><span class="cp">$</span><span class="p">{</span><span class="n">MODELS</span><span class="p">[</span><span class="cp">$(</span><span class="p">(</span><span class="w"> </span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">N_LAMBDA</span><span class="w"> </span><span class="p">))]}</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">LAMBDA</span><span class="o">=</span><span class="cp">$</span><span class="p">{</span><span class="n">LAMBDAS</span><span class="p">[</span><span class="cp">$(</span><span class="p">(</span><span class="w"> </span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">N_LAMBDA</span><span class="w"> </span><span class="p">))]}</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="n">echo</span><span class="w"> </span><span class="s">"Model: ${MODEL}, Lambda: ${LAMBDA}"</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="n">python</span><span class="w"> </span><span class="n">train</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="s">"$MODEL"</span><span class="w"> </span><span class="o">--</span><span class="n">lambda</span><span class="w"> </span><span class="s">"$LAMBDA"</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="err">```</span><span class="n">train</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="s">"$MODEL"</span><span class="w"> </span><span class="o">--</span><span class="n">lambda</span><span class="w"> </span><span class="s">"$LAMBDA"</span>
+</span></code></pre></div>
+<p>This produces all 12 combinations from a single array of 0–11.</p>
+<hr>
+<h2 id="monitoring-array-jobs">Monitoring array jobs<a class="headerlink" href="#monitoring-array-jobs" title="Permanent link">¶</a></h2>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">squeue</span> <span class="o">--</span><span class="n">me</span>                  <span class="c1"># all your jobs, including arrays</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">squeue</span> <span class="o">--</span><span class="n">me</span> <span class="o">-</span><span class="n">j</span> <span class="o">&lt;</span><span class="n">jobid</span><span class="o">&gt;</span>       <span class="c1"># tasks for a specific array job</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">sacct</span> <span class="o">-</span><span class="n">j</span> <span class="o">&lt;</span><span class="n">jobid</span><span class="o">&gt;</span> <span class="o">--</span><span class="nb">format</span><span class="o">=</span><span class="n">JobID</span><span class="p">,</span><span class="n">State</span><span class="p">,</span><span class="n">Elapsed</span><span class="p">,</span><span class="n">MaxRSS</span>
+</span></code></pre></div>
+<p>Individual tasks appear in the queue as <code>&lt;jobid&gt;_&lt;taskid&gt;</code>.</p>
+<hr>
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://slurm.schedmd.com/job_array.html">Slurm job array documentation</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../finding_job_efficiency/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Finding Job Efficiency">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Finding Job Efficiency
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../using_gpus/" class="md-footer__link md-footer__link--next" aria-label="Next: GPU Resources on BMRC">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                GPU Resources on BMRC
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      KIR - Research Computing Hub is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.expand   Removing this for the moment to avoid the meny being expanded by default", "navigation.top", "navigation.footer", "navigation.instant", "content.code.copy", "content.code.annotate", "navigation.prune", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/featured-toggle.js"></script>
+      
+        <script src="../../javascripts/link_content_tabs_to_cards.js"></script>
+      
+        <script src="../../javascripts/status.js"></script>
+      
+        <script src="../../javascripts/status-card.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/slurm-generator.js" defer=""></script>
+      
+        <script src="../../javascripts/parallel-laws.js" defer=""></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

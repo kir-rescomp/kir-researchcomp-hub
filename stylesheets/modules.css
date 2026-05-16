@@ -1,0 +1,127 @@
+/* ── Module Catalogue ────────────────────────────────── */
+
+#mod-search {
+  width: 100%;
+  padding: .55rem .85rem;
+  font-size: 1rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: .25rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  box-sizing: border-box;
+  margin-bottom: .75rem;
+  outline: none;
+  transition: border-color .15s;
+}
+#mod-search:focus {
+  border-color: var(--md-primary-fg-color);
+}
+
+.mod-filter-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .75rem;
+}
+.mod-filter-label {
+  font-size: .8rem;
+  color: var(--md-default-fg-color--light);
+  margin-right: .25rem;
+}
+.mod-era-btn {
+  padding: .2rem .75rem;
+  border-radius: 1rem;
+  border: 1px solid var(--md-primary-fg-color);
+  background: transparent;
+  color: var(--md-primary-fg-color);
+  cursor: pointer;
+  font-size: .8rem;
+  font-family: var(--md-code-font);
+  transition: background .15s, color .15s;
+}
+.mod-era-btn:hover  { background: var(--md-primary-fg-color--light); }
+.mod-era-btn.active {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+#mod-meta {
+  font-size: .82rem;
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 .5rem;
+}
+
+#mod-table-wrap { overflow-x: auto; }
+
+#mod-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+}
+#mod-table th {
+  text-align: left;
+  padding: .4rem .6rem;
+  border-bottom: 2px solid var(--md-primary-fg-color);
+  white-space: nowrap;
+}
+.mod-hint {
+  font-weight: normal;
+  font-size: .75rem;
+  color: var(--md-default-fg-color--light);
+}
+#mod-table td {
+  padding: .35rem .6rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  vertical-align: top;
+}
+#mod-table tbody tr:hover td {
+  background: var(--md-code-bg-color);
+}
+
+.mod-name {
+  font-family: var(--md-code-font);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.mod-name a {
+  color: var(--md-typeset-a-color);
+  text-decoration: none;
+}
+.mod-name a:hover { text-decoration: underline; }
+
+.mod-n-ver {
+  display: block;
+  font-family: var(--md-code-font);
+  font-size: .72rem;
+  color: var(--md-default-fg-color--light);
+  margin-top: .1rem;
+}
+
+.mod-pills { display: flex; flex-wrap: wrap; gap: .2rem .3rem; }
+.mod-pill {
+  display: inline-block;
+  font-family: var(--md-code-font);
+  font-size: .73rem;
+  padding: .05rem .4rem;
+  border-radius: .75rem;
+  background: var(--md-code-bg-color);
+  color: var(--md-default-fg-color);
+  white-space: nowrap;
+}
+.mod-pill.is-default {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-weight: 700;
+}
+.mod-pill-era {
+  font-size: .65rem;
+  opacity: .65;
+  margin-left: .2rem;
+}
+
+#mod-status {
+  font-size: .85rem;
+  color: var(--md-default-fg-color--light);
+  margin-top: .5rem;
+}

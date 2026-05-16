@@ -1,0 +1,1792 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="The Kennedy Institute of Rheumatology, NDORMS, University of Oxford">
+      
+      
+        <link rel="canonical" href="https://kir-rescomp.github.io/kir-researchcomp-hub/software/application_specific_notes/pixi/">
+      
+      
+        <link rel="prev" href="../Python/">
+      
+      
+        <link rel="next" href="../R/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/icons/kir_standalone_logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Pixi - KIR - Research Computing Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Mukta";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/colors.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/side_bar_menu.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/background_colors.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/header_alignment.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/landing_page_hero.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_dracula.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_monokai.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_github_dark.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_nord.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_onedark.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/indexpage_featured_scroll_behavoiour.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/indexpage_cards_buttons.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/morphing-dna-network.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/indexpage_episodes_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/tables.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/gradient_peek.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/tabs_shading.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/status.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/status-card.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/modules.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/technical_essays_indexpage_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/parallel-laws.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pixi" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KIR - Research Computing Hub" class="md-header__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KIR - Research Computing Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pixi
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KIR - Research Computing Hub" class="md-nav__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    KIR - Research Computing Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../getting-started/account/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../file-system/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File system
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Software
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_manage_with_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environment Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../available_modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module Catalogue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application specific notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Application specific notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apptainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apptainer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pixi
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pixi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#loading-pixi-on-bmrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading Pixi on BMRC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-initialise-a-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Initialise a project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Add packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-run-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Run your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-commit-your-lock-file-to-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Commit your lock file to Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-pixi-in-slurm-job-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Pixi in Slurm job scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pypi-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyPI packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrating-from-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migrating from conda
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrating from conda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-an-environmentyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From an environment.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-an-active-conda-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From an active conda environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying the migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-pixi-is-faster-and-more-reproducible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Pixi is faster and more reproducible
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../R/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snakemake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snakemake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../batch-computing/working_with_scheduler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../interactive-computing/openondemand/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../data-transfer/cli_transfer/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data transfer
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../parallel-computing/scaling_limits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallel computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../status/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../technical_essays/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical essays
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#loading-pixi-on-bmrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading Pixi on BMRC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-initialise-a-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Initialise a project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Add packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-run-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Run your code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-commit-your-lock-file-to-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Commit your lock file to Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-pixi-in-slurm-job-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Pixi in Slurm job scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pypi-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyPI packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrating-from-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migrating from conda
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrating from conda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-an-environmentyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From an environment.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-an-active-conda-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From an active conda environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying the migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-pixi-is-faster-and-more-reproducible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Pixi is faster and more reproducible
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="pixi">Pixi<a class="headerlink" href="#pixi" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>a faster, reproducible replacement for <code>conda</code>/<code>mamba</code></p>
+</blockquote>
+<p><a href="https://pixi.prefix.dev/latest/">Pixi</a> is a package manager built on the <strong>conda</strong> ecosystem — it resolves packages from the same channels (<code>conda-forge</code>, <code>bioconda</code>) and produces fully compatible environments. It is written in Rust, uses a significantly faster solver, and is designed around project-level reproducibility from the start.</p>
+<div class="admonition lightbulb">
+<p class="admonition-title">Why switch?</p>
+<p>If you already use <code>conda</code> or <code>mamba</code>, the learning curve is minimal. The payoff is faster installs, exact reproducibility, and no base environment cluttering your shell.</p>
+</div>
+<hr>
+<div class="nord">
+<h2 id="loading-pixi-on-bmrc">Loading Pixi on BMRC<a class="headerlink" href="#loading-pixi-on-bmrc" title="Permanent link">¶</a></h2>
+<p>Pixi is available as a module — there is no base environment to activate, no <code>conda init</code>, and no changes to your <code>.bashrc</code>:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">module</span> <span class="n">load</span> <span class="n">Pixi</span>
+</span></code></pre></div>
+<p>Each project carries its own isolated environment stored in a <code>.pixi/</code> directory inside the project folder.</p>
+<hr>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">¶</a></h2>
+<h3 id="1-initialise-a-project">1. Initialise a project<a class="headerlink" href="#1-initialise-a-project" title="Permanent link">¶</a></h3>
+<p>In your project directory:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">pixi</span> <span class="n">init</span> <span class="o">.</span>
+</span></code></pre></div>
+<p>This creates a <code>pixi.toml</code> file that describes your project's dependencies, channels, and platforms. It is the equivalent of <code>environment.yml</code>, but machine-written and kept in sync automatically.</p>
+<h3 id="2-add-packages">2. Add packages<a class="headerlink" href="#2-add-packages" title="Permanent link">¶</a></h3>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># From conda-forge (default)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">pixi</span> <span class="n">add</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">scanpy</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># From bioconda</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">pixi</span> <span class="n">add</span> <span class="o">--</span><span class="n">channel</span> <span class="n">bioconda</span> <span class="n">samtools</span>
+</span></code></pre></div>
+<p>Every <code>pixi add</code> resolves the full dependency graph and updates <code>pixi.lock</code> — a file that records the exact URL and hash of every package for every platform.</p>
+<h3 id="3-run-your-code">3. Run your code<a class="headerlink" href="#3-run-your-code" title="Permanent link">¶</a></h3>
+<p>Rather than activating an environment, use <code>pixi run</code>:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">pixi</span> <span class="n">run</span> <span class="n">python</span> <span class="n">my_analysis</span><span class="o">.</span><span class="n">py</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">pixi</span> <span class="n">run</span> <span class="n">jupyter</span> <span class="n">lab</span>
+</span></code></pre></div>
+<p>For interactive sessions (e.g. debugging, exploratory work), you can drop into a shell with the environment active:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">pixi</span> <span class="n">shell</span>
+</span></code></pre></div>
+<h3 id="4-commit-your-lock-file-to-git">4. Commit your lock file to Git<a class="headerlink" href="#4-commit-your-lock-file-to-git" title="Permanent link">¶</a></h3>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">git</span> <span class="n">add</span> <span class="n">pixi</span><span class="o">.</span><span class="n">toml</span> <span class="n">pixi</span><span class="o">.</span><span class="n">lock</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">"Add pixi environment"</span>
+</span></code></pre></div>
+<p>Anyone cloning the repository can then reproduce the exact environment with:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">pixi</span> <span class="n">install</span>
+</span></code></pre></div>
+<hr>
+<h2 id="using-pixi-in-slurm-job-scripts">Using Pixi in Slurm job scripts<a class="headerlink" href="#using-pixi-in-slurm-job-scripts" title="Permanent link">¶</a></h2>
+<p>Replace <code>conda activate</code> with <code>pixi run</code> in your job scripts:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">conda / mamba</label><label for="__tabbed_1_2">Pixi</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">#SBATCH ...</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">source</span> <span class="n">activate</span> <span class="n">myenv</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">python</span> <span class="n">my_analysis</span><span class="o">.</span><span class="n">py</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1">#SBATCH ...</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">module</span> <span class="n">load</span> <span class="n">Pixi</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">pixi</span> <span class="n">run</span> <span class="n">python</span> <span class="n">my_analysis</span><span class="o">.</span><span class="n">py</span>
+</span></code></pre></div>
+<p>If your script runs many commands and you want to avoid prefixing each one with <code>pixi run</code>, use the shell hook to activate the environment in-place:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">module</span> <span class="n">load</span> <span class="n">Pixi</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">eval</span> <span class="s2">"$(pixi shell-hook)"</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">python</span> <span class="n">step_one</span><span class="o">.</span><span class="n">py</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">Rscript</span> <span class="n">step_two</span><span class="o">.</span><span class="n">R</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<hr>
+<h2 id="pypi-packages">PyPI packages<a class="headerlink" href="#pypi-packages" title="Permanent link">¶</a></h2>
+<p>Pixi has native PyPI support alongside conda packages — no separate <code>pip install</code> calls needed. Add a <code>[pypi-dependencies]</code> section to your <code>pixi.toml</code>:</p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">[pypi-dependencies]</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">my-package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;=1.2.0"</span>
+</span></code></pre></div>
+<p>Or via the command line:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">pixi</span> <span class="n">add</span> <span class="o">--</span><span class="n">pypi</span> <span class="n">my</span><span class="o">-</span><span class="n">package</span>
+</span></code></pre></div>
+</div>
+<p>Pixi resolves conda and PyPI dependencies together, avoiding the silent conflicts that can arise from mixing <code>conda install</code> and <code>pip install</code>.</p>
+<hr>
+<h2 id="command-reference">Command reference<a class="headerlink" href="#command-reference" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>conda / mamba</th>
+<th>Pixi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Install package</td>
+<td><code>conda install numpy</code></td>
+<td><code>pixi add numpy</code></td>
+</tr>
+<tr>
+<td>Install from bioconda</td>
+<td><code>conda install -c bioconda samtools</code></td>
+<td><code>pixi add --channel bioconda samtools</code></td>
+</tr>
+<tr>
+<td>Run command in environment</td>
+<td><code>conda activate myenv &amp;&amp; python ...</code></td>
+<td><code>pixi run python ...</code></td>
+</tr>
+<tr>
+<td>Interactive shell</td>
+<td><code>conda activate myenv</code></td>
+<td><code>pixi shell</code></td>
+</tr>
+<tr>
+<td>List installed packages</td>
+<td><code>conda list</code></td>
+<td><code>pixi list</code></td>
+</tr>
+<tr>
+<td>Reproduce environment</td>
+<td><code>conda env create -f environment.yml</code></td>
+<td><code>pixi install</code></td>
+</tr>
+<tr>
+<td>Update all packages</td>
+<td><code>conda update --all</code></td>
+<td><code>pixi update</code></td>
+</tr>
+<tr>
+<td>Remove environment</td>
+<td><code>conda env remove -n myenv</code></td>
+<td><code>rm -rf .pixi/</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="nord">
+<h2 id="migrating-from-conda">Migrating from conda<a class="headerlink" href="#migrating-from-conda" title="Permanent link">¶</a></h2>
+<h3 id="from-an-environmentyml">From an <code>environment.yml</code><a class="headerlink" href="#from-an-environmentyml" title="Permanent link">¶</a></h3>
+<p>If you have an existing conda environment file, Pixi can import it directly:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">pixi</span> <span class="n">init</span> <span class="o">--</span><span class="kn">import</span><span class="w"> </span><span class="nn">environment.yml</span>
+</span></code></pre></div>
+<p>This creates a <code>pixi.toml</code> from your channels, dependencies, and constraints, then generates a fresh <code>pixi.lock</code>. Review the output to confirm everything looks correct before removing the old environment.</p>
+<h3 id="from-an-active-conda-environment">From an active conda environment<a class="headerlink" href="#from-an-active-conda-environment" title="Permanent link">¶</a></h3>
+<p>If you do not have an <code>environment.yml</code> but have an active environment, export it first:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">conda</span> <span class="n">activate</span> <span class="n">myenv</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">conda</span> <span class="n">env</span> <span class="n">export</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">history</span> <span class="o">&gt;</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">pixi</span> <span class="n">init</span> <span class="o">--</span><span class="kn">import</span><span class="w"> </span><span class="nn">environment.yml</span>
+</span></code></pre></div>
+<div class="admonition note-sticky">
+<p class="admonition-title"><code>--from-history</code></p>
+<p>This exports only the packages you explicitly requested, not the full transitive dependency tree. Pixi will re-resolve dependencies from scratch, which gives a cleaner result than exporting the entire pinned environment.</p>
+</div>
+<h3 id="verifying-the-migration">Verifying the migration<a class="headerlink" href="#verifying-the-migration" title="Permanent link">¶</a></h3>
+<p>Once imported, check that everything resolves as expected:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">pixi</span> <span class="n">install</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">pixi</span> <span class="n">run</span> <span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"import scanpy; print(scanpy.__version__)"</span>
+</span></code></pre></div>
+</div>
+<hr>
+<h2 id="why-pixi-is-faster-and-more-reproducible">Why Pixi is faster and more reproducible<a class="headerlink" href="#why-pixi-is-faster-and-more-reproducible" title="Permanent link">¶</a></h2>
+<p><strong>Speed.</strong> Benchmarked on a BMRC head node, creating a <code>scanpy</code> + <code>anndata</code> environment:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Command</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mamba</td>
+<td><code>mamba create -n bench_env -c conda-forge -c bioconda scanpy anndata -y</code></td>
+<td>1 min 39 s</td>
+</tr>
+<tr>
+<td>Pixi</td>
+<td><code>pixi add scanpy scipy</code></td>
+<td>14.9 s</td>
+</tr>
+</tbody>
+</table>
+<p>Pixi resolved and installed the same packages <strong>×6.7 faster</strong> than mamba — and mamba is already the fastest conda-compatible solver available.</p>
+<p><strong>Reproducibility.</strong> Conda environments created from <code>environment.yml</code> are not fully reproducible: running <code>conda env create</code> six months later can silently install different transitive dependency versions as packages on conda-forge update. The <code>--explicit</code> workaround produces a platform-specific file that cannot be shared between Linux and macOS.</p>
+<p>Pixi solves this with <code>pixi.lock</code>, which records the exact URL and hash of every package, for every platform, in a single human-readable file:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>conda + <code>environment.yml</code></th>
+<th>Pixi + <code>pixi.lock</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exact reproducibility</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Cross-platform lock file</td>
+<td>No (<code>--explicit</code> is Linux-only)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>VCS-friendly</td>
+<td>Partial</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Auto-updated on changes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../Python/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Python">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Python
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../R/" class="md-footer__link md-footer__link--next" aria-label="Next: R">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                R
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      KIR - Research Computing Hub is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.expand   Removing this for the moment to avoid the meny being expanded by default", "navigation.top", "navigation.footer", "navigation.instant", "content.code.copy", "content.code.annotate", "navigation.prune", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../javascripts/featured-toggle.js"></script>
+      
+        <script src="../../../javascripts/link_content_tabs_to_cards.js"></script>
+      
+        <script src="../../../javascripts/status.js"></script>
+      
+        <script src="../../../javascripts/status-card.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../javascripts/slurm-generator.js" defer=""></script>
+      
+        <script src="../../../javascripts/parallel-laws.js" defer=""></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,0 +1,2018 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="The Kennedy Institute of Rheumatology, NDORMS, University of Oxford">
+      
+      
+        <link rel="canonical" href="https://kir-rescomp.github.io/kir-researchcomp-hub/batch-computing/using_gpus/">
+      
+      
+        <link rel="prev" href="../slurm_job_arrays/">
+      
+      
+        <link rel="next" href="../../interactive-computing/openondemand/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/icons/kir_standalone_logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>GPU Resources on BMRC - KIR - Research Computing Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Mukta";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/colors.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/side_bar_menu.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/background_colors.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/header_alignment.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/landing_page_hero.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_dracula.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_monokai.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_github_dark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_nord.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_onedark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_featured_scroll_behavoiour.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_cards_buttons.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/morphing-dna-network.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_episodes_cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tables.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/gradient_peek.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tabs_shading.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/status.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/status-card.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/modules.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/technical_essays_indexpage_cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/parallel-laws.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gpu-resources-on-bmrc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KIR - Research Computing Hub" class="md-header__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KIR - Research Computing Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GPU Resources on BMRC
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KIR - Research Computing Hub" class="md-nav__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    KIR - Research Computing Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../getting-started/account/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../file-system/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File system
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../software/software_manage_with_modules/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch computing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Batch computing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with job scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finding_job_efficiency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finding Job Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm_job_arrays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slurm job arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Resources on BMRC
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Resources on BMRC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-jobs-require-a-separate-slurm-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛎️ GPU Jobs Require a Separate Slurm Account
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU Partitions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU Partitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#partition-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partition Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partition Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-request-a-gpu-on-a-script-for-sbatch-or-via-srun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to request a GPU on a script for sbatch or via srun
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gpu_interactive-partition-is-heterogeneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The gpu_interactive Partition is Heterogeneous
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-runtime-and-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting Runtime and QOS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Selecting Runtime and QOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-qos-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU QOS Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Limits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p100-gpu-compatibility-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ P100 GPU Compatibility Warning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-job-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Job Scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Allocation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Allocation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU Cores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-memory-ram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Memory (RAM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-gres-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU GRES Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Help
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../interactive-computing/openondemand/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../data-transfer/cli_transfer/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data transfer
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../parallel-computing/scaling_limits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallel computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../status/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../technical_essays/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical essays
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-jobs-require-a-separate-slurm-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛎️ GPU Jobs Require a Separate Slurm Account
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU Partitions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU Partitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#partition-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partition Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partition Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-request-a-gpu-on-a-script-for-sbatch-or-via-srun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to request a GPU on a script for sbatch or via srun
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gpu_interactive-partition-is-heterogeneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The gpu_interactive Partition is Heterogeneous
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-runtime-and-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting Runtime and QOS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Selecting Runtime and QOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-qos-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU QOS Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Limits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p100-gpu-compatibility-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ P100 GPU Compatibility Warning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-job-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Job Scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Allocation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Allocation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU Cores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-memory-ram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Memory (RAM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-gres-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU GRES Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Help
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="gpu-resources-on-bmrc">GPU Resources on BMRC<a class="headerlink" href="#gpu-resources-on-bmrc" title="Permanent link">¶</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>The BMRC cluster provides GPU-accelerated compute nodes for machine learning, deep learning, and other GPU-intensive workloads. 
+These nodes feature NVIDIA GPUs with varying specifications to suit different computational requirements.</p>
+<p>Due to rapidly evolving hardware capabilities, our GPU nodes have considerable variation in CPU, RAM, and GPU configurations. 
+This guide will help you understand the available resources and how to request them efficiently.</p>
+<details class="circle-info-2">
+<summary>More information</summary>
+<p>This documentation covers the essentials of GPU types available on the cluster and how to select and request them. For an extensive guide on choosing the right GPU for your codebase, benchmarking, and GPU profiling, refer to our <a href="https://kir-rescomp.github.io/training-gpu-profiling/">GPU profiling training material</a>.</p>
+<p></p><div>
+<a href="https://https://kir-rescomp.github.io/training-gpu-profiling/" class="kp-card kp-training" style="max-width: 480px; text-decoration: none;">
+  <div class="kp-header">
+    <div class="kp-num">🎓</div>
+    <div class="kp-meta">
+      <div class="kp-label">KIR Research Computing</div>
+      <p class="kp-title">GPU Profiling →</p>
+    </div>
+  </div>
+  <div class="kp-body">
+    <ul class="kp-topics">
+      <li>Choosing a GPU for your workfload</li>
+      <li>Inspecting a live GPU job with srun <code>--overlap</code></li>
+      <li>Instrumenting a Slurm batch script for GPU monitoring</li>
+      <li>Advanced: profiling GPU code with Nsight Systems</li>
+    </ul>
+  </div>
+</a>
+</div><p></p>
+</details>
+<hr>
+<h2 id="gpu-jobs-require-a-separate-slurm-account">🛎️ GPU Jobs Require a Separate Slurm Account<a class="headerlink" href="#gpu-jobs-require-a-separate-slurm-account" title="Permanent link">¶</a></h2>
+<div class="admonition cloud-bolt">
+<p class="admonition-title">Use <code>gpu_kir.prj</code> for GPU jobs <strong>only</strong></p>
+<p>All GPU jobs <strong><mark>must</mark></strong> specify the dedicated GPU Slurm account:
+</p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">#</span><span class="w"> </span><span class="n">In</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">batch</span><span class="w"> </span><span class="n">script</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">account</span><span class="w"> </span><span class="n">gpu_kir</span><span class="p">.</span><span class="n">prj</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">#</span><span class="w"> </span><span class="n">In</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">interactive</span><span class="w"> </span><span class="n">session</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">srun</span><span class="w"> </span><span class="o">--</span><span class="n">account</span><span class="w"> </span><span class="n">gpu_kir</span><span class="p">.</span><span class="n">prj</span><span class="w"> </span><span class="o">..</span><span class="p">.</span>
+</span></code></pre></div>
+</div><p></p>
+<p><strong><mark>Do not use <code>gpu_kir.prj</code> for CPU-only jobs.</mark></strong> GPU allocations are billed at a higher rate than CPU allocations — using the GPU account for CPU jobs will result 
+in our project being charged at the more expensive GPU rate unnecessarily.</p>
+</div>
+<hr>
+<h2 id="gpu-partitions">GPU Partitions<a class="headerlink" href="#gpu-partitions" title="Permanent link">¶</a></h2>
+<p>GPU resources are available through the following Slurm partitions:</p>
+<h3 id="partition-table">Partition Table<a class="headerlink" href="#partition-table" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>GPUs</th>
+<th>GPU Memory (GB)</th>
+<th>Max Runtime (hrs)</th>
+<th>Default CPUs</th>
+<th>Default Memory (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Batch partitions</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>gpu_p100_16gb</code></td>
+<td>12</td>
+<td>16</td>
+<td>60</td>
+<td>5</td>
+<td>90</td>
+</tr>
+<tr>
+<td><code>gpu_v100_16gb</code></td>
+<td>4</td>
+<td>16</td>
+<td>60</td>
+<td>11</td>
+<td>60</td>
+</tr>
+<tr>
+<td><code>gpu_v100_32gb</code></td>
+<td>2</td>
+<td>32</td>
+<td>60</td>
+<td>7</td>
+<td>750</td>
+</tr>
+<tr>
+<td><code>gpu_rtx8000_48gb</code></td>
+<td>12</td>
+<td>48</td>
+<td>60</td>
+<td>7</td>
+<td>185</td>
+</tr>
+<tr>
+<td><code>gpu_a100_40gb</code></td>
+<td>16</td>
+<td>40</td>
+<td>60</td>
+<td>7</td>
+<td>90</td>
+</tr>
+<tr>
+<td><code>gpu_a100_80gb</code></td>
+<td>24</td>
+<td>80</td>
+<td>60</td>
+<td>11</td>
+<td>120</td>
+</tr>
+<tr>
+<td><code>gpu_gh200_144gb</code></td>
+<td>40</td>
+<td>144</td>
+<td>TBD</td>
+<td>72</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><strong>Interactive partition</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>gpu_interactive</code></td>
+<td>18</td>
+<td>24</td>
+<td>12</td>
+<td>7</td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+<h3 id="partition-selection">Partition Selection<a class="headerlink" href="#partition-selection" title="Permanent link">¶</a></h3>
+<ul>
+<li>Use <code>gpu_interactive</code> for interactive development, debugging, and testing (12-hour limit, 1 GPU per user)</li>
+<li>Use a batch partition for non-interactive workloads — prefer partitions with sufficient GPU memory for your job rather than requesting the largest available</li>
+<li><code>gpu_gh200_144gb</code> is a high-capability partition; runtime limits are still to be confirmed</li>
+<li><code>gpu_v100_32gb</code> has a very high default memory allocation (750 GB) — only request what your job actually needs</li>
+</ul>
+<h2 id="how-to-request-a-gpu-on-a-script-for-sbatch-or-via-srun">How to request a GPU on a script  for <code>sbatch</code> or via <code>srun</code><a class="headerlink" href="#how-to-request-a-gpu-on-a-script-for-sbatch-or-via-srun" title="Permanent link">¶</a></h2>
+<p>The recommended methods for requesting GPUs are <code>--gres</code> or <code>--gpus-per-node</code>:</p>
+<p><strong>Using <code>--gres</code> (Generic Resource Scheduling):</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1"><code>sbatch</code></label><label for="__tabbed_1_2"><code>srun</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p></p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">account</span><span class="w">       </span><span class="n">gpu_kir</span><span class="p">.</span><span class="n">prj</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">partition</span><span class="w">     </span><span class="n">gpu_rtx8000_48gb</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gres</span><span class="w">          </span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span>
+</span></code></pre></div>
+</div><p></p>
+<ul>
+<li><code>#SBATCH --gres gpu:1</code> can be replaced with <code>#SBATCH --gpus-per-node 1</code></li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p></p><div class="nord" markdown="1">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">srun</span> <span class="o">--</span><span class="n">account</span> <span class="n">gpu_kir</span><span class="o">.</span><span class="n">prj</span> <span class="o">--</span><span class="n">partition</span> <span class="n">gpu_rtx8000_48gb</span> <span class="o">--</span><span class="n">gres</span> <span class="n">gpu</span><span class="p">:</span><span class="mf">1.</span><span class="o">..</span>
+</span></code></pre></div>
+</div><p></p>
+</div>
+</div>
+</div>
+<h2 id="the-gpu_interactive-partition-is-heterogeneous">The <code>gpu_interactive</code> Partition is Heterogeneous<a class="headerlink" href="#the-gpu_interactive-partition-is-heterogeneous" title="Permanent link">¶</a></h2>
+<p>Unlike the batch partitions — where the partition name implies a single GPU type — <code>gpu_interactive</code> contains multiple GPU models across its nodes. 
+If you submit without specifying a type, Slurm will assign whichever GPU is available.</p>
+<p>To see what is currently in the partition:</p>
+<div class="nord">
+<p></p><div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">sinfo</span> <span class="o">-</span><span class="n">p</span> <span class="n">gpu_interactive</span> <span class="o">-</span><span class="n">o</span> <span class="s2">"%N </span><span class="si">%G</span><span class="s2">"</span> <span class="o">-</span><span class="n">N</span>
+</span></code></pre></div>
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">NODELIST</span><span class="w"> </span><span class="n">GRES</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">compg019</span><span class="w"> </span><span class="n">gpu</span><span class="p">:</span><span class="nc">quadro</span><span class="o">-</span><span class="n">rtx6000</span><span class="p">:</span><span class="mi">4</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">compg020</span><span class="w"> </span><span class="n">gpu</span><span class="p">:</span><span class="nc">quadro</span><span class="o">-</span><span class="n">rtx6000</span><span class="p">:</span><span class="mi">4</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">compg021</span><span class="w"> </span><span class="n">gpu</span><span class="p">:</span><span class="nc">quadro</span><span class="o">-</span><span class="n">rtx6000</span><span class="p">:</span><span class="mi">4</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">compg047</span><span class="w"> </span><span class="n">gpu</span><span class="p">:</span><span class="nc">l4</span><span class="o">-</span><span class="mi">24</span><span class="n">gb</span><span class="p">:</span><span class="mi">6</span>
+</span></code></pre></div><p></p>
+</div>
+<div class="admonition file-code">
+<p class="admonition-title">Select a Specific GPU type from <code>gpu_interactive</code> partition</p>
+<p>If you need a specific GPU model, use the full GRES type name as reported by <code>sinfo</code>:
+</p><div class="nord" markdown="1">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Interactive session pinned to a Quadro RTX 6000</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">srun</span> <span class="o">--</span><span class="n">account</span> <span class="n">gpu_kir</span><span class="o">.</span><span class="n">prj</span> <span class="o">-</span><span class="n">p</span> <span class="n">gpu_interactive</span> <span class="o">--</span><span class="n">gres</span> <span class="n">gpu</span><span class="p">:</span><span class="n">quadro</span><span class="o">-</span><span class="n">rtx6000</span><span class="p">:</span><span class="mi">1</span> <span class="o">--</span><span class="n">pty</span> <span class="n">bash</span>
+</span></code></pre></div><p></p>
+<p></p><div class="language-rust highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">#</span><span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">batch</span><span class="w"> </span><span class="n">script</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">account</span><span class="w">    </span><span class="n">gpu_kir</span><span class="p">.</span><span class="n">prj</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">partition</span><span class="w">  </span><span class="n">gpu_interactive</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gres</span><span class="w">       </span><span class="n">gpu</span><span class="p">:</span><span class="nc">quadro</span><span class="o">-</span><span class="n">rtx6000</span><span class="p">:</span><span class="mi">1</span>
+</span></code></pre></div>
+The string between <code>gpu:</code> and <code>:N</code> must match the <code>GRES</code> column in <code>sinfo</code> exactly. If you omit this and just request <code>--gres gpu:1</code>, Slurm will schedule you on whichever node has a free GPU — which may or may not be the model you need.<p></p>
+<p><strong>Using GPU Constraints</strong></p>
+<p>Another way to request <strong>a</strong> GPU type of interest is to use <code>--constraint</code></p>
+<p></p><div class="language-rust highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">account</span><span class="w">    </span><span class="n">gpu_kir</span><span class="p">.</span><span class="n">prj</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">partition</span><span class="w">  </span><span class="n">gpu_interactive</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gres</span><span class="w">       </span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">constraint</span><span class="w"> </span><span class="n">quadro</span><span class="o">-</span><span class="n">rtx6000</span>
+</span></code></pre></div>
+</div><p></p>
+</div>
+<hr>
+<h2 id="selecting-runtime-and-qos">Selecting Runtime and QOS<a class="headerlink" href="#selecting-runtime-and-qos" title="Permanent link">¶</a></h2>
+<p>The maximum runtime for most GPU partitions is 60 hours. If you know your job will finish sooner, you can apply a <strong>Quality of Service (QOS)</strong> at submission. This gives your job a significant priority boost in the queue and applies an appropriate runtime cap.</p>
+<p>The priority boost is greatest for jobs under 4 hours, followed by 24 hours — 60-hour jobs receive no boost.</p>
+<h3 id="gpu-qos-table">GPU QOS Table<a class="headerlink" href="#gpu-qos-table" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>QOS Name</th>
+<th>Runtime (hrs)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gpu_bmrc_4hr</code></td>
+<td>4</td>
+<td>Highest priority boost</td>
+</tr>
+<tr>
+<td><code>gpu_bmrc_24hr</code></td>
+<td>24</td>
+<td>Moderate priority boost</td>
+</tr>
+</tbody>
+</table>
+<p>To apply a one of the above QOS at submission:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">sbatch</span> <span class="o">--</span><span class="n">account</span> <span class="n">gpu_kir</span><span class="o">.</span><span class="n">prj</span> <span class="o">-</span><span class="n">p</span> <span class="n">gpu_a100_80gb</span> <span class="o">--</span><span class="n">qos</span> <span class="n">gpu_bmrc_4hr</span> <span class="o">--</span><span class="n">gres</span> <span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="n">your_script</span><span class="o">.</span><span class="n">sh</span>
+</span></code></pre></div>
+</div>
+<hr>
+<h2 id="resource-limits">Resource Limits<a class="headerlink" href="#resource-limits" title="Permanent link">¶</a></h2>
+<div class="admonition circle-info">
+<p class="admonition-title">GPU usage limits</p>
+<p>GPUs are a limited resource under considerable demand. Limits are applied to ensure fair throughput across all projects and to allow for scheduled maintenance.</p>
+<ul>
+<li><strong>Per-project GPU limit:</strong> 24 GPUs in use simultaneously (across all partitions)</li>
+<li><strong>Minimum per job:</strong> at least 1 GPU must be requested (<code>--gres gpu:1</code>)</li>
+<li><strong>Batch partitions:</strong> 60-hour maximum runtime — this <strong>cannot</strong> be extended</li>
+<li><strong>Interactive partition:</strong> 1 GPU per user, 12-hour maximum runtime</li>
+</ul>
+</div>
+<p>Runtime limits cannot be extended for jobs in normal operation. If your workload exceeds 60 hours, consider:</p>
+<ul>
+<li><strong>Checkpointing</strong> — save model/state periodically and resume from the last checkpoint</li>
+<li><strong>Parallelisation</strong> — break work into smaller independent chunks that fit within shorter runtimes</li>
+</ul>
+<p>Both approaches also improve resilience against unexpected job interruption.</p>
+<hr>
+<h2 id="p100-gpu-compatibility-warning">⚠️ P100 GPU Compatibility Warning<a class="headerlink" href="#p100-gpu-compatibility-warning" title="Permanent link">¶</a></h2>
+<div class="admonition cloud-bolt">
+<p class="admonition-title">P100 GPUs are not compatible with PyTorch 2.0+ or modern ML frameworks</p>
+<p>P100 GPUs have CUDA Compute Capability 6.0. PyTorch 2.0+, TensorFlow 2.12+, JAX, and similar frameworks require Compute Capability 7.0 or higher. Jobs will <strong>fail with cryptic CUDA errors</strong> if inadvertently scheduled on P100 nodes.</p>
+<p><strong>Always exclude P100s for modern ML/DL workloads</strong></p>
+</div>
+<hr>
+<h2 id="example-job-scripts">Example Job Scripts<a class="headerlink" href="#example-job-scripts" title="Permanent link">¶</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Basic PyTorch Training Job</label><label for="__tabbed_2_2">Multi-GPU Training Job</label><label for="__tabbed_2_3">Memory-Intensive Job</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p></p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">account</span><span class="w">        </span><span class="n">gpu_kir</span><span class="p">.</span><span class="n">prj</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">partition</span><span class="w">      </span><span class="n">gpu_a100_80gb</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">qos</span><span class="w">            </span><span class="n">gpu_bmrc_4hr</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gpus</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">node</span><span class="w">  </span><span class="mi">1</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">mem</span><span class="w">            </span><span class="mi">64</span><span class="n">G</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">cpus</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">task</span><span class="w">  </span><span class="mi">8</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">name</span><span class="w">       </span><span class="n">my_training_job</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">output</span><span class="w">         </span><span class="n">logs</span><span class="o">/%</span><span class="n">j</span><span class="p">.</span><span class="n">out</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="n">module</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="n">Python</span><span class="o">/</span><span class="mf">3.11.3</span><span class="o">-</span><span class="n">GCCcore</span><span class="o">-</span><span class="mf">12.3.0</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="n">module</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="n">CUDA</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="n">source</span><span class="w"> </span><span class="o">~/</span><span class="n">venvs</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="n">python</span><span class="w"> </span><span class="n">train_model</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">--</span><span class="n">epochs</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="o">--</span><span class="n">batch</span><span class="o">-</span><span class="n">size</span><span class="w"> </span><span class="mi">32</span>
+</span></code></pre></div>
+</div><p></p>
+</div>
+<div class="tabbed-block">
+<p></p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">account</span><span class="w">        </span><span class="n">gpu_kir</span><span class="p">.</span><span class="n">prj</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">partition</span><span class="w">      </span><span class="n">gpu_a100_40gb</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gres</span><span class="w">           </span><span class="n">gpu</span><span class="p">:</span><span class="mi">4</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">mem</span><span class="w">            </span><span class="mi">200</span><span class="n">G</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">cpus</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">task</span><span class="w">  </span><span class="mi">32</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">name</span><span class="w">       </span><span class="n">multi_gpu_training</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">module</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="n">Python</span><span class="o">/</span><span class="mf">3.11.3</span><span class="o">-</span><span class="n">GCCcore</span><span class="o">-</span><span class="mf">12.3.0</span><span class="w"> </span><span class="n">CUDA</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="n">source</span><span class="w"> </span><span class="o">~/</span><span class="n">venvs</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">torchrun</span><span class="w"> </span><span class="o">--</span><span class="n">nproc_per_node</span><span class="o">=</span><span class="mi">4</span><span class="w"> </span><span class="n">train_distributed</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></div>
+</div><p></p>
+</div>
+<div class="tabbed-block">
+<p></p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">account</span><span class="w">        </span><span class="n">gpu_kir</span><span class="p">.</span><span class="n">prj</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">partition</span><span class="w">      </span><span class="n">gpu_rtx8000_48gb</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gpus</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">node</span><span class="w">  </span><span class="mi">2</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">mem</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">gpu</span><span class="w">    </span><span class="mi">150</span><span class="n">G</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">cpus</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">task</span><span class="w">  </span><span class="mi">16</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">name</span><span class="w">       </span><span class="n">memory_intensive</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="n">module</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="n">Python</span><span class="o">/</span><span class="mf">3.11.3</span><span class="o">-</span><span class="n">GCCcore</span><span class="o">-</span><span class="mf">12.3.0</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">source</span><span class="w"> </span><span class="o">~/</span><span class="n">venvs</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="n">python</span><span class="w"> </span><span class="n">train_large_model</span><span class="p">.</span><span class="n">py</span>
+</span></code></pre></div>
+</div><p></p>
+</div>
+</div>
+</div>
+<hr>
+<h2 id="resource-allocation">Resource Allocation<a class="headerlink" href="#resource-allocation" title="Permanent link">¶</a></h2>
+<h3 id="cpu-cores">CPU Cores<a class="headerlink" href="#cpu-cores" title="Permanent link">¶</a></h3>
+<p>Each GPU slot comes with a default number of CPU cores (see partition table above). To override:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Specify CPUs per GPU</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">sbatch</span> <span class="o">--</span><span class="n">account</span> <span class="n">gpu_kir</span><span class="o">.</span><span class="n">prj</span> <span class="o">-</span><span class="n">p</span> <span class="n">gpu_a100_40gb</span> <span class="o">--</span><span class="n">gres</span> <span class="n">gpu</span><span class="p">:</span><span class="mi">2</span> <span class="o">--</span><span class="n">cpus</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">gpu</span> <span class="mi">4</span> <span class="n">your_script</span><span class="o">.</span><span class="n">sh</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Or specify total CPUs for the job</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">sbatch</span> <span class="o">--</span><span class="n">account</span> <span class="n">gpu_kir</span><span class="o">.</span><span class="n">prj</span> <span class="o">-</span><span class="n">p</span> <span class="n">gpu_a100_40gb</span> <span class="o">--</span><span class="n">gres</span> <span class="n">gpu</span><span class="p">:</span><span class="mi">2</span> <span class="o">-</span><span class="n">c</span> <span class="mi">16</span> <span class="n">your_script</span><span class="o">.</span><span class="n">sh</span>
+</span></code></pre></div>
+</div>
+<h3 id="system-memory-ram">System Memory (RAM)<a class="headerlink" href="#system-memory-ram" title="Permanent link">¶</a></h3>
+<p>Total RAM available scales with the number of GPUs requested: <code>RAM per slot × number of GPUs</code>.</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Specify RAM per GPU</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">sbatch</span> <span class="o">--</span><span class="n">account</span> <span class="n">gpu_kir</span><span class="o">.</span><span class="n">prj</span> <span class="o">-</span><span class="n">p</span> <span class="n">gpu_a100_40gb</span> <span class="o">--</span><span class="n">gres</span> <span class="n">gpu</span><span class="p">:</span><span class="mi">2</span> <span class="o">--</span><span class="n">mem</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">gpu</span> <span class="mi">80</span><span class="n">G</span> <span class="n">your_script</span><span class="o">.</span><span class="n">sh</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Or specify total RAM for the job</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">sbatch</span> <span class="o">--</span><span class="n">account</span> <span class="n">gpu_kir</span><span class="o">.</span><span class="n">prj</span> <span class="o">-</span><span class="n">p</span> <span class="n">gpu_a100_40gb</span> <span class="o">--</span><span class="n">gres</span> <span class="n">gpu</span><span class="p">:</span><span class="mi">2</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">160</span><span class="n">G</span> <span class="n">your_script</span><span class="o">.</span><span class="n">sh</span>
+</span></code></pre></div>
+</div>
+<div class="admonition circle-info">
+<p class="admonition-title">Circle-info</p>
+<p>You can request up to the RAM-per-slot limit shown in the detailed node specifications. For example, compg028 has 187 GB per slot, so requesting 4 GPUs on that node could give you up to 748 GB total RAM.</p>
+</div>
+<hr>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">¶</a></h2>
+<div class="admonition ranking-star">
+<ol>
+<li><strong>Choose the right partition</strong> — use <code>gpu_interactive</code> for development and testing; use a batch partition for production workloads</li>
+<li><strong>Apply a QOS</strong> — if your job will finish in under 4 or 24 hours, use <code>--qos gpu_bmrc_4hr</code> or <code>--qos gpu_bmrc_24hr</code> to improve queue priority</li>
+<li><strong>Request appropriate resources</strong> — don't over-request GPUs, CPUs, or RAM; test with 1 GPU before scaling up</li>
+<li><strong>Exclude P100s for modern ML/DL</strong> — always add <code>--constraint "v100|rtx6000|rtx8000|a100"</code> for PyTorch 2.0+ / TensorFlow 2.12+ jobs</li>
+<li><strong>Monitor your jobs</strong> — use <code>nvidia-smi</code> in interactive sessions; review efficiency after completion with <code>seff &lt;job_id&gt;</code></li>
+<li><strong>Plan for heterogeneity</strong> — different nodes have different CPU/RAM allocations; check the node specs table if you need specific resources</li>
+</ol>
+</div>
+<hr>
+<h2 id="quick-reference">Quick Reference<a class="headerlink" href="#quick-reference" title="Permanent link">¶</a></h2>
+<h3 id="common-commands">Common Commands<a class="headerlink" href="#common-commands" title="Permanent link">¶</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># View available GPUs in a partition</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sinfo<span class="w"> </span>-p<span class="w"> </span>gpu_a100_80gb<span class="w"> </span>-o<span class="w"> </span><span class="s2">"%N %G"</span><span class="w"> </span>-N
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Check GPU queue status</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>squeue<span class="w"> </span>-p<span class="w"> </span>gpu_a100_80gb
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># Submit a GPU job with a 4-hour QOS</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>sbatch<span class="w"> </span>--account<span class="w"> </span>gpu_kir.prj<span class="w"> </span>-p<span class="w"> </span>gpu_a100_80gb<span class="w"> </span>--qos<span class="w"> </span>gpu_bmrc_4hr<span class="w"> </span>--gres<span class="w"> </span>gpu:1<span class="w"> </span>script.sh
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1"># Interactive session</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>srun<span class="w"> </span>--account<span class="w"> </span>gpu_kir.prj<span class="w"> </span>-p<span class="w"> </span>gpu_interactive<span class="w"> </span>--gres<span class="w"> </span>gpu:1<span class="w"> </span>--pty<span class="w"> </span>bash
+</span></code></pre></div>
+<h3 id="gpu-gres-quick-reference">GPU GRES Quick Reference<a class="headerlink" href="#gpu-gres-quick-reference" title="Permanent link">¶</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># P100 (⚠️ avoid for PyTorch 2.0+)</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>--gres<span class="w"> </span>gpu:p100-sxm2-16gb:N
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># V100</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>--gres<span class="w"> </span>gpu:v100-pcie-32gb:N
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>--gres<span class="w"> </span>gpu:v100-sxm2-16gb:N
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="c1"># RTX</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>--gres<span class="w"> </span>gpu:quadro-rtx6000:N
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>--gres<span class="w"> </span>gpu:quadro-rtx8000:N
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="c1"># A100</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>--gres<span class="w"> </span>gpu:a100-pcie-40gb:N
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>--gres<span class="w"> </span>gpu:a100-pcie-80gb:N
+</span></code></pre></div>
+<hr>
+<h2 id="advanced-options">Advanced Options<a class="headerlink" href="#advanced-options" title="Permanent link">¶</a></h2>
+<div class="admonition exclamation">
+<p class="admonition-title">Contact KIR Research Computing before using these options</p>
+<p>The flags <code>--gpus</code>, <code>--gpus-per-task</code>, and <code>--gpus-per-socket</code> are relevant for MPI workloads and can create blocking reservations that affect other users. <strong>Please contact KIR Research Computing Manager before using these options.</strong></p>
+</div>
+<hr>
+<h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">¶</a></h2>
+<ul>
+<li>Check job output files for error messages</li>
+<li>Use <code>scontrol show job &lt;job_id&gt;</code> to inspect job details</li>
+<li>Contact KIR Research Computing at <a href="mailto:kir-rc@kennedy.ox.ac.uk">kir-rc@kennedy.ox.ac.uk</a></li>
+<li>For MPI or advanced GPU scheduling, contact us first to discuss your requirements</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../slurm_job_arrays/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Slurm job arrays">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Slurm job arrays
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../interactive-computing/openondemand/" class="md-footer__link md-footer__link--next" aria-label="Next: Interactive Computing with OnDemand">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Interactive Computing with OnDemand
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      KIR - Research Computing Hub is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.expand   Removing this for the moment to avoid the meny being expanded by default", "navigation.top", "navigation.footer", "navigation.instant", "content.code.copy", "content.code.annotate", "navigation.prune", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../javascripts/featured-toggle.js"></script>
+      
+        <script src="../../javascripts/link_content_tabs_to_cards.js"></script>
+      
+        <script src="../../javascripts/status.js"></script>
+      
+        <script src="../../javascripts/status-card.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/slurm-generator.js" defer=""></script>
+      
+        <script src="../../javascripts/parallel-laws.js" defer=""></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

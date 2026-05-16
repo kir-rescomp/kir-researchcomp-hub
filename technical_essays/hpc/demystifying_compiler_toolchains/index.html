@@ -1,0 +1,1683 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="The Kennedy Institute of Rheumatology, NDORMS, University of Oxford">
+      
+      
+        <link rel="canonical" href="https://kir-rescomp.github.io/kir-researchcomp-hub/technical_essays/hpc/demystifying_compiler_toolchains/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../why_linux_on_hpc/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/icons/kir_standalone_logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Demystifying Compiler Toolchains - Understanding Module Names - KIR - Research Computing Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Mukta";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/colors.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/side_bar_menu.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/background_colors.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/header_alignment.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/landing_page_hero.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_dracula.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_monokai.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_github_dark.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_nord.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_onedark.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/indexpage_featured_scroll_behavoiour.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/indexpage_cards_buttons.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/morphing-dna-network.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/indexpage_episodes_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/tables.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/gradient_peek.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/tabs_shading.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/status.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/status-card.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/modules.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/technical_essays_indexpage_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/parallel-laws.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-is-a-compiler-toolchain" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KIR - Research Computing Hub" class="md-header__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KIR - Research Computing Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Demystifying Compiler Toolchains - Understanding Module Names
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KIR - Research Computing Hub" class="md-nav__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    KIR - Research Computing Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../getting-started/account/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../file-system/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File system
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../software/software_manage_with_modules/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../batch-computing/working_with_scheduler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../interactive-computing/openondemand/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../data-transfer/cli_transfer/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data transfer
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../parallel-computing/scaling_limits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallel computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../status/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical essays
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical essays
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Essays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hpc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hpc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demystifying Compiler Toolchains - Understanding Module Names
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demystifying Compiler Toolchains - Understanding Module Names
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-compiler-toolchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is a Compiler Toolchain?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meet-the-common-toolchains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meet the Common Toolchains
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Meet the Common Toolchains">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gcccore-the-minimal-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GCCcore: The Minimal Foundation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foss-free-and-open-source-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        foss: Free and Open Source Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intel-the-performance-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        intel: The Performance Option
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gompi-the-middle-ground" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gompi: The Middle Ground
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-version-mystery-whats-2021b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Version Mystery: What's 2021b?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-toolchains-matter-the-compatibility-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Toolchains Matter: The Compatibility Rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-module-names-a-practical-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Module Names: A Practical Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-advice-choosing-your-toolchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Advice: Choosing Your Toolchain
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Advice: Choosing Your Toolchain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting a New Project?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#need-maximum-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Maximum Performance?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuing-existing-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuing Existing Work?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-new-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing New Software?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bottom-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Bottom Line
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_linux_on_hpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why HPC Runs on Linux -  A Beginner's Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../programming/exporting_rpackages_to_rds/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-compiler-toolchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is a Compiler Toolchain?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meet-the-common-toolchains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meet the Common Toolchains
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Meet the Common Toolchains">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gcccore-the-minimal-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GCCcore: The Minimal Foundation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foss-free-and-open-source-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        foss: Free and Open Source Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intel-the-performance-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        intel: The Performance Option
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gompi-the-middle-ground" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gompi: The Middle Ground
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-version-mystery-whats-2021b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Version Mystery: What's 2021b?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-toolchains-matter-the-compatibility-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Toolchains Matter: The Compatibility Rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-module-names-a-practical-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Module Names: A Practical Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-advice-choosing-your-toolchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Advice: Choosing Your Toolchain
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Advice: Choosing Your Toolchain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting a New Project?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#need-maximum-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need Maximum Performance?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuing-existing-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuing Existing Work?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-new-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing New Software?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bottom-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Bottom Line
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Demystifying Compiler Toolchains - Understanding Module Names</h1>
+
+<p align="center">
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://kir-rescomp.github.io/kir-researchcomp-hub/assets/images/technical_essays/demytifying_compiler_toolchains_logo.png" data-desc-position="bottom"><img src="https://kir-rescomp.github.io/kir-researchcomp-hub/assets/images/technical_essays/demytifying_compiler_toolchains_logo.png" alt="compiler-toolchains-logo" width="350"></a>
+</p>
+
+<div class="nord">
+<p>When you run <code>module avail</code> on our cluster, you'll see names like:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Python</span><span class="o">/</span><span class="mf">3.11.3</span><span class="o">-</span><span class="n">GCCcore</span><span class="o">-</span><span class="mf">12.3.0</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">R</span><span class="o">/</span><span class="mf">4.3.2</span><span class="o">-</span><span class="n">gfbf</span><span class="o">-</span><span class="mi">2023</span><span class="n">a</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">BLAST</span><span class="o">+/</span><span class="mf">2.14.1</span><span class="o">-</span><span class="n">gompi</span><span class="o">-</span><span class="mi">2023</span><span class="n">a</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">Biopython</span><span class="o">/</span><span class="mf">1.83</span><span class="o">-</span><span class="n">foss</span><span class="o">-</span><span class="mi">2023</span><span class="n">a</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">magma</span><span class="o">/</span><span class="mf">2.7.2</span><span class="o">-</span><span class="n">foss</span><span class="o">-</span><span class="mi">2023</span><span class="n">a</span><span class="o">-</span><span class="n">CUDA</span><span class="o">-</span><span class="mf">12.1.1</span>
+</span></code></pre></div>
+<p>What do those cryptic suffixes mean? Why <code>foss</code>? Why <code>intel</code>? And why does it matter? Let's decode the mystery of compiler toolchains.</p>
+<h2 id="what-is-a-compiler-toolchain">What Is a Compiler Toolchain?<a class="headerlink" href="#what-is-a-compiler-toolchain" title="Permanent link">¶</a></h2>
+<p>Think of a toolchain as a <strong>complete construction kit</strong> for building software. Just as a carpenter needs a coordinated set of tools—hammer, saw, screws that fit the screwdriver—scientific software needs a coordinated set of components:</p>
+<ul>
+<li><strong>Compiler</strong>: Translates human-readable code (C, C++, Fortran) into machine instructions</li>
+<li><strong>Math libraries</strong>: Optimized routines for linear algebra, FFTs, etc. (BLAS, LAPACK, FFTW)</li>
+<li><strong>MPI library</strong>: Enables parallel communication across nodes (OpenMPI, Intel MPI)</li>
+<li><strong>Build tools</strong>: Utilities that help compile software</li>
+</ul>
+<p>A toolchain bundles these components together, ensuring they work harmoniously. This coordination is critical—mixing incompatible components can lead to crashes, incorrect results, or mysterious errors.</p>
+<h2 id="meet-the-common-toolchains">Meet the Common Toolchains<a class="headerlink" href="#meet-the-common-toolchains" title="Permanent link">¶</a></h2>
+<h3 id="gcccore-the-minimal-foundation">GCCcore: The Minimal Foundation<a class="headerlink" href="#gcccore-the-minimal-foundation" title="Permanent link">¶</a></h3>
+<p><strong>GCCcore</strong> is the GNU Compiler Collection (GCC) on its own, without MPI or math libraries. You'll see this for:</p>
+<ul>
+<li>Basic tools that don't need parallel computing (editors, Python, many utilities)</li>
+<li>Foundation packages that other software builds upon</li>
+</ul>
+<p>Example: <code>Python/3.9.6-GCCcore-11.2.0</code></p>
+<h3 id="foss-free-and-open-source-software">foss: Free and Open Source Software<a class="headerlink" href="#foss-free-and-open-source-software" title="Permanent link">¶</a></h3>
+<p><strong>foss</strong> (yes, it stands for "Free and Open Source Software"!) is the most popular toolchain and includes:</p>
+<ul>
+<li><strong>GCC</strong>: GNU compilers (gcc, g++, gfortran)</li>
+<li><strong>OpenMPI</strong>: Open-source MPI implementation</li>
+<li><strong>OpenBLAS</strong>: Optimized linear algebra library</li>
+<li><strong>FFTW</strong>: Fast Fourier Transform library</li>
+<li><strong>ScaLAPACK</strong>: Parallel linear algebra</li>
+</ul>
+<p>Example: <code>GROMACS/2021.3-foss-2021b</code></p>
+<p>This is your go-to toolchain for most scientific applications. It's free, well-tested, and works with virtually everything.</p>
+<h3 id="intel-the-performance-option">intel: The Performance Option<a class="headerlink" href="#intel-the-performance-option" title="Permanent link">¶</a></h3>
+<p>The <strong>intel</strong> toolchain uses Intel's proprietary compilers and libraries:</p>
+<ul>
+<li><strong>Intel compilers</strong>: icc, icpc, ifort</li>
+<li><strong>Intel MPI</strong>: Intel's MPI implementation</li>
+<li><strong>Intel MKL</strong>: Math Kernel Library (highly optimized BLAS, LAPACK, FFTW)</li>
+</ul>
+<p>Example: <code>NumPy/1.21.1-intel-2021a</code></p>
+<p>Intel tools often produce faster code on Intel processors, but they're commercial software (though free for academic use). Some users prefer them for performance-critical applications.</p>
+<h3 id="gompi-the-middle-ground">gompi: The Middle Ground<a class="headerlink" href="#gompi-the-middle-ground" title="Permanent link">¶</a></h3>
+<p><strong>gompi</strong> combines:</p>
+<ul>
+<li><strong>GCC</strong>: GNU compilers</li>
+<li><strong>OpenMPI</strong>: Open-source MPI</li>
+</ul>
+<p>It's like foss but without the math libraries. Used for MPI-enabled applications that bring their own math libraries or don't need them.</p>
+<h2 id="the-version-mystery-whats-2021b">The Version Mystery: What's 2021b?<a class="headerlink" href="#the-version-mystery-whats-2021b" title="Permanent link">¶</a></h2>
+<p>You'll notice toolchains have versions like <code>2021a</code> or <code>2021b</code>. These are <strong>EasyBuild releases</strong> that specify exact versions of all components:</p>
+<ul>
+<li><code>foss-2021b</code> might mean: GCC 11.2.0, OpenMPI 4.1.1, OpenBLAS 0.3.18, etc.</li>
+<li><code>foss-2022a</code> would have newer versions: GCC 11.3.0, OpenMPI 4.1.4, etc.</li>
+</ul>
+<p>The letter (a, b) indicates releases within the same year. This naming ensures reproducibility—everyone using <code>foss-2021b</code> gets the exact same environment.</p>
+<h2 id="why-toolchains-matter-the-compatibility-rule">Why Toolchains Matter: The Compatibility Rule<a class="headerlink" href="#why-toolchains-matter-the-compatibility-rule" title="Permanent link">¶</a></h2>
+<p>Here's the golden rule: <strong>Software built with one toolchain should not be mixed with software from another.</strong></p>
+<p>Why? Imagine building a house where:</p>
+<ul>
+<li>The electrical system uses metric measurements</li>
+<li>The plumbing uses imperial measurements  </li>
+<li>The structural beams use a third system</li>
+</ul>
+<p>Chaos, right? The same applies to compiled software. Mixing toolchains can cause:</p>
+<ul>
+<li><strong>Crashes</strong>: Incompatible binary interfaces</li>
+<li><strong>Wrong results</strong>: Different math library implementations</li>
+<li><strong>Performance issues</strong>: Conflicting optimizations</li>
+<li><strong>Mysterious errors</strong>: "Undefined symbol" messages</li>
+</ul>
+<h2 id="reading-module-names-a-practical-guide">Reading Module Names: A Practical Guide<a class="headerlink" href="#reading-module-names-a-practical-guide" title="Permanent link">¶</a></h2>
+<p>Let's decode a real module name:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">TensorFlow</span><span class="o">/</span><span class="mf">2.15.1</span><span class="o">-</span><span class="n">foss</span><span class="o">-</span><span class="mi">2023</span><span class="n">a</span><span class="o">-</span><span class="n">CUDA</span><span class="o">-</span><span class="mf">12.1.1</span>
+</span></code></pre></div>
+<p>Breaking it down:
+- <strong>TensorFlow</strong>: The software package
+- <strong>2.15.1</strong>: TensorFlow version
+- <strong>foss-2023a</strong>: Built with the foss 2023a toolchain
+- <strong>CUDA-12.1.1</strong>: GPU support with CUDA version 12.1.1</p>
+<p>When you load this module, you're getting TensorFlow compiled specifically with:
+- GCC compilers from foss-2021a
+- OpenMPI for distributed training
+- Optimized math libraries
+- CUDA for GPU acceleration</p>
+<h2 id="practical-advice-choosing-your-toolchain">Practical Advice: Choosing Your Toolchain<a class="headerlink" href="#practical-advice-choosing-your-toolchain" title="Permanent link">¶</a></h2>
+<p>For most users, follow these guidelines:</p>
+<h3 id="starting-a-new-project">Starting a New Project?<a class="headerlink" href="#starting-a-new-project" title="Permanent link">¶</a></h3>
+<p>Use the <strong>latest foss toolchain</strong> available. Check what's current:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">module</span> <span class="n">avail</span> <span class="n">foss</span>
+</span></code></pre></div>
+<h3 id="need-maximum-performance">Need Maximum Performance?<a class="headerlink" href="#need-maximum-performance" title="Permanent link">¶</a></h3>
+<p>Try the <strong>intel toolchain</strong> if:
+- Your code is CPU-intensive
+- You're running on Intel processors
+- You've exhausted optimization with foss</p>
+<h3 id="continuing-existing-work">Continuing Existing Work?<a class="headerlink" href="#continuing-existing-work" title="Permanent link">¶</a></h3>
+<p><strong>Stick with the same toolchain</strong> you've been using. Consistency matters more than having the absolute latest version.</p>
+<h3 id="installing-new-software">Installing New Software?<a class="headerlink" href="#installing-new-software" title="Permanent link">¶</a></h3>
+<p>Check what toolchains are available:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">module</span> <span class="n">avail</span> <span class="n">YourSoftware</span>
+</span></code></pre></div>
+<p>If multiple toolchains are available, prefer matching your other dependencies.</p>
+<h2 id="common-questions">Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">¶</a></h2>
+<p><strong>Q: Can I mix Python/3.9.6-GCCcore-11.2.0 with NumPy/1.21.1-foss-2021b?</strong><br>
+A: Generally yes! Since foss-2021b <em>includes</em> GCCcore-11.2.0, they're compatible. EasyBuild handles these dependencies automatically.</p>
+<p><strong>Q: Why don't we just use one toolchain for everything?</strong><br>
+A: Different software has different requirements. Some needs GPU support, some doesn't. Some benefits from Intel optimizations, some doesn't. Flexibility helps us optimize for each use case.</p>
+<p><strong>Q: I got an "undefined symbol" error. Is it a toolchain issue?</strong><br>
+A: Possibly! Check with <code>module list</code> to see what toolchains are loaded. Look for mismatches like mixing foss and intel modules.</p>
+<p><strong>Q: How do I know which toolchain to use for my work?</strong><br>
+A: Start with foss—it works for 95% of cases. If you hit performance bottlenecks later, then experiment with intel.</p>
+<h2 id="the-bottom-line">The Bottom Line<a class="headerlink" href="#the-bottom-line" title="Permanent link">¶</a></h2>
+<p>Compiler toolchains are like orchestras—individual instruments (compiler, MPI, math libraries) working in harmony to produce beautiful results. The toolchain name in module labels tells you which "orchestra" was used to build that software.</p>
+<p>When in doubt:</p>
+<ol>
+<li><strong>Check available versions</strong>: <code>module avail YourSoftware</code> ( or <code>module spider</code>)</li>
+<li><strong>Pick a recent foss toolchain</strong>: Most compatible, well-tested</li>
+<li><strong>Stay consistent</strong>: Don't mix toolchains unnecessarily</li>
+<li><strong>Ask for help</strong>: We're here to guide you!</li>
+</ol>
+<p>Understanding toolchains won't just prevent errors—it will help you make informed decisions about software optimization and compatibility. You're not just loading modules; you're orchestrating a sophisticated software environment.</p>
+<hr>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Technical Essays">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Technical Essays
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../why_linux_on_hpc/" class="md-footer__link md-footer__link--next" aria-label="Next: Why HPC Runs on Linux -  A Beginner's Guide">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Why HPC Runs on Linux -  A Beginner's Guide
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      KIR - Research Computing Hub is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.expand   Removing this for the moment to avoid the meny being expanded by default", "navigation.top", "navigation.footer", "navigation.instant", "content.code.copy", "content.code.annotate", "navigation.prune", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../javascripts/featured-toggle.js"></script>
+      
+        <script src="../../../javascripts/link_content_tabs_to_cards.js"></script>
+      
+        <script src="../../../javascripts/status.js"></script>
+      
+        <script src="../../../javascripts/status-card.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../javascripts/slurm-generator.js" defer=""></script>
+      
+        <script src="../../../javascripts/parallel-laws.js" defer=""></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
