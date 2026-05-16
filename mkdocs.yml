@@ -140,6 +140,10 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - path: javascripts/slurm-generator.js
     defer: true
+  - url: https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js
+    defer: true
+  - path: javascripts/parallel-laws.js
+    defer: true
 
 copyright : KIR - Research Computing Hub is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
 
