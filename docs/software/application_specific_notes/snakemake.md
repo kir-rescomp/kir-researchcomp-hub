@@ -6,6 +6,23 @@ pre-built `Snakemake` modules available on the cluster. Loading a module alongsi
 virtual environment can cause conflicts between Snakemake's dependencies and your project's
 packages.
 
+!!! circle-info-2 "Why not use the Snakemake module?"
+
+    The pre-built `Snakemake` module on BMRC was compiled against a specific Python version
+    (e.g. `Python/3.11.3-GCCcore-12.3.0`). Loading it alongside a virtual environment built
+    against a **different** Python version ( using `uv` ,etc )  causes `$PYTHONPATH` conflicts — Python will attempt
+    to resolve packages from two incompatible interpreter trees simultaneously, leading to
+    import errors or subtly broken behaviour that can be difficult to diagnose.
+
+    To avoid this, install Snakemake directly into the environment you are already using for
+    your workflow. This guarantees a single, consistent Python binary and a clean package
+    resolution path.
+
+    If you do need to use the module, your virtual environment **must** have been created using
+    the exact same `Python` module that was used to build Snakemake — in which case loading
+    both is safe, but this is rarely the case in practice.
+
+
 ### Installation
 
 Install Snakemake and the required BMRC executor plugins into your environment using `pip` or
