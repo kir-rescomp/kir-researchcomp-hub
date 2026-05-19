@@ -12,7 +12,7 @@ packages.
     (e.g. `Python/3.11.3-GCCcore-12.3.0`). Loading it alongside a virtual environment built
     against a **different** Python version ( using `uv` ,etc )  causes `$PYTHONPATH` conflicts — Python will attempt
     to resolve packages from two incompatible interpreter trees simultaneously, leading to
-    import errors or subtly broken behaviour that can be difficult to diagnose.
+    `import` errors or subtly broken behaviour that can be difficult to diagnose.
 
     To avoid this, install Snakemake directly into the environment you are already using for
     your workflow. This guarantees a single, consistent Python binary and a clean package
