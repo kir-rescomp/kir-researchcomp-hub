@@ -9,12 +9,12 @@ window.MathJax = {
     ignoreHtmlClass: ".*|",
     processHtmlClass: "arithmatex",
   },
-  startup: {
-    ready() {
-      MathJax.startup.defaultReady();
-      document$.subscribe(() => {
-        MathJax.typesetPromise();
-      });
-    },
-  },
 };
+
+window.addEventListener("load", function () {
+  if (typeof document$ !== "undefined") {
+    document$.subscribe(function () {
+      MathJax.typesetPromise();
+    });
+  }
+});
