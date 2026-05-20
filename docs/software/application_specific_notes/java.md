@@ -110,7 +110,7 @@ fastqc --threads 4 sample.fastq.gz  # (1)
 1. FastQC calls Java internally. `_JAVA_OPTIONS` is picked up automatically by any
    JVM launched in the same shell session.
 
-!!!  "Note"
+!!! square-pen "Note"
     `_JAVA_OPTIONS` applies to **every** JVM started in that shell session. If your
     script launches multiple Java tools with different memory requirements, set it
     separately before each call (or use direct `-Xmx` flags where possible).
