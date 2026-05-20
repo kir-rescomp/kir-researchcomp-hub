@@ -136,8 +136,7 @@ extra_javascript:
   - javascripts/link_content_tabs_to_cards.js
   - javascripts/status.js
   - javascripts/status-card.js
-  - url: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    defer: true
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - path: javascripts/slurm-generator.js
     defer: true
   - path: javascripts/parallel-laws.js
