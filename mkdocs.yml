@@ -131,12 +131,14 @@ plugins:
       filename: .pages.yml
 
 extra_javascript:
-  - javascripts/mathjax.js
+#  - javascripts/mathjax.js
+#  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - javascripts/featured-toggle.js
   - javascripts/link_content_tabs_to_cards.js
   - javascripts/status.js
   - javascripts/status-card.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - path: javascripts/katex.js
+    defer: true
   - path: javascripts/slurm-generator.js
     defer: true
   - path: javascripts/parallel-laws.js
@@ -170,3 +172,4 @@ extra_css:
   - stylesheets/modules.css
   - stylesheets/technical_essays_indexpage_cards.css
   - stylesheets/parallel-laws.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
