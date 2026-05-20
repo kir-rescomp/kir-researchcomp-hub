@@ -64,33 +64,6 @@ java -Xmx24g -jar $EBROOTPICARD/picard.jar MarkDuplicates \
 ```
 </div>
 
-### GATK 4
-
-GATK wraps Java internally and exposes a `--java-options` flag:
-
-```bash
-# HaplotypeCaller with 24 GB heap
-gatk --java-options "-Xmx24g" HaplotypeCaller \
-    -R reference.fasta \
-    -I input.bam \
-    -O output.g.vcf.gz \
-    -ERC GVCF
-```
-
-!!! warning
-    Do **not** pass `-Xmx` directly to the `gatk` command — it will be ignored.
-    Always use `--java-options`.
-
-### Trimmomatic
-
-```bash
-# Paired-end trimming with 8 GB heap (job requests --mem=12G)
-java -Xmx8g -jar $EBROOTTRIMMOMATIC/trimmomatic.jar PE \
-    sample_R1.fastq.gz sample_R2.fastq.gz \
-    sample_R1_paired.fastq.gz sample_R1_unpaired.fastq.gz \
-    sample_R2_paired.fastq.gz sample_R2_unpaired.fastq.gz \
-    ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 MINLEN:36
-```
 
 ---
 
@@ -100,20 +73,23 @@ Java tools often write large temporary files during processing (e.g. Picard's
 intermediate sort files). By default Java writes these to `/tmp`, which is small and
 shared across all users on the node.
 
-You should redirect temporary files to `$TMPDIR` — a per-job scratch directory on local
-disk that is automatically cleaned up when your job ends:
+You should redirect temporary files to `$TMPDIR` — ideally, set this to a path in `scratch` 
 
 ### Direct invocation
 
 Pass `-Djava.io.tmpdir=$TMPDIR` alongside your other Java options:
 
-```bash
+<div class="nord" markdown=1>
+```py
+export TMPDIR=/some/path/to/scratch
+
 java -Xmx24g -Djava.io.tmpdir=$TMPDIR -jar $EBROOTPICARD/picard.jar SortSam \
     --INPUT unsorted.bam \
     --OUTPUT sorted.bam \
     --SORT_ORDER coordinate \
     --TMP_DIR $TMPDIR  # (1)
 ```
+</div>
 
 1. Some Picard tools also accept a `--TMP_DIR` argument — passing both is redundant but
    harmless and makes intent explicit.
@@ -124,15 +100,17 @@ If the tool manages its own Java invocation (e.g. a shell wrapper script), you c
 pass `-D` flags directly. Instead, export the `_JAVA_OPTIONS` environment variable
 **before** calling the tool:
 
-```bash
+<div class="nord" makrdown=1>
+```py
 export _JAVA_OPTIONS="-Xmx24g -Djava.io.tmpdir=${TMPDIR}"
 fastqc --threads 4 sample.fastq.gz  # (1)
 ```
+</div>
 
 1. FastQC calls Java internally. `_JAVA_OPTIONS` is picked up automatically by any
    JVM launched in the same shell session.
 
-!!! note
+!!!  "Note"
     `_JAVA_OPTIONS` applies to **every** JVM started in that shell session. If your
     script launches multiple Java tools with different memory requirements, set it
     separately before each call (or use direct `-Xmx` flags where possible).
