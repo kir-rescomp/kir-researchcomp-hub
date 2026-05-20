@@ -132,13 +132,12 @@ plugins:
 
 extra_javascript:
   - javascripts/mathjax.js
-#  - javascripts//morphing-dna-network-targeted.js
   - javascripts/featured-toggle.js
   - javascripts/link_content_tabs_to_cards.js
   - javascripts/status.js
   - javascripts/status-card.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - url: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    defer: true
   - path: javascripts/slurm-generator.js
     defer: true
   - path: javascripts/parallel-laws.js
