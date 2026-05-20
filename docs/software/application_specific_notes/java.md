@@ -33,12 +33,15 @@ The `-Xmx` flag sets the maximum heap memory the JVM is allowed to allocate. You
     JVM's own overhead (the stack, internal buffers, garbage collector, etc.) and avoids
     OOM kills.
 
+    <center>
+
     | `--mem` (SLURM) | Recommended `-Xmx` |
     |---|---|
     | 8G  | `-Xmx6g`  |
     | 16G | `-Xmx12g` |
     | 32G | `-Xmx24g` |
     | 64G | `-Xmx48g` |
+    </center>
 
 ### Direct invocation
 
@@ -121,20 +124,22 @@ fastqc --threads 4 sample.fastq.gz  # (1)
 
 The following example puts everything together for a Picard MarkDuplicates job:
 
-```bash
+<div class="nord" markdown=1>
+```rust
 #!/bin/bash
+
 #SBATCH --job-name=picard_markdup
 #SBATCH --partition=short
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=02:00:00
 #SBATCH --output=logs/%x_%j.out
-#SBATCH --error=logs/%x_%j.err
 
 module load Picard/3.1.1-Java-17
 
 # Set heap to 75% of --mem; redirect tmp to per-job scratch
 JAVA_MEM=24g
+export TMORDIR=/path/in/scratch
 
 java -Xmx${JAVA_MEM} \
      -Djava.io.tmpdir=${TMPDIR} \
@@ -144,6 +149,7 @@ java -Xmx${JAVA_MEM} \
      --METRICS_FILE metrics.txt \
      --TMP_DIR ${TMPDIR}
 ```
+</div>
 
 ---
 
@@ -158,9 +164,3 @@ If your job fails, check the error log for these signatures:
 | `Killed` (no Java error) | OOM kill by SLURM/kernel | Increase `--mem`; check `-Xmx` ≤ 75% |
 | `No space left on device` in tmp path | `/tmp` full | Add `-Djava.io.tmpdir=${TMPDIR}` |
 
-!!! tip "Checking your job's peak memory usage"
-    After a job completes you can inspect its actual peak RSS with:
-```bash
-    sacct -j <JOBID> --format=JobID,MaxRSS,ReqMem
-```
-    Use this to right-size `--mem` and `-Xmx` for future runs.
