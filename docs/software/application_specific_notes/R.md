@@ -92,4 +92,5 @@ Compute nodes on BMRC do not have internet access, so package installations must
     module load CMake
     ```
     </div>
+    
     You do not need to specify a version — the latest available CMake is always the right choice. This requirement will be resolved from `R/4.6*` onwards, where CMake will be included as a module dependency automatically.
