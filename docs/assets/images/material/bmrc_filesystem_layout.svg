@@ -35,7 +35,7 @@
      id="title1">BMRC filesystem layout</title>
   <desc
      style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
-     id="desc1">Structural diagram: home directory /users/group/user with a strict 10 GB quota; /well/group/ working area containing shared projects/archive and individual users/username/ workspaces with devel/ and work/ subdirectories; /well/sansom/shared for cross-institute collaboration.</desc>
+     id="desc1">Structural diagram: home directory /users/group/user with a strict 10 GB quota; /well/group/ working area containing shared projects/archive and individual users/username/ workspaces with devel/ and work/ subdirectories; /well/group/shared for cross-institute collaboration.</desc>
   <defs
      id="defs1">
     <marker
@@ -296,9 +296,9 @@
        style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', BlinkMacSystemFont, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#ef9f27;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
        id="text19">Symlinks to ~/devel and ~/work</text>
   </g>
-  <!-- /well/sansom/shared: purple cross-institute -->
+  <!-- /well/group/shared: purple cross-institute -->
   <g
-     onclick="sendPrompt('How do I collaborate with groups outside KIR on BMRC? What is /well/sansom/shared?')"
+     onclick="sendPrompt('How do I collaborate with groups outside KIR on BMRC? What is /well/group/shared?')"
      style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
      id="g21">
     <rect

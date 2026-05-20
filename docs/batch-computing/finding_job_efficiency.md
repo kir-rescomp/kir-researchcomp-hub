@@ -91,7 +91,7 @@ This job uses Python's `multiprocessing.Pool` to spawn exactly `SLURM_CPUS_PER_T
     Job Efficiency Report
     Cluster: cluster
     Job ID: 18819086
-    User: mat611
+    User: username
     State: COMPLETED
     Cores: 4
     Tasks: 1
