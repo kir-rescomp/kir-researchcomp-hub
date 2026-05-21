@@ -110,7 +110,7 @@ By default, the scroll wheel does not work inside `tmux`. You need to enter **co
 
 ## Troubleshooting
 
-1. "`sessions should be nested with care, unset $TMUX to force`"
+1. ### "`sessions should be nested with care, unset $TMUX to force`"
 
     This warning appears when you run `tmux new -s <name>` from **inside an existing tmux session** 
 
@@ -122,4 +122,55 @@ By default, the scroll wheel does not work inside `tmux`. You need to enter **co
     ```
     </div>
 
-    A non-empty value means you're in an active session.
+2. ### Cannot connect to or create any tmux sessions
+
+    **Symptoms:** Running `tmux attach` or `tmux new` fails with an error similar to:
+
+    <div class="nord" markdown=1>
+    ```py
+    server exited unexpectedly
+    ```
+
+    ```py
+    error connecting to /tmp/tmux-XXXXX/default (No such file or directory)
+    ```
+
+    ```py
+    no server running 
+    ```
+    </div>
+    
+    This is typically caused by a stale or corrupted `tmux` socket directory in `/tmp`, often left behind after a node reboot or an unclean disconnection.
+
+    **Fix:**
+
+    !!! cloud-bolt "This will terminate all running tmux sessions"
+        The steps below delete the `tmux` socket directory, which **kills any active or detached sessions and all processes running inside them**. Make sure you are not relying on anything currently running in `tmux` before proceeding.
+
+
+    1. Locate your `tmux` directory in `/tmp`. It is named after your numeric user ID:
+        <div class="nord" markdown=1>
+        ```py
+        ls /tmp | grep tmux
+        ```
+
+        You should see something like `tmux-XXXXX` where `XXXXX` is your UID. Confirm it belongs to you:
+
+        ```py
+        ls -la /tmp | grep tmux
+        ```
+        </div>
+    2. Delete it:
+        <div class="nord" markdown=1>
+        ```py
+        rm -rf /tmp/tmux-$(id -u)
+        ```
+        </div>
+    3. Start a fresh session:
+        <div class="nord" markdown=1>
+        ```py
+        tmux new -s mysession
+        ```
+        </div>
+
+        A non-empty value means you're in an active session.
