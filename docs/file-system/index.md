@@ -51,8 +51,11 @@ Storage on BMRC is a shared resource. A few habits go a long way:
     ln -s /well/<group>/projects/archive/my_dataset ~/work/my_project/data
     ```
 - **Write outputs to `work/`, not `devel/`.** `devel/` is backed up — filling it with large result files wastes backup quota and slows snapshots.
+
 - **Clean up intermediate files** once a pipeline has finished successfully. Temporary BAM files, uncompressed intermediates, and failed run directories accumulate quickly.
-- **Compress where practical.** Tools like `gzip`, `bgzip`, and `zstd` can reduce storage footprint significantly, especially for text-based formats (FASTQ, VCF, BED).
+
+- **Compress where ^^practical^^.** Tools like `gzip`, `bgzip`, and `zstd` can reduce storage footprint significantly, especially for text-based formats (FASTQ, VCF, BED).
+
 - **Check your usage regularly** ( refer to [ Storage Quota](./storage_quota.md) ) 
 
 !!! lightbulb "When in doubt, symlink"
