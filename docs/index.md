@@ -39,7 +39,7 @@ title: Home
 
 <div class="kp-episode-grid">
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/getting-started/account" class="kp-card kp-ep1">
+  <a href="./getting-started/account" class="kp-card kp-ep1">
     <div class="kp-header">
       <div class="kp-num">01</div>
       <div class="kp-meta">
@@ -60,7 +60,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/file-system" class="kp-card kp-ep2">
+  <a href="./file-system/" class="kp-card kp-ep2">
     <div class="kp-header">
       <div class="kp-num">02</div>
       <div class="kp-meta">
@@ -81,7 +81,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/software/software_manage_with_modules/" class="kp-card kp-ep3">
+  <a href="./software/software_manage_with_modules/" class="kp-card kp-ep3">
     <div class="kp-header">
       <div class="kp-num">03</div>
       <div class="kp-meta">
@@ -103,7 +103,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/batch-computing/working_with_scheduler/" class="kp-card kp-ep4">
+  <a href="./batch-computing/working_with_scheduler/" class="kp-card kp-ep4">
     <div class="kp-header">
       <div class="kp-num">04</div>
       <div class="kp-meta">
@@ -124,7 +124,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/interactive-computing/openondemand/" class="kp-card kp-ep5">
+  <a href="./interactive-computing/openondemand/" class="kp-card kp-ep5">
     <div class="kp-header">
       <div class="kp-num">05</div>
       <div class="kp-meta">
@@ -144,7 +144,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/data-transfer/cli_transfer" class="kp-card kp-ep6">
+  <a href="./data-transfer/cli_transfer" class="kp-card kp-ep6">
     <div class="kp-header">
       <div class="kp-num">06</div>
       <div class="kp-meta">
@@ -165,7 +165,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/parallel-computing/scaling_limits/" class="kp-card kp-ep7">
+  <a href="./parallel-computing/scaling_limits/" class="kp-card kp-ep7">
     <div class="kp-header">
       <div class="kp-num">07</div>
       <div class="kp-meta">
@@ -184,7 +184,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/status" class="kp-card kp-ep8">
+  <a href="./status" class="kp-card kp-ep8">
     <div class="kp-header">
       <div class="kp-num">08</div>
       <div class="kp-meta">
