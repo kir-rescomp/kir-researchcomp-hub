@@ -6,8 +6,11 @@
     <img src="docs/assets/images/icons/KIR_Research_Computing_Hub_layered_logo.svg" alt="kir-rescomp-logo" width="450" style="opacity: 0.9;"/>
 </p>
 
-
-
+<br/>
+<br/>
+<center>
+Docs, tools, and technical resources for research computing at the Kennedy Institute of Rheumatology, University of Oxford
+</center>
 ## Contributing
 
 - The `main` branch is protected — all changes must be submitted via a pull request.
