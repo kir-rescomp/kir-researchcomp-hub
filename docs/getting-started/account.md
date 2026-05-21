@@ -12,14 +12,29 @@ dateCreated: 2021-11-05T09:43:13.554Z
     <img src="../../assets/images/material/getting-started/access_and_induction.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
 </p>
 
+- - - 
+<br/>
+
+!!! circle-info-2 ""
+    Links with :material-lock: requires a connection to the MSD VPN
+
+### Rules and regulations
+
+Access to the HPC systems and services are provided for authorised work purposes only. 
+
+In using them you are bound by the terms and conditions of the [University of Oxford's IT Regulations](https://governance.admin.ox.ac.uk/legislation/it-regulations-1-of-2002), the [NDORMS Information Security Policy](https://www.ndorms.ox.ac.uk/information-security-policy) and you must follow the [KIR Information Governance Policy](https://rcwiki.kennedy.ox.ac.uk/information_governance) :material-lock:.
+
+ Where necessary, and within the relevant laws and regulations, the Kennedy Institute and the University of Oxford reserve the right to exercise control over all activities employing its computer facilities, including examining the content of users' data.
+
 
 ## Applying for an account
 
-Kennedy Institute of Rheumatology researchers can access the [Medical Sciences Division Biomedical Research Computing cluster](https://www.medsci.ox.ac.uk/for-staff/resources/bmrc) via a dedicated workspace. If you intend to use High Performance Computing in your research, please discuss this with your PI first and then complete the [User Registration Form](https://rcwiki.kennedy.ox.ac.uk/kir_bmrc_user_registration_form_v4.docx). Please send the completed form to dini.senanayake@kennedy.ox.ac.uk.
+Kennedy Institute of Rheumatology researchers can access the [Medical Sciences Division Biomedical Research Computing cluster](https://www.medsci.ox.ac.uk/for-staff/resources/bmrc) via a dedicated workspace. If you intend to use High Performance Computing in your research, please discuss this with your PI first and then complete the [User Registration Form](https://rcwiki.kennedy.ox.ac.uk/kir_bmrc_user_registration_form_v4.docx):material-lock:. Please send the completed form to dini.senanayake@kennedy.ox.ac.uk.
 
-A description of the facility and  details of the current access charges can be found here:  [The KIR BMRC shared research facility for high performance computing](https://rcwiki.kennedy.ox.ac.uk/the_kir_bmrc_srf_for_high_performance_computing.pdf). 
+A description of the facility and  details of the current access charges can be found here:  [The KIR BMRC shared research facility for high performance computing](https://rcwiki.kennedy.ox.ac.uk/the_kir_bmrc_srf_for_high_performance_computing.pdf):material-lock:. 
 
-!!! exclamation "The latter form and the facility details documentation are currently hosted behind the MSD VPN. If you cannot connect to the MSD VPN, please contact the KIR Research Computing Manager to obtain copies."
+
+- - -
 
 ## BMRC cluster user induction
  

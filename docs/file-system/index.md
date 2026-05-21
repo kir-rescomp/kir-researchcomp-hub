@@ -42,8 +42,24 @@ This is where you should run jobs, install software, and store intermediate file
 
 The symlinks mean you can reach them as `~/devel` and `~/work` immediately after login.
 
-!!! lightbulb "Tip"
-    `work/` exists to encourage a project-based layout, but you are free to create your own subdirectory structure inside it as needed.
+## Minimising disk usage
+
+Storage on BMRC is a shared resource. A few habits go a long way:
+
+- **Never copy raw data if you can avoid it.** If your input files already live in `archive/` or a colleague's project directory, create a symlink rather than duplicating them:
+    ```py
+    ln -s /well/<group>/projects/archive/my_dataset ~/work/my_project/data
+    ```
+- **Write outputs to `work/`, not `devel/`.** `devel/` is backed up — filling it with large result files wastes backup quota and slows snapshots.
+- **Clean up intermediate files** once a pipeline has finished successfully. Temporary BAM files, uncompressed intermediates, and failed run directories accumulate quickly.
+- **Compress where practical.** Tools like `gzip`, `bgzip`, and `zstd` can reduce storage footprint significantly, especially for text-based formats (FASTQ, VCF, BED).
+- **Check your usage regularly** ( refer to [ Storage Quota](./storage_quota.md) ) 
+
+!!! lightbulb "When in doubt, symlink"
+    Symlinks are free. Copies cost quota. If multiple projects need the same reference genome or input dataset, one copy in `archive/` with symlinks pointing to it from each `work/` subdirectory is always preferable.
+
+    - Also, `work/` exists to encourage a project-based layout, but you are free to create your own subdirectory structure inside it as needed.
+
 
 ## Sharing within your group
 
