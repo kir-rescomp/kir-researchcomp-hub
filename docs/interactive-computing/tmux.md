@@ -160,12 +160,14 @@ By default, the scroll wheel does not work inside `tmux`. You need to enter **co
         ls -la /tmp | grep tmux
         ```
         </div>
+
     2. Delete it:
         <div class="nord" markdown=1>
         ```py
         rm -rf /tmp/tmux-$(id -u)
         ```
         </div>
+        
     3. Start a fresh session:
         <div class="nord" markdown=1>
         ```py
