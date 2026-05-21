@@ -39,7 +39,7 @@ title: Home
 
 <div class="kp-episode-grid">
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/getting-started/account" class="kp-card kp-ep1">
+  <a href="./getting-started/account" class="kp-card kp-ep1">
     <div class="kp-header">
       <div class="kp-num">01</div>
       <div class="kp-meta">
@@ -60,7 +60,7 @@ title: Home
     </div>
   </a>
 
-  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/file-system" class="kp-card kp-ep2">
+  <a href="./file-system/" class="kp-card kp-ep2">
     <div class="kp-header">
       <div class="kp-num">02</div>
       <div class="kp-meta">
