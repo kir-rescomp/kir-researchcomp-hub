@@ -10,11 +10,11 @@
 
 ## Contributing
 
-The `main` branch is protected — all changes must be submitted via a pull request.
+- The `main` branch is protected — all changes must be submitted via a pull request.
 
-For minor edits (typos, small wording fixes), you can edit the Markdown files directly in your editor as you would with any GitHub repository and open a PR without needing a local preview.
+- For minor edits (typos, small wording fixes), you can edit the Markdown files directly in your editor as you would with any GitHub repository and open a PR without needing a local preview.
 
-For larger changes, a live preview of the rendered site is recommended. Follow the steps below to set up MkDocs locally.
+- For larger changes, a live preview of the rendered site is recommended. Follow the steps below to set up MkDocs locally.
 
 ### Local preview setup (first time)
 
