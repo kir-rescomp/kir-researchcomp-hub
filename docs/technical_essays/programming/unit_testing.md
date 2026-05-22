@@ -11,9 +11,10 @@ tags:
 
 <div class="dracula" markdown="1">
 
+
 <p align="center">
-    <img src="{{ config.site_url }}assets/images/technnical_essays/unit_testing_logo.png" alt="unit-test-logo" width="350"/>
-</p>
+  <img src="{{ config.site_url }}assets/images/technical_essays/unit_testing_logo.png" alt="unit-test-logo" width="350"/>
+</p>>
 
 
 Scientific software powers modern research, from analyzing genomic sequences to simulating climate models. Yet much of this software is written by researchers who are self-taught programmers, often under pressure to produce results quickly. Unit testing might seem like an extra burden, but it's actually a fundamental practice that makes your research more reliable, your code easier to maintain, and your findings more reproducible.
