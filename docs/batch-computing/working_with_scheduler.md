@@ -85,7 +85,7 @@ Adjust the fields below and hit **Generate script** to see a real submission scr
 
     - We have prepared few examples to practise writing and review template scripts. 
     ```py
-    wget -c https://github.com/kir-rescomp/kir-researchcomp-hub/releases/download/v1.0/slurm_examples.zip && slurm_examples.zip
+    wget -c https://github.com/kir-rescomp/kir-researchcomp-hub/releases/download/v1.0/slurm_examples.zip && unzip slurm_examples.zip
     ```
 
     - Content of the directory
