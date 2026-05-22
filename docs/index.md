@@ -4,25 +4,9 @@ hide:
   - toc
 title: Home
 ---
-
-<div class="admonition spinner" style="text-align: center;">
-  <p class="admonition-title">
-    <span style="display: inline-block; animation: pulse 2s ease-in-out infinite;">🚧</span>
-    Work in Progress
-  </p>
-  <p>This repository is under active development.<br>Expected completion: <strong>TBD</strong></p>
-</div>
-
-<style>
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-</style>
-
 <h1></h1>
-<p align="center" style="margin-bottom: -50px;">
-    <img src="assets/images/icons/KIR_Research_Computing_Hub_layered_logo.svg" alt="kir-oxford-logo" width="400" style="opacity: 0.9;"/>
+<p align="center" style="margin-bottom: -90px;">
+    <img src="assets/images/icons/KIR_Research_Computing_Hub_layered_logo.svg" alt="kir-oxford-logo" width="390" style="opacity: 0.9;"/>
 </p>
 
 <div class="landing-page">
