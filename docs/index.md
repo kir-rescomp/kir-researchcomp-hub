@@ -5,8 +5,8 @@ hide:
 title: Home
 ---
 <h1></h1>
-<p align="center" style="margin-bottom: -120px;">
-    <img src="assets/images/icons/KIR_Research_Computing_Hub_layered_logo.svg" alt="kir-oxford-logo" width="370" style="opacity: 0.9;"/>
+<p align="center" style="margin-bottom: -90px;">
+    <img src="assets/images/icons/KIR_Research_Computing_Hub_layered_logo.svg" alt="kir-oxford-logo" width="390" style="opacity: 0.9;"/>
 </p>
 
 <div class="landing-page">
