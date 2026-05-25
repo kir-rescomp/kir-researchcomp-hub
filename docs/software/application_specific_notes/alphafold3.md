@@ -46,12 +46,13 @@ Prepare your input JSON file (see the [AlphaFold3 docs](https://github.com/googl
 ```rust
 #!/bin/bash
 
-#SBATCH --job-name=alphafold3
-#SBATCH --partition=gpu_a100_40gb    # Just an example. You can chose another GPU partition if needed
-#SBATCH --gres=gpu:1
-#SBATCH --mem=64G
-#SBATCH --cpus-per-task=8
-#SBATCH --time=04:00:00
+#SBATCH --account       gpu_kir.prj
+#SBATCH --job-name      alphafold3
+#SBATCH --partition     gpu_a100_40gb    # Just an example. You can chose another GPU partition if needed
+#SBATCH --gres          gpu:1
+#SBATCH --mem           64G
+#SBATCH --cpus-per-task 8
+#SBATCH --time          04:00:00
 
 module purge
 module load AlphaFold3/3.0.2
