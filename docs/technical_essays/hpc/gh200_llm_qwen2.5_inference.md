@@ -60,6 +60,11 @@ transformers, multimodal models) that would not fit on a single GPU.
     many sequences are processed simultaneously. Users seeking higher throughput
     should run multiple concurrent jobs rather than increasing batch size.
 
+
+<iframe src="{{ config.site_url }}assets/images/technical_essays/gpu-stats-19699360.html" width="100%" height="800"></iframe>
+
+
+
 ## What this confirms for users
 
 !!! quote ""
