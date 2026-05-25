@@ -3,5 +3,6 @@ nav:
  - finding_job_efficiency.md
  - slurm_job_arrays.md
  - using_gpus.md
+ - gh200.md
 
 
