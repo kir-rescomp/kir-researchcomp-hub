@@ -31,7 +31,7 @@ transformers, multimodal models) that would not fit on a single GPU.
 
 ## Results
 
-<div class="center-table" markdown=1>
+<div class="center-table" markdown="1">
 
 | Metric | Value |
 |---|---|
