@@ -57,8 +57,9 @@ transformers, multimodal models) that would not fit on a single GPU.
 
 ## What this confirms for users
 
-- Both GH200 GPUs are functioning and addressable
-- NVLink4 GPU-to-GPU communication is working correctly
-- 87% of the 144 GB HBM3e per GPU is accessible under a realistic workload
-- The node can sustain large model inference without throttling or instability
-- Models requiring up to ~280 GB combined GPU memory can be run on a single node
+!!! quote ""
+    - Both GH200 GPUs are functioning and addressable
+    - NVLink4 GPU-to-GPU communication is working correctly
+    - 87% of the 144 GB HBM3e per GPU is accessible under a realistic workload
+    - The node can sustain large model inference without throttling or instability
+    - Models requiring up to ~280 GB combined GPU memory can be run on a single node
