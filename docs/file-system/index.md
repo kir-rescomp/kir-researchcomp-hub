@@ -35,10 +35,14 @@ Your personal working space lives at:
 
 This is where you should run jobs, install software, and store intermediate files. Two subdirectories are pre-created and symlinked into your home directory for convenience:
 
+<div class="center-table" markdown="1">
+
 | Path | Purpose | Backed up? |
 |---|---|---|
 | `devel/` | Scripts, code, notebooks | Yes |
 | `work/` | Job outputs, results, scratch | No |
+
+</div>
 
 The symlinks mean you can reach them as `~/devel` and `~/work` immediately after login.
 
