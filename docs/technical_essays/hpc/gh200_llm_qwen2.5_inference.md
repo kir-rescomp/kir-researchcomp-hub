@@ -6,6 +6,11 @@
 
 ## What this test does
 
+<p align="center">
+    <img src="{{ config.site_url }}assets/images/technical_essays/gh200_qwen2.5-72B_fsdp.svg" alt="compiler-toolchains-logo" width="650"/>
+</p>
+
+
 This test loads a 72-billion parameter large language model (Qwen2.5-72B) across
 both GH200 GPUs and runs repeated forward passes at a sequence length of 8,192
 tokens. It is the most direct demonstration that the GH200 nodes can handle the
