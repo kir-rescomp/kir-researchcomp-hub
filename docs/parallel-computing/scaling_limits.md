@@ -27,6 +27,7 @@ where $s$ is the serial fraction of the workload and $p$ is the number of proces
 
 The critical insight is that as $p \to \infty$, speedup approaches $\tfrac{1}{s}$ — a hard ceiling. A workload that is 10% serial can *never* exceed **10× speedup**, no matter how many processors you throw at it.
 
+<div class="center-table" markdown="1">
 
 | Serial fraction | Maximum possible speedup |
 |----------------|--------------------------|
@@ -36,7 +37,7 @@ The critical insight is that as $p \to \infty$, speedup approaches $\tfrac{1}{s}
 | 5%             | 20×                      |
 | 1%             | 100×                     |
 
-
+</div>
 
 !!! warning "Amdahl's pessimism"
     A workload that feels "mostly parallel" can still have a brutal ceiling. 10% serial code caps you at 10× regardless of whether you use 16, 256, or 10,000 cores.

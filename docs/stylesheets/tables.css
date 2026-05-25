@@ -45,3 +45,11 @@
   padding: 0.65rem 1rem;
   border-top: 1px solid var(--md-default-fg-color--lightest);
 }
+
+
+/* Centre a table without fighting table:not([class]) width rules.
+   Wrap the markdown table in <div class="center-table" markdown="1"> */
+.md-typeset .center-table {
+  display: flex;
+  justify-content: center;
+}
