@@ -73,6 +73,11 @@ deserve more than a how-to guide but don't belong in the main docs.
 
     [:octicons-arrow-right-24: Read](./programming/ssh_on_ghostty.md)
 
+-   **Date Integrity (checksum)**
 
+    verify transferred data with checksums — compact cryptographic summaries 
+    computed in a way that even a single changed bit produces a completely different value
+
+    [:octicons-arrow-right-24: Read](./programming/data_integrity.md)
 
 </div>
