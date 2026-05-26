@@ -16,8 +16,8 @@ Data downloaded from external sources is the starting point for all future analy
 !!! terminal-2 "Computing checksums on the command line"
 
     Pass a file directly or pipe a string through standard input:
-    
-    ```bash
+    <div class="nord" markdown="1">
+    ```py
     # File input
     sha256sum mydata.fastq.gz
     md5sum    mydata.fastq.gz
@@ -26,29 +26,32 @@ Data downloaded from external sources is the starting point for all future analy
     echo "shell for Bioinformatics" | md5sum
     echo "shell for BioInformatics" | md5sum
     ```
-    >```
+    >```py
     >3b4e6f… mydata.fastq.gz
     >198638c380be53bf3f6ff70d5626ae44  -
     >afa4dbcc56b540e24558085fdc10342f  -
     >```
-    
+    </div>
+
     Checksums are reported in hexadecimal (digits `0–9` and letters `a–f`). The trailing `-` indicates input came from standard in rather than a named file.
 
 !!! terminal "Batch verification with a checksum manifest"
 
     Repositories frequently supply a manifest file (e.g. `checksums.md5` or `sha256sums.txt`) listing expected hashes for every file in a dataset. Verify all files in one step with the `-c` (`--check`) flag:
     
-    ```bash
+    <div class="nord" markdown="1">
+    ```py
     sha256sum -c sha256sums.txt
     md5sum    -c checksums.md5
     ```
-    >```
+    >``py
     >sample1.fastq.gz: OK
     >sample2.fastq.gz: OK
     >sample3.fastq.gz: FAILED
     >md5sum: WARNING: 1 computed checksum did NOT match
     >```
-    
+    </div>
+
     Any `FAILED` line means the file is corrupted or has been replaced since the manifest was created — re-download before proceeding.
 
 !!! tip "Integrating checksums into your workflow"
@@ -56,7 +59,8 @@ Data downloaded from external sources is the starting point for all future analy
     For reproducible pipelines, record checksums of all input datasets at the time of download and store them alongside your analysis scripts.
     
     **Snakemake** — snapshot input hashes in a dedicated rule or log file:
-    
+
+    <div class="nord" markdown="1">
     ```python
     rule verify_inputs:
         input:
@@ -69,7 +73,7 @@ Data downloaded from external sources is the starting point for all future analy
     
     **Shell one-liner** — generate a manifest for everything in a directory:
     
-    ```bash
+    ```py
     sha256sum data/raw/*.fastq.gz > data/raw/sha256sums.txt
     ```
     
@@ -89,8 +93,9 @@ Data downloaded from external sources is the starting point for all future analy
     
     print(sha256("data/raw/sample1.fastq.gz"))
     ```
+    </div>
 
-!!! danger "Corrupted data rarely produces obvious errors"
+!!! cloud-bolt "Corrupted data rarely produces obvious errors"
 
     The example below is a real log entry from a failed `bedtools genomecov` job on an HPC cluster:
     
