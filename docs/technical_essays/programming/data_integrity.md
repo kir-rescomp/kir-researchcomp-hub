@@ -1,4 +1,9 @@
-## Data Integrity
+# Data Integrity
+
+<p align="center">
+    <img src="{{ config.site_url }}assets/images/technical_essays/md5sum_sha256.png" alt="checksum-logo" width="250"/>
+</p>
+
 
 Data downloaded from external sources is the starting point for all future analyses and conclusions. It is important to explicitly verify transferred data with **checksums** — compact cryptographic summaries computed in a way that even a single changed bit produces a completely different value. Checksums also serve as a reliable proxy for data versioning: a checksum uniquely identifies an exact snapshot of a file, which means you can link a particular analysis and its results to a specific version of input data.
 
@@ -107,3 +112,39 @@ Data downloaded from external sources is the starting point for all future analy
     `std::bad_alloc` is a C++ out-of-memory exception. The natural instinct is to request more memory and resubmit — in this case the job was re-run with 0.5 TB RAM with the same result. The actual cause was a **corrupted `.bed` file**: the data passed format validation but contained subtle corruption that only surfaced at runtime.
     
     Verifying checksums immediately after download catches corruption before it propagates into a long, expensive compute job.
+
+
+## Verify CosMx data 
+
+Running `md5sum -c` for .csv files in a CosMx dataset will trigger the following error 
+
+<div class="nord" markdown="1">
+```py
+md5sum: Filename.csv: no properly formatted MD5 checksum lines found
+```
+
+CosMx CSV has a header row and uses comma-separation, but `md5sum -c` expects the format <hash>  <filename> (two-space separated, no header). A quick awk one-liner fixes it:
+
+Solution is to create an intermediate file as below ( Run this command from the parent directory) 
+
+```py
+awk -F',' 'NR>1 {print $1 "  " $2}' md5sum/FileName.csv > ./FileName.txt
+```
+You should see the `FileName.txt` in the parent directory
+
+```py
+# tree -L 1
+.
+├── DecodedFiles
+├── flatFiles
+├── md5sum
+├── FileName.txt
+├── seuratObject_Mouse.back.skin.HDGF.RDS
+└── TileDB
+```
+
+Now run the following for verification 
+
+```py
+md5sum -c FileName.txt
+```
