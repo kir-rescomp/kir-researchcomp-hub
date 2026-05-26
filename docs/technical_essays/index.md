@@ -29,6 +29,14 @@ deserve more than a how-to guide but don't belong in the main docs.
 
     [:octicons-arrow-right-24: Read](./hpc/demystifying_compiler_toolchains.md)
 
+-   **GH200 Grace Hopper: LLM Inference Performance (Qwen2.5-72B, FSDP)**
+
+    72-billion parameter large language model (Qwen2.5-72B) across
+    2 x  GH200 GPUs and runs repeated forward passes at a sequence length of 8,192
+    tokens
+
+    [:octicons-arrow-right-24: Read](./hpc/gh200_llm_qwen2.5_inference.md)
+
 </div>
 
 <div class="essays-section-header" markdown>
