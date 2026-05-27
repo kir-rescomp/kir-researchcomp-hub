@@ -171,3 +171,48 @@ source ~/devel/virtual_envs/myenv/bin/activate
 
 !!! note-sticky "Slurm jobs"
     In Slurm job scripts, include both the `module load` and `source activate` lines before calling any Python commands.
+
+
+
+## Troubleshooting 
+
+
+### Virtual environments and `PYTHONPATH` conflicts
+
+"My venv is active but Python is importing packages from the module stack"
+
+This happens because EasyBuild modules (e.g. `SciPy-bundle`, `Python-bundle-PyPI`) 
+inject their `site-packages` directories into `PYTHONPATH` when loaded. Since 
+`PYTHONPATH` entries are added to `sys.path` **before** the venv's own packages, 
+they take priority — even when the venv is active.
+
+**Symptoms**
+
+- `ImportError` or `ModuleNotFoundError` for packages you *know* are installed in your venv
+- Tracebacks pointing to `/apps/eb/...` paths rather than your venv
+
+**Fix**
+
+After activating your venv, unset `PYTHONPATH`:
+<div class="nord" markdown="1">
+```py
+source /path/to/your/venv/bin/activate
+unset PYTHONPATH
+```
+
+In Slurm job scripts, place the `unset` line **after** your `module load` calls 
+and venv activation:
+
+```py
+module load ...
+source /path/to/your/venv/bin/activate
+unset PYTHONPATH   # prevent module stack from polluting venv imports
+```
+</div>
+    
+**Why this works**
+
+Activating a venv only prepends the venv `bin/` to `PATH` — it does not clear 
+`PYTHONPATH`. With `PYTHONPATH` unset, Python falls back to its own path 
+resolution via `pyvenv.cfg`, which correctly scopes imports to the venv's 
+`site-packages`.
