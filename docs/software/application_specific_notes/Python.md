@@ -179,7 +179,7 @@ source ~/devel/virtual_envs/myenv/bin/activate
 
 ### Virtual environments and `PYTHONPATH` conflicts
 
-"My venv is active but Python is importing packages from the module stack"
+??? bug-new "My venv is active but Python is importing packages from the module stack"
 
 This happens because EasyBuild modules (e.g. `SciPy-bundle`, `Python-bundle-PyPI`) 
 inject their `site-packages` directories into `PYTHONPATH` when loaded. Since 

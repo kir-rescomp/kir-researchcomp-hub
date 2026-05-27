@@ -1378,12 +1378,12 @@
 }
 .md-typeset .bug-new > .admonition-title,
 .md-typeset .bug-new > summary {
-  color:rgb(27, 20, 20);
-  background-color: rgb(252, 249, 247);
+  color:rgb(255, 254, 254);
+  background-color: rgb(231, 112, 57);
 }
 .md-typeset .bug-new > .admonition-title::before,
 .md-typeset .bug-new > summary::before {
-  background-color: rgb(41, 40, 39);
+  background-color: rgb(117, 55, 4);
   -webkit-mask-image: var(--md-admonition-icon--bug-new);
           mask-image: var(--md-admonition-icon--bug-new);
 }
