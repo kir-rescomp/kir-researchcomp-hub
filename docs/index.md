@@ -14,6 +14,10 @@ title: Home
     <p class="description">
       Docs, tools, and technical resources for research computing at the Kennedy Institute of Rheumatology, University of Oxford
     </p>
+    <div class="hero-nav">
+      <a href="#hpc-support-documentation" class="hero-nav-btn">HPC Support Docs</a>
+      <a href="#training-catalogue-technical-essays" class="hero-nav-btn">Training & Technical Essays</a>
+    </div>
   </div>
 </div>
 
