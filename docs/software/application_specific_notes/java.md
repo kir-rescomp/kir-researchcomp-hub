@@ -1,4 +1,4 @@
-# Java on the Cluster
+# Java
 
 Java-based tools are common in bioinformatics — Picard, GATK, Trimmomatic, and FastQC all
 run on the Java Virtual Machine (JVM). Getting the most out of them on the cluster requires
