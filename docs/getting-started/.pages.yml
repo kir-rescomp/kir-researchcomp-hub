@@ -1,4 +1,4 @@
 nav: 
     - account.md
     - connect_ssh_config.md
-  
+    - login_troubleshooting.md
