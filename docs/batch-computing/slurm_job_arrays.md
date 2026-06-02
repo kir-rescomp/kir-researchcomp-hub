@@ -241,10 +241,54 @@ squeue --me                  # all your jobs, including arrays
 squeue --me -j <jobid>       # tasks for a specific array job
 sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS
 ```
+</div>
 
 Individual tasks appear in the queue as `<jobid>_<taskid>`.
 
 ---
+
+## Resubmitting failed tasks
+
+After an array job completes, some tasks may have failed due to timeouts, memory limits,
+or other transient issues. To extract the indices of all failed tasks:
+
+<div class="nord" markdown="1">
+```py
+sacct -j <JOBID> -n -o jobid%30,state%20 \
+  | awk '!/\./ && /FAILED|TIMEOUT|OUT_OF_MEMORY/ {
+      split($1,a,"_"); if(a[2]!="") ids=ids (ids?",":"") a[2]
+    } END{print ids}'
+```
+
+This prints a comma-separated list of task indices, e.g. `3,7,42`, filtering out
+job-step lines (those containing `.`) and catching `FAILED`, `TIMEOUT`, and
+`OUT_OF_MEMORY` states.
+
+Pass the output directly to `--array` to resubmit only the failed tasks:
+
+```py
+sbatch --array=3,7,42 your_script.sh
+```
+</div>
+
+>As long as your script derives all input and output paths from `SLURM_ARRAY_TASK_ID`
+and you haven't modified the directory structure, the resubmitted tasks will pick up
+exactly where the failed ones left off.
+
+!!! lightbulb "Combining the two steps"
+
+    <div class="nord" markdown="1">
+    ```py
+        FAILED=$(sacct -j <JOBID> -n -o jobid%30,state%20 \
+          | awk '!/\./ && /FAILED|TIMEOUT|OUT_OF_MEMORY/ {
+              split($1,a,"_"); if(a[2]!="") ids=ids (ids?",":"") a[2]
+            } END{print ids}')
+
+        [[ -n "$FAILED" ]] && sbatch --array="$FAILED" your_script.sh
+    ```
+    </div>
+    The guard `[[ -n "$FAILED" ]]` prevents an accidental full resubmission if there
+    are no failed tasks.
 
 ## Further reading
 
