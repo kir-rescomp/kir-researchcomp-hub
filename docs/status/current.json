@@ -3,18 +3,18 @@
   "upcoming_maintenance": [
     {
       "date": "04.06.2026 : Sometime between 14:00 - 15:00 BST",
-      "service": "Interruption of external network access to BMRC services",
+      "service": "COMPLETED: Interruption of external network access to BMRC services",
       "description": "University networks team are replacing the edge network switches that serve the Big Data Institute Building. This will interrupt all established networking connections to BMRC services: ssh sessions will be killed, browser connections will hang and data transfer sessions will be interrupted. After connectivity is restored. Some things will pick up again but others may need killing and restarting or both."
 
     }
   ],
   "services": [
-    {"name": "Login/Head Nodes", "status": "maintenance"},
-    {"name": "Submitting new HPC jobs", "status": "maintenance"},
+    {"name": "Login/Head Nodes", "status": "operational"},
+    {"name": "Submitting new HPC jobs", "status": "operational"},
     {"name": "Job running on HPC", "status": "operational"},
     {"name": "CPU/GPU nodes", "status": "operational"},
     {"name": "HPC Storage", "status": "operational"},
-    {"name": "BMRC OpenOnDemand", "status": "maintenance"},
+    {"name": "BMRC OpenOnDemand", "status": "operational"},
     {"name": "Posit Workbench", "status": "operational"}
   ]
 
