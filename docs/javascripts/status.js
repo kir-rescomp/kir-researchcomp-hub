@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
       body += "\n" + "=".repeat(50) + "\n";
       body += "Upcoming Maintenance:\n\n";
       data.upcoming_maintenance.forEach(maintenance => {
+
         body += `Date: ${maintenance.date}\n`;
         body += `Service: ${maintenance.service}\n`;
         body += `Description: ${maintenance.description}\n\n`;
@@ -67,8 +68,28 @@ document.addEventListener('DOMContentLoaded', function() {
       const lastUpdated = result.lastModified 
         ? new Date(result.lastModified).toLocaleString()
         : new Date().toLocaleString();
-      
-      let html = '<div class="cluster-status">';
+
+      let html = '';
+
+      if (data.upcoming_maintenance && data.upcoming_maintenance.length > 0) {
+        html += '<div class="maintenance-notices">';
+        html += '<h3>Upcoming Maintenance</h3>';
+        
+        data.upcoming_maintenance.forEach(maintenance => {
+
+          html += `
+            <div class="maintenance-notice">
+              <h4>📅 ${maintenance.date}</h4>
+              <p><strong>${maintenance.service}</strong></p>
+              <p>${maintenance.description}</p>
+            </div>
+          `;
+        });
+        
+        html += '</div>';
+      }
+        
+      html += '<div class="cluster-status">';
       
       data.services.forEach(service => {
         const statusClass = service.status.toLowerCase();
@@ -83,23 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       
       html += '</div>';
-      
-      if (data.upcoming_maintenance && data.upcoming_maintenance.length > 0) {
-        html += '<div class="maintenance-notices">';
-        html += '<h3>Upcoming Maintenance</h3>';
-        
-        data.upcoming_maintenance.forEach(maintenance => {
-          html += `
-            <div class="maintenance-notice">
-              <h4>📅 ${maintenance.date}</h4>
-              <p><strong>${maintenance.service}</strong></p>
-              <p>${maintenance.description}</p>
-            </div>
-          `;
-        });
-        
-        html += '</div>';
-      }
       
       html += `<p class="last-updated">Last updated: ${lastUpdated}</p>`;
       
@@ -123,4 +127,5 @@ document.addEventListener('DOMContentLoaded', function() {
       statusContainer.innerHTML = '<p style="color: #f44336;">Unable to load cluster status. Please try again later.</p>';
       console.error('Error loading status:', error);
     });
+    
 });
