@@ -1,11 +1,11 @@
 LMOD_SPIDER_CACHE_DIRS=/apps/kir/eb/hpc-utils/lmod_cache \
   $LMOD_DIR/spider -o jsonSoftwarePage $MODULEPATH 2>/dev/null \
-  | python3 generate_module_index.py > /tmp/modules.json
+  | python3 generate_module_index.py > ./modules.json
 
 # Sanity checks
 python3 - <<'EOF'
 import json
-d = json.load(open("/tmp/modules.json"))
+d = json.load(open("./modules.json"))
 print(f"Packages : {d['n_packages']}")
 print(f"Versions : {d['n_versions']}")
 print(f"Eras     : {d['eras']}")
