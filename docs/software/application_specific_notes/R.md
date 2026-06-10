@@ -47,7 +47,7 @@ options(repos = structure(c(CRAN = "https://cloud.r-project.org")))
 options(bitmapType = 'cairo')
 ```
 
-his snippet detects your current R version and CPU platform at startup, and constructs a versioned library path under `~/devel/R/`. For example, for R 4.4 on an x86-64 Linux system, packages will be installed to:
+This snippet detects your current R version and CPU platform at startup, and constructs a versioned library path under `~/devel/R/`. For example, for R 4.4 on an x86-64 Linux system, packages will be installed to:
 
 ```py
 ~/devel/R/x86_64-pc-linux-gnu-library/4.4/
