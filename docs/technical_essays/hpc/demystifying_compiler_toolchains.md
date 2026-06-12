@@ -15,7 +15,7 @@ tags:
 </p>
 
 <div class="nord" markdown="1">
-When you run `module avail` on our cluster, you'll see names like:
+When you run `module avail` on our cluster, you'll see names such as:
 
 ```py
 Python/3.11.3-GCCcore-12.3.0
@@ -82,11 +82,11 @@ Intel tools often produce faster code on Intel processors, but they're commercia
 - **GCC**: GNU compilers
 - **OpenMPI**: Open-source MPI
 
-It's like foss but without the math libraries. Used for MPI-enabled applications that bring their own math libraries or don't need them.
+It's similar to  `foss` but without the math libraries. Used for MPI-enabled applications that bring their own math libraries or don't need them.
 
 ## The Version Mystery: What's 2021b?
 
-You'll notice toolchains have versions like `2021a` or `2021b`. These are **EasyBuild releases** that specify exact versions of all components:
+You'll notice toolchains have versions such as  `2021a` or `2021b`. These are **EasyBuild releases** that specify exact versions of all components:
 
 - `foss-2021b` might mean: GCC 11.2.0, OpenMPI 4.1.1, OpenBLAS 0.3.18, etc.
 - `foss-2022a` would have newer versions: GCC 11.3.0, OpenMPI 4.1.4, etc.
@@ -168,14 +168,14 @@ A: Generally yes! Since foss-2021b *includes* GCCcore-11.2.0, they're compatible
 A: Different software has different requirements. Some needs GPU support, some doesn't. Some benefits from Intel optimizations, some doesn't. Flexibility helps us optimize for each use case.
 
 **Q: I got an "undefined symbol" error. Is it a toolchain issue?**  
-A: Possibly! Check with `module list` to see what toolchains are loaded. Look for mismatches like mixing foss and intel modules.
+A: Possibly! Check with `module list` to see what toolchains are loaded. Look for mismatches such as mixing `foss` and `intel` modules.
 
 **Q: How do I know which toolchain to use for my work?**  
 A: Start with foss—it works for 95% of cases. If you hit performance bottlenecks later, then experiment with intel.
 
 ## The Bottom Line
 
-Compiler toolchains are like orchestras—individual instruments (compiler, MPI, math libraries) working in harmony to produce beautiful results. The toolchain name in module labels tells you which "orchestra" was used to build that software.
+Compiler toolchains are similar to orchestras—individual instruments (compiler, MPI, math libraries) working in harmony to produce beautiful results. The toolchain name in module labels tells you which "orchestra" was used to build that software.
 
 When in doubt:
 
