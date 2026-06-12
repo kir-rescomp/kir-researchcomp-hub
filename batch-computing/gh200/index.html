@@ -1,0 +1,1874 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="The Kennedy Institute of Rheumatology, NDORMS, University of Oxford">
+      
+      
+        <link rel="canonical" href="https://kir-rescomp.github.io/kir-researchcomp-hub/batch-computing/gh200/">
+      
+      
+        <link rel="prev" href="../using_gpus/">
+      
+      
+        <link rel="next" href="../../interactive-computing/openondemand/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/icons/kir_standalone_logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>GH200 Early Access - KIR - Research Computing Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Mukta";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/colors.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/side_bar_menu.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/background_colors.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/header_alignment.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/landing_page_hero.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_dracula.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_monokai.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_github_dark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_nord.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_onedark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_featured_scroll_behavoiour.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_cards_buttons.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/morphing-dna-network.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_episodes_cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tables.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/gradient_peek.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tabs_shading.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/status.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/status-card.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/modules.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/technical_essays_indexpage_cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/parallel-laws.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gh200-early-access" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KIR - Research Computing Hub" class="md-header__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KIR - Research Computing Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GH200 Early Access
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KIR - Research Computing Hub" class="md-nav__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    KIR - Research Computing Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../getting-started/account/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../file-system/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File system
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../software/software_manage_with_modules/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch computing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Batch computing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with job scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finding_job_efficiency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finding Job Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm_job_arrays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slurm job arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using_gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Resources on BMRC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GH200 Early Access
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GH200 Early Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-the-gh200-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What makes the GH200 different
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-your-existing-software-will-not-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why your existing software will not work
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why your existing software will not work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cpu-architecture-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. CPU architecture mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-operating-system-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Operating system mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-aarch64-module-tree-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A — aarch64 module tree (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-uv-for-python-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B — uv for Python environments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-contact-kir-research-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option C — contact KIR Research Computing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requesting-gh200-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requesting GH200 resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-compute-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU compute architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-llm-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Available LLM models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available LLM models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#huggingface-format-for-use-with-transformers-fsdp-vllm-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HuggingFace format (for use with transformers, FSDP, vLLM, etc.)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ollama-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ollama models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting help
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../interactive-computing/openondemand/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../data-transfer/cli_transfer/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data transfer
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../parallel-computing/scaling_limits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallel computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../status/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../technical_essays/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical essays
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-the-gh200-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What makes the GH200 different
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-your-existing-software-will-not-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why your existing software will not work
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why your existing software will not work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cpu-architecture-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. CPU architecture mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-operating-system-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Operating system mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-aarch64-module-tree-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A — aarch64 module tree (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-uv-for-python-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B — uv for Python environments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-contact-kir-research-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option C — contact KIR Research Computing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requesting-gh200-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requesting GH200 resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-compute-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU compute architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-llm-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Available LLM models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available LLM models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#huggingface-format-for-use-with-transformers-fsdp-vllm-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HuggingFace format (for use with transformers, FSDP, vLLM, etc.)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ollama-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ollama models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting help
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="gh200-early-access">GH200 Early Access<a class="headerlink" href="#gh200-early-access" title="Permanent link">¶</a></h1>
+<p>The GH200 nodes are now available for early access testing. They represent a
+significant architectural departure from the rest of the BMRC cluster — this
+page explains what is different, what that means for your software, and how to
+get started.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+
+  <a href="https://github.com/kir-rescomp/gh200_benchmarking" class="kp-card kp-techessays" style="max-width: 320px; text-decoration: none;">
+    <div class="kp-header">
+      <div class="kp-num">⚙️</div>
+      <div class="kp-meta">
+        <div class="kp-label">KIR Research Computing</div>
+        <p class="kp-title">GH200 Benchmarking Repository →</p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li>Scripts, SLURM jobs, and results from our GH200 bring-up
+            testing, including the FSDP inference benchmark and HBM3e
+            bandwidth sweep described on this page.</li>
+      </ul>
+    </div>
+  </a>
+
+  <a href="https://kir-rescomp.github.io/kir-researchcomp-hub/technical_essays/hpc/gh200_llm_qwen2.5_inference/" class="kp-card kp-techessays" style="max-width: 320px; text-decoration: none;">
+    <div class="kp-header">
+      <div class="kp-num">✒️</div>
+      <div class="kp-meta">
+        <div class="kp-label">KIR Research Computing</div>
+        <p class="kp-title">Technical Essay — Qwen2.5-72B Inference on GH200 →</p>
+      </div>
+    </div>
+    <div class="kp-body">
+      <ul class="kp-topics">
+        <li>A detailed write-up of running large language model inference
+            across two GH200 GPUs using PyTorch FSDP, with benchmarking
+            results and architecture notes.</li>
+      </ul>
+    </div>
+  </a>
+
+</div>
+
+<hr>
+<h2 id="what-makes-the-gh200-different">What makes the GH200 different<a class="headerlink" href="#what-makes-the-gh200-different" title="Permanent link">¶</a></h2>
+<p>Each GH200 node contains two <strong>NVIDIA GH200 Grace Hopper Superchips</strong>. Unlike
+every other GPU node on the cluster, the GH200 is not simply a GPU card plugged
+into an x86 server — the CPU and GPU are a single unified superchip connected by
+NVLink-C2C, a high-speed coherent interconnect that lets both processors share
+memory transparently.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Standard cluster nodes</th>
+<th>GH200 nodes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU architecture</td>
+<td>x86_64 (Intel/AMD)</td>
+<td><strong>aarch64</strong> (Arm Neoverse V2)</td>
+</tr>
+<tr>
+<td>Operating system</td>
+<td>Rocky Linux 8</td>
+<td><strong>Rocky Linux 9</strong></td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>A100 / other</td>
+<td><strong>NVIDIA GH200 144GB</strong></td>
+</tr>
+<tr>
+<td>GPU memory</td>
+<td>40–80 GB HBM2e</td>
+<td><strong>144 GB HBM3e per GPU</strong></td>
+</tr>
+<tr>
+<td>CPU–GPU link</td>
+<td>PCIe (~64 GB/s)</td>
+<td><strong>NVLink-C2C (900 GB/s)</strong></td>
+</tr>
+<tr>
+<td>GPUs per node</td>
+<td>varies</td>
+<td><strong>2 per node</strong></td>
+</tr>
+<tr>
+<td>CPU memory</td>
+<td>DDR4/DDR5</td>
+<td><strong>~480 GB LPDDR5X per superchip</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The key figures for GPU-intensive work: <strong>144 GB of HBM3e per GPU</strong> and
+<strong>288 GB total per node</strong>, with ~4 TB/s memory bandwidth per GPU.</p>
+<hr>
+<h2 id="why-your-existing-software-will-not-work">Why your existing software will not work<a class="headerlink" href="#why-your-existing-software-will-not-work" title="Permanent link">¶</a></h2>
+<p>There are two independent reasons why software built for the rest of the cluster
+will fail on the GH200 nodes.</p>
+<h3 id="1-cpu-architecture-mismatch">1. CPU architecture mismatch<a class="headerlink" href="#1-cpu-architecture-mismatch" title="Permanent link">¶</a></h3>
+<p>The Grace CPU uses the <strong>Arm (aarch64)</strong> instruction set. Every binary compiled
+for x86_64 — Python, R, compiled extensions, conda environments, container
+layers — is the wrong architecture and will not execute. When you try to run an
+x86_64 binary on an aarch64 node you will typically see one of these errors:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Exec</span> <span class="nb">format</span> <span class="n">error</span>
+</span></code></pre></div>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">conda</span><span class="p">:</span> <span class="n">line</span> <span class="mi">6</span><span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">near</span> <span class="n">unexpected</span> <span class="n">token</span> <span class="err">`</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="s1">'</span>
+</span></code></pre></div>
+</div>
+<p>The second error, which looks like a Python syntax error in a shell script, is
+actually the shell trying to interpret an x86_64 binary as a shell script
+because it cannot execute it natively.</p>
+<div class="admonition warning">
+<p class="admonition-title">This affects everything</p>
+<p>Conda environments, pip-installed packages with compiled extensions,
+pre-built binaries in your home directory, and any software loaded via
+<code>module load</code> from the standard module tree are all x86_64 and will not
+work on the GH200 nodes.</p>
+</div>
+<h3 id="2-operating-system-mismatch">2. Operating system mismatch<a class="headerlink" href="#2-operating-system-mismatch" title="Permanent link">¶</a></h3>
+<p>The GH200 nodes run <strong>Rocky Linux 9</strong> (EL9). The rest of the cluster runs
+Rocky Linux 8 (EL8). Packages and modules built against EL8 system libraries
+are not guaranteed to work on EL9 and vice versa. The aarch64 module tree
+described below is built specifically against EL9.</p>
+<hr>
+<h2 id="software-options">Software options<a class="headerlink" href="#software-options" title="Permanent link">¶</a></h2>
+<h3 id="option-a-aarch64-module-tree-recommended">Option A — aarch64 module tree (recommended)<a class="headerlink" href="#option-a-aarch64-module-tree-recommended" title="Permanent link">¶</a></h3>
+<p>We have started building an <strong>aarch64/EL9</strong> EasyBuild software stack at
+<code>/apps/eb/el9/</code>. The available toolchain generations with <strong>aarch64</strong> builds are:</p>
+<table>
+<thead>
+<tr>
+<th>Toolchain</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023a</td>
+<td><code>/apps/eb/el9/2023a/aarch64/</code></td>
+</tr>
+<tr>
+<td>2024a</td>
+<td><code>/apps/eb/el9/2024a/aarch64/</code></td>
+</tr>
+<tr>
+<td>2025a</td>
+<td><code>/apps/eb/el9/2025a/aarch64/</code></td>
+</tr>
+</tbody>
+</table>
+<p>This tree is <strong>not loaded by default</strong>. Add it to your module path with:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">module</span> <span class="n">use</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">eb</span><span class="o">/</span><span class="n">el9</span><span class="o">/</span><span class="mi">2025</span><span class="n">a</span><span class="o">/</span><span class="n">aarch64</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="nb">all</span>
+</span></code></pre></div>
+</div>
+<p>Then use <code>module avail</code> and <code>module load</code> as normal. We recommend adding this
+to your SLURM scripts rather than your <code>~/.bashrc</code> to avoid affecting jobs on
+other partitions.</p>
+<div class="admonition note-sticky">
+<p class="admonition-title">Coverage is growing</p>
+<p>The aarch64 stack is under active development. If a module you need is
+missing, contact KIR Research Computing — we can prioritise building it.</p>
+</div>
+<h3 id="option-b-uv-for-python-environments">Option B — <code>uv</code> for Python environments<a class="headerlink" href="#option-b-uv-for-python-environments" title="Permanent link">¶</a></h3>
+<p>For Python work, <code>uv</code> is the most practical option during the early access
+period. An aarch64-native build of <code>uv</code> is available at:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">kir</span><span class="o">/</span><span class="n">eb</span><span class="o">/</span><span class="n">hpc</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">aarch64</span><span class="p">:</span><span class="err">$</span><span class="n">PATH</span>
+</span></code></pre></div>
+</div>
+<p>Add this to the top of your SLURM scripts <strong>before</strong> any Python or pip
+commands. This ensures the aarch64 <code>uv</code> binary is used rather than any
+x86_64 version that may be on your PATH.</p>
+<p>Create a virtual environment and install packages as normal:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">kir</span><span class="o">/</span><span class="n">eb</span><span class="o">/</span><span class="n">hpc</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">aarch64</span><span class="p">:</span><span class="err">$</span><span class="n">PATH</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">uv</span> <span class="n">venv</span> <span class="o">.</span><span class="n">venv</span> <span class="o">--</span><span class="n">python</span> <span class="mf">3.11</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">uv</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span> <span class="n">torchvision</span> <span class="n">torchaudio</span> \
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="o">--</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">cu126</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">uv</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">transformers</span> <span class="n">accelerate</span>
+</span></code></pre></div>
+</div>
+<div class="admonition lightbulb">
+<p class="admonition-title">CUDA module</p>
+<p>Always load a CUDA module before activating your environment. Use
+<code>CUDA/12.6.0</code> for GH200 — it is the minimum version with full support
+for the GH200's compute architecture (see below).</p>
+<p></p><div class="nord" markdown="1">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">module</span> <span class="n">purge</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">module</span> <span class="n">load</span> <span class="n">CUDA</span><span class="o">/</span><span class="mf">12.6.0</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</span></code></pre></div>
+</div><p></p>
+</div>
+<h3 id="option-c-contact-kir-research-computing">Option C — contact KIR Research Computing<a class="headerlink" href="#option-c-contact-kir-research-computing" title="Permanent link">¶</a></h3>
+<p>During the early access period, KIR Research Computing can build and maintain
+a shared environment for your group in a shared path, saving you the effort of
+managing your own <strong>aarch64 environment</strong>. This is the recommended route for groups
+who want to get started quickly.</p>
+<hr>
+<h2 id="requesting-gh200-resources">Requesting GH200 resources<a class="headerlink" href="#requesting-gh200-resources" title="Permanent link">¶</a></h2>
+<p>Use the following partition in your SLURM scripts:</p>
+<div class="nord">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">partition</span><span class="w">  </span><span class="n">gpu_gh200_144gb</span>
+</span></code></pre></div>
+</div>
+<p>A few important points before you submit:</p>
+<div class="admonition lightbulb">
+<p class="admonition-title">Start with one GPU</p>
+<p>Begin with a single GPU while you are getting familiar with the nodes.
+Only request both if your workflow genuinely requires it.</p>
+<p></p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gres</span><span class="w">  </span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span><span class="w">   </span><span class="p">#</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="n">GPU</span><span class="w"> </span><span class="p">(</span><span class="n">recommended</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">start</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gres</span><span class="w">  </span><span class="n">gpu</span><span class="p">:</span><span class="mi">2</span><span class="w">   </span><span class="p">#</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="n">GPUs</span><span class="w"> </span><span class="p">(</span><span class="n">only</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">needed</span><span class="p">)</span>
+</span></code></pre></div>
+</div><p></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Mandatory Slurm directives</p>
+<div class="nord" markdown="1">
+<p></p><div class="language-rust highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">account</span><span class="w">       </span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">cpus</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">task</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">partition</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gres</span><span class="w">           </span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">time</span><span class="w">             </span>
+</span></code></pre></div>
+</div><p></p>
+<p><strong>Always set <code>--cpus-per-task</code></strong>
+If you do not specify CPU cores, SLURM will allocate all <strong>72</strong> Grace CPU
+cores on the superchip to your job by default. This blocks other users
+from running even if they need only a handful of cores. Always be
+explicit:</p>
+<p></p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">cpus</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">task</span><span class="w">  </span><span class="mi">8</span><span class="w">   </span><span class="p">#</span><span class="w"> </span><span class="n">adjust</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="n">actually</span><span class="w"> </span><span class="n">needs</span>
+</span></code></pre></div>
+</div><p></p>
+<p><strong>Always set <code>--time</code></strong></p>
+<p>The default time limit is 5 days. Please always set an explicit wall
+time — it helps the scheduler and frees the node promptly when your
+job finishes. During early access we recommend keeping jobs short while
+you are iterating on your workflow.</p>
+<p></p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">time</span><span class="w">  </span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="w">   </span><span class="p">#</span><span class="w"> </span><span class="n">HH</span><span class="p">:</span><span class="nc">MM</span><span class="p">:</span><span class="nc">SS</span>
+</span></code></pre></div>
+</div><p></p>
+<p><strong>Be mindful with <code>--mem</code></strong></p>
+<p>Each node has approximately 1 TB of CPU memory. You can request up to
+that, but please only do so if your workflow genuinely requires it.
+Idle over-allocations prevent others from running.</p>
+<p></p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">mem</span><span class="w">  </span><span class="mi">32</span><span class="n">G</span><span class="w">    </span><span class="p">#</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">most</span><span class="w"> </span><span class="n">GPU</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">sufficient</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">mem</span><span class="w">  </span><span class="mi">500</span><span class="n">G</span><span class="w">   </span><span class="p">#</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">explicitly</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">large</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">memory</span>
+</span></code></pre></div>
+</div><p></p>
+</div>
+<h2 id="gpu-compute-architecture">GPU compute architecture<a class="headerlink" href="#gpu-compute-architecture" title="Permanent link">¶</a></h2>
+<p>The GH200 uses the <strong>Hopper</strong> GPU architecture. If you compile GPU code (CUDA
+C++, custom PyTorch extensions, or any package that builds against CUDA), you
+need to target the correct compute capability.</p>
+<table>
+<thead>
+<tr>
+<th>GPU</th>
+<th>Architecture</th>
+<th>Compute capability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A100</td>
+<td>Ampere</td>
+<td><code>sm_80</code></td>
+</tr>
+<tr>
+<td>H100</td>
+<td>Hopper</td>
+<td><code>sm_90</code></td>
+</tr>
+<tr>
+<td><strong>GH200</strong></td>
+<td><strong>Hopper</strong></td>
+<td><strong><code>sm_90a</code></strong></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>a</code> suffix in <code>sm_90a</code> is specific to the Grace Hopper superchip. When
+compiling CUDA code, set:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">-</span><span class="n">gencode</span> <span class="n">arch</span><span class="o">=</span><span class="n">compute_90a</span><span class="p">,</span><span class="n">code</span><span class="o">=</span><span class="n">sm_90a</span>
+</span></code></pre></div>
+</div>
+<p>For PyTorch, this is handled automatically when you install a CUDA 12.x build
+of torch — it ships with pre-compiled kernels for <code>sm_90a</code>. No manual flag is
+needed for standard PyTorch workflows.</p>
+<div class="admonition warning">
+<p class="admonition-title">Pre-compiled binaries for <code>sm_80</code> will run but slowly</p>
+<p>CUDA includes a JIT fallback: binaries compiled for <code>sm_80</code> will execute
+on a GH200 via PTX recompilation, but you lose all Hopper-specific
+optimisations (flash attention v3, FP8 tensor cores, improved WGMMA
+instructions). Always recompile for <code>sm_90a</code> if performance matters.</p>
+</div>
+<hr>
+<h2 id="available-llm-models">Available LLM models<a class="headerlink" href="#available-llm-models" title="Permanent link">¶</a></h2>
+<p>A shared mirror of large language models is available at
+<code>/well/kir/mirror/LLM/</code>. No download or HuggingFace token is needed to use
+these.</p>
+<h3 id="huggingface-format-for-use-with-transformers-fsdp-vllm-etc">HuggingFace format (for use with <code>transformers</code>, FSDP, vLLM, etc.)<a class="headerlink" href="#huggingface-format-for-use-with-transformers-fsdp-vllm-etc" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BERT base uncased</td>
+<td><code>/well/kir/mirror/LLM/huggingface/google-bert-bert-base-uncased/</code></td>
+</tr>
+<tr>
+<td>Qwen2.5-72B</td>
+<td><code>/well/kir/mirror/LLM/huggingface/Qwen-Qwen2.5-72B</code></td>
+</tr>
+</tbody>
+</table>
+<p>Load directly in Python:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="s2">"/well/kir/mirror/LLM/huggingface/Qwen-Qwen2.5-72B"</span><span class="p">,</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">torch_dtype</span><span class="o">=</span><span class="s2">"bfloat16"</span><span class="p">,</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">device_map</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<h3 id="ollama-models">Ollama models<a class="headerlink" href="#ollama-models" title="Permanent link">¶</a></h3>
+<details class="circle-info">
+<summary>models which can be used with <code>ollama serve</code></summary>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama 3.1</td>
+<td><code>llama3.1</code></td>
+</tr>
+<tr>
+<td>Llama 3.2</td>
+<td><code>llama3.2</code></td>
+</tr>
+<tr>
+<td>Llama 4</td>
+<td><code>llama4</code></td>
+</tr>
+<tr>
+<td>Gemma 4</td>
+<td><code>gemma4</code></td>
+</tr>
+<tr>
+<td>Mistral</td>
+<td><code>mistral</code></td>
+</tr>
+<tr>
+<td>Qwen3 Coder</td>
+<td><code>qwen3-coder-next</code></td>
+</tr>
+<tr>
+<td>Nomic Embed Text</td>
+<td><code>nomic-embed-text</code></td>
+</tr>
+</tbody>
+</table>
+<p>Set the model directory before starting Ollama:</p>
+<p></p><div class="nord" markdown="1">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">export</span> <span class="n">OLLAMA_MODELS</span><span class="o">=/</span><span class="n">well</span><span class="o">/</span><span class="n">kir</span><span class="o">/</span><span class="n">mirror</span><span class="o">/</span><span class="n">LLM</span><span class="o">/</span><span class="n">ollama</span><span class="o">/</span><span class="n">models</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">ollama</span> <span class="n">serve</span> <span class="o">&amp;</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">ollama</span> <span class="n">run</span> <span class="n">llama3</span><span class="mf">.1</span>
+</span></code></pre></div>
+</div><p></p>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Need a model that isn't listed?</p>
+<p>Contact KIR Research Computing and we can download it to the shared path.
+Do not download large models to your home directory or scratch space
+without checking storage quotas first.</p>
+</div>
+<hr>
+<h2 id="getting-help">Getting help<a class="headerlink" href="#getting-help" title="Permanent link">¶</a></h2>
+<p>The GH200 nodes are in <strong>early access</strong>. We expect rough edges, missing
+modules, and workflows that need adaptation.  Highly recommend contacting KIR Research Computing Manager for </p>
+<ul>
+<li>Building aarch64 modules or shared environments</li>
+<li>Requesting additional models in the shared mirror</li>
+<li>Reporting node issues or unexpected behaviour</li>
+<li>Help porting existing workflows to the GH200</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../using_gpus/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GPU Resources on BMRC">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                GPU Resources on BMRC
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../interactive-computing/openondemand/" class="md-footer__link md-footer__link--next" aria-label="Next: Interactive Computing with OnDemand">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Interactive Computing with OnDemand
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      KIR - Research Computing Hub is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.expand   Removing this for the moment to avoid the meny being expanded by default", "navigation.top", "navigation.footer", "navigation.instant", "content.code.copy", "content.code.annotate", "navigation.prune", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/featured-toggle.js"></script>
+      
+        <script src="../../javascripts/link_content_tabs_to_cards.js"></script>
+      
+        <script src="../../javascripts/status.js"></script>
+      
+        <script src="../../javascripts/status-card.js"></script>
+      
+        <script src="../../javascripts/katex.js" defer=""></script>
+      
+        <script src="../../javascripts/slurm-generator.js" defer=""></script>
+      
+        <script src="../../javascripts/parallel-laws.js" defer=""></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
