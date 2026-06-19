@@ -173,3 +173,4 @@ extra_css:
   - stylesheets/technical_essays_indexpage_cards.css
   - stylesheets/parallel-laws.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
+  - stylesheets/read_button.css
