@@ -59,7 +59,7 @@ Data downloaded from external sources is the starting point for all future analy
 
     Any `FAILED` line means the file is corrupted or has been replaced since the manifest was created — re-download before proceeding.
 
-!!! tip "Integrating checksums into your workflow"
+!!! lightbulb "Integrating checksums into your workflow"
 
     For reproducible pipelines, record checksums of all input datasets at the time of download and store them alongside your analysis scripts.
     
