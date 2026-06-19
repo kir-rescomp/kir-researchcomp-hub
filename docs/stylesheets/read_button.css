@@ -1,15 +1,20 @@
-.essays-grid .essay-btn {
+.essays-grid a.essay-read-btn {
+  display: inline-block;
   font-size: 0.7rem;
-  padding: 0.3em 0.9em;
-  margin-top: 0.4em;
-  border-width: 1px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25em 0.75em;
+  border-radius: 2em;
+  background: transparent;
+  border: 1.5px solid currentColor;
+  color: var(--md-primary-fg-color) !important;
+  text-decoration: none !important;
+  line-height: 1.6;
+  transition: background 0.15s, color 0.15s;
 }
 
-/* optional: push the button to the bottom of each card */
-.essays-grid.cards > ul > li {
-  display: flex;
-  flex-direction: column;
-}
-.essays-grid.cards > ul > li > p:last-child {
-  margin-top: auto;
+.essays-grid a.essay-read-btn:hover {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color) !important;
 }
