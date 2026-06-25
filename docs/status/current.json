@@ -14,7 +14,7 @@
     {"name": "Job running on HPC", "status": "operational"},
     {"name": "CPU/GPU nodes", "status": "operational"},
     {"name": "HPC Storage", "status": "operational"},
-    {"name": "BMRC OpenOnDemand", "status": "major-outage"},
+  {"name": "BMRC OpenOnDemand", "status": "operational"},
     {"name": "Posit Workbench", "status": "operational"}
   ]
 
