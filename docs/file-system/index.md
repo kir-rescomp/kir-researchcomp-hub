@@ -20,7 +20,7 @@ where `<group>` is your research group name.
 
 <div class="nord" markdown=1>
 
-### Summary Tree of 
+### Summary Tree of group file system
 
 ```rust
 /well/<group>/
