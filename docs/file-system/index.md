@@ -10,13 +10,35 @@ When you log in to the cluster you land in your **home directory**. Unlike most 
 where `<group>` is your research group name.
 
 !!! warning "Home directory — 10 GB strict quota"
-    Do **not** use your home directory for active work. The 10 GB limit fills quickly once you start running jobs, installing software, or writing output. Use the paths below instead.
+    Do **not** use your home directory for active work. The 10 GB limit fills quickly once you start running jobs, installing software, or writing output. Use the paths associated with your **group** ( below) instead. 
 
 ## Quick-reference diagram
 
 <p align="center" style="margin-bottom: -1px;">
     <img src="../assets/images/material/file_system/bmrc_filesystem_layout_modern.svg" alt="kir-oxford-logo" width="700" style="opacity: 0.9;"/>
 </p>
+
+<div class="nord" markdown=1>
+
+### Summary Tree of 
+
+```rust
+/well/<group>/
+├── projects
+│   ├── archive       # Directory to save raw data as it is backup to KIR tcm
+|
+├── shared            # This can be used to share data with external groups but we need provision special groups
+└── users
+    ├── user1         # Individuasansoml work spaces we created for each group member
+    │   ├── devel     # devel is also backed up. Therefore, we recommend storing your scripts here 
+    │   ├── notebooks
+    │   └── work
+    ├── user2
+    │   ├── devel
+    │   ├── notebooks
+    │   └── work
+```
+</div>
 
 ## Where to store raw data
 
