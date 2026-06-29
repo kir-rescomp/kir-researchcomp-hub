@@ -1,0 +1,68 @@
+/* Nord theme */
+.nord .highlight { background: #2e3440 !important; color: #d8dee9 !important; }
+.nord .highlight pre { background: #2e3440 !important; }
+.nord .highlight code { background: #2e3440 !important; }
+.nord .highlight .hll { background-color: #3b4252 }
+.nord .highlight .c { color: #616e88; font-style: italic } /* Comment */
+.nord .highlight .err { color: #bf616a }
+.nord .highlight .k { color: #81a1c1 } /* Keyword */
+.nord .highlight .l { color: #b48ead } /* Literal */
+.nord .highlight .n { color: #d8dee9 } /* Name */
+.nord .highlight .o { color: #81a1c1 } /* Operator */
+.nord .highlight .p { color: #eceff4 } /* Punctuation */
+.nord .highlight .cm { color: #616e88; font-style: italic }
+.nord .highlight .cp { color: #5e81ac }
+.nord .highlight .c1 { color: #616e88; font-style: italic }
+.nord .highlight .cs { color: #616e88; font-style: italic }
+.nord .highlight .gd { color: #bf616a }
+.nord .highlight .ge { font-style: italic }
+.nord .highlight .gh { color: #d8dee9; font-weight: bold }
+.nord .highlight .gi { color: #a3be8c }
+.nord .highlight .gp { color: #616e88; font-weight: bold }
+.nord .highlight .gs { font-weight: bold }
+.nord .highlight .gu { color: #81a1c1; font-weight: bold }
+.nord .highlight .kc { color: #81a1c1 }
+.nord .highlight .kd { color: #81a1c1 }
+.nord .highlight .kn { color: #81a1c1 }
+.nord .highlight .kp { color: #81a1c1 }
+.nord .highlight .kr { color: #81a1c1 }
+.nord .highlight .kt { color: #81a1c1 }
+.nord .highlight .ld { color: #a3be8c }
+.nord .highlight .m { color: #b48ead }
+.nord .highlight .s { color: #a3be8c }
+.nord .highlight .na { color: #8fbcbb }
+.nord .highlight .nb { color: #81a1c1 }
+.nord .highlight .nc { color: #8fbcbb }
+.nord .highlight .no { color: #d08770 }
+.nord .highlight .nd { color: #d08770 }
+.nord .highlight .ni { color: #d08770 }
+.nord .highlight .ne { color: #bf616a }
+.nord .highlight .nf { color: #88c0d0 }
+.nord .highlight .nl { color: #d08770 }
+.nord .highlight .nn { color: #8fbcbb }
+.nord .highlight .nx { color: #d8dee9 }
+.nord .highlight .py { color: #d8dee9 }
+.nord .highlight .nt { color: #81a1c1 }
+.nord .highlight .nv { color: #d8dee9 }
+.nord .highlight .ow { color: #81a1c1 }
+.nord .highlight .w { color: #d8dee9 }
+.nord .highlight .mf { color: #b48ead }
+.nord .highlight .mh { color: #b48ead }
+.nord .highlight .mi { color: #b48ead }
+.nord .highlight .mo { color: #b48ead }
+.nord .highlight .sb { color: #a3be8c }
+.nord .highlight .sc { color: #a3be8c }
+.nord .highlight .sd { color: #616e88; font-style: italic }
+.nord .highlight .s2 { color: #a3be8c }
+.nord .highlight .se { color: #ebcb8b }
+.nord .highlight .sh { color: #a3be8c }
+.nord .highlight .si { color: #a3be8c }
+.nord .highlight .sx { color: #a3be8c }
+.nord .highlight .sr { color: #a3be8c }
+.nord .highlight .s1 { color: #a3be8c }
+.nord .highlight .ss { color: #a3be8c }
+.nord .highlight .bp { color: #81a1c1 }
+.nord .highlight .vc { color: #d8dee9 }
+.nord .highlight .vg { color: #d8dee9 }
+.nord .highlight .vi { color: #d8dee9 }
+.nord .highlight .il { color: #b48ead }
