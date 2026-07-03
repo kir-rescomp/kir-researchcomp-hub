@@ -1,25 +1,36 @@
 # Nextflow
 
-A ready-made Nextflow configuration profile for running pipelines (including
+Below is a ready-made Nextflow configuration profile for running pipelines (including
 nf-core pipelines) on the BMRC Slurm cluster.
 
 ## Environment Variables 
 
-Nextflow by default will use 
+By default, Nextflow will attempt to use your home directory for all operations, creating a hidden directory ~/.nextflow for this purpose. Since home directories are limited to 10GB, we recommend redirecting these operations to some path in group filesystem to avoid quota issues.
 
+!!! key "Nextflow and Apptainer environment variables"
 
-```py
+    - `NXF_HOME` (default $HOME/.nextflow) is the parent that holds pulled pipelines, plugins, and assets — redirecting it moves several sub-caches at once. `NXF_WORK` is the `work/` intermediate dir, which is by far the **largest** consumer (often tens to hundreds of GB per run).
+    - Ideally, define these environment variables in your `~/.bashrc` which is much easier than adding them to individual Nextflow configurations
 
+    <div class="dracula" markdown=1>
+    ```py
+    export NXF_HOME=""
+    export NXF_WORK=""
 
-# Since majority of nf-core pipelines use Apptainer, 
-export NXF_APPTAINER_CACHEDIR=""
-export NXF_APPTAINER_LIBRARYDIR=""
-export APPTAINER_CACHEDIR=""
-export APPTAINER_TMPDIR=""
+    # Since majority of nf-core pipelines use Apptainer, 
+    export NXF_APPTAINER_CACHEDIR=""
+    export NXF_APPTAINER_LIBRARYDIR=""
+    export APPTAINER_CACHEDIR=""
+    export APPTAINER_TMPDIR=""
 
-# And Apptainer bind to expose the host filesystem
-export APPTAINER_BIND="/gpfs3/well,/gpfs3/users"
-```
+    # And Apptainer bind to expose the host filesystem
+    export APPTAINER_BIND="/gpfs3/well,/gpfs3/users"
+
+    # Other, not important but worth taking a look
+    export NXF_TEMP=""   # Nextflow scratch; default is system temp
+    export NXF_OPTS='-Xms1g -Xmx4g'                      # stops the head JVM ballooning
+    ```    
+    </div>
 
 ## The profile
 
@@ -30,7 +41,7 @@ Save the following as `kir_bmrc.config`:
 //Profile config names for nf-core/configs
 params {
     config_profile_description = 'Kennedy Institute of Rheumatology (KIR) profile for the BMRC cluster (Oxford)'
-    config_profile_contact     = 'Dinindu Senanayake'
+    config_profile_contact     = 'Dini Senanayake'
     config_profile_url         = 'https://kir-rescomp.github.io/kir-researchcomp-hub/software/application_specific_notes/nextlow/#the-profile'
 }
 
