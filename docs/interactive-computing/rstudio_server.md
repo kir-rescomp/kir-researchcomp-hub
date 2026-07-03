@@ -63,9 +63,9 @@ Choose the one that best fits your need/workflow:
     ">
       <div>
         <strong>BMRC Open OnDemand</strong><br>
-        <code>ondemand00.bmrc.ox.ac.uk:12000</code>
+        <code>ondemand00.bmrc.ox.ac.uk</code>
       </div>
-      <a href="https://ondemand00.bmrc.ox.ac.uk:12000/" target="_blank" class="md-button md-button--primary">
+      <a href="https://ondemand00.bmrc.ox.ac.uk" target="_blank" class="md-button md-button--primary">
         Launch 
       </a>
     </div>
