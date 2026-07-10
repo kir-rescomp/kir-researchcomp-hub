@@ -60,6 +60,31 @@ As with most other scheduler systems, job submission scripts in Slurm consist of
         <img src="../../assets/images/material/batch-computing/slurm_formatting_guide.svg" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
     </p>
 
+## Submitting your job with `sbatch`
+
+Once you have written your submission script, you hand it to the scheduler with `sbatch`. This is the actual step that queues your job. The scheduler reads the `#SBATCH` directives from the header, reserves the requested resources, and runs the body of the script on a compute node once those resources become available.
+
+<div class="nord" markdown="1">
+```py
+sbatch submit.sl
+```
+
+On successful submission, Slurm returns the job's ID:
+
+```py
+Submitted batch job 12345678
+```
+</div>
+
+!!! circle-info "What happens after submission?"
+
+    * `sbatch` returns **immediately** — this is the "fire and forget" behaviour. Your job now sits in the queue until resources are available.
+    * The job ID (`12345678`) is your handle for everything that follows: checking status with `squeue -j 12345678`, cancelling with `scancel 12345678`, or inspecting it after completion with `sacct -j 12345678`.
+    * Anything your script prints to *stdout*/*stderr* is written to the output file defined by `#SBATCH --output=...` (by default `slurm-<jobid>.out` in the submission directory).
+
+!!! square-pen "`sbatch` vs `srun`"
+
+    Use `sbatch` to submit a **script** to the queue for later, unattended execution — this is the normal way to run production work. Use `srun` to launch a job (or a step within a script) that runs **interactively/immediately**, blocking your terminal until it finishes. See the [`srun` page](#) for details.
 
 ## Try it yourself
 
