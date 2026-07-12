@@ -64,4 +64,57 @@ rm -rf /flash/scratch/$USER
 
 </div>
 
-##  
+## When should I use it?
+
+Choose your storage based on your **access pattern**, not just file size:
+
+| Use `/flash/scratch` when…                                   | Stay on GPFS when…                         |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| Many small files (thousands+)                                | A few large files                          |
+| Random reads/writes, frequent seeks                          | Long sequential streaming reads/writes     |
+| High IOPS / metadata-heavy (index files, small DB, checkpoint shuffling) | Bulk staging of large datasets             |
+| You want to take I/O load *off* the shared filesystem        | You need the data visible across nodes     |
+| Intermediate scratch for a single job                        | Final results / anything that must persist |
+
+A good pattern is: **stage inputs from GPFS → run with heavy random I/O against
+`/flash/scratch` → copy final outputs back to GPFS → clean up.**
+
+## Benchmark: local flash vs GPFS
+
+The difference is workload-dependent, and it matters which workload you measure.
+
+**Large sequential I/O** (`dd`, 4 GiB, 1 MiB blocks) — GPFS is *already excellent*
+here, since it stripes across many storage servers. Local flash offers no
+advantage for streaming:
+
+|                  | `/flash/scratch`   | GPFS      |
+| ---------------- | ------------------ | --------- |
+| Sequential write | ~1.2 GB/s          | ~3.9 GB/s |
+| Sequential read  | (cache-influenced) | ~3.8 GB/s |
+
+**Random 4k I/O** (`fio`, `iodepth 32`, 4 jobs, `--direct=1`) — this is where
+local flash wins decisively:
+
+| Metric           | `/flash/scratch` | GPFS      | Advantage      |
+| ---------------- | ---------------- | --------- | -------------- |
+| Read IOPS        | 32,200           | 520       | **~62×**       |
+| Write IOPS       | 32,200           | 533       | **~60×**       |
+| Read bandwidth   | 126 MiB/s        | 2.0 MiB/s | ~62×           |
+| Avg read latency | 92 µs            | 7,497 µs  | **~82× lower** |
+| p99 read latency | 0.25 ms          | 49 ms     | ~200× lower    |
+
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/batch-computing/slurm_array_life_cycle.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+</p>
+
+The latency tail is the real story: on GPFS every random read pays a network
+round-trip to a storage/metadata server, so tail latency runs into tens of
+milliseconds. On local flash the read hits NVMe directly and stays in the
+microsecond range. If your job does a lot of random reads or touches many small
+files, local scratch can turn an I/O-bound job into a compute-bound one.
+
+!!! note "Benchmark your own workload"
+    These numbers are from a single node and depend on the underlying device
+    (some nodes use SATA SSDs, others true NVMe). Run a quick `fio` random-I/O
+    test on your allocated node if you want to confirm the gain for your
+    specific access pattern before committing a large job.
