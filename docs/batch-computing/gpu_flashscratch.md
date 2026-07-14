@@ -38,6 +38,30 @@ You can confirm the node actually has the feature with:
 ```py
 scontrol show node "$(hostname)" | grep -i ActiveFeatures
 ```
+
+
+## Creating your project folder
+
+It is your responsibility to create a folder for your job. Because
+`/flash/scratch` is shared by **all** jobs on the node, protect your data by
+placing it in a subfolder with restrictive permissions:
+
+```py
+mkdir -p /flash/scratch/$USER
+chmod 700 /flash/scratch/$USER    # owner-only: rwx------
+```
+
+!!! warning "Directories need the execute bit"
+    Use `700`, not `600`. Without the execute (`x`) bit you will not be able to
+    `cd` into the directory or open files inside it (`Permission denied`).
+    `700` gives you full private access; `750` also lets your group read it.
+
+Always clean up when your job finishes:
+
+```py
+rm -rf /flash/scratch/$USER
+```
+
 </div>
 
-## 
+##  
