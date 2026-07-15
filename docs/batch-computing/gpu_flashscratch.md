@@ -64,6 +64,8 @@ rm -rf /flash/scratch/$USER
 
 </div>
 
+!!! brush "Automatic cleanup in your job script"
+
 ## When should I use it?
 
 Choose your storage based on your **access pattern**, not just file size:
