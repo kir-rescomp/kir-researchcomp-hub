@@ -103,8 +103,9 @@ local flash wins decisively:
 | Avg read latency | 92 µs            | 7,497 µs  | **~82× lower** |
 | p99 read latency | 0.25 ms          | 49 ms     | ~200× lower    |
 
+<br>
 <p align="center" style="margin-bottom: -1px;">
-    <img src="../../assets/images/material/batch-computing/slurm_array_life_cycle.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
+    <img src="../../assets/images/material/batch-computing/flash_vs_gpfs_iops.svg" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
 </p>
 
 The latency tail is the real story: on GPFS every random read pays a network
@@ -113,7 +114,7 @@ milliseconds. On local flash the read hits NVMe directly and stays in the
 microsecond range. If your job does a lot of random reads or touches many small
 files, local scratch can turn an I/O-bound job into a compute-bound one.
 
-!!! note "Benchmark your own workload"
+!!! note-sticky "Benchmark your own workload"
     These numbers are from a single node and depend on the underlying device
     (some nodes use SATA SSDs, others true NVMe). Run a quick `fio` random-I/O
     test on your allocated node if you want to confirm the gain for your
