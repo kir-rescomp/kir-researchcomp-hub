@@ -64,7 +64,62 @@ rm -rf /flash/scratch/$USER
 
 </div>
 
-!!! brush "Automatic cleanup in your job script"
+??? brush "Automatic cleanup in your job script"
+
+    Because `/flash/scratch` is node-local and shared, always remove your working
+    directory when the job finishes. The most robust way is a **`trap`**, which runs
+    on normal exit *and* when the job is cancelled, times out, or errors — so you
+    don't leave data behind even when the script doesn't reach the end.
+
+    Put this near the top of your Slurm script, right after the `#SBATCH` lines:
+    <div class="nord" markdown="1">
+    ```rust
+    #!/bin/bash
+    #SBATCH -A gpu_<X>.prj
+    #SBATCH -p gpu_p100_16gb
+    #SBATCH --gres gpu:1
+    #SBATCH --constraint "flash"
+
+    # --- fast local scratch setup ---
+    FLASH_DIR="/flash/scratch/$USER/job_$SLURM_JOB_ID"
+    mkdir -p "$FLASH_DIR"
+    chmod 700 "$FLASH_DIR"
+
+    # Remove the directory on ANY exit: success, error, timeout, or scancel
+    cleanup() { rm -rf "$FLASH_DIR"; }
+    trap cleanup EXIT
+    # --------------------------------
+
+    # ... your job runs here, using "$FLASH_DIR" as scratch ...
+    cd "$FLASH_DIR"
+    ```
+
+    A few points worth knowing:
+
+    - Using a per-job subfolder (`job_$SLURM_JOB_ID`) keeps concurrent jobs on the
+      same node from colliding, and means cleanup only ever removes *this* job's data.
+
+    - `trap cleanup EXIT` covers the common cases (script finishes, `set -e` abort,
+      and the `SIGTERM` Slurm sends on timeout/`scancel`, which triggers `EXIT` once
+      the shell exits).
+
+    - If you run long steps that might be killed by `SIGTERM` before the shell exits,
+      you can trap the signal explicitly as well so cleanup always runs first:
+
+      ```py
+      trap 'cleanup; exit 143' TERM
+      trap cleanup EXIT
+      ```
+
+    !!! lightbulb "Stage results out *before* cleanup"
+        The trap deletes everything in `$FLASH_DIR`. Copy any results you want to
+        keep back to GPFS earlier in the script (or as the last real step), so they
+        are safely on persistent storage before the job exits:
+
+        ```py
+        cp -a "$FLASH_DIR"/results/ /path/on/gpfs/project/
+        ```
+
 
 ## When should I use it?
 
