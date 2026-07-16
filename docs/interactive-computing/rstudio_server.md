@@ -82,9 +82,11 @@ Choose the one that best fits your need/workflow:
 
     1. First, login to BMRC ( any login node ) and then start an `srun` interactive session on the cluster, requesting an appropriate amount of resources for your intended calculations. For example, 3 CPU slots with a total of 20GB of memory:
 
+        !!! danger "Do not choose `himem` partition as it is not exposed to identity management system.i.e. RStudio login page will trigger failues for `himem` partition"
         ```py
         srun --partition short --cpus-per-task 3 --mem 20G --pty bash
         ```
+        
 
     2. From within your interactive session, load the standalone `RStudio-Server/2025.09.2-418` module and the R module of interest . For an example, `R/4.5.1-gfbf-2023a-bare-noSciPy` 
 
