@@ -81,7 +81,7 @@ module load uv
 
 Then use it exactly as you would `pip`:
 
-??? note-sticky "uv-managed Python and storage locations"
+??? clipboard-list "Quick Read prior to creating your first env - uv-managed Python and storage locations"
 
     ## uv-managed Python and storage locations
 
@@ -92,14 +92,15 @@ Then use it exactly as you would `pip`:
     directory, which has a small quota. A single interpreter download can exceed it and fail with
     `Disk quota exceeded (os error 122)`.
 
-    Set these before using uv (e.g. in the `kir-utils` module, a site profile, or your `~/.bashrc`):
+    Set these before using uv:
         ```py
-        export UV_PYTHON_INSTALL_DIR=/well/<group>/shared/uv/python
-        export UV_CACHE_DIR=/well/<group>/shared/uv/cache
-        export TMPDIR=/well/<group>/shared/uv/tmp
+        export UV_PYTHON_INSTALL_DIR=/path/away/from/home
+        export UV_CACHE_DIR=/path/away/from/home
+        export TMPDIR=/path/away/from/home
         mkdir -p "$UV_PYTHON_INSTALL_DIR" "$UV_CACHE_DIR" "$TMPDIR"
         ```
-    
+        
+    - We recommend adding those `export..` commands ( Environment Variables) to your `~/.bashrc` to make them permanent
 
     Notes:
 
