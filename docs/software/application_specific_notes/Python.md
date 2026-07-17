@@ -81,6 +81,38 @@ module load uv
 
 Then use it exactly as you would `pip`:
 
+??? clipboard-list "Quick Read prior to creating your first env - uv-managed Python and storage locations"
+
+    ## uv-managed Python and storage locations
+
+    We use uv to download Python interpreters directly (`--python 3.12`, `uv python install`, etc.)
+    because the OS Python is too old and maintaining separate EasyBuild Python modules is more effort.
+
+    **Consequence:** by default uv writes interpreters, caches, and temp extraction into your home
+    directory, which has a small quota. A single interpreter download can exceed it and fail with
+    `Disk quota exceeded (os error 122)`.
+
+    Set these before using uv:
+        ```py
+        export UV_PYTHON_INSTALL_DIR=/path/away/from/home
+        export UV_CACHE_DIR=/path/away/from/home
+        export TMPDIR=/path/away/from/home
+        mkdir -p "$UV_PYTHON_INSTALL_DIR" "$UV_CACHE_DIR" "$TMPDIR"
+        ```
+        
+    - We recommend adding those `export..` commands ( Environment Variables) to your `~/.bashrc` to make them permanent
+
+    Notes:
+
+    - The venv path (`uv venv /path/...`) does **not** control where the interpreter is installed —
+      that is always `UV_PYTHON_INSTALL_DIR`.
+    - Interpreter extraction happens in a `.temp` subdirectory *inside* `UV_PYTHON_INSTALL_DIR`, so
+      redirecting that variable moves both the temp unpack and the final install. `TMPDIR` alone will
+      not fix interpreter-download quota errors.
+    - Keep `UV_CACHE_DIR` on the **same filesystem** as your venvs so uv can hardlink instead of copy.
+      If they must differ, set `UV_LINK_MODE=copy`.
+    - Verify with `uv python dir` and `uv cache dir`.
+
 ```py
 # Create a virtual environment (specify any Python version)
 uv venv ~/devel/virtual_envs/myenv --python 3.12
