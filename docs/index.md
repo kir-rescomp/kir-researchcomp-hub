@@ -22,7 +22,7 @@ title: Home
 </div>
 
 <div class="section-title" markdown>
-## :material-server-network: HPC Support Documentation
+## :material-server-network: HPC (BMRC) Support Documentation
 </div>
 
 <div class="kp-episode-grid">
