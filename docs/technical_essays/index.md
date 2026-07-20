@@ -37,6 +37,12 @@ deserve more than a how-to guide but don't belong in the main docs.
 
     [:octicons-arrow-right-24: Read](./hpc/gh200_llm_qwen2.5_inference.md)
 
+-   **When Backspace Stops Working Inside tmux**
+
+    What to do when <kbd>Backspace</kbd> stops working within a `tmux` session 
+    
+    [:octicons-arrow-right-24: Read](./hpc/tmux_backspace_stops.md)
+
 </div>
 
 <div class="essays-section-header" markdown>
