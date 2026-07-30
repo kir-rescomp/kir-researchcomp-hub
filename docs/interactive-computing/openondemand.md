@@ -62,7 +62,7 @@
             Use this if you are relying on kernels registered via `kir-add-kernel` and do not need to
             activate a specific virtual environment for the Jupyter process itself:
             <div class="nord" markdown=1>
-            ```py
+            ```rust
             #!/bin/bash
             module purge
             module load JupyterLab/4.5.6
@@ -73,7 +73,7 @@
 
             Use this if you have installed JupyterLab directly into a virtual environment:
             <div class="nord" markdown=1>
-            ```py
+            ```rust
             #!/bin/bash
             module purge
             module load Python/....
