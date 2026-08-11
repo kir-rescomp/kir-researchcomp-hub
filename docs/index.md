@@ -96,7 +96,7 @@ title: Home
       <div class="kp-num">04</div>
       <div class="kp-meta">
         <div class="kp-label">Batch Computing</div>
-        <p class="kp-title">Introduction to Slurm</p>
+        <p class="kp-title">Introduction to Batch Computing & Slurm</p>
       </div>
     </div>
     <div class="kp-body">
