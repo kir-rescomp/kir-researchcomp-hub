@@ -221,6 +221,9 @@
 
 !!! stethoscope "" 
 
+    <p align="center" style="margin-bottom: -1px;">
+        <img src="../../assets/images/material/interactive-commputing/ood_undetermined.png" alt="srun" width="450" style="opacity: 0.9;"/>
+    </p>
     This is a result of corrupted OnDemand `cache` and `db` which can be resolved by manually deleting the content of those directories
     
     <div class="nord" markdown="1">
