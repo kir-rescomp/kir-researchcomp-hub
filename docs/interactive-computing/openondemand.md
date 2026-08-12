@@ -195,9 +195,9 @@
 
 ## Troubleshooting 
 
+### 1. RStudio stuck on grey screen after connecting
 
-
-!!! stethoscope "RStudio stuck on grey screen after connecting"
+!!! stethoscope ""
 
     If you click **Connect** on an RStudio OnDemand session but are greeted with a
     persistent grey screen, the previous session likely saved a large object to its
@@ -217,3 +217,21 @@
     </div>
     Once done, relaunch your RStudio session from OnDemand as normal.
     
+### 2. Sessions are stuck on `Undetermined` state and <kbd>Delete</kbd> button triggers `failed to delete session`
+
+!!! stethoscope "" 
+
+    This is a result of corrupted OnDemand `cache` and `db` which can be resolved by manually deleting the content of those directories
+    
+    <div class="nord" markdown="1">
+    ```py
+    rm -rf ~/ondemand/data/sys/dashboard/batch_connect/cache/*
+    rm -rf ~/ondemand/data/sys/dashboard/batch_connect/db/*
+    ```
+
+    If there aren't any active sessions at the moment, you safely can delete the whole `batch_connect` directory ( this will get re-created during the next attempt)
+
+    ```py
+    rm -rf  ~/ondemand/data/sys/dashboard/batch_connect/*
+    ```
+    </div>
