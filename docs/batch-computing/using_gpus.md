@@ -57,6 +57,8 @@ This guide will help you understand the available resources and how to request t
 
 GPU resources are available through the following Slurm partitions:
 
+!!! circle-right "On top of the following partitions, KIR han exclusive GH200 node for adavanced GPU computing. Refer to this [GH200 dedicated page](./gh200.md) for more information "
+    
 ### Partition Table
 
 | Partition | GPUs | GPU Memory (GB) | Max Runtime (hrs) | Default CPUs | Default Memory (GB) |
