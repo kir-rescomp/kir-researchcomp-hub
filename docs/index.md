@@ -241,3 +241,26 @@ title: Home
 
 - - - 
 
+<div class="section-title" markdown>
+## :material-nintendo-game-boy: Interactive Learning
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+<a href="./cluster-quest/index.html" class="kp-card kp-training" style="max-width: 480px; text-decoration: none;">
+  <div class="kp-header">
+    <div class="kp-num">🧝</div>
+    <div class="kp-meta">
+      <div class="kp-label">KIR Research Computing</div>
+      <p class="kp-title">Cluster Quest →</p>
+    </div>
+  </div>
+  <div class="kp-body">
+    <ul class="kp-topics">
+      <li>Learn to use an HPC cluster the way you actually will, by doing it, in a safe sandbox where nothing can break. 
+      Each level is a real researcher's task, played out in a simulated terminal.</li>
+    </ul>
+  </div>
+  </a>
+</div>
+
+

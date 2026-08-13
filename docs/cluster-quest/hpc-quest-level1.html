@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cluster Quest — Level 1</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root{
+    --void:#0b1020;
+    --panel:#111a2e;
+    --panel-2:#0e1526;
+    --ink:#c8d4e8;
+    --dim:#63739a;
+    --line:#1e2b48;
+    --amber:#ffb454;
+    --cyan:#38e1c8;
+    --magenta:#e26fd8;
+    --green:#7ee787;
+    --red:#ff6b6b;
+    --prompt:#38e1c8;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, #16233f 0%, transparent 60%),
+      radial-gradient(900px 500px at 0% 110%, #171130 0%, transparent 55%),
+      var(--void);
+    color:var(--ink);
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    height:100vh;
+    display:grid;
+    grid-template-columns:1fr 340px;
+    gap:1px;
+    overflow:hidden;
+  }
+  @media (max-width:820px){
+    body{grid-template-columns:1fr;grid-template-rows:1fr auto;overflow:auto;height:auto;min-height:100vh}
+  }
+
+  /* ---- Terminal side ---- */
+  .term-wrap{
+    display:flex;flex-direction:column;
+    background:var(--panel-2);
+    min-height:0;
+  }
+  .term-bar{
+    display:flex;align-items:center;gap:10px;
+    padding:12px 18px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#12203b,#0e1526);
+  }
+  .dots{display:flex;gap:7px}
+  .dots span{width:11px;height:11px;border-radius:50%;opacity:.85}
+  .dots span:nth-child(1){background:#ff5f57}
+  .dots span:nth-child(2){background:#febc2e}
+  .dots span:nth-child(3){background:#28c840}
+  .term-title{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;color:var(--dim);letter-spacing:.5px;
+  }
+  .term-title b{color:var(--cyan);font-weight:500}
+
+  .term{
+    flex:1;min-height:0;
+    overflow-y:auto;
+    padding:20px 20px 8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:13.5px;line-height:1.65;
+  }
+  .term::-webkit-scrollbar{width:10px}
+  .term::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+
+  .ln{white-space:pre-wrap;word-break:break-word}
+  .ln .u{color:var(--prompt)}
+  .ln .h{color:var(--magenta)}
+  .ln .p{color:var(--dim)}
+  .ln.cmd .txt{color:var(--ink)}
+  .ln.out{color:var(--dim)}
+  .ln.ok{color:var(--green)}
+  .ln.err{color:var(--red)}
+  .ln.sys{color:var(--amber)}
+  .ln.dir{color:var(--cyan)}
+  .ln.story{color:#9fb0d4;font-style:italic}
+
+  .input-row{
+    display:flex;align-items:center;gap:0;
+    padding:6px 20px 20px;
+    font-family:'JetBrains Mono',monospace;font-size:13.5px;
+  }
+  .input-row .ps1{color:var(--prompt);white-space:pre}
+  .input-row .ps1 .h{color:var(--magenta)}
+  .input-row .ps1 .p{color:var(--dim)}
+  #cmd{
+    flex:1;background:transparent;border:none;outline:none;
+    color:var(--ink);font-family:inherit;font-size:inherit;
+    caret-color:var(--cyan);
+  }
+
+  /* ---- Game panel side ---- */
+  .hud{
+    background:var(--panel);
+    border-left:1px solid var(--line);
+    display:flex;flex-direction:column;
+    overflow-y:auto;
+  }
+  .hud::-webkit-scrollbar{width:8px}
+  .hud::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+
+  .hud-head{
+    padding:20px 20px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--amber);margin-bottom:8px;
+  }
+  .hud-head h1{
+    font-size:20px;font-weight:700;line-height:1.15;letter-spacing:-.3px;
+  }
+  .hud-head h1 .lvl{color:var(--cyan);display:block;font-size:12px;font-weight:500;letter-spacing:1px;margin-top:6px;font-family:'JetBrains Mono',monospace}
+
+  .brief{
+    padding:16px 20px;
+    border-bottom:1px solid var(--line);
+    font-size:13px;line-height:1.6;color:#a8b6d4;
+  }
+  .brief .who{color:var(--magenta);font-weight:600}
+
+  .obj-head{
+    padding:16px 20px 10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .obj-head .count{color:var(--cyan)}
+
+  .objectives{padding:0 20px 8px;list-style:none}
+  .obj{
+    display:flex;gap:11px;align-items:flex-start;
+    padding:9px 0;
+    border-bottom:1px solid rgba(30,43,72,.5);
+    font-size:13px;line-height:1.45;
+    transition:opacity .3s;
+  }
+  .obj:last-child{border-bottom:none}
+  .obj .box{
+    flex-shrink:0;width:17px;height:17px;border-radius:5px;
+    border:1.5px solid var(--line);margin-top:1px;
+    display:grid;place-items:center;
+    font-size:11px;color:var(--void);
+    transition:all .3s;
+  }
+  .obj.done .box{background:var(--green);border-color:var(--green)}
+  .obj.done .box::after{content:"✓";font-weight:700}
+  .obj.active .box{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,180,84,.12)}
+  .obj.done .label{color:var(--dim);text-decoration:line-through;text-decoration-color:var(--line)}
+  .obj .label{color:var(--ink)}
+  .obj .label .cmd{color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:12px}
+
+  .coach{
+    margin:8px 20px 20px;
+    padding:14px;
+    background:linear-gradient(180deg,rgba(56,225,200,.06),rgba(56,225,200,.02));
+    border:1px solid rgba(56,225,200,.18);
+    border-radius:10px;
+    font-size:12.5px;line-height:1.55;color:#a8c4d8;
+  }
+  .coach .tag{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:6px;
+  }
+  .coach b{color:var(--amber);font-weight:600}
+  .coach code{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    background:rgba(56,225,200,.1);padding:1px 5px;border-radius:4px;color:var(--cyan);
+  }
+
+  .win{
+    margin:auto 16px 16px;padding:18px;
+    background:linear-gradient(180deg,rgba(126,231,135,.1),rgba(126,231,135,.03));
+    border:1px solid rgba(126,231,135,.3);border-radius:12px;
+    display:none;
+  }
+  .win.show{display:block;animation:pop .4s ease}
+  @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+  .win h2{color:var(--green);font-size:16px;margin-bottom:8px}
+  .win p{font-size:12.5px;color:#a8b6d4;line-height:1.55}
+  .win .next{
+    margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;
+    color:var(--dim);letter-spacing:.5px;
+  }
+  .win .next b{color:var(--amber)}
+
+  .hint-btn{
+    margin:0 20px 18px;padding:9px;
+    background:transparent;border:1px dashed var(--line);border-radius:8px;
+    color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:1px;cursor:pointer;transition:all .2s;
+  }
+  .hint-btn:hover{border-color:var(--amber);color:var(--amber)}
+
+  .cursor-blink{animation:blink 1.1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+</style>
+</head>
+<body>
+
+  <!-- TERMINAL -->
+  <div class="term-wrap">
+    <div class="term-bar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="term-title">researcher@laptop — <b>cluster quest</b> — 80×24</div>
+    </div>
+    <div class="term" id="term"></div>
+    <div class="input-row">
+      <span class="ps1" id="ps1"></span>
+      <input id="cmd" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="hud-head">
+      <div class="eyebrow">Cluster Quest</div>
+      <h1>First Contact<span class="lvl">LEVEL 01 — SSH &amp; NAVIGATION</span></h1>
+    </div>
+
+    <div class="brief">
+      <span class="who">Dr. Okafor</span> just messaged: <em>"The sequencing run finished — I dropped the FASTQs in my project folder on the cluster. Can you get on and confirm they're all there before I submit the grant report tonight?"</em>
+      <br><br>You've never logged into an HPC cluster before. Time to change that.
+    </div>
+
+    <div class="obj-head">
+      <span>Objectives</span>
+      <span class="count"><span id="done">0</span>/5</span>
+    </div>
+    <ul class="objectives" id="objectives"></ul>
+
+    <div class="coach" id="coach">
+      <span class="tag">// field guide</span>
+      <div id="coach-body">Your laptop is <b>here</b>. The cluster is a powerful machine <b>somewhere else</b>. <code>ssh</code> ("secure shell") is how you open a remote session on it — like reaching through the network and getting a prompt on the other machine. Start by connecting.</div>
+    </div>
+
+    <button class="hint-btn" id="hintBtn">? NEED A HINT</button>
+
+    <div class="win" id="win">
+      <h2>◈ Level Complete</h2>
+      <p id="winText"></p>
+      <div class="next">NEXT UP → <b>Level 02: The Shared Filesystem</b> — quotas, <code>/well/</code>, and where your data actually lives.</div>
+    </div>
+  </div>
+
+<script>
+/* ============================================================
+   Cluster Quest — Level 1 engine
+   A sandboxed fake shell + fake cluster modelled on a
+   BMRC-style environment. Nothing here touches a real system.
+   ============================================================ */
+
+const term = document.getElementById('term');
+const input = document.getElementById('cmd');
+const ps1El = document.getElementById('ps1');
+
+// --- Two "machines": the laptop, and the remote cluster ---
+const HOSTS = {
+  laptop: { user:'researcher', host:'laptop', connected:true },
+  cluster:{ user:'researcher', host:'cluster-login1', connected:false }
+};
+let onCluster = false;          // are we in an ssh session?
+let cwd = '/home/researcher';   // current dir on whichever host we're on
+
+// Fake cluster filesystem (only meaningful once connected)
+const CLUSTER_FS = {
+  '/home/researcher': ['README.txt','.bashrc'],
+  '/well': ['okafor-lab','smith-lab','shared'],
+  '/well/okafor-lab': ['projects','scratch'],
+  '/well/okafor-lab/projects': ['sequencing-2026'],
+  '/well/okafor-lab/projects/sequencing-2026':
+    ['sample_01.fastq.gz','sample_02.fastq.gz','sample_03.fastq.gz','sample_04.fastq.gz','md5sums.txt']
+};
+const LAPTOP_FS = {
+  '/home/researcher': ['Desktop','Documents','notes.md']
+};
+
+// --- Objectives ---
+const objectives = [
+  { id:'connect', label:'Connect to the cluster with <span class="cmd">ssh</span>', done:false },
+  { id:'whereami',label:'Find out where you landed — <span class="cmd">pwd</span>', done:false },
+  { id:'nav',     label:'Navigate to the lab\'s project area under <span class="cmd">/well</span>', done:false },
+  { id:'enter',   label:'Enter the <span class="cmd">sequencing-2026</span> folder', done:false },
+  { id:'confirm', label:'List the files and confirm the FASTQs', done:false },
+];
+
+const objEl = document.getElementById('objectives');
+function renderObjectives(){
+  objEl.innerHTML='';
+  let firstUndone=true;
+  objectives.forEach(o=>{
+    const li=document.createElement('li');
+    li.className='obj'+(o.done?' done':'')+((!o.done&&firstUndone)?' active':'');
+    if(!o.done&&firstUndone) firstUndone=false;
+    li.innerHTML=`<span class="box"></span><span class="label">${o.label}</span>`;
+    objEl.appendChild(li);
+  });
+  document.getElementById('done').textContent=objectives.filter(o=>o.done).length;
+}
+function complete(id, coach){
+  const o=objectives.find(x=>x.id===id);
+  if(o&&!o.done){ o.done=true; renderObjectives(); if(coach) setCoach(coach); checkWin(); }
+}
+
+function setCoach(html){ document.getElementById('coach-body').innerHTML=html; }
+
+function checkWin(){
+  if(objectives.every(o=>o.done)){
+    const w=document.getElementById('win');
+    document.getElementById('winText').innerHTML=
+      'All four FASTQs are present. You connected to a remote machine, oriented yourself on an unfamiliar filesystem, and verified real data — the exact loop researchers run every day. Message Dr. Okafor: they\'re good to submit.';
+    w.classList.add('show');
+    w.scrollIntoView({behavior:'smooth'});
+    setCoach('You just did the thing that intimidates most new HPC users. The rest is variations on this: connect, orient, act.');
+  }
+}
+
+// --- Prompt rendering ---
+function promptHTML(){
+  if(onCluster){
+    return `<span class="h">researcher@cluster-login1</span><span class="p">:</span><span class="u">${short(cwd)}</span><span class="p">$ </span>`;
+  }
+  return `<span class="h">researcher@laptop</span><span class="p">:</span><span class="u">${short(cwd)}</span><span class="p">$ </span>`;
+}
+function short(p){
+  const home = '/home/researcher';
+  if(p===home) return '~';
+  if(p.startsWith(home+'/')) return '~'+p.slice(home.length);
+  return p;
+}
+function refreshPrompt(){ ps1El.innerHTML=promptHTML(); }
+
+// --- Terminal output helpers ---
+function print(text, cls=''){
+  const div=document.createElement('div');
+  div.className='ln '+cls;
+  div.innerHTML=text;
+  term.appendChild(div);
+  term.scrollTop=term.scrollHeight;
+}
+function echoCommand(raw){
+  const div=document.createElement('div');
+  div.className='ln cmd';
+  div.innerHTML=promptHTML()+`<span class="txt">${escapeHtml(raw)}</span>`;
+  term.appendChild(div);
+}
+function escapeHtml(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+// --- Filesystem helpers ---
+function fs(){ return onCluster?CLUSTER_FS:LAPTOP_FS; }
+function resolve(target){
+  if(!target) return cwd;
+  let base = target.startsWith('/') ? '' : cwd;
+  let parts = (base+'/'+target).split('/').filter(Boolean);
+  let stack=[];
+  for(const part of parts){
+    if(part==='.') continue;
+    if(part==='..'){ stack.pop(); continue; }
+    if(part==='~'){ stack='home researcher'.split(' '); continue; }
+    stack.push(part);
+  }
+  return '/'+stack.join('/');
+}
+function dirExists(p){ return Object.prototype.hasOwnProperty.call(fs(),p); }
+
+// --- Command handling ---
+function handle(raw){
+  const line=raw.trim();
+  echoCommand(raw);
+  if(!line){ return; }
+  const [cmd,...args]=line.split(/\s+/);
+
+  switch(cmd){
+    case 'ssh': return doSsh(args);
+    case 'pwd': return doPwd();
+    case 'ls':  return doLs(args);
+    case 'cd':  return doCd(args);
+    case 'cat': return doCat(args);
+    case 'exit':case 'logout': return doExit();
+    case 'help': return doHelp();
+    case 'clear': term.innerHTML=''; return;
+    case 'whoami': print(onCluster?'researcher':'researcher','out'); return;
+    default:
+      print(`${cmd}: command not found`,'err');
+      print(`Type <span style="color:var(--cyan)">help</span> to see the commands available in this level.`,'out');
+  }
+}
+
+function doSsh(args){
+  if(onCluster){ print('You\'re already connected to the cluster.','out'); return; }
+  const target=args[0]||'';
+  const good=/^researcher@cluster-login1$/.test(target) || /cluster-login1$/.test(target) || target==='cluster';
+  if(!target){
+    print('usage: ssh user@hostname','err');
+    print('Try connecting to <span style="color:var(--cyan)">researcher@cluster-login1</span>.','out');
+    return;
+  }
+  if(!good){
+    print(`ssh: Could not resolve hostname ${escapeHtml(target)}: Name or service not known`,'err');
+    print('Hint: the cluster\'s login node is <span style="color:var(--cyan)">cluster-login1</span>, and you log in as <span style="color:var(--cyan)">researcher</span>.','out');
+    return;
+  }
+  // simulate connection
+  print('The authenticity of host \'cluster-login1\' can\'t be established.','out');
+  print('ECDSA key fingerprint is SHA256:a3f9…c1e2.','out');
+  print('Warning: Permanently added \'cluster-login1\' to the list of known hosts.','out');
+  print('','out');
+  print('  ┌──────────────────────────────────────────────┐','sys');
+  print('  │   BMRC-style HPC cluster  ·  login node 1     │','sys');
+  print('  │   Shared system — be kind to your neighbours │','sys');
+  print('  └──────────────────────────────────────────────┘','sys');
+  print('','out');
+  print('Last login: today, from your laptop','out');
+  onCluster=true; cwd='/home/researcher'; refreshPrompt();
+  complete('connect','You\'re <b>in</b>. Notice the prompt changed from <code>@laptop</code> to <code>@cluster-login1</code> — always glance there to know which machine your commands will run on. Now: <b>where</b> did you land? Ask the shell with <code>pwd</code>.');
+}
+
+function doPwd(){
+  print(cwd,'out');
+  if(onCluster) complete('whereami','Good — you landed in your <b>home directory</b>. But the data lives in the <b>lab\'s shared space</b>, not home. On this cluster that\'s under <code>/well</code>. Try <code>ls /well</code> to look, then <code>cd</code> your way toward <code>okafor-lab/projects</code>.');
+  else print('(You\'re still on your laptop — connect to the cluster first with ssh.)','out');
+}
+
+function doLs(args){
+  const target=args.filter(a=>!a.startsWith('-'))[0];
+  const path=resolve(target);
+  if(!dirExists(path)){
+    print(`ls: cannot access '${escapeHtml(target||path)}': No such file or directory`,'err');
+    return;
+  }
+  const items=fs()[path];
+  const line=items.map(f=>{
+    const isDir=dirExists(resolve((target?target+'/':'')+f)) || dirExists(path+'/'+f);
+    return isDir?`<span class="dir">${f}/</span>`:f;
+  }).join('   ');
+  print(line||'(empty)','out');
+
+  if(onCluster && path==='/well/okafor-lab/projects/sequencing-2026'){
+    const n=items.filter(f=>f.endsWith('.fastq.gz')).length;
+    complete('confirm',`There they are — <b>${n} FASTQ files</b>. You reached across the network, found unfamiliar data on a shared system, and verified it. That\'s the whole job.`);
+  }
+}
+
+function doCd(args){
+  if(!onCluster){ print('cd: connect to the cluster first (ssh).','out'); return; }
+  const target=args[0];
+  if(!target||target==='~'){ cwd='/home/researcher'; refreshPrompt(); return; }
+  const path=resolve(target);
+  if(!dirExists(path)){
+    print(`cd: ${escapeHtml(target)}: No such file or directory`,'err');
+    if(target.includes('okafor'))
+      print('Tip: use <span style="color:var(--cyan)">ls</span> at each step to see what you can descend into.','out');
+    return;
+  }
+  cwd=path; refreshPrompt();
+
+  if(path==='/well/okafor-lab/projects'){
+    complete('nav','You\'re in the lab\'s project area. One more step — descend into <code>sequencing-2026</code>.');
+  }
+  if(path==='/well/okafor-lab/projects/sequencing-2026'){
+    complete('nav');   // in case they jumped straight here
+    complete('enter','You\'re standing in the data folder. Now <b>look inside</b>: <code>ls</code>.');
+  }
+}
+
+function doCat(args){
+  const path=resolve(args[0]);
+  const dir=path.slice(0,path.lastIndexOf('/'))||'/';
+  const name=path.slice(path.lastIndexOf('/')+1);
+  if(onCluster && dir==='/well/okafor-lab/projects/sequencing-2026' && name==='md5sums.txt'){
+    print('a1b2…  sample_01.fastq.gz','out');
+    print('c3d4…  sample_02.fastq.gz','out');
+    print('e5f6…  sample_03.fastq.gz','out');
+    print('a7b8…  sample_04.fastq.gz','out');
+    print('(These checksums let you verify the files copied without corruption — a real HPC habit.)','out');
+    return;
+  }
+  print(`cat: ${escapeHtml(args[0]||'')}: No such file or directory`,'err');
+}
+
+function doExit(){
+  if(onCluster){
+    print('logout','out');
+    print('Connection to cluster-login1 closed.','out');
+    onCluster=false; cwd='/home/researcher'; refreshPrompt();
+  } else {
+    print('You\'re on your laptop — nothing to exit.','out');
+  }
+}
+
+function doHelp(){
+  print('Available in this level:','sys');
+  print('  <span style="color:var(--cyan)">ssh</span> user@host   open a session on a remote machine','out');
+  print('  <span style="color:var(--cyan)">pwd</span>            print the directory you\'re currently in','out');
+  print('  <span style="color:var(--cyan)">ls</span> [path]      list what\'s in a directory','out');
+  print('  <span style="color:var(--cyan)">cd</span> [path]      change directory ( .. goes up one )','out');
+  print('  <span style="color:var(--cyan)">cat</span> file       print a file\'s contents','out');
+  print('  <span style="color:var(--cyan)">exit</span>           close the remote session','out');
+}
+
+// --- Hints ---
+const hints=[
+  'Start on your laptop. Reach the cluster with: <span style="color:var(--cyan)">ssh researcher@cluster-login1</span>',
+  'Once connected, run <span style="color:var(--cyan)">pwd</span> to see where you are.',
+  'Look around with <span style="color:var(--cyan)">ls /well</span>, then step in: <span style="color:var(--cyan)">cd /well/okafor-lab/projects</span>',
+  'Enter the data folder: <span style="color:var(--cyan)">cd sequencing-2026</span> then <span style="color:var(--cyan)">ls</span>',
+];
+document.getElementById('hintBtn').addEventListener('click',()=>{
+  const nextUndone=objectives.findIndex(o=>!o.done);
+  const h=hints[Math.min(nextUndone,hints.length-1)];
+  print('<span style="color:var(--amber)">hint:</span> '+h,'out');
+});
+
+// --- Boot sequence ---
+function boot(){
+  print('<span style="color:var(--amber)">Cluster Quest</span> — Level 01: First Contact','sys');
+  print('A safe sandbox. Every command here is simulated — you cannot break anything.','story');
+  print('','out');
+  print('Dr. Okafor\'s FASTQ files are waiting on the cluster. Your laptop is not the cluster.','story');
+  print('Type <span style="color:var(--cyan)">help</span> if you get stuck, or use the hint button on the right.','story');
+  print('','out');
+  renderObjectives();
+  refreshPrompt();
+}
+boot();
+
+// --- Input loop ---
+const history=[]; let hIdx=-1;
+input.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
+    const v=input.value;
+    if(v.trim()){ history.push(v); }
+    hIdx=history.length;
+    input.value='';
+    handle(v);
+  } else if(e.key==='ArrowUp'){
+    if(history.length){ hIdx=Math.max(0,hIdx-1); input.value=history[hIdx]||''; e.preventDefault(); }
+  } else if(e.key==='ArrowDown'){
+    if(history.length){ hIdx=Math.min(history.length,hIdx+1); input.value=history[hIdx]||''; e.preventDefault(); }
+  }
+});
+document.addEventListener('click',()=>input.focus());
+</script>
+</body>
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cluster Quest — Level 2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root{
+    --void:#0b1020;
+    --panel:#111a2e;
+    --panel-2:#0e1526;
+    --ink:#c8d4e8;
+    --dim:#63739a;
+    --line:#1e2b48;
+    --amber:#ffb454;
+    --cyan:#38e1c8;
+    --magenta:#e26fd8;
+    --green:#7ee787;
+    --red:#ff6b6b;
+    --prompt:#38e1c8;
+    --run:#7aa2ff;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, #16233f 0%, transparent 60%),
+      radial-gradient(900px 500px at 0% 110%, #171130 0%, transparent 55%),
+      var(--void);
+    color:var(--ink);
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    height:100vh;
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:1px;
+    overflow:hidden;
+  }
+  @media (max-width:860px){
+    body{grid-template-columns:1fr;grid-template-rows:1fr auto;overflow:auto;height:auto;min-height:100vh}
+  }
+
+  /* ---- Terminal ---- */
+  .term-wrap{display:flex;flex-direction:column;background:var(--panel-2);min-height:0}
+  .term-bar{
+    display:flex;align-items:center;gap:10px;padding:12px 18px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#12203b,#0e1526);
+  }
+  .dots{display:flex;gap:7px}
+  .dots span{width:11px;height:11px;border-radius:50%;opacity:.85}
+  .dots span:nth-child(1){background:#ff5f57}
+  .dots span:nth-child(2){background:#febc2e}
+  .dots span:nth-child(3){background:#28c840}
+  .term-title{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--dim);letter-spacing:.5px}
+  .term-title b{color:var(--cyan);font-weight:500}
+
+  .term{flex:1;min-height:0;overflow-y:auto;padding:20px 20px 8px;
+    font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.65}
+  .term::-webkit-scrollbar{width:10px}
+  .term::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+
+  .ln{white-space:pre-wrap;word-break:break-word}
+  .ln.out{color:var(--dim)}
+  .ln.ok{color:var(--green)}
+  .ln.err{color:var(--red)}
+  .ln.sys{color:var(--amber)}
+  .ln.dir{color:var(--cyan)}
+  .ln.story{color:#9fb0d4;font-style:italic}
+  .ln.run{color:var(--run)}
+  .ln.cmd .txt{color:var(--ink)}
+  .ln.table{color:var(--ink);font-size:12.5px}
+
+  .input-row{display:flex;align-items:center;padding:6px 20px 20px;
+    font-family:'JetBrains Mono',monospace;font-size:13.5px}
+  .input-row .ps1{color:var(--prompt);white-space:pre}
+  .input-row .ps1 .h{color:var(--magenta)}
+  .input-row .ps1 .p{color:var(--dim)}
+  #cmd{flex:1;background:transparent;border:none;outline:none;color:var(--ink);
+    font-family:inherit;font-size:inherit;caret-color:var(--cyan)}
+
+  /* ---- HUD ---- */
+  .hud{background:var(--panel);border-left:1px solid var(--line);
+    display:flex;flex-direction:column;overflow-y:auto}
+  .hud::-webkit-scrollbar{width:8px}
+  .hud::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+
+  .hud-head{padding:20px 20px 16px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2.5px;
+    text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+  .hud-head h1{font-size:20px;font-weight:700;line-height:1.15;letter-spacing:-.3px}
+  .hud-head h1 .lvl{color:var(--cyan);display:block;font-size:12px;font-weight:500;
+    letter-spacing:1px;margin-top:6px;font-family:'JetBrains Mono',monospace}
+
+  .brief{padding:16px 20px;border-bottom:1px solid var(--line);
+    font-size:13px;line-height:1.6;color:#a8b6d4}
+  .brief .who{color:var(--magenta);font-weight:600}
+
+  /* live cluster meter */
+  .cluster-state{
+    padding:14px 20px;border-bottom:1px solid var(--line);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .cluster-state .cs-head{
+    display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;
+    font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);
+  }
+  .cluster-state .clock{color:var(--amber)}
+  .meter{margin-bottom:9px}
+  .meter .mlabel{display:flex;justify-content:space-between;font-size:11px;color:var(--dim);margin-bottom:4px}
+  .meter .mlabel b{color:var(--ink);font-weight:500}
+  .bar{height:7px;background:var(--void);border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--run));
+    width:0;transition:width .5s ease}
+  .bar.busy>i{background:linear-gradient(90deg,var(--amber),var(--red))}
+
+  .obj-head{padding:16px 20px 10px;font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);
+    display:flex;justify-content:space-between;align-items:baseline}
+  .obj-head .count{color:var(--cyan)}
+  .objectives{padding:0 20px 8px;list-style:none}
+  .obj{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+    border-bottom:1px solid rgba(30,43,72,.5);font-size:13px;line-height:1.45;transition:opacity .3s}
+  .obj:last-child{border-bottom:none}
+  .obj .box{flex-shrink:0;width:17px;height:17px;border-radius:5px;border:1.5px solid var(--line);
+    margin-top:1px;display:grid;place-items:center;font-size:11px;color:var(--void);transition:all .3s}
+  .obj.done .box{background:var(--green);border-color:var(--green)}
+  .obj.done .box::after{content:"✓";font-weight:700}
+  .obj.active .box{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,180,84,.12)}
+  .obj.done .label{color:var(--dim);text-decoration:line-through;text-decoration-color:var(--line)}
+  .obj .label .cmd{color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:12px}
+
+  .coach{margin:8px 20px 18px;padding:14px;
+    background:linear-gradient(180deg,rgba(56,225,200,.06),rgba(56,225,200,.02));
+    border:1px solid rgba(56,225,200,.18);border-radius:10px;
+    font-size:12.5px;line-height:1.55;color:#a8c4d8}
+  .coach .tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:6px}
+  .coach b{color:var(--amber);font-weight:600}
+  .coach code{font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    background:rgba(56,225,200,.1);padding:1px 5px;border-radius:4px;color:var(--cyan)}
+
+  .hint-btn{margin:0 20px 18px;padding:9px;background:transparent;
+    border:1px dashed var(--line);border-radius:8px;color:var(--dim);
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;
+    cursor:pointer;transition:all .2s}
+  .hint-btn:hover{border-color:var(--amber);color:var(--amber)}
+
+  .win{margin:auto 16px 16px;padding:18px;
+    background:linear-gradient(180deg,rgba(126,231,135,.1),rgba(126,231,135,.03));
+    border:1px solid rgba(126,231,135,.3);border-radius:12px;display:none}
+  .win.show{display:block;animation:pop .4s ease}
+  @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+  .win h2{color:var(--green);font-size:16px;margin-bottom:8px}
+  .win p{font-size:12.5px;color:#a8b6d4;line-height:1.55}
+  .win .next{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;
+    color:var(--dim);letter-spacing:.5px}
+  .win .next b{color:var(--amber)}
+</style>
+</head>
+<body>
+
+  <div class="term-wrap">
+    <div class="term-bar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="term-title">researcher@cluster-login1 — <b>cluster quest</b> — 80×24</div>
+    </div>
+    <div class="term" id="term"></div>
+    <div class="input-row">
+      <span class="ps1" id="ps1"></span>
+      <input id="cmd" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+    </div>
+  </div>
+
+  <div class="hud">
+    <div class="hud-head">
+      <div class="eyebrow">Cluster Quest</div>
+      <h1>The Scheduler<span class="lvl">LEVEL 02 — SLURM &amp; RESOURCE REQUESTS</span></h1>
+    </div>
+
+    <div class="brief">
+      <span class="who">Dr. Okafor</span>: <em>"Great, the FASTQs are all there. Now run the alignment on them — but the login node isn't for heavy work. You have to ask the scheduler for compute. And please don't hog half the cluster; other people are waiting too."</em>
+    </div>
+
+    <div class="cluster-state">
+      <div class="cs-head"><span>Cluster · short partition</span><span class="clock" id="clock">t+00:00</span></div>
+      <div class="meter">
+        <div class="mlabel"><span>Free cores</span><b><span id="freeCores">96</span> / 128</b></div>
+        <div class="bar" id="coreBar"><i></i></div>
+      </div>
+      <div class="meter">
+        <div class="mlabel"><span>Jobs in queue ahead of you</span><b id="queueAhead">3</b></div>
+        <div class="bar" id="queueBar"><i></i></div>
+      </div>
+    </div>
+
+    <div class="obj-head"><span>Objectives</span><span class="count"><span id="done">0</span>/5</span></div>
+    <ul class="objectives" id="objectives"></ul>
+
+    <div class="coach" id="coach">
+      <span class="tag">// field guide</span>
+      <div id="coach-body">The <b>login node</b> is a shared front desk — fine for editing files and submitting work, never for running it. To actually compute, you <b>ask Slurm</b>, the scheduler, for a slice of the cluster. Two ways to ask: grab a live session with <code>srun</code>, or hand it a script with <code>sbatch</code>. Start by seeing what's happening: <code>sinfo</code>.</div>
+    </div>
+
+    <button class="hint-btn" id="hintBtn">? NEED A HINT</button>
+
+    <div class="win" id="win">
+      <h2>◈ Level Complete</h2>
+      <p id="winText"></p>
+      <div class="next">NEXT UP → <b>Level 03: Modules &amp; Environments</b> — <code>module load</code>, why <code>python</code> isn't the python you want, and reproducible toolchains.</div>
+    </div>
+  </div>
+
+<script>
+/* ============================================================
+   Cluster Quest — Level 2: The Scheduler
+   Teaches: login-node vs compute, srun vs sbatch, and the
+   core-count ↔ wait-time trade-off, via a queue that advances
+   in simulated time. All simulated; nothing real is touched.
+   ============================================================ */
+
+const term=document.getElementById('term');
+const input=document.getElementById('cmd');
+const ps1El=document.getElementById('ps1');
+
+let cwd='/well/okafor-lab/projects/sequencing-2026';
+let simMinutes=0;                 // simulated cluster clock
+let queueAhead=3;                 // jobs ahead of the player
+let freeCores=96;                 // of 128 on the partition
+let scriptWritten=false;          // wrote submit.sh via the editor stub
+let jobCounter=418823;
+const jobs=[];                    // {id, name, cores, state, remaining, waited}
+let sawSqueue=false;
+
+/* ---------- prompt & output ---------- */
+function short(p){const h='/home/researcher';if(p===h)return'~';if(p.startsWith(h+'/'))return'~'+p.slice(h.length);return p;}
+function promptHTML(){return `<span class="h">researcher@cluster-login1</span><span class="p">:</span><span style="color:var(--prompt)">${short(cwd)}</span><span class="p">$ </span>`;}
+function refreshPrompt(){ps1El.innerHTML=promptHTML();}
+function print(t,cls=''){const d=document.createElement('div');d.className='ln '+cls;d.innerHTML=t;term.appendChild(d);term.scrollTop=term.scrollHeight;}
+function echoCommand(raw){const d=document.createElement('div');d.className='ln cmd';d.innerHTML=promptHTML()+`<span class="txt">${esc(raw)}</span>`;term.appendChild(d);term.scrollTop=term.scrollHeight;}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+/* ---------- objectives ---------- */
+const objectives=[
+  {id:'inspect', label:'Inspect the cluster with <span class="cmd">sinfo</span> / <span class="cmd">squeue</span>', done:false},
+  {id:'noheavy', label:'Learn why the login node can\'t run the job', done:false},
+  {id:'script',  label:'Write a batch script requesting a <b>sensible</b> core count', done:false},
+  {id:'submit',  label:'Submit it with <span class="cmd">sbatch</span> and watch the queue', done:false},
+  {id:'finish',  label:'Job completes — alignment done', done:false},
+];
+const objEl=document.getElementById('objectives');
+function renderObjectives(){
+  objEl.innerHTML='';let firstUndone=true;
+  objectives.forEach(o=>{
+    const li=document.createElement('li');
+    li.className='obj'+(o.done?' done':'')+((!o.done&&firstUndone)?' active':'');
+    if(!o.done&&firstUndone)firstUndone=false;
+    li.innerHTML=`<span class="box"></span><span class="label">${o.label}</span>`;
+    objEl.appendChild(li);
+  });
+  document.getElementById('done').textContent=objectives.filter(o=>o.done).length;
+}
+function complete(id,coach){const o=objectives.find(x=>x.id===id);if(o&&!o.done){o.done=true;renderObjectives();if(coach)setCoach(coach);checkWin();}}
+function setCoach(html){document.getElementById('coach-body').innerHTML=html;}
+function checkWin(){
+  if(objectives.every(o=>o.done)){
+    const w=document.getElementById('win');
+    document.getElementById('winText').innerHTML=
+      'The alignment ran on a compute node — not the login node — and finished. More importantly, you felt the trade-off: a modest request started sooner, and a greedy one would have sat in the queue. That instinct is what separates a considerate cluster user from the person everyone groans about.';
+    w.classList.add('show');w.scrollIntoView({behavior:'smooth'});
+    setCoach('You\'ve got the scheduler\'s core loop: <b>ask for what you need, not the maximum</b>. Requesting more isn\'t faster — it just means a longer wait for a bigger slot, and less left for everyone else.');
+  }
+}
+
+/* ---------- live cluster meter ---------- */
+function updateMeters(){
+  document.getElementById('clock').textContent='t+'+String(Math.floor(simMinutes/60)).padStart(2,'0')+':'+String(simMinutes%60).padStart(2,'0');
+  document.getElementById('freeCores').textContent=freeCores;
+  document.getElementById('queueAhead').textContent=queueAhead;
+  const cb=document.getElementById('coreBar');
+  cb.querySelector('i').style.width=(100*(128-freeCores)/128)+'%';
+  cb.classList.toggle('busy',freeCores<32);
+  document.getElementById('queueBar').querySelector('i').style.width=Math.min(100,queueAhead*22)+'%';
+}
+
+/* ---------- command router ---------- */
+function handle(raw){
+  const line=raw.trim();echoCommand(raw);
+  if(!line)return;
+  const [cmd,...args]=line.split(/\s+/);
+  switch(cmd){
+    case 'sinfo': return doSinfo();
+    case 'squeue': return doSqueue();
+    case 'ls': return doLs();
+    case 'nano': case 'vim': case 'vi': return doEditor(args);
+    case 'cat': return doCat(args);
+    case 'bwa': case './align.sh': case 'align': return doHeavyOnLogin(cmd);
+    case 'srun': return doSrun(args);
+    case 'sbatch': return doSbatch(args);
+    case 'scancel': return doScancel(args);
+    case 'help': return doHelp();
+    case 'clear': term.innerHTML='';return;
+    case 'pwd': print(cwd,'out');return;
+    default:
+      print(`${esc(cmd)}: command not found`,'err');
+      print('Type <span style="color:var(--cyan)">help</span> for the commands available in this level.','out');
+  }
+}
+
+/* ---------- inspect ---------- */
+function doSinfo(){
+  print('PARTITION  AVAIL  TIMELIMIT  NODES  STATE  CPUS(free/total)','table');
+  print('short*        up   12:00:00      4   mix   '+freeCores+'/128','out');
+  print('long          up 7-00:00:00      8   idle  512/512','out');
+  print('gpu           up 1-00:00:00      2   mix   40/64','out');
+  complete('inspect','<code>sinfo</code> shows <b>partitions</b> — named pools of nodes with different limits. Short jobs go to <code>short</code>, week-long ones to <code>long</code>, GPU work to <code>gpu</code>. Now peek at the waiting line: <code>squeue</code>.');
+}
+function doSqueue(){
+  print('   JOBID PARTITION     NAME     USER ST  TIME  NODES CPUS','table');
+  print('  418820     short  qc_step   ada.li  R  4:12      1   16','out');
+  print('  418821     short  big_sim  m.stone PD  0:00      2   64','out');
+  print('  418822     short  trimming  j.park PD  0:00      1    8','out');
+  jobs.filter(j=>j.state!=='CD').forEach(j=>{
+    print(`  ${j.id}     short  ${j.name.padEnd(8).slice(0,8)}  researc ${j.state==='R'?'R':'PD'}  ${fmt(j.waited)}      1   ${String(j.cores).padStart(2)}`,'run');
+  });
+  print('','out');
+  print('R = running · PD = pending (waiting for a slot)','out');
+  sawSqueue=true;
+  if(!objectives.find(o=>o.id==='inspect').done)
+    complete('inspect','That <code>big_sim</code> job asked for <b>64 cores</b> and is stuck at <b>PD</b> — pending. Big requests wait for big gaps. Keep that in mind when you choose your own core count.');
+  else if(!objectives.find(o=>o.id==='submit').done)
+    setCoach('See the queue? Jobs marked <b>PD</b> are waiting; <b>R</b> is running. The fuller the cluster, the longer <b>PD</b> lasts. Your wait depends on how much you ask for.');
+}
+function fmt(m){return Math.floor(m/60)+':'+String(m%60).padStart(2,'0');}
+
+/* ---------- the teaching moment: don't run heavy work on login ---------- */
+function doHeavyOnLogin(cmd){
+  print('bwa mem: aligning 4 samples …','out');
+  print('','out');
+  print('┌─ ADMIN NOTICE ───────────────────────────────────────┐','err');
+  print('│ Heavy process killed on the LOGIN NODE.              │','err');
+  print('│ The login node is shared by everyone who connects.  │','err');
+  print('│ Run compute through the scheduler: srun / sbatch.   │','err');
+  print('└──────────────────────────────────────────────────────┘','err');
+  complete('noheavy','That\'s the mistake every newcomer makes once. The login node is a <b>front desk</b>, not a workhorse — running a big job there slows down everyone who\'s just trying to log in. Instead, package the work into a script and hand it to Slurm. Open an editor: <code>nano submit.sh</code>.');
+}
+
+/* ---------- writing the batch script (editor stub) ---------- */
+function doEditor(args){
+  const fname=args[0]||'';
+  if(!/submit\.sh$/.test(fname)){
+    print('usage: nano submit.sh','out');
+    print('You want to create the batch script <span style="color:var(--cyan)">submit.sh</span>.','out');
+    return;
+  }
+  // simulated editor: present a fill-in choice instead of raw typing
+  print('── nano: submit.sh ──────────────────────────────','sys');
+  print('A batch script tells Slurm what to run and what to ask for.','story');
+  print('Fill in the core request by picking one — type the number:','story');
+  print('','out');
+  print('  #!/bin/bash','out');
+  print('  #SBATCH --job-name=align','out');
+  print('  #SBATCH --partition=short','out');
+  print('  #SBATCH --cpus-per-task=<span style="color:var(--amber)">?</span>   <span style="color:var(--dim)"># how many cores?</span>','out');
+  print('  #SBATCH --time=00:20:00','out');
+  print('  #SBATCH --output=align-%j.log','out');
+  print('','out');
+  print('  module load bwa','out');
+  print('  bwa mem ref.fa sample_*.fastq.gz > aligned.sam','out');
+  print('','out');
+  print('<span style="color:var(--amber)">Choose your request:</span>','sys');
+  print('  [ <span style="color:var(--cyan)">choose 4</span>  ]  the aligner uses ~4 cores well — right-sized','out');
+  print('  [ <span style="color:var(--cyan)">choose 16</span> ]  more than it can use — some waste, still starts soon-ish','out');
+  print('  [ <span style="color:var(--cyan)">choose 64</span> ]  grab a huge slot — long wait, blocks others','out');
+  print('','out');
+  print('Type e.g. <span style="color:var(--cyan)">choose 4</span>','out');
+  awaitingChoice=true;
+}
+let awaitingChoice=false;
+let chosenCores=null;
+function resolveChoice(n){
+  awaitingChoice=false;
+  chosenCores=n;scriptWritten=true;
+  print(`Saved submit.sh with <b style="color:var(--run)">--cpus-per-task=${n}</b>.`,'ok');
+  if(n===4){
+    complete('script','Right-sized. The aligner can only use about 4 cores, so asking for 4 means Slurm can slot you into a small gap <b>quickly</b>. Now submit it: <code>sbatch submit.sh</code>.');
+  }else if(n===16){
+    complete('script','Workable, but note: the job can\'t <b>use</b> 16 cores — the extra 12 sit idle, reserved and wasted. Slurm also needs a bigger gap to fit you, so you\'ll wait a little longer. Submit when ready: <code>sbatch submit.sh</code>.');
+  }else{
+    complete('script','This is the trap. 64 cores for a job that uses 4 means a <b>long</b> wait for a slot that big — and while you hold it, 60 cores are locked away from everyone else. Submit it and watch what happens: <code>sbatch submit.sh</code>. (You can always <code>scancel</code> and rewrite.)');
+  }
+}
+
+function doCat(args){
+  if(/submit\.sh$/.test(args[0]||'') && scriptWritten){
+    print('#!/bin/bash','out');
+    print('#SBATCH --job-name=align','out');
+    print('#SBATCH --partition=short','out');
+    print('#SBATCH --cpus-per-task='+chosenCores,'out');
+    print('#SBATCH --time=00:20:00','out');
+    print('module load bwa','out');
+    print('bwa mem ref.fa sample_*.fastq.gz > aligned.sam','out');
+    return;
+  }
+  print(`cat: ${esc(args[0]||'')}: No such file or directory`,'err');
+}
+
+/* ---------- srun (interactive) — offered as an aside ---------- */
+function doSrun(args){
+  print('srun: requesting an interactive session on a compute node …','run');
+  print('srun: For a one-off run this works, but you\'d sit here holding the terminal until it finishes.','out');
+  print('For a batch job you can fire-and-forget, use <span style="color:var(--cyan)">sbatch submit.sh</span> instead.','out');
+}
+
+/* ---------- sbatch (the main event) ---------- */
+function doSbatch(args){
+  if(!/submit\.sh$/.test(args[0]||'')){
+    print('usage: sbatch submit.sh','err');
+    if(!scriptWritten) print('You haven\'t written the script yet — <span style="color:var(--cyan)">nano submit.sh</span>.','out');
+    return;
+  }
+  if(!scriptWritten){print('sbatch: error: submit.sh not found. Write it first with nano.','err');return;}
+
+  const id=++jobCounter;
+  // wait time scales with how much you asked for, relative to what's free
+  let baseWait;
+  if(chosenCores<=4)  baseWait=2 + Math.max(0,queueAhead-1)*1;      // slots in fast
+  else if(chosenCores<=16) baseWait=6 + queueAhead*2;               // needs a bigger gap
+  else baseWait=18 + queueAhead*4;                                  // needs a huge gap
+  const runTime = chosenCores<=4?6:chosenCores<=16?5:5;            // runtime barely improves — the lesson
+
+  const job={id,name:'align',cores:chosenCores,state:'PD',wait:baseWait,waited:0,run:runTime,ran:0};
+  jobs.push(job);
+  print(`Submitted batch job <b style="color:var(--run)">${id}</b>`,'ok');
+  print(`It enters the queue as <b>PD</b> (pending). Watch the panel — or run <span style="color:var(--cyan)">squeue</span>.`,'out');
+  complete('submit', chosenCores<=4
+    ? 'Submitted. Because you asked for a small slot, you should start <b>quickly</b>. This is the payoff for a right-sized request.'
+    : chosenCores<=16
+      ? 'Submitted. You\'ll wait a bit longer than a 4-core job would — Slurm has to find a 16-core gap. Watch the clock.'
+      : 'Submitted — now watch the wait. 64 cores means Slurm won\'t start you until a huge gap opens. This is the cost of over-asking, and you\'re feeling it in real time.');
+  startClock();
+}
+
+function doScancel(args){
+  const id=parseInt(args[0],10);
+  const j=jobs.find(x=>x.id===id&&x.state!=='CD');
+  if(!j){print(`scancel: job ${esc(args[0]||'')} not found among your jobs.`,'err');return;}
+  j.state='CD';
+  print(`Cancelled job ${id}.`,'ok');
+  if(j.state==='R'){freeCores+=j.cores;}
+  print('You can rewrite submit.sh with a smaller request: <span style="color:var(--cyan)">nano submit.sh</span>.','out');
+  updateMeters();
+}
+
+/* ---------- the simulated clock: makes waiting tangible ---------- */
+let clockTimer=null;
+function startClock(){
+  if(clockTimer)return;
+  clockTimer=setInterval(tick,900);   // each tick = a few sim-minutes
+}
+function tick(){
+  simMinutes+=3;
+  // ambient: the queue ahead slowly drains
+  if(queueAhead>0 && simMinutes%6===0) queueAhead--;
+
+  jobs.forEach(j=>{
+    if(j.state==='PD'){
+      j.waited+=3;
+      if(j.waited>=j.wait && freeCores>=j.cores){
+        j.state='R';freeCores-=j.cores;
+        print(`[t+${clk()}] job ${j.id} → <b style="color:var(--green)">RUNNING</b> on cnode-07 (${j.cores} cores)`,'run');
+        setCoach('Your job is <b>RUNNING</b> now — on a compute node, not the login node. Notice how long it waited relative to what you asked for. Let it finish.');
+      }
+    } else if(j.state==='R'){
+      j.ran+=3;
+      if(j.ran>=j.run*3){
+        j.state='CD';freeCores+=j.cores;
+        print(`[t+${clk()}] job ${j.id} → <b style="color:var(--green)">COMPLETED</b>. Wrote aligned.sam`,'ok');
+        complete('finish');
+        stopIfIdle();
+      }
+    }
+  });
+  updateMeters();
+}
+function clk(){return String(Math.floor(simMinutes/60)).padStart(2,'0')+':'+String(simMinutes%60).padStart(2,'0');}
+function stopIfIdle(){if(jobs.every(j=>j.state==='CD')){clearInterval(clockTimer);clockTimer=null;}}
+
+function doLs(){print('sample_01.fastq.gz  sample_02.fastq.gz  sample_03.fastq.gz  sample_04.fastq.gz  ref.fa  md5sums.txt'+(scriptWritten?'  submit.sh':''),'out');}
+
+function doHelp(){
+  print('Available in this level:','sys');
+  print('  <span style="color:var(--cyan)">sinfo</span>            show partitions and free resources','out');
+  print('  <span style="color:var(--cyan)">squeue</span>           show the job queue (R=running, PD=pending)','out');
+  print('  <span style="color:var(--cyan)">nano submit.sh</span>   write your batch script','out');
+  print('  <span style="color:var(--cyan)">sbatch</span> submit.sh submit a job to the scheduler','out');
+  print('  <span style="color:var(--cyan)">srun</span> …          request an interactive session','out');
+  print('  <span style="color:var(--cyan)">scancel</span> JOBID    cancel one of your jobs','out');
+  print('  <span style="color:var(--cyan)">cat</span> / <span style="color:var(--cyan)">ls</span>         look at files','out');
+}
+
+/* ---------- hints ---------- */
+const hints=[
+  'Look before you leap: <span style="color:var(--cyan)">sinfo</span> then <span style="color:var(--cyan)">squeue</span>.',
+  'Try running the aligner directly — <span style="color:var(--cyan)">bwa</span> — to see why the login node refuses.',
+  'Write the script: <span style="color:var(--cyan)">nano submit.sh</span>, then pick the <b>smallest sensible</b> core count.',
+  'Submit it: <span style="color:var(--cyan)">sbatch submit.sh</span>, then watch the panel or run <span style="color:var(--cyan)">squeue</span>.',
+  'Waiting? That\'s the lesson. If you over-asked, <span style="color:var(--cyan)">scancel</span> the job and rewrite smaller.',
+];
+document.getElementById('hintBtn').addEventListener('click',()=>{
+  const i=objectives.findIndex(o=>!o.done);
+  print('<span style="color:var(--amber)">hint:</span> '+hints[Math.min(i,hints.length-1)],'out');
+});
+
+/* ---------- boot ---------- */
+function boot(){
+  print('<span style="color:var(--amber)">Cluster Quest</span> — Level 02: The Scheduler','sys');
+  print('You\'re already logged in on the cluster, in the data folder from Level 1.','story');
+  print('The files are here — but the login node can\'t run the alignment. You\'ll have to ask Slurm.','story');
+  print('Type <span style="color:var(--cyan)">help</span> anytime, or use the hint button.','story');
+  print('','out');
+  renderObjectives();refreshPrompt();updateMeters();
+}
+boot();
+
+/* ---------- input loop ---------- */
+const history=[];let hIdx=-1;
+input.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
+    const v=input.value;
+    if(v.trim())history.push(v);
+    hIdx=history.length;input.value='';
+    // intercept the editor "choose N" step
+    const m=v.trim().match(/^choose\s+(4|16|64)$/i);
+    if(awaitingChoice&&m){echoCommand(v);resolveChoice(parseInt(m[1],10));return;}
+    if(awaitingChoice){echoCommand(v);print('Type one of: <span style="color:var(--cyan)">choose 4</span>, <span style="color:var(--cyan)">choose 16</span>, or <span style="color:var(--cyan)">choose 64</span>.','out');return;}
+    handle(v);
+  }else if(e.key==='ArrowUp'){if(history.length){hIdx=Math.max(0,hIdx-1);input.value=history[hIdx]||'';e.preventDefault();}}
+  else if(e.key==='ArrowDown'){if(history.length){hIdx=Math.min(history.length,hIdx+1);input.value=history[hIdx]||'';e.preventDefault();}}
+});
+document.addEventListener('click',()=>input.focus());
+</script>
+</body>
+</html>
