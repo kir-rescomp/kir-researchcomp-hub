@@ -64,7 +64,7 @@ Compute nodes on BMRC do not have internet access, so package installations must
     2. Load your desired R module:
 
         ```py
-        module load R/4.4.0-foss-2023a
+        module load R/4.5.1-gfbf-2023a-bare-noSciPy
         ```
     3. Launch the R console:
 
