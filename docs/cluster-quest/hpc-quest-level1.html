@@ -195,6 +195,14 @@
     color:var(--dim);letter-spacing:.5px;
   }
   .win .next b{color:var(--amber)}
+  .win-nav{display:flex;gap:10px;margin-top:16px}
+  .wbtn{flex:1;text-align:center;padding:11px 14px;border-radius:9px;text-decoration:none;
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.5px;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+  .wbtn.primary{background:var(--green);color:var(--void)}
+  .wbtn.primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(126,231,135,.5)}
+  .wbtn.ghost{background:transparent;border:1px solid var(--line);color:var(--dim)}
+  .wbtn.ghost:hover{border-color:var(--cyan);color:var(--cyan)}
 
   .hint-btn{
     margin:0 20px 18px;padding:9px;
@@ -251,7 +259,11 @@
     <div class="win" id="win">
       <h2>◈ Level Complete</h2>
       <p id="winText"></p>
-      <div class="next">NEXT UP → <b>Level 02: The Shared Filesystem</b> — quotas, <code>/well/</code>, and where your data actually lives.</div>
+      <div class="next">NEXT UP → <b>Level 02: The Scheduler</b> — Slurm, resource requests, and the queue-wait trade-off.</div>
+      <div class="win-nav">
+        <a class="wbtn primary" href="hpc-quest-level2.html">Next level →</a>
+        <a class="wbtn ghost" href="index.html">← Menu</a>
+      </div>
     </div>
   </div>
 
@@ -322,6 +334,7 @@ function checkWin(){
     document.getElementById('winText').innerHTML=
       'All four FASTQs are present. You connected to a remote machine, oriented yourself on an unfamiliar filesystem, and verified real data — the exact loop researchers run every day. Message Dr. Okafor: they\'re good to submit.';
     w.classList.add('show');
+    try{ localStorage.setItem('CQ_LEVEL_1_DONE','1'); }catch(e){}
     w.scrollIntoView({behavior:'smooth'});
     setCoach('You just did the thing that intimidates most new HPC users. The rest is variations on this: connect, orient, act.');
   }
