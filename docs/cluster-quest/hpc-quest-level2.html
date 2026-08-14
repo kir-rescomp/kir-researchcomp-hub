@@ -158,6 +158,14 @@
   .win .next{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;
     color:var(--dim);letter-spacing:.5px}
   .win .next b{color:var(--amber)}
+  .win-nav{display:flex;gap:10px;margin-top:16px}
+  .wbtn{flex:1;text-align:center;padding:11px 14px;border-radius:9px;text-decoration:none;
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.5px;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+  .wbtn.primary{background:var(--green);color:var(--void)}
+  .wbtn.primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(126,231,135,.5)}
+  .wbtn.ghost{background:transparent;border:1px solid var(--line);color:var(--dim)}
+  .wbtn.ghost:hover{border-color:var(--cyan);color:var(--cyan)}
 </style>
 </head>
 <body>
@@ -210,6 +218,10 @@
       <h2>◈ Level Complete</h2>
       <p id="winText"></p>
       <div class="next">NEXT UP → <b>Level 03: Modules &amp; Environments</b> — <code>module load</code>, why <code>python</code> isn't the python you want, and reproducible toolchains.</div>
+      <div class="win-nav">
+        <a class="wbtn primary" href="hpc-quest-level3.html">Next level →</a>
+        <a class="wbtn ghost" href="index.html">← Menu</a>
+      </div>
     </div>
   </div>
 
@@ -270,6 +282,7 @@ function checkWin(){
     document.getElementById('winText').innerHTML=
       'The alignment ran on a compute node — not the login node — and finished. More importantly, you felt the trade-off: a modest request started sooner, and a greedy one would have sat in the queue. That instinct is what separates a considerate cluster user from the person everyone groans about.';
     w.classList.add('show');w.scrollIntoView({behavior:'smooth'});
+    try{ localStorage.setItem('CQ_LEVEL_2_DONE','1'); }catch(e){}
     setCoach('You\'ve got the scheduler\'s core loop: <b>ask for what you need, not the maximum</b>. Requesting more isn\'t faster — it just means a longer wait for a bigger slot, and less left for everyone else.');
   }
 }

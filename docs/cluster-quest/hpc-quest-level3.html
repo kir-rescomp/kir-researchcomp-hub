@@ -157,6 +157,14 @@
   .win .next{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;
     color:var(--dim);letter-spacing:.5px}
   .win .next b{color:var(--amber)}
+  .win-nav{display:flex;gap:10px;margin-top:16px}
+  .wbtn{flex:1;text-align:center;padding:11px 14px;border-radius:9px;text-decoration:none;
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.5px;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+  .wbtn.primary{background:var(--green);color:var(--void)}
+  .wbtn.primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(126,231,135,.5)}
+  .wbtn.ghost{background:transparent;border:1px solid var(--line);color:var(--dim)}
+  .wbtn.ghost:hover{border-color:var(--cyan);color:var(--cyan)}
 </style>
 </head>
 <body>
@@ -206,7 +214,10 @@
     <div class="win" id="win">
       <h2>◈ Level Complete</h2>
       <p id="winText"></p>
-      <div class="next">NEXT UP → <b>Level 04: Batch at Scale</b> — job arrays, running one script across all your samples at once.</div>
+      <div class="next">COMING SOON → <b>Level 04: Batch at Scale</b> — job arrays, running one script across all your samples at once.</div>
+      <div class="win-nav">
+        <a class="wbtn primary" href="index.html">← Back to menu</a>
+      </div>
     </div>
   </div>
 
@@ -276,6 +287,7 @@ function checkWin(){
     document.getElementById('winText').innerHTML=
       'The script now loads its own tools before it runs — so it behaves the same on the login node, on a compute node, tomorrow, or on a colleague\'s account. You\'ve turned "it worked on my machine" into "it works everywhere," which is the entire point of modules on a shared system.';
     w.classList.add('show');w.scrollIntoView({behavior:'smooth'});
+    try{ localStorage.setItem('CQ_LEVEL_3_DONE','1'); }catch(e){}
     setCoach('The habit to keep: <b>never trust the default environment</b>. Load exactly the versions you need, and load them <b>inside</b> your job script so the run is reproducible.');
   }
 }
