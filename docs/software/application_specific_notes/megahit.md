@@ -109,7 +109,7 @@ the final assembly output is then written back to `/well/`; the
 input/output-intensive intermediate work stays on local disk, off the shared
 storage path.
 
-!!! important "`TMPDIR` alone has no effect"
+!!! exclamation "`TMPDIR` alone has no effect"
     MEGAHIT does **not** honour the `TMPDIR` environment variable for its
     intermediate files. Exporting `TMPDIR` has no bearing on where MEGAHIT
     writes. The location must be set explicitly with the `--tmp-dir` command
@@ -119,7 +119,7 @@ storage path.
 
 Node-local disk is a small, shared resource and must be used with care.
 
-!!! danger "Local disk is limited and shared"
+!!! danger "Local disk is limited and shared - ~160GB per node"
     Each compute node provides on the order of **160 GB** of local disk in
     total, shared by **all jobs running on that node**. A single MEGAHIT
     assembly of approximately 276 million reads  (fq1 + fq2 + fq3) can consume up to **25 GB** of
@@ -136,8 +136,8 @@ Node-local disk is a small, shared resource and must be used with care.
 
 ### Controlling aggregate local disk usage across many jobs
 
-When a cohort of assemblies is submitted together — for example through
-cgatcore — several of the jobs may be scheduled onto the same compute node.
+When a cohort of assemblies is submitted together. For example through
+cgatcore. several of the jobs may be scheduled onto the same compute node.
 Because they share that node's local disk, their combined intermediate
 footprint, rather than any single job's, is what must fit within the available
 local capacity.
@@ -150,7 +150,7 @@ exhaust the local disk. This is achieved by bounding the number of jobs in
 flight at once so that, even in the worst case of several landing on one node,
 their combined footprint stays within capacity with headroom for other users.
 
-The relevant lever is the concurrency limit on submission. cgatcore caps the
+The relevant lever is the concurrency limit on submission. `cgatcore` caps the
 number of concurrently submitted jobs, which in turn bounds how many can occupy
 any one node. To size that cap, measure the peak local-disk footprint of a
 representative large sample and choose a concurrency limit such that a plausible
@@ -158,11 +158,11 @@ worst-case number of co-located jobs remains comfortably below the node's local
 capacity.
 
 !!! tip "Measure the real footprint first"
-    The per-sample footprint scales with input size, so the 3 million read
+    The per-sample footprint scales with input size, so the **276 million** read
     figure above should not be extrapolated linearly with confidence. Measure
-    the actual peak local-disk use of one representative large assembly — for
+    the actual peak local-disk use of one representative large assembly. For
     example by monitoring the `--tmp-dir` path with `du -sh` at intervals, or
-    watching `df` on the node's local filesystem during a run — and base the
+    watching `df` on the node's local filesystem during a run and base the
     concurrency limit on that measured value.
 
 ## Example Slurm script
