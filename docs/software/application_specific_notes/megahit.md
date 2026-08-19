@@ -122,7 +122,7 @@ Node-local disk is a small, shared resource and must be used with care.
 !!! danger "Local disk is limited and shared"
     Each compute node provides on the order of **160 GB** of local disk in
     total, shared by **all jobs running on that node**. A single MEGAHIT
-    assembly of approximately 3 million reads can consume up to **25 GB** of
+    assembly of approximately 276 million reads  (fq1 + fq2 + fq3) can consume up to **25 GB** of
     that space, and the intermediate footprint scales with the size of the
     input. Larger libraries consume proportionally more.
 
@@ -170,59 +170,42 @@ capacity.
 The following script directs MEGAHIT's intermediates to node-local scratch
 under a job-scoped path, and cleans that path up on exit or cancellation.
 
-<div class="notd" markdown="1">
-```py title="megahit_assembly.sh"
-#!/bin/bash -eu
-#SBATCH -J megahit_assembly
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=100G
-#SBATCH --partition=long
-# Send SIGTERM to the batch shell 120s before wall-time so cleanup can run:
-#SBATCH --signal=B:TERM@120
-set -o pipefail
+<div class="nord" markdown="1">
+```c
+#!/bin/bash
 
-umask 002
+#SBATCH --job-name      megahit-test
+#SBATCH --time          1-00:00:00
+#SBATCH --cpus-per-task 8
+#SBATCH --mem           100G
+#SBATCH --output        slog/%j.out
 
-SAMPLE=sample
-INDIR=02_processed_reads.dir
-OUTBASE=03_megahit_assembly.dir
-OUTDIR="${OUTBASE}/${SAMPLE}"
-LOG="${OUTBASE}/${SAMPLE}.megahit.contigs.fasta.log"
+module purge
+module load MEGAHIT/1.2.9-GCCcore-12.2.0
 
-mkdir -p "$OUTBASE"
+# $TMPDIR is already set on the compute nodes, but we customise it here so that
+# our own cleanup function can remove it reliably.
+export TMPDIR=/tmp/slurm-${SLURM_JOB_ID}/megahit
+mkdir -p "$TMPDIR"
 
-# Node-local scratch for MEGAHIT intermediates, scoped to this job:
-LOCAL_TMP="/tmp/slurm-${SLURM_JOB_ID}/megahit"
-mkdir -p "$LOCAL_TMP"
-
-# Remove the job-scoped scratch on exit, cancellation, or interrupt.
-# rm -rf on an already-removed path is harmless, so a double-fire is safe.
+# Register cleanup. This runs automatically on exit, cancellation, or interrupt.
+# Do not call it yourself.
 clean_temp() { rm -rf "/tmp/slurm-${SLURM_JOB_ID}"; }
 trap clean_temp EXIT TERM INT
 
-export MKL_NUM_THREADS=8 OPENBLAS_NUM_THREADS=8 OMP_NUM_THREADS=8
-
-# MEGAHIT refuses to run into an existing output directory:
-rm -rf "$OUTDIR"
-
-megahit -t 8 -m 0.85 \
-  -1 "${INDIR}/${SAMPLE}.fastq.1.gz" \
-  -2 "${INDIR}/${SAMPLE}.fastq.2.gz" \
-  -r "${INDIR}/${SAMPLE}.fastq.3.gz" \
-  --tmp-dir "$LOCAL_TMP" \
-  -o "$OUTDIR" \
-  2> "$LOG"
-
-ln -sf "../${OUTBASE}/${SAMPLE}/final.contigs.fa" \
-   "${OUTBASE}/${SAMPLE}.megahit.contigs.fasta"
+megahit -t ${SLURM_CPUS_PER_TASK} --memory 0.85 \
+  --tmp-dir ${TMPDIR} \
+  -1 FD28362002_corrected.fastq.1.gz \
+  -2 FD28362002_corrected.fastq.2.gz \
+  -r FD28362002_corrected.fastq.3.gz \
+  -o FD28362002_corrected \
+  2> FD28362002_corrected.megahit.contigs.fasta.log
 ```
 </div>
 
 !!! note-sticky "Cleanup on hard termination"
     The `trap` covers normal exit, cancellation via `SIGTERM`, and interrupt.
-    It cannot cover `SIGKILL`, which is not trappable, nor a node failure. The
-    `--signal=B:TERM@120` directive requests that Slurm deliver `SIGTERM` to
-    the batch shell 120 seconds before the wall-time limit, giving the cleanup
-    an opportunity to run before the job is forcibly killed. Where the cluster
-    epilog already removes `/tmp/slurm-${SLURM_JOB_ID}` after a job ends, that
-    provides a further safeguard against residue on hard termination.
+    It cannot cover `SIGKILL`, which is not trappable, nor a node failure.
+    Where the cluster epilog already removes `/tmp/slurm-${SLURM_JOB_ID}` after
+    a job ends, that provides a further safeguard against residue on hard
+    termination.
