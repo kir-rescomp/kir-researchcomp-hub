@@ -195,11 +195,11 @@ trap clean_temp EXIT TERM INT
 
 megahit -t ${SLURM_CPUS_PER_TASK} --memory 0.85 \
   --tmp-dir ${TMPDIR} \
-  -1 FD28362002_corrected.fastq.1.gz \
-  -2 FD28362002_corrected.fastq.2.gz \
-  -r FD28362002_corrected.fastq.3.gz \
-  -o FD28362002_corrected \
-  2> FD28362002_corrected.megahit.contigs.fasta.log
+  -1 samplename_corrected.fastq.1.gz \
+  -2 samplename_corrected.fastq.2.gz \
+  -r samplename_corrected.fastq.3.gz \
+  -o samplename_corrected \
+  2> samplename_corrected.megahit.contigs.fasta.log
 ```
 </div>
 
