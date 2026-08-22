@@ -1,0 +1,9 @@
+.tabbed-set > input:nth-child(1):checked ~ .tabbed-labels > label:nth-child(1),
+.tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > label:nth-child(2),
+.tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > label:nth-child(3),
+.tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > label:nth-child(4),
+.tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > label:nth-child(5) {
+  background-color: color-mix(in srgb, var(--md-accent-fg-color) 20%, transparent);
+  color: var(--md-accent-fg-color);
+  border-radius: 0.2rem 0.2rem 0 0;
+}

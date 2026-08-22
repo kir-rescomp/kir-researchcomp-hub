@@ -1,0 +1,1598 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="The Kennedy Institute of Rheumatology, NDORMS, University of Oxford">
+      
+      
+        <link rel="canonical" href="https://kir-rescomp.github.io/kir-researchcomp-hub/technical_essays/hpc/tmux_backspace_stops/">
+      
+      
+        <link rel="prev" href="../gh200_llm_qwen2.5_inference/">
+      
+      
+        <link rel="next" href="../why_linux_on_hpc/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/icons/kir_standalone_logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>When Backspace Stops Working Inside tmux - KIR - Research Computing Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Mukta";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/colors.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/side_bar_menu.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/background_colors.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/header_alignment.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/landing_page_hero.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_dracula.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_monokai.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_github_dark.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_nord.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/code_block_colour_onedark.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/indexpage_featured_scroll_behavoiour.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/indexpage_cards_buttons.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/morphing-dna-network.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/indexpage_episodes_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/tables.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/gradient_peek.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/tabs_shading.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/status.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/status-card.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/modules.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/technical_essays_indexpage_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/parallel-laws.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/read_button.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#when-backspace-stops-working-inside-tmux" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KIR - Research Computing Hub" class="md-header__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KIR - Research Computing Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              When Backspace Stops Working Inside tmux
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KIR - Research Computing Hub" class="md-nav__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    KIR - Research Computing Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../getting-started/account/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../file-system/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File system
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../software/software_manage_with_modules/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../batch-computing/working_with_scheduler/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../interactive-computing/openondemand/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../data-transfer/cli_transfer/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data transfer
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../parallel-computing/scaling_limits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallel computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../status/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical essays
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical essays
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Essays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hpc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hpc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demystifying_compiler_toolchains/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demystifying Compiler Toolchains - Understanding Module Names
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gh200_llm_qwen2.5_inference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GH200 Grace Hopper: LLM Inference Performance (Qwen2.5-72B, FSDP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When Backspace Stops Working Inside tmux
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When Backspace Stops Working Inside tmux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#symptom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symptom
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-actually-causes-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Actually Causes It
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Actually Causes It">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confirming-the-diagnosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confirming the diagnosis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-1-tmux-installed-at-the-os-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case 1: tmux Installed at the OS Level
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Case 1: tmux Installed at the OS Level">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-install-the-missing-terminfo-entry-preferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A — install the missing terminfo entry (preferred)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-fall-back-to-a-terminal-type-that-already-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B — fall back to a terminal type that already exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-if-the-key-itself-is-misconfigured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option C — if the key itself is misconfigured
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-2-tmux-is-a-local-or-shared-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case 2: tmux Is a Local or Shared Build
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Case 2: tmux Is a Local or Shared Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-compile-the-entry-into-the-install-prefix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — compile the entry into the install prefix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-point-users-ncurses-at-that-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — point users' ncurses at that directory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_linux_on_hpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why HPC Runs on Linux -  A Beginner's Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../programming/data_integrity/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#symptom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symptom
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-actually-causes-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Actually Causes It
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Actually Causes It">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confirming-the-diagnosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confirming the diagnosis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-1-tmux-installed-at-the-os-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case 1: tmux Installed at the OS Level
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Case 1: tmux Installed at the OS Level">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-install-the-missing-terminfo-entry-preferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A — install the missing terminfo entry (preferred)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-fall-back-to-a-terminal-type-that-already-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B — fall back to a terminal type that already exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-if-the-key-itself-is-misconfigured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option C — if the key itself is misconfigured
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-2-tmux-is-a-local-or-shared-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case 2: tmux Is a Local or Shared Build
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Case 2: tmux Is a Local or Shared Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-compile-the-entry-into-the-install-prefix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — compile the entry into the install prefix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-point-users-ncurses-at-that-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — point users' ncurses at that directory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="when-backspace-stops-working-inside-tmux">When Backspace Stops Working Inside tmux<a class="headerlink" href="#when-backspace-stops-working-inside-tmux" title="Permanent link">¶</a></h1>
+<h2 id="symptom">Symptom<a class="headerlink" href="#symptom" title="Permanent link">¶</a></h2>
+<p>A user starts a <code>tmux</code> session, types a command, and presses <kbd>Backspace</kbd>. Instead of
+deleting the character to the left, the cursor moves <em>forward</em>. Outside tmux — on the plain
+login shell — backspace behaves perfectly.</p>
+<p>The failure is often client-specific: macOS Terminal.app and Tabby users hit it while
+Ghostty or a native Linux terminal on the same cluster do not.</p>
+<h2 id="what-actually-causes-it">What Actually Causes It<a class="headerlink" href="#what-actually-causes-it" title="Permanent link">¶</a></h2>
+<p>tmux does not pass the outer terminal's <code>TERM</code> through to programs running inside a pane.
+It sets its own, controlled by the <code>default-terminal</code> option — typically
+<code>tmux-256color</code> or <code>screen-256color</code>.</p>
+<p>Everything inside the pane (your shell's readline line editor, <code>vim</code>, <code>less</code>) then looks up
+that <code>TERM</code> name in the <strong>terminfo database</strong> to learn how the terminal behaves — including
+which byte the erase key sends and what capability erases a character.</p>
+<p>If the terminfo entry for that name <strong>does not exist on the machine</strong>, the lookup fails.
+Programs fall back to built-in defaults, and those defaults frequently disagree with what the
+client actually sends. macOS terminals send <code>DEL</code> (<code>0x7f</code>, shown as <code>^?</code>) for backspace, while
+the fallback assumes <code>BS</code> (<code>0x08</code>, <code>^H</code>) — or the reverse. The result is a keypress that is
+received but interpreted as something other than "erase".</p>
+<p>This is why the bug appears only inside tmux: outside tmux, <code>TERM</code> is whatever the client set
+(<code>xterm-256color</code>), which is present on essentially every system. Inside tmux, <code>TERM</code> becomes
+<code>tmux-256color</code>, which is <strong>not</strong> shipped by default on many minimal HPC node images.</p>
+<h3 id="confirming-the-diagnosis">Confirming the diagnosis<a class="headerlink" href="#confirming-the-diagnosis" title="Permanent link">¶</a></h3>
+<p>Inside a broken session:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">echo</span> <span class="err">$</span><span class="n">TERM</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">infocmp</span> <span class="err">$</span><span class="n">TERM</span> <span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">echo</span> <span class="s2">"resolves"</span> <span class="o">||</span> <span class="n">echo</span> <span class="s2">"MISSING - this is the bug"</span>
+</span></code></pre></div>
+<p>If <code>TERM</code> looks correct but <code>infocmp</code> reports missing, the terminfo entry is the problem.</p>
+<p>A second, independent check — run <code>cat -v</code>, press <kbd>Backspace</kbd>, then <kbd>Ctrl-C</kbd>,
+both inside and outside tmux:</p>
+<ul>
+<li><code>^?</code> means the key sends <code>DEL</code> (<code>0x7f</code>)</li>
+<li><code>^H</code> means it sends <code>BS</code> (<code>0x08</code>)</li>
+</ul>
+<p>If the two contexts differ, or if <code>^?</code> is sent but nothing erases, you are looking at the same
+root cause.</p>
+<div class="admonition circle-info">
+<p>setting <code>set -g default-terminal "tmux-256color"</code> in <code>~/.tmux.conf</code> when the entry is  missing makes things <em>worse</em>, not better — tmux advertises a <code>TERM</code> that cannot be resolved. Fix the database first, then set the option."</p>
+</div>
+<h2 id="case-1-tmux-installed-at-the-os-level">Case 1: tmux Installed at the OS Level<a class="headerlink" href="#case-1-tmux-installed-at-the-os-level" title="Permanent link">¶</a></h2>
+<p>You do not have write access to <code>/usr/share/terminfo</code>, but you do not need it. ncurses searches
+<code>~/.terminfo</code> before the system database, so a per-user entry is enough.</p>
+<h3 id="option-a-install-the-missing-terminfo-entry-preferred">Option A — install the missing terminfo entry (preferred)<a class="headerlink" href="#option-a-install-the-missing-terminfo-entry-preferred" title="Permanent link">¶</a></h3>
+<p>On any machine that <em>does</em> have the entry (your laptop, an Ubuntu workstation), dump it:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">infocmp</span> <span class="o">-</span><span class="n">x</span> <span class="n">tmux</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span> <span class="o">&gt;</span> <span class="n">tmux</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span><span class="o">.</span><span class="n">terminfo</span>
+</span></code></pre></div>
+<p>Copy that file to the cluster, then compile it into your home directory:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">tic</span> <span class="o">-</span><span class="n">x</span> <span class="n">tmux</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span><span class="o">.</span><span class="n">terminfo</span>
+</span></code></pre></div>
+<p>With no <code>-o</code> and no <code>TERMINFO</code> set, <code>tic</code> writes to <code>~/.terminfo/t/tmux-256color</code> automatically.
+Verify:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">infocmp</span> <span class="n">tmux</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span> <span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">echo</span> <span class="n">ok</span>
+</span></code></pre></div>
+<p>Then restart the server so the change takes effect — reattaching to an existing session is not
+enough, because the old server already fixed its environment:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">tmux</span> <span class="n">kill</span><span class="o">-</span><span class="n">server</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">tmux</span>
+</span></code></pre></div>
+<h3 id="option-b-fall-back-to-a-terminal-type-that-already-exists">Option B — fall back to a terminal type that already exists<a class="headerlink" href="#option-b-fall-back-to-a-terminal-type-that-already-exists" title="Permanent link">¶</a></h3>
+<p><code>screen-256color</code> predates <code>tmux-256color</code> and is present almost everywhere. Check first:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">infocmp</span> <span class="n">screen</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span> <span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">echo</span> <span class="n">exists</span> <span class="o">||</span> <span class="n">echo</span> <span class="n">missing</span>
+</span></code></pre></div>
+<p>If it exists, put this in <code>~/.tmux.conf</code>:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">set</span> <span class="o">-</span><span class="n">g</span> <span class="n">default</span><span class="o">-</span><span class="n">terminal</span> <span class="s2">"screen-256color"</span>
+</span></code></pre></div>
+<p>Then <code>tmux kill-server</code> and reconnect. You lose a few tmux-specific capabilities (notably
+italics support), but backspace works and no file copying is required.</p>
+<h3 id="option-c-if-the-key-itself-is-misconfigured">Option C — if the key itself is misconfigured<a class="headerlink" href="#option-c-if-the-key-itself-is-misconfigured" title="Permanent link">¶</a></h3>
+<p>If <code>infocmp $TERM</code> resolves fine and backspace still misbehaves, the client is sending the wrong
+byte. Two places to look:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">stty</span> <span class="n">erase</span> <span class="s1">'^?'</span>
+</span></code></pre></div>
+<p>in your shell rc, and — for Tabby users — <strong>Settings → Terminal → "Backspace sends"</strong>, which
+should be set to <code>^?</code> / Delete rather than <code>^H</code>.</p>
+<h2 id="case-2-tmux-is-a-local-or-shared-build">Case 2: tmux Is a Local or Shared Build<a class="headerlink" href="#case-2-tmux-is-a-local-or-shared-build" title="Permanent link">¶</a></h2>
+<p>When you have compiled tmux yourself into a project directory, fix it once in the install prefix
+so every user inherits the fix, instead of asking each person to populate their own
+<code>~/.terminfo</code>.</p>
+<h3 id="step-1-compile-the-entry-into-the-install-prefix">Step 1 — compile the entry into the install prefix<a class="headerlink" href="#step-1-compile-the-entry-into-the-install-prefix" title="Permanent link">¶</a></h3>
+<p>Obtain <code>tmux-256color.terminfo</code> as above, then:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">tmux</span><span class="o">-</span><span class="mf">3.7</span><span class="n">b</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">terminfo</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">TERMINFO</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">tmux</span><span class="o">-</span><span class="mf">3.7</span><span class="n">b</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">terminfo</span> <span class="n">tic</span> <span class="o">-</span><span class="n">x</span> <span class="n">tmux</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span><span class="o">.</span><span class="n">terminfo</span>
+</span></code></pre></div>
+<p><strong>Use <code>TERMINFO=</code>, not <code>-o</code>.</strong> On some ncurses builds <code>tic -o &lt;dir&gt;</code> is silently ignored: the
+command exits <code>0</code>, prints nothing, and writes to <code>~/.terminfo</code> anyway. Setting the <code>TERMINFO</code>
+environment variable is honoured reliably.</p>
+<p>Confirm the file landed where you intended:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">ls</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">tmux</span><span class="o">-</span><span class="mf">3.7</span><span class="n">b</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">terminfo</span><span class="o">/</span><span class="n">t</span><span class="o">/</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># tmux-256color</span>
+</span></code></pre></div>
+<h3 id="step-2-point-users-ncurses-at-that-directory">Step 2 — point users' ncurses at that directory<a class="headerlink" href="#step-2-point-users-ncurses-at-that-directory" title="Permanent link">¶</a></h3>
+<p>Programs only search <code>~/.terminfo</code>, <code>$TERMINFO</code>, and the compiled-in default unless
+<code>TERMINFO_DIRS</code> says otherwise.</p>
+<p><strong>If users source a shared shell config</strong>, add the export next to the existing <code>PATH</code> line:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/path/to/tmux-3.7b/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TERMINFO_DIRS</span><span class="o">=</span><span class="s2">"/path/to/tmux-3.7b/share/terminfo:"</span>
+</span></code></pre></div>
+<p>The <strong>trailing colon is deliberate</strong>. <code>TERMINFO_DIRS</code> is colon-separated, and an <em>empty</em> entry
+means "the compiled-in default search path". Ending with <code>:</code> therefore appends the system
+database without hardcoding <code>/usr/share/terminfo</code>, which may not be the correct path on every
+node image.</p>
+<p>If you prefer to be explicit and preserve any pre-existing value:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">export</span> <span class="n">TERMINFO_DIRS</span><span class="o">=</span><span class="s2">"/path/to/tmux-3.7b/share/terminfo:${TERMINFO_DIRS:-/usr/share/terminfo}"</span>
+</span></code></pre></div>
+<p>Two things to remember whichever route you take: <strong>restart the tmux server</strong> (<code>tmux kill-server</code>)
+rather than reattaching, and <strong>check <code>infocmp $TERM</code> before changing <code>default-terminal</code></strong> — that
+one command distinguishes a missing database entry from a genuine key-encoding problem, and they
+have entirely different fixes.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../gh200_llm_qwen2.5_inference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GH200 Grace Hopper: LLM Inference Performance (Qwen2.5-72B, FSDP)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                GH200 Grace Hopper: LLM Inference Performance (Qwen2.5-72B, FSDP)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../why_linux_on_hpc/" class="md-footer__link md-footer__link--next" aria-label="Next: Why HPC Runs on Linux -  A Beginner's Guide">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Why HPC Runs on Linux -  A Beginner's Guide
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      KIR - Research Computing Hub is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.expand   Removing this for the moment to avoid the meny being expanded by default", "navigation.top", "navigation.footer", "navigation.instant", "content.code.copy", "content.code.annotate", "navigation.prune", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/featured-toggle.js"></script>
+      
+        <script src="../../../javascripts/link_content_tabs_to_cards.js"></script>
+      
+        <script src="../../../javascripts/status.js"></script>
+      
+        <script src="../../../javascripts/status-card.js"></script>
+      
+        <script src="../../../javascripts/katex.js" defer=""></script>
+      
+        <script src="../../../javascripts/slurm-generator.js" defer=""></script>
+      
+        <script src="../../../javascripts/parallel-laws.js" defer=""></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
