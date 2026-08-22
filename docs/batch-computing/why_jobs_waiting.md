@@ -1,5 +1,10 @@
 # Why are my jobs waiting?
 
+<p align="center" style="margin-bottom: -1px;">
+    <img src="../../assets/images/material/batch-computing/jobs_waiting.png" alt="data-transfer-cli" width="600" style="opacity: 0.9;"/>
+</p>
+
+
 When you submit a job to the cluster, it does not always start immediately. Slurm places
 the job in a **PENDING (PD)** state and records a **REASON** explaining ( abstract )  why it has not yet
 started. In the large majority of cases a pending job is entirely normal and requires no
