@@ -37,6 +37,7 @@
 
     !!! clipboard-list "Prerequisites"
         Before launching the Jupyter app, ensure you have:
+        
         1. A Python virtual environment set up — see [Creating a Python virtual environment](https://kir-rescomp.github.io/kir-researchcomp-hub/software/application_specific_notes/Python/#python-virtual-environments)
         2. At least one Jupyter kernel registered, either:
           - Using `kir-add-kernel` (available with the `JupyterLab/4.5.6`> module) — see [Registering a kernel with kir-add-kernel](https://kir-rescomp.github.io/kir-researchcomp-hub/interactive-computing/add_jupyter_kernels/#option-1-tool-assisted-management-with-kir-add-kernel)
@@ -65,7 +66,7 @@
             ```rust
             #!/bin/bash
             module purge
-            module load JupyterLab/4.5.6
+            module load JupyterLab/4.5.6-GCCcore-12.3.0
             ```
             </div>
 
