@@ -5,7 +5,7 @@ nf-core pipelines) on the BMRC Slurm cluster.
 
 ## Environment Variables 
 
-By default, Nextflow will attempt to use your home directory for all operations, creating a hidden directory ~/.nextflow for this purpose. Since home directories are limited to 10GB, we recommend redirecting these operations to some path in group filesystem to avoid quota issues.
+By default, Nextflow will attempt to use your home directory for all operations, creating a hidden directory `~/.nextflow` for this purpose. Since home directories are limited to 10GB, we recommend redirecting these operations to some path in group filesystem to avoid quota issues.
 
 !!! key "Nextflow and Apptainer environment variables"
 
