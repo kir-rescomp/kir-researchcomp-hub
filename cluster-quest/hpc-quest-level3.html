@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cluster Quest — Level 3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root{
+    --void:#0b1020;
+    --panel:#111a2e;
+    --panel-2:#0e1526;
+    --ink:#c8d4e8;
+    --dim:#63739a;
+    --line:#1e2b48;
+    --amber:#ffb454;
+    --cyan:#38e1c8;
+    --magenta:#e26fd8;
+    --green:#7ee787;
+    --red:#ff6b6b;
+    --prompt:#38e1c8;
+    --run:#7aa2ff;
+    --violet:#b48cff;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, #16233f 0%, transparent 60%),
+      radial-gradient(900px 500px at 0% 110%, #171130 0%, transparent 55%),
+      var(--void);
+    color:var(--ink);
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    height:100vh;
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:1px;
+    overflow:hidden;
+  }
+  @media (max-width:860px){
+    body{grid-template-columns:1fr;grid-template-rows:1fr auto;overflow:auto;height:auto;min-height:100vh}
+  }
+
+  /* ---- Terminal ---- */
+  .term-wrap{display:flex;flex-direction:column;background:var(--panel-2);min-height:0}
+  .term-bar{display:flex;align-items:center;gap:10px;padding:12px 18px;
+    border-bottom:1px solid var(--line);background:linear-gradient(180deg,#12203b,#0e1526)}
+  .dots{display:flex;gap:7px}
+  .dots span{width:11px;height:11px;border-radius:50%;opacity:.85}
+  .dots span:nth-child(1){background:#ff5f57}
+  .dots span:nth-child(2){background:#febc2e}
+  .dots span:nth-child(3){background:#28c840}
+  .term-title{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--dim);letter-spacing:.5px}
+  .term-title b{color:var(--cyan);font-weight:500}
+
+  .term{flex:1;min-height:0;overflow-y:auto;padding:20px 20px 8px;
+    font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.65}
+  .term::-webkit-scrollbar{width:10px}
+  .term::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+
+  .ln{white-space:pre-wrap;word-break:break-word}
+  .ln.out{color:var(--dim)}
+  .ln.ok{color:var(--green)}
+  .ln.err{color:var(--red)}
+  .ln.sys{color:var(--amber)}
+  .ln.dir{color:var(--cyan)}
+  .ln.story{color:#9fb0d4;font-style:italic}
+  .ln.run{color:var(--run)}
+  .ln.mod{color:#b48cff}
+  .ln.cmd .txt{color:var(--ink)}
+  .ln.table{color:var(--ink);font-size:12.5px}
+
+  .input-row{display:flex;align-items:center;padding:6px 20px 20px;
+    font-family:'JetBrains Mono',monospace;font-size:13.5px}
+  .input-row .ps1{color:var(--prompt);white-space:pre}
+  .input-row .ps1 .h{color:var(--magenta)}
+  .input-row .ps1 .p{color:var(--dim)}
+  #cmd{flex:1;background:transparent;border:none;outline:none;color:var(--ink);
+    font-family:inherit;font-size:inherit;caret-color:var(--cyan)}
+
+  /* ---- HUD ---- */
+  .hud{background:var(--panel);border-left:1px solid var(--line);
+    display:flex;flex-direction:column;overflow-y:auto}
+  .hud::-webkit-scrollbar{width:8px}
+  .hud::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+
+  .hud-head{padding:20px 20px 16px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2.5px;
+    text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+  .hud-head h1{font-size:20px;font-weight:700;line-height:1.15;letter-spacing:-.3px}
+  .hud-head h1 .lvl{color:var(--cyan);display:block;font-size:12px;font-weight:500;
+    letter-spacing:1px;margin-top:6px;font-family:'JetBrains Mono',monospace}
+
+  .brief{padding:16px 20px;border-bottom:1px solid var(--line);
+    font-size:13px;line-height:1.6;color:#a8b6d4}
+  .brief .who{color:var(--magenta);font-weight:600}
+
+  /* environment inspector */
+  .env{padding:14px 20px;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace}
+  .env .e-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;
+    font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+  .env .e-head .state{color:var(--amber)}
+  .env-row{display:flex;justify-content:space-between;align-items:center;
+    font-size:11.5px;padding:5px 0;border-bottom:1px solid rgba(30,43,72,.5)}
+  .env-row:last-child{border-bottom:none}
+  .env-row .k{color:var(--dim)}
+  .env-row .v{color:var(--ink);text-align:right}
+  .env-row .v.bad{color:var(--red)}
+  .env-row .v.good{color:var(--green)}
+  .loaded-mods{margin-top:11px}
+  .loaded-mods .lm-title{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+  .chip{display:inline-block;font-size:11px;padding:3px 9px;margin:0 5px 5px 0;border-radius:20px;
+    background:rgba(180,140,255,.12);border:1px solid rgba(180,140,255,.3);color:#c9b0ff}
+  .chip.empty{background:transparent;border:1px dashed var(--line);color:var(--dim)}
+
+  .obj-head{padding:16px 20px 10px;font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);
+    display:flex;justify-content:space-between;align-items:baseline}
+  .obj-head .count{color:var(--cyan)}
+  .objectives{padding:0 20px 8px;list-style:none}
+  .obj{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+    border-bottom:1px solid rgba(30,43,72,.5);font-size:13px;line-height:1.45;transition:opacity .3s}
+  .obj:last-child{border-bottom:none}
+  .obj .box{flex-shrink:0;width:17px;height:17px;border-radius:5px;border:1.5px solid var(--line);
+    margin-top:1px;display:grid;place-items:center;font-size:11px;color:var(--void);transition:all .3s}
+  .obj.done .box{background:var(--green);border-color:var(--green)}
+  .obj.done .box::after{content:"✓";font-weight:700}
+  .obj.active .box{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,180,84,.12)}
+  .obj.done .label{color:var(--dim);text-decoration:line-through;text-decoration-color:var(--line)}
+  .obj .label .cmd{color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:12px}
+
+  .coach{margin:8px 20px 18px;padding:14px;
+    background:linear-gradient(180deg,rgba(56,225,200,.06),rgba(56,225,200,.02));
+    border:1px solid rgba(56,225,200,.18);border-radius:10px;
+    font-size:12.5px;line-height:1.55;color:#a8c4d8}
+  .coach .tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:6px}
+  .coach b{color:var(--amber);font-weight:600}
+  .coach code{font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    background:rgba(56,225,200,.1);padding:1px 5px;border-radius:4px;color:var(--cyan)}
+
+  .hint-btn{margin:0 20px 18px;padding:9px;background:transparent;
+    border:1px dashed var(--line);border-radius:8px;color:var(--dim);
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;
+    cursor:pointer;transition:all .2s}
+  .hint-btn:hover{border-color:var(--amber);color:var(--amber)}
+
+  .win{margin:auto 16px 16px;padding:18px;
+    background:linear-gradient(180deg,rgba(126,231,135,.1),rgba(126,231,135,.03));
+    border:1px solid rgba(126,231,135,.3);border-radius:12px;display:none}
+  .win.show{display:block;animation:pop .4s ease}
+  @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+  .win h2{color:var(--green);font-size:16px;margin-bottom:8px}
+  .win p{font-size:12.5px;color:#a8b6d4;line-height:1.55}
+  .win .next{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;
+    color:var(--dim);letter-spacing:.5px}
+  .win .next b{color:var(--amber)}
+  .win-nav{display:flex;gap:10px;margin-top:16px}
+  .wbtn{flex:1;text-align:center;padding:11px 14px;border-radius:9px;text-decoration:none;
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.5px;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+  .wbtn.primary{background:var(--green);color:var(--void)}
+  .wbtn.primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(126,231,135,.5)}
+  .wbtn.ghost{background:transparent;border:1px solid var(--line);color:var(--dim)}
+  .wbtn.ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+</style>
+</head>
+<body>
+
+  <div class="term-wrap">
+    <div class="term-bar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="term-title">researcher@cluster-login1 — <b>cluster quest</b> — 80×24</div>
+    </div>
+    <div class="term" id="term"></div>
+    <div class="input-row">
+      <span class="ps1" id="ps1"></span>
+      <input id="cmd" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+    </div>
+  </div>
+
+  <div class="hud">
+    <div class="hud-head">
+      <div class="eyebrow">Cluster Quest</div>
+      <h1>The Right Tools<span class="lvl">LEVEL 03 — MODULES &amp; ENVIRONMENTS</span></h1>
+    </div>
+
+    <div class="brief">
+      <span class="who">Dr. Okafor</span>: <em>"The analysis script needs Python 3.11 and pandas. When I ran it last month it just worked on my machine — but on the cluster it keeps crashing. Can you sort out the environment so it runs the same way every time?"</em>
+    </div>
+
+    <div class="env">
+      <div class="e-head"><span>Active environment</span><span class="state" id="envState">system default</span></div>
+      <div class="env-row"><span class="k">python →</span><span class="v" id="pyPath">/usr/bin/python (2.7.18)</span></div>
+      <div class="env-row"><span class="k">pandas</span><span class="v bad" id="pandasState">not found</span></div>
+      <div class="loaded-mods">
+        <div class="lm-title">Loaded modules</div>
+        <div id="modChips"><span class="chip empty">none</span></div>
+      </div>
+    </div>
+
+    <div class="obj-head"><span>Objectives</span><span class="count"><span id="done">0</span>/5</span></div>
+    <ul class="objectives" id="objectives"></ul>
+
+    <div class="coach" id="coach">
+      <span class="tag">// field guide</span>
+      <div id="coach-body">A cluster is shared by hundreds of people who each need <b>different</b> versions of different tools. So it ships almost nothing loaded by default — the <code>python</code> on your <code>PATH</code> right now is an ancient system one, meant for the OS, not for you. First, see the mess for yourself: run <code>python --version</code>.</div>
+    </div>
+
+    <button class="hint-btn" id="hintBtn">? NEED A HINT</button>
+
+    <div class="win" id="win">
+      <h2>◈ Level Complete</h2>
+      <p id="winText"></p>
+      <div class="next">COMING SOON → <b>Level 04: Batch at Scale</b> — job arrays, running one script across all your samples at once.</div>
+      <div class="win-nav">
+        <a class="wbtn primary" href="index.html">← Back to menu</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* ============================================================
+   Cluster Quest — Level 3: The Right Tools
+   Teaches: the system python trap, `module` (avail/load/list/
+   purge), version selection, and why loading modules IN the
+   batch script is what makes a run reproducible.
+   Everything simulated; nothing real is touched.
+   ============================================================ */
+
+const term=document.getElementById('term');
+const input=document.getElementById('cmd');
+const ps1El=document.getElementById('ps1');
+
+let cwd='/well/okafor-lab/projects/sequencing-2026';
+
+/* ---------- environment state ---------- */
+const loaded=[];               // e.g. ['Python/3.11.5','pandas/2.1.0']
+let sawSystemPython=false;
+let sawAvail=false;
+let scriptFixed=false;
+
+/* what modules exist on this fake cluster */
+const MODULE_TREE={
+  'Python':['3.9.6','3.10.8','3.11.5'],
+  'pandas':['1.5.3','2.1.0'],        // depends on a Python being loaded
+  'R':['4.3.1'],
+  'BWA':['0.7.17'],
+  'CUDA':['12.2'],
+};
+
+/* ---------- prompt / output ---------- */
+function short(p){const h='/home/researcher';if(p===h)return'~';if(p.startsWith(h+'/'))return'~'+p.slice(h.length);return p;}
+function promptHTML(){return `<span class="h">researcher@cluster-login1</span><span class="p">:</span><span style="color:var(--prompt)">${short(cwd)}</span><span class="p">$ </span>`;}
+function refreshPrompt(){ps1El.innerHTML=promptHTML();}
+function print(t,cls=''){const d=document.createElement('div');d.className='ln '+cls;d.innerHTML=t;term.appendChild(d);term.scrollTop=term.scrollHeight;}
+function echoCommand(raw){const d=document.createElement('div');d.className='ln cmd';d.innerHTML=promptHTML()+`<span class="txt">${esc(raw)}</span>`;term.appendChild(d);term.scrollTop=term.scrollHeight;}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+/* ---------- objectives ---------- */
+const objectives=[
+  {id:'seetrap', label:'See the trap — check the default <span class="cmd">python</span>', done:false},
+  {id:'browse',  label:'Browse what\'s available with <span class="cmd">module avail</span>', done:false},
+  {id:'load',    label:'Load <b>Python 3.11</b> and <b>pandas</b>', done:false},
+  {id:'verify',  label:'Verify the environment is now correct', done:false},
+  {id:'bake',    label:'Bake the <span class="cmd">module load</span> into the batch script', done:false},
+];
+const objEl=document.getElementById('objectives');
+function renderObjectives(){
+  objEl.innerHTML='';let firstUndone=true;
+  objectives.forEach(o=>{
+    const li=document.createElement('li');
+    li.className='obj'+(o.done?' done':'')+((!o.done&&firstUndone)?' active':'');
+    if(!o.done&&firstUndone)firstUndone=false;
+    li.innerHTML=`<span class="box"></span><span class="label">${o.label}</span>`;
+    objEl.appendChild(li);
+  });
+  document.getElementById('done').textContent=objectives.filter(o=>o.done).length;
+}
+function complete(id,coach){const o=objectives.find(x=>x.id===id);if(o&&!o.done){o.done=true;renderObjectives();if(coach)setCoach(coach);checkWin();}}
+function setCoach(html){document.getElementById('coach-body').innerHTML=html;}
+function checkWin(){
+  if(objectives.every(o=>o.done)){
+    const w=document.getElementById('win');
+    document.getElementById('winText').innerHTML=
+      'The script now loads its own tools before it runs — so it behaves the same on the login node, on a compute node, tomorrow, or on a colleague\'s account. You\'ve turned "it worked on my machine" into "it works everywhere," which is the entire point of modules on a shared system.';
+    w.classList.add('show');w.scrollIntoView({behavior:'smooth'});
+    try{ localStorage.setItem('CQ_LEVEL_3_DONE','1'); }catch(e){}
+    setCoach('The habit to keep: <b>never trust the default environment</b>. Load exactly the versions you need, and load them <b>inside</b> your job script so the run is reproducible.');
+  }
+}
+
+/* ---------- environment inspector panel ---------- */
+function pyLoaded(){return loaded.find(m=>m.startsWith('Python/'));}
+function pandasLoaded(){return loaded.find(m=>m.startsWith('pandas/'));}
+function updateEnv(){
+  const py=pyLoaded();
+  document.getElementById('envState').textContent = loaded.length?'module-managed':'system default';
+  document.getElementById('pyPath').textContent = py
+    ? `/apps/Python/${py.split('/')[1]}/bin/python (${py.split('/')[1]})`
+    : '/usr/bin/python (2.7.18)';
+  document.getElementById('pyPath').className='v'+(py?' good':' bad');
+  const pd=pandasLoaded();
+  const pdEl=document.getElementById('pandasState');
+  pdEl.textContent = pd?pd.split('/')[1]:'not found';
+  pdEl.className='v'+(pd?' good':' bad');
+  const chips=document.getElementById('modChips');
+  chips.innerHTML = loaded.length
+    ? loaded.map(m=>`<span class="chip">${m}</span>`).join('')
+    : '<span class="chip empty">none</span>';
+}
+
+/* ---------- command router ---------- */
+function handle(raw){
+  const line=raw.trim();echoCommand(raw);
+  if(!line)return;
+  const parts=line.split(/\s+/);
+  const cmd=parts[0];
+
+  if(cmd==='python'||cmd==='python3') return doPython(parts.slice(1));
+  if(cmd==='module'||cmd==='ml')      return doModule(parts.slice(1));
+  switch(cmd){
+    case 'which': return doWhich(parts.slice(1));
+    case 'nano': case 'vim': case 'vi': return doEditor(parts.slice(1));
+    case 'cat': return doCat(parts.slice(1));
+    case 'ls': return doLs();
+    case 'sbatch': return doSbatch(parts.slice(1));
+    case 'help': return doHelp();
+    case 'clear': term.innerHTML='';return;
+    case 'pwd': print(cwd,'out');return;
+    default:
+      print(`${esc(cmd)}: command not found`,'err');
+      print('Type <span style="color:var(--cyan)">help</span> for the commands available in this level.','out');
+  }
+}
+
+/* ---------- python (shows the trap, then the fix) ---------- */
+function doPython(args){
+  const py=pyLoaded();
+  if(args[0]==='--version'||args[0]==='-V'){
+    if(py){print('Python '+py.split('/')[1],'out');}
+    else{
+      print('Python 2.7.18','out');
+      complete('seetrap','There it is — <b>Python 2.7</b>, retired years ago. Your script needs 3.11. The fix isn\'t to install anything; the cluster already has many Pythons staged as <b>modules</b>. See them: <code>module avail</code>.');
+    }
+    return;
+  }
+  // running the actual script
+  if(args[0]&&args[0].endsWith('.py')){
+    if(!py){print('  File "analyse.py", line 1','err');print('  SyntaxError: invalid syntax (this is Python 2.7 — your code is Python 3)','err');return;}
+    if(!pandasLoaded()){print('  ModuleNotFoundError: No module named \'pandas\'','err');print('You have Python 3, but not pandas. Load it too.','out');return;}
+    print('Running analyse.py with '+py.split('/')[1]+' + '+pandasLoaded().split('/')[1]+' …','run');
+    print('✓ Loaded 4 samples · computed summary stats · wrote results.csv','ok');
+    return;
+  }
+  print('Python starts an interactive shell (skipped in this level). Try <span style="color:var(--cyan)">python --version</span>.','out');
+}
+function doWhich(args){
+  if(args[0]==='python'||args[0]==='python3'){
+    const py=pyLoaded();
+    print(py?`/apps/Python/${py.split('/')[1]}/bin/python`:'/usr/bin/python','out');
+    if(!py) print('(That\'s the OS\'s own python — not for your analysis.)','out');
+  } else print('','out');
+}
+
+/* ---------- module subsystem ---------- */
+function doModule(args){
+  const sub=args[0];
+  if(sub==='avail'||sub==='av'){
+    print('------------------------- /apps/modulefiles -------------------------','mod');
+    for(const [name,vers] of Object.entries(MODULE_TREE)){
+      print('  '+vers.map(v=>name+'/'+v).join('   '),'mod');
+    }
+    print('','out');
+    print('Pick a version explicitly — name/version — or you\'ll get a default you didn\'t choose.','out');
+    sawAvail=true;
+    complete('browse','Notice there are <b>three Pythons</b>. On a cluster you name the exact one: <code>module load Python/3.11.5</code>. Vague requests get you surprises; explicit versions get you reproducibility. Load 3.11.5 now.');
+    return;
+  }
+  if(sub==='list'||sub==='li'){
+    if(!loaded.length){print('No modules loaded.','out');}
+    else{print('Currently loaded modules:','mod');loaded.forEach((m,i)=>print('  '+(i+1)+') '+m,'mod'));}
+    // verify step
+    if(pyLoaded()&&pyLoaded().split('/')[1]==='3.11.5'&&pandasLoaded()){
+      complete('verify','Confirmed: the right Python <b>and</b> pandas are active, and the panel agrees. But here\'s the catch that trips everyone up — this only lasts for <b>this session</b>. A batch job starts fresh with none of it. So the load has to live <b>inside the script</b>. Open it: <code>nano analyse.sh</code>.');
+    }
+    return;
+  }
+  if(sub==='load'||sub==='add'){
+    return moduleLoad(args.slice(1));
+  }
+  if(sub==='purge'){
+    loaded.length=0;updateEnv();
+    print('All modules unloaded.','out');
+    setCoach('Clean slate. <code>module purge</code> is how you avoid a polluted environment — start from nothing, load exactly what you need. Reload with <code>module load Python/3.11.5 pandas/2.1.0</code>.');
+    return;
+  }
+  if(sub==='unload'||sub==='rm'){
+    const t=args[1]||'';
+    const i=loaded.findIndex(m=>m===t||m.startsWith(t+'/'));
+    if(i>=0){const removed=loaded.splice(i,1);updateEnv();print('Unloaded '+removed[0],'out');}
+    else print('module unload: '+esc(t)+' not loaded','err');
+    return;
+  }
+  print('module: available subcommands — avail, load, list, unload, purge','out');
+}
+
+function moduleLoad(names){
+  if(!names.length){print('usage: module load name/version','err');return;}
+  names.forEach(spec=>{
+    let [name,ver]=spec.split('/');
+    // normalise casing a little
+    const key=Object.keys(MODULE_TREE).find(k=>k.toLowerCase()===name.toLowerCase());
+    if(!key){print(`module load: '${esc(spec)}' — no such module. Try module avail.`,'err');return;}
+    if(!ver){
+      ver=MODULE_TREE[key][MODULE_TREE[key].length-1];
+      print(`Loading ${key}/${ver}  <span style="color:var(--amber)">(no version given → newest default)</span>`,'mod');
+    }else if(!MODULE_TREE[key].includes(ver)){
+      print(`module load: ${esc(spec)} — version not found. Available: ${MODULE_TREE[key].join(', ')}`,'err');return;
+    }
+    // pandas needs a python first (a dependency lesson)
+    if(key==='pandas'&&!pyLoaded()){
+      print(`Loading pandas/${ver}  <span style="color:var(--amber)">→ also loading its Python dependency</span>`,'mod');
+      if(!pyLoaded())loaded.push('Python/3.11.5');
+    }
+    const already=loaded.find(m=>m.startsWith(key+'/'));
+    if(already){
+      if(already!==key+'/'+ver){
+        print(`Swapping ${already} → ${key}/${ver}`,'mod');
+        loaded[loaded.indexOf(already)]=key+'/'+ver;
+      }else{
+        print(`${key}/${ver} already loaded.`,'out');
+      }
+    }else{
+      loaded.push(key+'/'+ver);
+      print(`Loaded ${key}/${ver}`,'ok');
+    }
+  });
+  updateEnv();
+  // objective: loaded 3.11 + pandas
+  const py=pyLoaded();
+  if(py&&py.split('/')[1]==='3.11.5'&&pandasLoaded()){
+    complete('load','Both loaded — look at the panel: <code>python</code> now points into <code>/apps</code>, not <code>/usr/bin</code>. Prove it to yourself with <code>module list</code> (or <code>python --version</code>).');
+  }
+}
+
+/* ---------- the batch script: bake in the load ---------- */
+function doEditor(args){
+  const f=args[0]||'';
+  if(!/analyse\.sh$/.test(f)){print('usage: nano analyse.sh','out');return;}
+  print('── nano: analyse.sh ─────────────────────────────','sys');
+  print('Right now the script assumes the tools are already there. On a fresh compute node they won\'t be.','story');
+  print('','out');
+  print('  #!/bin/bash','out');
+  print('  #SBATCH --job-name=analyse','out');
+  print('  #SBATCH --partition=short','out');
+  print('  #SBATCH --cpus-per-task=4','out');
+  print('  <span style="color:var(--amber)">? ? ?</span>   <span style="color:var(--dim)"># the environment is missing here</span>','out');
+  print('  python analyse.py','out');
+  print('','out');
+  print('<span style="color:var(--amber)">What goes on the missing line?</span>','sys');
+  print('  [ <span style="color:var(--cyan)">A</span> ]  nothing — it worked in my session, it\'ll be fine','out');
+  print('  [ <span style="color:var(--cyan)">B</span> ]  pip install pandas','out');
+  print('  [ <span style="color:var(--cyan)">C</span> ]  module load Python/3.11.5 pandas/2.1.0','out');
+  print('','out');
+  print('Type <span style="color:var(--cyan)">A</span>, <span style="color:var(--cyan)">B</span>, or <span style="color:var(--cyan)">C</span>.','out');
+  awaitingChoice=true;
+}
+let awaitingChoice=false;
+function resolveChoice(c){
+  awaitingChoice=false;
+  if(c==='A'){
+    print('Chosen: rely on the session environment.','out');
+    print('✗ A batch job starts with a <b>clean</b> environment — none of your loaded modules carry over.','err');
+    print('The job would crash on Python 2.7 again. Pick the line that loads the tools.','out');
+    print('Type <span style="color:var(--cyan)">C</span>.','out');
+    awaitingChoice=true;return;
+  }
+  if(c==='B'){
+    print('Chosen: pip install inside the job.','out');
+    print('✗ Fragile: no version pinning, hits the network every run, and can clash with the module system.','err');
+    print('The reproducible way is to load the staged modules. Type <span style="color:var(--cyan)">C</span>.','out');
+    awaitingChoice=true;return;
+  }
+  // C
+  scriptFixed=true;
+  print('Saved analyse.sh with <b style="color:var(--run)">module load Python/3.11.5 pandas/2.1.0</b> before the run.','ok');
+  complete('bake','That\'s the whole lesson. The job now <b>brings its own tools</b>, pinned to exact versions, every time it runs — on any node, any day, any account. Submit it if you like with <code>sbatch analyse.sh</code>.');
+}
+
+function doCat(args){
+  if(/analyse\.sh$/.test(args[0]||'')){
+    print('#!/bin/bash','out');print('#SBATCH --job-name=analyse','out');
+    print('#SBATCH --partition=short','out');print('#SBATCH --cpus-per-task=4','out');
+    if(scriptFixed)print('module load Python/3.11.5 pandas/2.1.0','out');
+    print('python analyse.py','out');
+    return;
+  }
+  if(/analyse\.py$/.test(args[0]||'')){print('import pandas as pd   # needs Python 3.11 + pandas','out');print('# … summary stats over the 4 samples …','out');return;}
+  print(`cat: ${esc(args[0]||'')}: No such file or directory`,'err');
+}
+function doLs(){print('sample_01.fastq.gz  sample_02.fastq.gz  sample_03.fastq.gz  sample_04.fastq.gz  analyse.py'+(true?'  analyse.sh':''),'out');}
+
+function doSbatch(args){
+  if(!/analyse\.sh$/.test(args[0]||'')){print('usage: sbatch analyse.sh','err');return;}
+  if(!scriptFixed){
+    print('Submitted batch job 418901','ok');
+    print('… job 418901 FAILED: Python 2.7 / no pandas. The compute node didn\'t inherit your modules.','err');
+    print('Fix the script first: <span style="color:var(--cyan)">nano analyse.sh</span>.','out');
+    return;
+  }
+  print('Submitted batch job 418902','ok');
+  print('… job 418902 COMPLETED. Loaded its own Python 3.11 + pandas, wrote results.csv.','ok');
+  setCoach('Perfect — it worked because the script loaded its own environment. That\'s reproducibility in one line.');
+}
+
+function doHelp(){
+  print('Available in this level:','sys');
+  print('  <span style="color:var(--cyan)">python --version</span>     check which python is active','out');
+  print('  <span style="color:var(--cyan)">module avail</span>         list modules you can load','out');
+  print('  <span style="color:var(--cyan)">module load</span> n/v      load a tool at a specific version','out');
+  print('  <span style="color:var(--cyan)">module list</span>          show what\'s loaded now','out');
+  print('  <span style="color:var(--cyan)">module purge</span>         unload everything (clean slate)','out');
+  print('  <span style="color:var(--cyan)">which</span> python         show the path python resolves to','out');
+  print('  <span style="color:var(--cyan)">nano analyse.sh</span>      edit the batch script','out');
+  print('  <span style="color:var(--cyan)">sbatch analyse.sh</span>    submit it','out');
+}
+
+/* ---------- hints ---------- */
+const hints=[
+  'Start by exposing the problem: <span style="color:var(--cyan)">python --version</span>.',
+  'See what\'s on offer: <span style="color:var(--cyan)">module avail</span>.',
+  'Load the exact versions: <span style="color:var(--cyan)">module load Python/3.11.5 pandas/2.1.0</span>.',
+  'Confirm it took: <span style="color:var(--cyan)">module list</span> or <span style="color:var(--cyan)">python --version</span>.',
+  'Make it last: <span style="color:var(--cyan)">nano analyse.sh</span> and add the module load line (answer C).',
+];
+document.getElementById('hintBtn').addEventListener('click',()=>{
+  const i=objectives.findIndex(o=>!o.done);
+  print('<span style="color:var(--amber)">hint:</span> '+hints[Math.min(i,hints.length-1)],'out');
+});
+
+/* ---------- boot ---------- */
+function boot(){
+  print('<span style="color:var(--amber)">Cluster Quest</span> — Level 03: The Right Tools','sys');
+  print('Same folder, new problem: the analysis script won\'t run. The cluster\'s default tools are wrong for the job.','story');
+  print('Nothing here is installed for you by default — that\'s deliberate. You choose your tools with <span style="color:var(--cyan)">module</span>.','story');
+  print('Type <span style="color:var(--cyan)">help</span> anytime, or use the hint button.','story');
+  print('','out');
+  renderObjectives();refreshPrompt();updateEnv();
+}
+boot();
+
+/* ---------- input loop ---------- */
+const history=[];let hIdx=-1;
+input.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
+    const v=input.value;
+    if(v.trim())history.push(v);
+    hIdx=history.length;input.value='';
+    if(awaitingChoice){
+      const m=v.trim().toUpperCase();
+      echoCommand(v);
+      if(['A','B','C'].includes(m)){resolveChoice(m);}
+      else print('Type <span style="color:var(--cyan)">A</span>, <span style="color:var(--cyan)">B</span>, or <span style="color:var(--cyan)">C</span>.','out');
+      return;
+    }
+    handle(v);
+  }else if(e.key==='ArrowUp'){if(history.length){hIdx=Math.max(0,hIdx-1);input.value=history[hIdx]||'';e.preventDefault();}}
+  else if(e.key==='ArrowDown'){if(history.length){hIdx=Math.min(history.length,hIdx+1);input.value=history[hIdx]||'';e.preventDefault();}}
+});
+document.addEventListener('click',()=>input.focus());
+</script>
+</body>
+</html>

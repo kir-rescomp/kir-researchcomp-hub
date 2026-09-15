@@ -1,0 +1,166 @@
+/* ------------------------------------------------------------------ */
+/* parallel-laws.css                                                    */
+/* Place at: docs/stylesheets/parallel-laws.css                        */
+/* Register in mkdocs.yml under extra_css                              */
+/* ------------------------------------------------------------------ */
+
+.pl-widget {
+  margin: 1.5rem 0;
+}
+
+/* --- formula pills ------------------------------------------------- */
+.pl-formula-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.pl-formula-pill {
+  font-family: var(--md-code-font-family);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.pl-formula-amdahl {
+  background: #EEEDFE;
+  color: #3C3489;
+}
+
+.pl-formula-gustafson {
+  background: #E1F5EE;
+  color: #085041;
+}
+
+[data-md-color-scheme="slate"] .pl-formula-amdahl {
+  background: #26215C;
+  color: #CECBF6;
+}
+
+[data-md-color-scheme="slate"] .pl-formula-gustafson {
+  background: #04342C;
+  color: #9FE1CB;
+}
+
+/* --- sliders ------------------------------------------------------- */
+.pl-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.pl-control-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pl-control-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.pl-control-val {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+}
+
+.pl-controls input[type="range"] {
+  width: 100%;
+  accent-color: #534AB7;
+}
+
+/* --- stat cards ---------------------------------------------------- */
+.pl-stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.pl-stat-card {
+  background: var(--md-code-bg-color);
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.pl-stat-label {
+  font-size: 0.68rem;
+  color: var(--md-default-fg-color--lighter);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+
+.pl-stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pl-amdahl-color  { color: #534AB7; }
+.pl-gustafson-color { color: #0F6E56; }
+
+/* --- legend -------------------------------------------------------- */
+.pl-legend {
+  display: flex;
+  gap: 14px;
+  font-size: 0.76rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pl-legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pl-legend-line {
+  width: 18px;
+  height: 3px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.pl-legend-dashed {
+  width: 18px;
+  display: inline-block;
+  flex-shrink: 0;
+  border-top: 2px dashed #D85A30;
+  position: relative;
+  top: -1px;
+}
+
+/* --- chart wrappers ----------------------------------------------- */
+.pl-chart-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.pl-section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color--light);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 1.25rem 0 0.4rem;
+}
+
+/* --- responsive ---------------------------------------------------- */
+@media screen and (max-width: 600px) {
+  .pl-controls      { grid-template-columns: 1fr; }
+  .pl-stat-cards    { grid-template-columns: repeat(2, 1fr); }
+  .pl-formula-bar   { flex-direction: column; }
+}

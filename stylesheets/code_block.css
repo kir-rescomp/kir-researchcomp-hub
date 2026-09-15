@@ -1,0 +1,35 @@
+/* Modern code blocks with better contrast */
+.highlight {
+  border-radius: 8px;
+  border: 1px solid var(--md-code-bg-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Better font - use JetBrains Mono or Fira Code */
+.highlight code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+/* Add subtle background gradient */
+.highlight pre {
+  background: linear-gradient(135deg, 
+    var(--md-code-bg-color) 0%, 
+    color-mix(in srgb, var(--md-code-bg-color) 95%, white) 100%);
+}
+
+/* Colorful line numbers */
+.highlight .linenos {
+  color: var(--md-default-fg-color--light);
+  user-select: none;
+}
+
+/* Highlighted lines stand out more */
+.highlight .hll {
+  background-color: rgba(255, 235, 59, 0.15);
+  border-left: 3px solid #ffc107;
+  display: block;
+  margin: 0 -1em;
+  padding: 0 1em;
+}
