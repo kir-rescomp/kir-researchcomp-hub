@@ -1,4 +1,5 @@
 nav: 
     - account.md
-    - connect_ssh_config.md
+    - first_time_login.md
+    - terminal_setup.md
     - login_troubleshooting.md
