@@ -58,29 +58,29 @@ The password reset then follows a three-step process.
     | `First Factor` | The temporary password sent to you by email. Copying and pasting it is recommended. |
     | `Second Factor` | The current six-digit token from your 2FA app, without spaces. |
 
-### Step 2 – Confirm your current password
+=== "Step 2 – Confirm your current password"
 
-You will see a message stating that your password has expired, followed by these prompts:
+    You will see a message stating that your password has expired, followed by these prompts:
 
-| Prompt | What to enter |
-|---|---|
-| `Current Password` | The same temporary password used in Step 1. |
-| `Second Factor` | A **new** six-digit token from your 2FA app. |
+    | Prompt | What to enter |
+    |---|---|
+    | `Current Password` | The same temporary password used in Step 1. |
+    | `Second Factor` | A **new** six-digit token from your 2FA app. |
 
-!!! warning "Wait for a new token"
-    Before completing the `Second Factor` prompt in Step 2, wait until your 2FA app displays a **new** six-digit token. Re-entering the token used in Step 1 will cause the password reset to fail.
+    !!! warning "Wait for a new token"
+        Before completing the `Second Factor` prompt in Step 2, wait until your 2FA app displays a **new** six-digit token. Re-entering the token used in Step 1 will cause the password reset to fail.
 
-### Step 3 – Set your new password
+=== "Step 3 – Set your new password"
 
-You will be prompted to enter your `New Password` and then to confirm it.
-
-The new password must meet the same requirements as your University SSO password:
-
-- At least 16 characters
-- At least one upper-case letter
-- At least one lower-case letter
-- At least one digit
-- At least one special character
+    You will be prompted to enter your `New Password` and then to confirm it.
+    
+    The new password must meet the same requirements as your University SSO password:
+    
+    - At least 16 characters
+    - At least one upper-case letter
+    - At least one lower-case letter
+    - At least one digit
+    - At least one special character
 
 
 ### If the password reset fails
