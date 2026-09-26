@@ -1,0 +1,62 @@
+/* Clean, contemporary design with subtle animations */
+.md-sidebar--primary {
+    background: #f6f6f8;
+    border-right: 1px solid #c3cbdb;
+}
+
+[data-md-color-scheme="slate"] .md-sidebar--primary {
+    background: #1a1b26;
+    border-right: 1px solid #2f3241;
+}
+
+.md-nav__item {
+    margin: 2px 12px;
+    position: relative;
+}
+
+.md-nav__link {
+    border-radius: 6px;
+    padding: 5px 5px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Add subtle dot indicator */
+.md-nav__link::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.md-nav__link:hover::before {
+    background: #6366f1;
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+}
+
+.md-nav__link:hover {
+    background: rgba(99, 102, 241, 0.08);
+    padding-left: 18px;
+}
+
+.md-nav__link--active {
+    background: rgba(99, 102, 241, 0.12);
+    color: #2a2ca8 !important;
+    font-weight: 600;
+    padding-left: 18px;
+}
+
+.md-nav__link--active::before {
+    background: #8190d4;
+    box-shadow: 0 0 12px rgba(109, 156, 231, 0.8);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}

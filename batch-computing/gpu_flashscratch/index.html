@@ -1,0 +1,1490 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="The Kennedy Institute of Rheumatology, NDORMS, University of Oxford">
+      
+      
+        <link rel="canonical" href="https://kir-rescomp.github.io/kir-researchcomp-hub/batch-computing/gpu_flashscratch/">
+      
+      
+        <link rel="prev" href="../gh200/">
+      
+      
+        <link rel="next" href="../../interactive-computing/openondemand/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/icons/kir_standalone_logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>GPU Nodes Fast local scratch (/flash) - KIR - Research Computing Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Mukta";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/colors.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/side_bar_menu.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/background_colors.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/header_alignment.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/landing_page_hero.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_dracula.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_monokai.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_github_dark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_nord.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/code_block_colour_onedark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_featured_scroll_behavoiour.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_cards_buttons.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/morphing-dna-network.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/indexpage_episodes_cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tables.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/gradient_peek.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/tabs_shading.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/status.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/status-card.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/modules.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/technical_essays_indexpage_cards.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/parallel-laws.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/read_button.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gpu-nodes-fast-local-scratch-flash" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KIR - Research Computing Hub" class="md-header__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KIR - Research Computing Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GPU Nodes Fast local scratch (/flash)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KIR - Research Computing Hub" class="md-nav__button md-logo" aria-label="KIR - Research Computing Hub" data-md-component="logo">
+      
+  <img src="../../assets/images/icons/KIR_Research_Computing_Hub_layered_logo_favicon.svg" alt="logo">
+
+    </a>
+    KIR - Research Computing Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kir-rescomp/kir-researchcomp-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kir-rescomp/kir-researchcomp-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../getting-started/account/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../file-system/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File system
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../software/software_manage_with_modules/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch computing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Batch computing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with job scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finding_job_efficiency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finding Job Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_jobs_waiting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why are my jobs waiting?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm_job_arrays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slurm job arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using_gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Resources on BMRC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gh200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GH200 node
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Nodes Fast local scratch (/flash)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Nodes Fast local scratch (/flash)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#requesting-a-node-with-local-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requesting a node with local scratch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-your-project-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating your project folder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-should-i-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When should I use it?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark-local-flash-vs-gpfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmark: local flash vs GPFS
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../interactive-computing/openondemand/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../data-transfer/cli_transfer/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data transfer
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../parallel-computing/scaling_limits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallel computing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../status/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../technical_essays/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical essays
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#requesting-a-node-with-local-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requesting a node with local scratch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-your-project-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating your project folder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-should-i-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When should I use it?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark-local-flash-vs-gpfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmark: local flash vs GPFS
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="gpu-nodes-fast-local-scratch-flash">GPU Nodes Fast local scratch (<code>/flash</code>)<a class="headerlink" href="#gpu-nodes-fast-local-scratch-flash" title="Permanent link">¶</a></h1>
+<p>A number of GPU nodes have fast local NVMe drives for jobs that require a lot of I/O.
+Unlike the shared GPFS/Lustre filesystem ( filesystem we use to host home, <code>/well/</code>)  which is optimised for large, sequential,
+parallel throughput, this local storage lives <em>inside the compute node</em> and
+excels at <strong>random, small-block, high-IOPS access</strong>: many small files, frequent
+seeks, index/database access, and metadata-heavy workloads.</p>
+<div class="admonition circle-info">
+<p class="admonition-title">Where it lives</p>
+<p>Local scratch is available at:</p>
+<ul>
+<li><code>/flash/scratch</code> — shared scratch, open to all jobs</li>
+<li>project-specific folders under <code>/flash</code> on the node</li>
+</ul>
+<p>It is <strong>node-local and ephemeral</strong>: data written here is only visible on the
+node that wrote it, and is <strong>not</strong> available from the login nodes, other
+compute nodes, or after the job ends. Treat it as working space for a single
+job, and stage important results back to GPFS before the job finishes.</p>
+</div>
+<h2 id="requesting-a-node-with-local-scratch">Requesting a node with local scratch<a class="headerlink" href="#requesting-a-node-with-local-scratch" title="Permanent link">¶</a></h2>
+<p>Add the <code>--constraint "flash"</code> feature to your Slurm request. For a batch job:</p>
+<div class="nord">
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">sbatch</span> <span class="o">--</span><span class="n">account</span> <span class="n">gpu_</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;.</span><span class="n">prj</span> <span class="o">-</span><span class="n">p</span> <span class="n">gpu_p100_16gb</span> <span class="o">--</span><span class="n">gres</span> <span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="o">--</span><span class="n">constraint</span> <span class="s2">"flash"</span> <span class="o">&lt;</span><span class="n">JOBSCRIPT</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>For an interactive session:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">srun</span> <span class="o">--</span><span class="n">account</span> <span class="o">--</span><span class="n">gres</span> <span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="o">--</span><span class="n">partition</span> <span class="n">gpu_interactive</span> <span class="o">--</span><span class="n">constraint</span> <span class="s2">"flash"</span> <span class="o">--</span><span class="n">pty</span> <span class="n">bash</span>
+</span></code></pre></div>
+<p>You can confirm the node actually has the feature with:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">scontrol</span> <span class="n">show</span> <span class="n">node</span> <span class="s2">"$(hostname)"</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">ActiveFeatures</span>
+</span></code></pre></div>
+<h2 id="creating-your-project-folder">Creating your project folder<a class="headerlink" href="#creating-your-project-folder" title="Permanent link">¶</a></h2>
+<p>It is your responsibility to create a folder for your job. Because
+<code>/flash/scratch</code> is shared by <strong>all</strong> jobs on the node, protect your data by
+placing it in a subfolder with restrictive permissions:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">flash</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="err">$</span><span class="n">USER</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">chmod</span> <span class="mi">700</span> <span class="o">/</span><span class="n">flash</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="err">$</span><span class="n">USER</span>    <span class="c1"># owner-only: rwx------</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Directories need the execute bit</p>
+<p>Use <code>700</code>, not <code>600</code>. Without the execute (<code>x</code>) bit you will not be able to
+<code>cd</code> into the directory or open files inside it (<code>Permission denied</code>).
+<code>700</code> gives you full private access; <code>750</code> also lets your group read it.</p>
+</div>
+<p>Always clean up when your job finishes:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">flash</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="err">$</span><span class="n">USER</span>
+</span></code></pre></div>
+</div>
+<details class="brush">
+<summary>Automatic cleanup in your job script</summary>
+<p>Because <code>/flash/scratch</code> is node-local and shared, always remove your working
+directory when the job finishes. The most robust way is a <strong><code>trap</code></strong>, which runs
+on normal exit <em>and</em> when the job is cancelled, times out, or errors — so you
+don't leave data behind even when the script doesn't reach the end.</p>
+<p>Put this near the top of your Slurm script, right after the <code>#SBATCH</code> lines:
+</p><div class="nord" markdown="1">
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">#!/bin/bash</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="n">gpu_</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;</span><span class="p">.</span><span class="n">prj</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">gpu_p100_16gb</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">gres</span><span class="w"> </span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">#</span><span class="n">SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">constraint</span><span class="w"> </span><span class="s">"flash"</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">#</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">fast</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">scratch</span><span class="w"> </span><span class="n">setup</span><span class="w"> </span><span class="o">---</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">FLASH_DIR</span><span class="o">=</span><span class="s">"/flash/scratch/$USER/job_$SLURM_JOB_ID"</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="s">"$FLASH_DIR"</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">chmod</span><span class="w"> </span><span class="mi">700</span><span class="w"> </span><span class="s">"$FLASH_DIR"</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="p">#</span><span class="w"> </span><span class="n">Remove</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">directory</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">ANY</span><span class="w"> </span><span class="n">exit</span><span class="p">:</span><span class="w"> </span><span class="nc">success</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="n">timeout</span><span class="p">,</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">scancel</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="n">cleanup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="s">"$FLASH_DIR"</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">trap</span><span class="w"> </span><span class="n">cleanup</span><span class="w"> </span><span class="n">EXIT</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">#</span><span class="w"> </span><span class="o">--------------------------------</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="p">#</span><span class="w"> </span><span class="o">..</span><span class="p">.</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="n">runs</span><span class="w"> </span><span class="n">here</span><span class="p">,</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="s">"$FLASH_DIR"</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">scratch</span><span class="w"> </span><span class="o">..</span><span class="p">.</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">cd</span><span class="w"> </span><span class="s">"$FLASH_DIR"</span>
+</span></code></pre></div><p></p>
+<p>A few points worth knowing:</p>
+<ul>
+<li>
+<p>Using a per-job subfolder (<code>job_$SLURM_JOB_ID</code>) keeps concurrent jobs on the
+  same node from colliding, and means cleanup only ever removes <em>this</em> job's data.</p>
+</li>
+<li>
+<p><code>trap cleanup EXIT</code> covers the common cases (script finishes, <code>set -e</code> abort,
+  and the <code>SIGTERM</code> Slurm sends on timeout/<code>scancel</code>, which triggers <code>EXIT</code> once
+  the shell exits).</p>
+</li>
+<li>
+<p>If you run long steps that might be killed by <code>SIGTERM</code> before the shell exits,
+  you can trap the signal explicitly as well so cleanup always runs first:</p>
+</li>
+</ul>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">trap</span> <span class="s1">'cleanup; exit 143'</span> <span class="n">TERM</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">trap</span> <span class="n">cleanup</span> <span class="n">EXIT</span>
+</span></code></pre></div>
+<div class="admonition lightbulb">
+<p class="admonition-title">Stage results out <em>before</em> cleanup</p>
+<p>The trap deletes everything in <code>$FLASH_DIR</code>. Copy any results you want to
+keep back to GPFS earlier in the script (or as the last real step), so they
+are safely on persistent storage before the job exits:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">cp</span> <span class="o">-</span><span class="n">a</span> <span class="s2">"$FLASH_DIR"</span><span class="o">/</span><span class="n">results</span><span class="o">/</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">on</span><span class="o">/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">project</span><span class="o">/</span>
+</span></code></pre></div>
+</div>
+</div></details>
+<h2 id="when-should-i-use-it">When should I use it?<a class="headerlink" href="#when-should-i-use-it" title="Permanent link">¶</a></h2>
+<p>Choose your storage based on your <strong>access pattern</strong>, not just file size:</p>
+<table>
+<thead>
+<tr>
+<th>Use <code>/flash/scratch</code> when…</th>
+<th>Stay on GPFS when…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Many small files (thousands+)</td>
+<td>A few large files</td>
+</tr>
+<tr>
+<td>Random reads/writes, frequent seeks</td>
+<td>Long sequential streaming reads/writes</td>
+</tr>
+<tr>
+<td>High IOPS / metadata-heavy (index files, small DB, checkpoint shuffling)</td>
+<td>Bulk staging of large datasets</td>
+</tr>
+<tr>
+<td>You want to take I/O load <em>off</em> the shared filesystem</td>
+<td>You need the data visible across nodes</td>
+</tr>
+<tr>
+<td>Intermediate scratch for a single job</td>
+<td>Final results / anything that must persist</td>
+</tr>
+</tbody>
+</table>
+<p>A good pattern is: <strong>stage inputs from GPFS → run with heavy random I/O against
+<code>/flash/scratch</code> → copy final outputs back to GPFS → clean up.</strong></p>
+<h2 id="benchmark-local-flash-vs-gpfs">Benchmark: local flash vs GPFS<a class="headerlink" href="#benchmark-local-flash-vs-gpfs" title="Permanent link">¶</a></h2>
+<p>The difference is workload-dependent, and it matters which workload you measure.</p>
+<p><strong>Large sequential I/O</strong> (<code>dd</code>, 4 GiB, 1 MiB blocks) — GPFS is <em>already excellent</em>
+here, since it stripes across many storage servers. Local flash offers no
+advantage for streaming:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>/flash/scratch</code></th>
+<th>GPFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sequential write</td>
+<td>~1.2 GB/s</td>
+<td>~3.9 GB/s</td>
+</tr>
+<tr>
+<td>Sequential read</td>
+<td>(cache-influenced)</td>
+<td>~3.8 GB/s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Random 4k I/O</strong> (<code>fio</code>, <code>iodepth 32</code>, 4 jobs, <code>--direct=1</code>) — this is where
+local flash wins decisively:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th><code>/flash/scratch</code></th>
+<th>GPFS</th>
+<th>Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read IOPS</td>
+<td>32,200</td>
+<td>520</td>
+<td><strong>~62×</strong></td>
+</tr>
+<tr>
+<td>Write IOPS</td>
+<td>32,200</td>
+<td>533</td>
+<td><strong>~60×</strong></td>
+</tr>
+<tr>
+<td>Read bandwidth</td>
+<td>126 MiB/s</td>
+<td>2.0 MiB/s</td>
+<td>~62×</td>
+</tr>
+<tr>
+<td>Avg read latency</td>
+<td>92 µs</td>
+<td>7,497 µs</td>
+<td><strong>~82× lower</strong></td>
+</tr>
+<tr>
+<td>p99 read latency</td>
+<td>0.25 ms</td>
+<td>49 ms</td>
+<td>~200× lower</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p align="center" style="margin-bottom: -1px;">
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/material/batch-computing/flash_vs_gpfs_iops.svg" data-desc-position="bottom"><img src="../../assets/images/material/batch-computing/flash_vs_gpfs_iops.svg" alt="data-transfer-cli" width="700" style="opacity: 0.9;"></a>
+</p>
+
+<p>The latency tail is the real story: on GPFS every random read pays a network
+round-trip to a storage/metadata server, so tail latency runs into tens of
+milliseconds. On local flash the read hits NVMe directly and stays in the
+microsecond range. If your job does a lot of random reads or touches many small
+files, local scratch can turn an I/O-bound job into a compute-bound one.</p>
+<div class="admonition note-sticky">
+<p class="admonition-title">Benchmark your own workload</p>
+<p>These numbers are from a single node and depend on the underlying device
+(some nodes use SATA SSDs, others true NVMe). Run a quick <code>fio</code> random-I/O
+test on your allocated node if you want to confirm the gain for your
+specific access pattern before committing a large job.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../gh200/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GH200 node">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                GH200 node
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../interactive-computing/openondemand/" class="md-footer__link md-footer__link--next" aria-label="Next: Interactive Computing with OnDemand">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Interactive Computing with OnDemand
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      KIR - Research Computing Hub is licensed under a <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.expand   Removing this for the moment to avoid the meny being expanded by default", "navigation.top", "navigation.footer", "navigation.instant", "content.code.copy", "content.code.annotate", "navigation.prune", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/featured-toggle.js"></script>
+      
+        <script src="../../javascripts/link_content_tabs_to_cards.js"></script>
+      
+        <script src="../../javascripts/status.js"></script>
+      
+        <script src="../../javascripts/status-card.js"></script>
+      
+        <script src="../../javascripts/katex.js" defer=""></script>
+      
+        <script src="../../javascripts/slurm-generator.js" defer=""></script>
+      
+        <script src="../../javascripts/parallel-laws.js" defer=""></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
