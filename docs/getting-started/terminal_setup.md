@@ -1,5 +1,7 @@
 # Recommended Terminal Setup
 
+!!! note "Before configuring your `~/.ssh/config` file, ensure that you have completed the [First Time Login](./first_time_login.md) process and set your new cluster password. SSH connections using this configuration will not succeed until your temporary password has been replaced."
+
 1. In a new **local** terminal run; `mkdir -p ~/.ssh/sockets` this will create a subdirectory in your home directory to store socket configurations.
 
 2. Open your ssh config file (e.g. `nano ~/.ssh/config` to open with the text editor `nano`) and add the following 
