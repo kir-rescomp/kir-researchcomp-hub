@@ -5,7 +5,7 @@
 2. Open your ssh config file (e.g. `nano ~/.ssh/config` to open with the text editor `nano`) and add the following 
 !!! exclamation "Make sure to replace `username` with your BMRC Username in all four places"
 
-
+<div class="nord" markdown="1">
 ```py
 Host *
     ControlMaster auto
@@ -66,3 +66,4 @@ chmod 600 ~/.ssh/config
 ```py
 ssh bmrc1
 ```
+</div>
