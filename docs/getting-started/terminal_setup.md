@@ -63,9 +63,9 @@ Host bmrc4
 ```py
 chmod 600 ~/.ssh/config
 ```
-4. Now you can connect login node of interest with the aliases such as `bmrc1` , `bmrc2`, etc. For an example, if you wanto to connec to `cluster1.bmrc.ox.ac.uk` which is `bmrc1`, execute  
+4. Now you can connect login node of interest with the aliases such as `bmrc4` , `bmrc2`, etc. For an example, if you wanto to connec to `cluster4.bmrc.ox.ac.uk` which is `bmrc4`, execute  
 
 ```py
-ssh bmrc1
+ssh bmrc4
 ```
 </div>
