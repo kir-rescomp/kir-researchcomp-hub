@@ -46,9 +46,9 @@ ssh bmrcusername@cluster1.bmrc.ox.ac.uk
 
 The password reset then follows a three-step process.
 
-=== "Step 1 – Authenticate with your temporary password"
+=== "Step 1"
 
-
+     <h4>Authenticate with your temporary password</h4>
 
 
     You will be prompted for two factors:
@@ -58,24 +58,30 @@ The password reset then follows a three-step process.
     | `First Factor` | The temporary password sent to you by email. Copying and pasting it is recommended. |
     | `Second Factor` | The current six-digit token from your 2FA app, without spaces. |
 
-=== "Step 2 – Confirm your current password"
+=== "Step 2"
+
+    <h4>Confirm your current password</h4>
 
     You will see a message stating that your password has expired, followed by these prompts:
+
+    !!! warning "Wait for a new token"
+        Before completing the `Second Factor` prompt in Step 2, wait until your 2FA app displays a **new** six-digit token. Re-entering the token used in Step 1 will cause the password reset to fail.
 
     | Prompt | What to enter |
     |---|---|
     | `Current Password` | The same temporary password used in Step 1. |
     | `Second Factor` | A **new** six-digit token from your 2FA app. |
 
-    !!! warning "Wait for a new token"
-        Before completing the `Second Factor` prompt in Step 2, wait until your 2FA app displays a **new** six-digit token. Re-entering the token used in Step 1 will cause the password reset to fail.
 
-=== "Step 3 – Set your new password"
+
+=== "Step 3"
+
+    <h4>Set your new password</h4>
 
     You will be prompted to enter your `New Password` and then to confirm it.
-    
+
     The new password must meet the same requirements as your University SSO password:
-    
+
     - At least 16 characters
     - At least one upper-case letter
     - At least one lower-case letter
@@ -108,10 +114,4 @@ Use your new cluster password, together with a 2FA token, for all future logins.
 ## Remote Access
 
 For remote connections (when away from the University), you will need to connect to Oxford VPN (**vpn.ox.ac.uk**) OR one of the MSD vpns
-
-## Two-factor authentication
-
-The BMRC cluster employs two-factor authentication. After your account has been created and you have received a welcome email, we will arrange an induction session where we will set up your two-factor authentication. For two-factor authentication you can use one of available smartphone apps (for example, Microsoft or Google Authenticator) or one of the supported authenticator applications, that can be run on a local computer. 
-
-More information on available methods can be found [here](https://help.it.ox.ac.uk/how-to-use-mfa). 
 
