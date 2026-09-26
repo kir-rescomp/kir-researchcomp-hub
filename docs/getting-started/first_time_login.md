@@ -20,7 +20,7 @@ To connect to the BMRC cluster, while connected to a local wired network at the 
 
 <div class="nord" markdown="1">
 ```py
-ssh username@cluster1.bmrc.ox.ac.uk
+ssh bmrcusername@cluster1.bmrc.ox.ac.uk
 ```
 
 ## First Time Login  - Setting a New Cluster Password
@@ -30,27 +30,33 @@ On your first login to the BMRC cluster, you will be required to replace your te
 !!! info "Before you begin"
     This guide assumes that:
 
-    - You have received a **temporary password** by email from the KIR Research Computing Manager.
+    - You have received a **temporary password** by email from the KIR Research Computing Manage OR BMRC Team
     - You have set up **two-factor authentication (2FA)** by scanning the QR code provided by the KIR Research Computing Manager. Any authenticator app may be used (e.g. Microsoft Authenticator, Authy, Google Authenticator).
 
 ### Connecting to the cluster
 
 Open a terminal and run the following command, replacing `bmrcusername` with your BMRC username:
 
-```bash
+```py
 ssh bmrcusername@cluster1.bmrc.ox.ac.uk
 ```
 
+!!! tip
+    No characters are displayed while you type a password. This is expected behaviour.
+
 The password reset then follows a three-step process.
 
-### Step 1 – Authenticate with your temporary password
+=== "Step 1 – Authenticate with your temporary password"
 
-You will be prompted for two factors:
 
-| Prompt | What to enter |
-|---|---|
-| `First Factor` | The temporary password sent to you by email. Copying and pasting it is recommended. |
-| `Second Factor` | The current six-digit token from your 2FA app, without spaces. |
+
+
+    You will be prompted for two factors:
+
+    | Prompt | What to enter |
+    |---|---|
+    | `First Factor` | The temporary password sent to you by email. Copying and pasting it is recommended. |
+    | `Second Factor` | The current six-digit token from your 2FA app, without spaces. |
 
 ### Step 2 – Confirm your current password
 
@@ -76,8 +82,6 @@ The new password must meet the same requirements as your University SSO password
 - At least one digit
 - At least one special character
 
-!!! tip
-    No characters are displayed while you type a password. This is expected behaviour.
 
 ### If the password reset fails
 
@@ -92,7 +96,7 @@ The two most common causes of a failed reset are:
 
 Once your password has been changed successfully, you will be logged into the `cluster1` login node, and your terminal prompt will change to show your username and the node name, for example:
 
-```text
+```py
 [bmrcusername@cluster1 ~]$
 ```
 
