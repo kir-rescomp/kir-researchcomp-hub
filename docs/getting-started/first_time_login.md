@@ -14,14 +14,11 @@ dateCreated: 2021-08-20T13:18:06.993Z
     <img src="../../assets/images/material/getting-started/ssh_process.png" alt="data-transfer-cli" width="700" style="opacity: 0.9;"/>
 </p>
 
-## Local Access
+## Network Requirements
 
-To connect to the BMRC cluster, while connected to a local wired network at the Kennedy Institute or `eduroam`, run the following command replacing `username` with your username for the cluster in your local computer terminal. You can connect to either `cluster1`, `cluster2` , `cluster3` or `cluster4` by changing the command accordingly: 
+* **Local** - If you are attempting to access BMRC services from Oxford **eduroam** or a wired connection within a University property (excluding some colleges), no further action is required. 
+* **Remote**  - If you are attempting to access the services from a remote network  connection ( home,etc), please make sure the device is connected to Oxford or MSD vpn 
 
-<div class="nord" markdown="1">
-```py
-ssh bmrcusername@cluster1.bmrc.ox.ac.uk
-```
 
 ## First Time Login  - Setting a New Cluster Password
 
@@ -37,6 +34,7 @@ On your first login to the BMRC cluster, you will be required to replace your te
 
 Open a terminal and run the following command, replacing `bmrcusername` with your BMRC username:
 
+<div class="nord" markdown="1">
 ```py
 ssh bmrcusername@cluster1.bmrc.ox.ac.uk
 ```
@@ -108,10 +106,4 @@ Once your password has been changed successfully, you will be logged into the `c
 
 Use your new cluster password, together with a 2FA token, for all future logins.
 
-
-
-
-## Remote Access
-
-For remote connections (when away from the University), you will need to connect to Oxford VPN (**vpn.ox.ac.uk**) OR one of the MSD vpns
-
+</div>
