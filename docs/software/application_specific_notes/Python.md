@@ -62,11 +62,11 @@ One of `uv`'s most practical advantages on BMRC: **it ships its own Python**. Yo
 
     ```py
     # No module load needed — uv manages Python for you
-    uv venv ~/devel/virtual_envs/myenv --python 3.12
+    uv venv ~/devel/virtual_envs/myenv --python 3.14
     source ~/devel/virtual_envs/myenv/bin/activate
     uv pip install numpy pandas
     
-    # Python 3.12 downloaded automatically if not present
+    # Python 3.14 downloaded automatically if not present
     ```
 </div>
 
@@ -85,7 +85,7 @@ Then use it exactly as you would `pip`:
 
     ## uv-managed Python and storage locations
 
-    We use uv to download Python interpreters directly (`--python 3.12`, `uv python install`, etc.)
+    We use uv to download Python interpreters directly (`--python 3.14`, `uv python install`, etc.)
     because the OS Python is too old and maintaining separate EasyBuild Python modules is more effort.
 
     **Consequence:** by default uv writes interpreters, caches, and temp extraction into your home
@@ -115,7 +115,7 @@ Then use it exactly as you would `pip`:
 
 ```py
 # Create a virtual environment (specify any Python version)
-uv venv ~/devel/virtual_envs/myenv --python 3.12
+uv venv ~/devel/virtual_envs/myenv --python 3.14
 source ~/devel/virtual_envs/myenv/bin/activate
 
 # Install packages — identical syntax to pip
