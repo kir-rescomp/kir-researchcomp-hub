@@ -38,7 +38,7 @@ A description of the facility and  details of the current access charges can be 
 
 ## BMRC cluster user induction
  
-Once your registration form has been processed, an account will be created and you will receive a welcome message notifying you about your user name on the cluster. An induction session with the BMRC cluster team will be arranged to set up two-factor authentification.
+Once your registration form has been processed, an account will be created and you will receive a welcome message notifying you about your user name on the cluster. An induction session with the KIR Research Computing Manager will be arranged to set up two-factor authentification.
 
 !!! note-sticky "Linux command line experience"
 
