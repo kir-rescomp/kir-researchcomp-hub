@@ -1,4 +1,4 @@
-# Accessing RFS from the cluster
+# Accessing RFS from the BMRC login nodes
 
 The `RFS` module provides a simple command-line interface for accessing the Research File Service (RFS) from the cluster.
 
