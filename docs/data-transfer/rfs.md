@@ -21,7 +21,7 @@ rfs -h
 
 ## Authentication
 
-There are three ways to authenticate to RFS.
+There are three ways to authenticate to RFS. You are welcome to choose whichever method best matches your security preferences and how you intend to use the service.
 
 === "1. Temporary authentication"
 
@@ -81,19 +81,19 @@ There are three ways to authenticate to RFS.
 === "3. Prompt for each command"
 
     If you do not want credentials to be stored or temporarily cached, use:
-    
+
     ```py
     rfs --prompt ls
     ```
-    
+
     or, for example:
-    
+
     ```py
     rfs --prompt put results.csv MYPROJECT
     ```
-    
+
     You will be asked for your password for that command only.
-    
+
     The password is not retained for subsequent commands.
 
 ## Listing files and directories
