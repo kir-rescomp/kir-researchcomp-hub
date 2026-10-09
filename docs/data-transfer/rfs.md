@@ -1,4 +1,6 @@
-# Accessing RFS from the cluster
+# Accessing RFS from the BMRC login nodes
+
+!!! circle-info-2 "We recommend running RFS transfers inside a `tmux` session to reduce the risk of interruption if your `ssh` connection drops or your terminal session is disconnected."
 
 The `RFS` module provides a simple command-line interface for accessing the Research File Service (RFS) from the cluster.
 
