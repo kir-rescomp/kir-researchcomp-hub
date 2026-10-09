@@ -54,6 +54,8 @@ There are three ways to authenticate to RFS. You are welcome to choose whichever
 
 === "2. Store credentials in your home directory"
 
+    >**use this method only if you are comfortable with storing credentials in your home directory**
+
     If you regularly access RFS, you can create:
 
     ```py
