@@ -25,7 +25,7 @@ rfs -h
 
 There are three ways to authenticate to RFS. You are welcome to choose whichever method best matches your security preferences and how you intend to use the service.
 
-=== "1. Temporary authentication"
+=== "1. Temporary authentication - caching credentials for 8 hours"
 
     For most interactive use, the recommended method is:
 
@@ -121,6 +121,19 @@ rfs ls MYPROJECT/data
 ```
 
 `list` is also accepted as an alias for `ls`.
+
+!!! square-pen "RFS is not mounted as a filesystem"
+
+    The `rfs` command provides access to RFS through a command-line interface; it does **not** mount RFS as a directory on the cluster.
+
+    As a result, you cannot use the normal Linux `cd` command to move into an RFS directory. Use `rfs ls` to browse remote directories and specify the remote path directly when using commands such as `rfs put` and `rfs get`.
+
+    For example:
+
+    ```py
+    rfs ls MFOLDER
+    rfs ls MYFOLDER/ProjectA
+    ```
 
 ## Creating directories
 
