@@ -118,7 +118,7 @@ I 2026-05-08 18:53:03.587 ServerApp] jupyter_lsp | extension was successfully li
 
 On your **local machine** (not the cluster), open a new terminal and run:
 
-* If you have setup the local terminal  `~/.ssh/config` according to [these instructions](../getting-started/connect_ssh_config.md), replace  `username@cluster1.bmrc.ox.ac.uk`
+* If you have setup the local terminal  `~/.ssh/config` according to [these instructions](../getting-started/terminal_setup.md), replace  `username@cluster1.bmrc.ox.ac.uk`
    with the shorter hostname .i.e.`bmrc1` ,etc. 
 
 ```py
