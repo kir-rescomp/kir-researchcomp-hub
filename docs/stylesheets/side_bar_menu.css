@@ -9,51 +9,65 @@
     border-right: 1px solid #2f3241;
 }
 
-.md-nav__item {
-    margin: 2px 12px;
-    position: relative;
+/* Navigation link colour in light mode.
+   --md-primary-fg-color is white (for the header), and Material derives the
+   colour of the selected menu item from it, which made the selected item
+   invisible in the mobile drawer. */
+[data-md-color-scheme="default"] .md-sidebar--primary {
+    --md-typeset-a-color: #2a2ca8;
 }
 
-.md-nav__link {
-    border-radius: 6px;
-    padding: 5px 5px;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+/* Apply custom navigation styling only where the sidebar is fixed (desktop).
+   Below 76.25em Material uses a sliding drawer whose nested panels rely on
+   the default positioning of .md-nav__item. */
+@media screen and (min-width: 76.25em) {
 
-/* Add subtle dot indicator */
-.md-nav__link::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: transparent;
-    transition: all 0.3s ease;
-}
+    .md-nav__item {
+        margin: 2px 12px;
+    }
 
-.md-nav__link:hover::before {
-    background: #6366f1;
-    box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
-}
+    .md-nav__link {
+        border-radius: 6px;
+        padding: 5px 5px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 
-.md-nav__link:hover {
-    background: rgba(99, 102, 241, 0.08);
-    padding-left: 18px;
-}
+    /* Subtle dot indicator */
+    .md-nav__link::before {
+        content: '';
+        flex-shrink: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: transparent;
+        transition: all 0.3s ease;
+    }
 
-.md-nav__link--active {
-    background: rgba(99, 102, 241, 0.12);
-    color: #2a2ca8 !important;
-    font-weight: 600;
-    padding-left: 18px;
-}
+    .md-nav__link:hover::before {
+        background: #6366f1;
+        box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+    }
 
-.md-nav__link--active::before {
-    background: #8190d4;
-    box-shadow: 0 0 12px rgba(109, 156, 231, 0.8);
-    animation: pulse 2s infinite;
+    .md-nav__link:hover {
+        background: rgba(99, 102, 241, 0.08);
+        padding-left: 18px;
+    }
+
+    .md-nav__link--active {
+        background: rgba(99, 102, 241, 0.12);
+        color: #2a2ca8 !important;
+        font-weight: 600;
+        padding-left: 18px;
+    }
+
+    .md-nav__link--active::before {
+        background: #8190d4;
+        box-shadow: 0 0 12px rgba(109, 156, 231, 0.8);
+        animation: pulse 2s infinite;
+    }
 }
 
 @keyframes pulse {
