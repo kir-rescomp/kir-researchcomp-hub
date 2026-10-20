@@ -70,7 +70,7 @@ GPU resources are available through the following Slurm partitions:
 | `gpu_rtx8000_48gb` | 12 | 48 | 60 | 7 | 185 |
 | `gpu_a100_40gb` | 16 | 40 | 60 | 7 | 90 |
 | `gpu_a100_80gb` | 24 | 80 | 60 | 11 | 120 |
-| `gpu_gh200_144gb` | 40 | 144 | TBD | 72 | TBD |
+| ``gpu_gh200_bmrc``| 6  | 144 | 1440| 72| 1TB| 
 | **Interactive partition** | | | | | |
 | `gpu_interactive` | 18 | 24 | 12 | 7 | 80 |
 
@@ -78,7 +78,6 @@ GPU resources are available through the following Slurm partitions:
 
 - Use `gpu_interactive` for interactive development, debugging, and testing (12-hour limit, 1 GPU per user)
 - Use a batch partition for non-interactive workloads — prefer partitions with sufficient GPU memory for your job rather than requesting the largest available
-- `gpu_gh200_144gb` is a high-capability partition; runtime limits are still to be confirmed
 - `gpu_v100_32gb` has a very high default memory allocation (750 GB) — only request what your job actually needs
 
 ## How to request a GPU on a script  for `sbatch` or via `srun`
