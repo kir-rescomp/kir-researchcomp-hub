@@ -88,11 +88,11 @@ Choose the one that best fits your need/workflow:
         ```
         
 
-    2. From within your interactive session, load the standalone `RStudio-Server/2025.09.2-418` module and the R module of interest . For an example, `R/4.5.1-gfbf-2023a-bare-noSciPy` 
+    2. From within your interactive session, load the standalone `RStudio-Server/2026.08.0-187` module and the R module of interest . For an example, `R/4.6.1-gfbf-2025b-bare-noSciPy` 
 
         ```py
-        module load RStudio-Server/2025.09.2-418
-        module load R/4.5.1-gfbf-2023a-bare-noSciPy
+        module load RStudio-Server/2026.08.0-187
+        module load R/4.6.1-gfbf-2025b-bare-noSciPy
         ```
 
     3. Start your RStudio service by running:
