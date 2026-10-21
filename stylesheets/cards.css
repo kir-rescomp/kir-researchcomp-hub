@@ -1,0 +1,83 @@
+/* Force 3 columns for grid cards */
+.md-typeset .grid.cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* Clickable card hover effect */
+.grid.cards > ul > li {
+    transition: all 0.3s ease;
+}
+
+.grid.cards > ul > li:hover {
+    background-color: rgba(var(--md-primary-fg-color--rgb), 0.05);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Make card links fill the card */
+.grid.cards > ul > li a {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Truncate description to ~3 lines with fade effect */
+.grid.cards > ul > li a span[style*="font-size: 0.7rem"] {
+    display: block;
+    max-height: 4.2em; /* approximately 3 lines (1.4em per line) */
+    overflow: hidden;
+    position: relative;
+    line-height: 1.6em;
+}
+
+/* Fade gradient at bottom of truncated text */
+.grid.cards > ul > li a span[style*="font-size: 0.7rem"]::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 1.4em;
+    background: linear-gradient(to bottom, transparent, var(--md-default-bg-color));
+    pointer-events: none;
+}
+
+/* Show full description on hover */
+.grid.cards > ul > li:hover a span[style*="font-size: 0.7rem"] {
+    max-height: none;
+}
+
+/* Remove fade effect on hover */
+.grid.cards > ul > li:hover a span[style*="font-size: 0.7rem"]::after {
+    display: none;
+}
+
+.landing-hub.grid.cards {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 800px;   /* controls how wide the two cards stretch */
+  width: 100%;
+}
+
+
+
+/* Coloured top border per card — cycles through 3 accent colours */
+.section-index.grid.cards > ul > li:nth-child(1) { border-top: 3px solid #5b9cf6; }
+.section-index.grid.cards > ul > li:nth-child(2) { border-top: 3px solid #7ec99a; }
+.section-index.grid.cards > ul > li:nth-child(3) { border-top: 3px solid #f0a868; }
+.section-index.grid.cards > ul > li:nth-child(4) { border-top: 3px solid #c98bc9; }
+.section-index.grid.cards > ul > li:nth-child(5) { border-top: 3px solid #f06a6a; }
+.section-index.grid.cards > ul > li:nth-child(6) { border-top: 3px solid #5bc4c4; }
+
+
+
+/* Featured card — full width, slightly elevated */
+.section-index--featured.grid.cards {
+    grid-template-columns: 1fr;
+    margin-bottom: 0.5rem;
+}
+
+.section-index--featured.grid.cards > ul > li {
+    border-left: 4px solid var(--md-primary-fg-color);
+    background: rgba(var(--md-primary-fg-color--rgb), 0.06);
+}
