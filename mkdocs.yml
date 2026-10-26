@@ -115,9 +115,9 @@ markdown_extensions:
   - pymdownx.blocks.caption
 
 plugins: 
-  - glightbox:
-      effect: zoom
-      zoomable: true
+  #  - glightbox:
+  #    effect: zoom
+  #    zoomable: true
   - search:
       lang: en
   - macros
