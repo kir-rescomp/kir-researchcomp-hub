@@ -13,6 +13,12 @@ deserve more than a how-to guide but don't belong in the main docs.
 
 <div class="grid cards essays-grid" markdown>
 
+-   **What is HPC?**
+
+    A quick primer to HPC 
+
+    [:octicons-arrow-right-24: Read](./hpc/hpc-primer.md)
+
 -   **Why Linux on HPC?**
 
     The practical and historical reasons every serious cluster runs Linux, and
