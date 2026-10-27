@@ -1,0 +1,6 @@
+nav:
+    - hpc-primer.md
+    - why_linux_on_hpc.md
+    - demystifying_compiler_toolchains.md
+    - gh200_llm_qwen2.5_inference.md
+    - tmux_backspace_stops.md
