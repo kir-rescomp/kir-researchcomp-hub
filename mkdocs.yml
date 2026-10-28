@@ -174,3 +174,4 @@ extra_css:
   - stylesheets/parallel-laws.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
   - stylesheets/read_button.css
+  - stylesheets/header_weight.css
