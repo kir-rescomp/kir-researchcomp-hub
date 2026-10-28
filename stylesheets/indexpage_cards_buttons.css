@@ -1,0 +1,39 @@
+/* Fancy gradient buttons for cards */
+.grid.cards .fancy-button {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(120deg, #1e1f22, #808184);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grid.cards .fancy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, var(--md-accent-fg-color), var(--md-primary-fg-color));
+}
+
+/* Alternative: Solid colored button with border */
+.grid.cards .fancy-button-alt {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    margin-top: 0.5rem;
+    background: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color) !important;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 2px solid var(--md-primary-fg-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.grid.cards .fancy-button-alt:hover {
+    background: transparent;
+    color: var(--md-primary-fg-color) !important;
+    transform: scale(1.05);
+}
