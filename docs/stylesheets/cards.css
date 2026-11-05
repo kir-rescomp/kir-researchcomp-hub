@@ -81,3 +81,22 @@
     border-left: 4px solid var(--md-primary-fg-color);
     background: rgba(var(--md-primary-fg-color--rgb), 0.06);
 }
+
+
+
+/* Information cards (non-clickable): 2 x 2 layout, no hover zoom */
+.md-typeset .info-cards.grid.cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.info-cards.grid.cards > ul > li:hover {
+    transform: none;
+    background-color: transparent;
+}
+
+/* Stack to a single column on narrow screens */
+@media screen and (max-width: 44.9375em) {
+    .md-typeset .info-cards.grid.cards {
+        grid-template-columns: 1fr;
+    }
+}
