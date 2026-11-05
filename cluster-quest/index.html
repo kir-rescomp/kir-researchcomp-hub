@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cluster Quest</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root{
+    --void:#0b1020;
+    --panel:#111a2e;
+    --panel-2:#0e1526;
+    --ink:#c8d4e8;
+    --dim:#63739a;
+    --line:#1e2b48;
+    --amber:#ffb454;
+    --cyan:#38e1c8;
+    --magenta:#e26fd8;
+    --green:#7ee787;
+    --run:#7aa2ff;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{min-height:100%}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, #16233f 0%, transparent 60%),
+      radial-gradient(900px 500px at 0% 110%, #171130 0%, transparent 55%),
+      var(--void);
+    color:var(--ink);
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;
+    padding:48px 20px 60px;
+  }
+
+  .shell{width:100%;max-width:860px}
+
+  /* header */
+  .top{margin-bottom:38px}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--amber);margin-bottom:14px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  h1{
+    font-size:52px;font-weight:700;letter-spacing:-1.5px;line-height:.98;
+    background:linear-gradient(120deg,#e6eefc 20%,var(--cyan) 60%,var(--run) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    margin-bottom:16px;
+  }
+  .tagline{font-size:15.5px;color:#9fb0d4;line-height:1.6;max-width:600px}
+  .tagline b{color:var(--ink);font-weight:600}
+
+  /* progress rail */
+  .rail{
+    display:flex;align-items:center;gap:0;margin:34px 0 30px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .rail .node{
+    width:13px;height:13px;border-radius:50%;flex-shrink:0;
+    border:2px solid var(--line);background:var(--void);transition:all .3s;
+  }
+  .rail .node.done{background:var(--green);border-color:var(--green);box-shadow:0 0 0 4px rgba(126,231,135,.12)}
+  .rail .node.current{border-color:var(--amber);box-shadow:0 0 0 4px rgba(255,180,84,.14)}
+  .rail .seg{flex:1;height:2px;background:var(--line);transition:background .3s}
+  .rail .seg.done{background:var(--green)}
+  .rail-meta{
+    margin-left:16px;font-size:11px;letter-spacing:1px;color:var(--dim);white-space:nowrap;
+  }
+  .rail-meta b{color:var(--cyan)}
+
+  /* level cards */
+  .levels{display:flex;flex-direction:column;gap:16px}
+  .card{
+    position:relative;display:grid;grid-template-columns:64px 1fr auto;gap:20px;align-items:center;
+    padding:22px 24px;border-radius:14px;
+    background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);
+    text-decoration:none;color:inherit;
+    transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+  }
+  .card.playable{cursor:pointer}
+  .card.playable:hover{transform:translateY(-2px);border-color:rgba(56,225,200,.4);
+    box-shadow:0 12px 30px -12px rgba(56,225,200,.25)}
+  .card.locked{opacity:.5;cursor:not-allowed}
+
+  .num{
+    font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:700;
+    color:var(--line);text-align:center;line-height:1;transition:color .2s;
+  }
+  .card.playable:hover .num{color:var(--cyan)}
+  .card.done-card .num{color:rgba(126,231,135,.4)}
+
+  .body h2{font-size:19px;font-weight:600;letter-spacing:-.3px;margin-bottom:5px;display:flex;align-items:center;gap:10px}
+  .body .sub{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--dim);margin-bottom:9px}
+  .body p{font-size:13.5px;color:#93a3c4;line-height:1.5;max-width:440px}
+  .teaches{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+  .teaches .t{font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 9px;border-radius:20px;
+    background:rgba(56,225,200,.08);border:1px solid rgba(56,225,200,.2);color:var(--cyan)}
+
+  .status{justify-self:end;text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.5px}
+  .badge{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:8px;font-weight:500}
+  .badge.play{background:var(--cyan);color:var(--void);font-weight:700}
+  .badge.replay{background:transparent;border:1px solid var(--line);color:var(--dim)}
+  .badge.locked{background:transparent;border:1px dashed var(--line);color:var(--dim)}
+  .badge.done{background:rgba(126,231,135,.14);border:1px solid rgba(126,231,135,.35);color:var(--green)}
+  .card.playable:hover .badge.play{box-shadow:0 0 0 4px rgba(56,225,200,.15)}
+
+  .tick{color:var(--green);font-size:16px}
+  .lock-ic{opacity:.6}
+
+  /* footer */
+  .foot{margin-top:36px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .foot .note{font-size:12px;color:var(--dim);line-height:1.5;max-width:520px}
+  .foot .note b{color:#93a3c4;font-weight:500}
+  .reset{
+    background:transparent;border:1px solid var(--line);border-radius:8px;
+    color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;
+    padding:9px 16px;cursor:pointer;transition:all .2s;white-space:nowrap;
+  }
+  .reset:hover{border-color:var(--red);color:var(--red)}
+
+  @media (max-width:640px){
+    h1{font-size:40px}
+    .card{grid-template-columns:44px 1fr;gap:14px;padding:18px}
+    .status{grid-column:1/-1;justify-self:start;text-align:left;margin-top:4px}
+    .num{font-size:24px}
+  }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="top">
+      <div class="eyebrow">KIR Research Computing · Training</div>
+      <h1>Cluster Quest</h1>
+      <p class="tagline">Learn to use an HPC cluster the way you actually will by doing it, in a safe sandbox where nothing can break. Each level is a real researcher's task, played out in a simulated terminal.</p>
+
+      <div class="rail" id="rail"></div>
+    </div>
+
+    <div class="levels" id="levels"></div>
+
+    <div class="foot">
+      <div class="note"><b>Your progress is saved in this browser.</b> Finish a level to unlock the next. Completed levels stay open to replay any time.</div>
+      <button class="reset" id="reset">↺ RESET PROGRESS</button>
+    </div>
+  </div>
+
+<script>
+/* ============================================================
+   Cluster Quest — menu / level-select wrapper
+   Progress persists in localStorage under CQ_PROGRESS.
+   A level marks itself complete by setting, on its win event:
+     localStorage.setItem('CQ_LEVEL_1_DONE','1')   (etc.)
+   This menu reads those flags to unlock the next level.
+   ============================================================ */
+
+const LEVELS=[
+  {
+    n:1, file:'hpc-quest-level1.html',
+    title:'First Contact', sub:'SSH & Navigation',
+    blurb:'A collaborator left data on the cluster. Connect to a remote machine, orient yourself on an unfamiliar filesystem, and confirm the files are there.',
+    teaches:['ssh','pwd','cd','ls']
+  },
+  {
+    n:2, file:'hpc-quest-level2.html',
+    title:'The Scheduler', sub:'Slurm & Resource Requests',
+    blurb:'The login node can\'t run your job — you have to ask Slurm. Feel the trade-off between asking for more cores and waiting longer in the queue.',
+    teaches:['sinfo','squeue','sbatch','scancel']
+  },
+  {
+    n:3, file:'hpc-quest-level3.html',
+    title:'The Right Tools', sub:'Modules & Environments',
+    blurb:'The default python is a trap. Load the exact toolchain you need, and bake it into your job script so the run is reproducible everywhere.',
+    teaches:['module avail','module load','module list']
+  },
+];
+
+const KEY='CQ_PROGRESS';
+
+function loadProgress(){
+  // migrate from per-level flags if present (set by the levels themselves)
+  let done={};
+  try{ done=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ done={}; }
+  LEVELS.forEach(l=>{
+    if(localStorage.getItem('CQ_LEVEL_'+l.n+'_DONE')==='1') done[l.n]=true;
+  });
+  localStorage.setItem(KEY,JSON.stringify(done));
+  return done;
+}
+function isDone(n,done){ return !!done[n]; }
+function isUnlocked(n,done){ return n===1 || isDone(n-1,done); }
+
+function render(){
+  const done=loadProgress();
+  const levelsEl=document.getElementById('levels');
+  levelsEl.innerHTML='';
+
+  LEVELS.forEach(l=>{
+    const unlocked=isUnlocked(l.n,done);
+    const complete=isDone(l.n,done);
+    const el=document.createElement(unlocked?'a':'div');
+    el.className='card '+(unlocked?'playable':'locked')+(complete?' done-card':'');
+    if(unlocked){ el.href=l.file; }
+
+    const teaches=l.teaches.map(t=>`<span class="t">${t}</span>`).join('');
+
+    let badge;
+    if(!unlocked) badge=`<span class="badge locked"><span class="lock-ic">🔒</span> LOCKED</span>`;
+    else if(complete) badge=`<span class="badge done"><span class="tick">✓</span> DONE · REPLAY</span>`;
+    else badge=`<span class="badge play">▶ PLAY</span>`;
+
+    el.innerHTML=`
+      <div class="num">${String(l.n).padStart(2,'0')}</div>
+      <div class="body">
+        <div class="sub">Level ${String(l.n).padStart(2,'0')} — ${l.sub}</div>
+        <h2>${l.title} ${complete?'<span class="tick">✓</span>':''}</h2>
+        <p>${l.blurb}</p>
+        <div class="teaches">${teaches}</div>
+      </div>
+      <div class="status">${badge}</div>
+    `;
+    levelsEl.appendChild(el);
+  });
+
+  // progress rail
+  const rail=document.getElementById('rail');
+  rail.innerHTML='';
+  LEVELS.forEach((l,i)=>{
+    const node=document.createElement('div');
+    const complete=isDone(l.n,done);
+    const current=!complete && isUnlocked(l.n,done);
+    node.className='node'+(complete?' done':'')+(current?' current':'');
+    rail.appendChild(node);
+    if(i<LEVELS.length-1){
+      const seg=document.createElement('div');
+      seg.className='seg'+(complete?' done':'');
+      rail.appendChild(seg);
+    }
+  });
+  const count=LEVELS.filter(l=>isDone(l.n,done)).length;
+  const meta=document.createElement('div');
+  meta.className='rail-meta';
+  meta.innerHTML=`<b>${count}</b> / ${LEVELS.length} complete`;
+  rail.appendChild(meta);
+}
+
+document.getElementById('reset').addEventListener('click',()=>{
+  if(confirm('Reset all Cluster Quest progress? This clears completed levels.')){
+    localStorage.removeItem(KEY);
+    LEVELS.forEach(l=>localStorage.removeItem('CQ_LEVEL_'+l.n+'_DONE'));
+    render();
+  }
+});
+
+// re-check when returning to the tab (e.g. after finishing a level)
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden) render(); });
+window.addEventListener('pageshow',render);
+
+render();
+</script>
+</body>
+</html>

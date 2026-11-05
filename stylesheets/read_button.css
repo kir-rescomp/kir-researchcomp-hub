@@ -1,0 +1,20 @@
+.essays-grid a.essay-read-btn {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25em 0.75em;
+  border-radius: 2em;
+  background: transparent;
+  border: 1.5px solid currentColor;
+  color: var(--md-primary-fg-color) !important;
+  text-decoration: none !important;
+  line-height: 1.6;
+  transition: background 0.15s, color 0.15s;
+}
+
+.essays-grid a.essay-read-btn:hover {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color) !important;
+}
