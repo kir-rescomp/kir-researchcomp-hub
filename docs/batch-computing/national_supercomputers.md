@@ -11,40 +11,39 @@ KIR holds a rolling, **institute-wide allocation** on Isambard-AI under the proj
 The current allocation is active from **5 November 2026** for three months, and
 researchers from any KIR group are welcome to join.
 
-<div class="grid cards" markdown>
+<div class="grid cards info-cards" markdown>
 
+-   :material-information-outline:{ .lg .middle } __What is Isambard-AI?__
 
-- :material-information-outline:{ .lg .middle } __What is Isambard-AI?__
+    ---
 
-  ---
+    The UK's fastest and most powerful AI supercomputer, operated by the
+    University of Bristol, and one of two national AI facilities alongside
+    Zenith (University of Cambridge).
 
-  The UK's fastest and most powerful AI supercomputer, operated by the
-  University of Bristol, and one of two national AI facilities alongside
-  Zenith (University of Cambridge).
+-   :material-harddisk:{ .lg .middle } __How much storage is available?__
 
-- :material-harddisk:{ .lg .middle } __How much storage is available?__
+    ---
 
-  ---
+    **200 TB** of shared project storage, plus **5 TB** of private storage for
+    each individual user account.
 
-  **200 TB** of shared project storage, plus **5 TB** of private storage for
-  each individual user account.
+-   :material-chip:{ .lg .middle } __What can it be used for?__
 
-- :material-chip:{ .lg .middle } __What can it be used for?__
+    ---
 
-  ---
+    **Large-scale distributed GPU workloads**, with a single job able to request
+    up to several thousand GPUs. With GPUs readily available through a dedicated
+    reservation, it is also an **ideal environment for building GPU and CUDA
+    skills**, from profiling code to porting CPU-based workflows to GPU.
 
-  **Large-scale distributed GPU workloads**, with a single job able to request
-  up to several thousand GPUs. With GPUs readily available through a dedicated
-  reservation, it is also an **ideal environment for building GPU and CUDA
-  skills**, from profiling code to porting CPU-based workflows to GPU.
+-   :material-cash-remove:{ .lg .middle } __Is there an additional cost?__
 
-- :material-cash-remove:{ .lg .middle } __Is there an additional cost?__
+    ---
 
-  ---
-
-  **None.** Administration and local support for the Isambard-AI environment,
-  including software, are covered through the SRF. This single allocation
-  serves the whole institute, so groups need not apply individually.
+    **None.** Administration and local support for the Isambard-AI environment,
+    including software, are covered through the SRF. This single allocation
+    serves the whole institute, so groups need not apply individually.
 
 </div>
 
@@ -65,8 +64,7 @@ researchers from any KIR group are welcome to join.
 
 !!! tip "Request access"
 
-    Please contact **Dinindu Senanayake** (Research Computing Manager) at
-    <your.email@kennedy.ox.ac.uk> for further information or to request access.
+    Please contact KIR Research Computing Manager for further information or to request access.
     An account will be created for you, and you will be added to the KIR
     Isambard-AI Microsoft Teams channel, where technical questions can be raised
     and discussed.
