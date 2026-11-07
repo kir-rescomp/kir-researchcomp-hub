@@ -8,7 +8,7 @@ These nodes feature NVIDIA GPUs with varying specifications to suit different co
 Due to rapidly evolving hardware capabilities, our GPU nodes have considerable variation in CPU, RAM, and GPU configurations. 
 This guide will help you understand the available resources and how to request them efficiently.
 
-??? circle-info-2 "More information"
+!!! circle-info-2 gradient-peek "More information"
     This documentation covers the essentials of GPU types available on the cluster and how to select and request them. For an extensive guide on choosing the right GPU for your codebase, benchmarking, and GPU profiling, refer to our [GPU profiling training material](https://kir-rescomp.github.io/training-gpu-profiling/).
 
     <div>
