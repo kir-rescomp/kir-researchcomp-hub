@@ -1,7 +1,7 @@
 {
-  "generated": "2026-11-05T17:58:16.840717+00:00",
-  "n_packages": 1129,
-  "n_versions": 4697,
+  "generated": "2026-11-10T16:55:13.469645+00:00",
+  "n_packages": 1130,
+  "n_versions": 4699,
   "eras": [
     "2020b",
     "2022b",
@@ -502,15 +502,15 @@
           "version": "2024.02-1",
           "full": "Anaconda3/2024.02-1",
           "default": true,
-          "era": "legacy",
-          "path": "/apps/eb/el8/common/modules/all/Anaconda3/2024.02-1"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/Anaconda3/2024.02-1"
         },
         {
           "version": "2024.02-1",
           "full": "Anaconda3/2024.02-1",
           "default": true,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/Anaconda3/2024.02-1"
+          "era": "legacy",
+          "path": "/apps/eb/el8/common/modules/all/Anaconda3/2024.02-1"
         }
       ],
       "n_versions": 13
@@ -1345,15 +1345,15 @@
           "version": "2.40.3-GCCcore-11.2.0",
           "full": "at-spi2-core/2.40.3-GCCcore-11.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/at-spi2-core/2.40.3-GCCcore-11.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/at-spi2-core/2.40.3-GCCcore-11.2.0"
         },
         {
           "version": "2.40.3-GCCcore-11.2.0",
           "full": "at-spi2-core/2.40.3-GCCcore-11.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/at-spi2-core/2.40.3-GCCcore-11.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/at-spi2-core/2.40.3-GCCcore-11.2.0"
         },
         {
           "version": "2.44.1-GCCcore-11.3.0",
@@ -1573,15 +1573,15 @@
           "version": "2.69-GCCcore-9.3.0",
           "full": "Autoconf/2.69-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Autoconf/2.69-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Autoconf/2.69-GCCcore-9.3.0"
         },
         {
           "version": "2.69-GCCcore-9.3.0",
           "full": "Autoconf/2.69-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Autoconf/2.69-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Autoconf/2.69-GCCcore-9.3.0"
         },
         {
           "version": "2.69-GCCcore-10.2.0",
@@ -1749,15 +1749,15 @@
           "version": "1.16.1-GCCcore-9.3.0",
           "full": "Automake/1.16.1-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Automake/1.16.1-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Automake/1.16.1-GCCcore-9.3.0"
         },
         {
           "version": "1.16.1-GCCcore-9.3.0",
           "full": "Automake/1.16.1-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Automake/1.16.1-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Automake/1.16.1-GCCcore-9.3.0"
         },
         {
           "version": "1.16.2-GCCcore-10.2.0",
@@ -1891,22 +1891,15 @@
           "version": "20180311-GCCcore-9.3.0",
           "full": "Autotools/20180311-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Autotools/20180311-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Autotools/20180311-GCCcore-9.3.0"
         },
         {
           "version": "20180311-GCCcore-9.3.0",
           "full": "Autotools/20180311-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Autotools/20180311-GCCcore-9.3.0"
-        },
-        {
-          "version": "20200321-GCCcore-10.2.0",
-          "full": "Autotools/20200321-GCCcore-10.2.0",
-          "default": false,
           "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Autotools/20200321-GCCcore-10.2.0"
+          "path": "/apps/eb/dev/skylake/modules/all/Autotools/20180311-GCCcore-9.3.0"
         },
         {
           "version": "20200321-GCCcore-10.2.0",
@@ -1914,6 +1907,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/Autotools/20200321-GCCcore-10.2.0"
+        },
+        {
+          "version": "20200321-GCCcore-10.2.0",
+          "full": "Autotools/20200321-GCCcore-10.2.0",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Autotools/20200321-GCCcore-10.2.0"
         },
         {
           "version": "20210128-GCCcore-10.3.0",
@@ -1940,15 +1940,15 @@
           "version": "20220317-GCCcore-12.2.0",
           "full": "Autotools/20220317-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/Autotools/20220317-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Autotools/20220317-GCCcore-12.2.0"
         },
         {
           "version": "20220317-GCCcore-12.2.0",
           "full": "Autotools/20220317-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Autotools/20220317-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/Autotools/20220317-GCCcore-12.2.0"
         },
         {
           "version": "20220317-GCCcore-12.3.0",
@@ -2030,14 +2030,14 @@
           "full": "axel/2.17.9-GCCcore-9.3.0",
           "default": true,
           "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/axel/2.17.9-GCCcore-9.3.0"
+          "path": "/apps/eb/dev/skylake/modules/all/axel/2.17.9-GCCcore-9.3.0"
         },
         {
           "version": "2.17.9-GCCcore-9.3.0",
           "full": "axel/2.17.9-GCCcore-9.3.0",
           "default": true,
           "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/axel/2.17.9-GCCcore-9.3.0"
+          "path": "/apps/eb/skylake/modules/all/axel/2.17.9-GCCcore-9.3.0"
         }
       ],
       "n_versions": 3
@@ -3142,22 +3142,15 @@
           "version": "2.34-GCCcore-9.3.0",
           "full": "binutils/2.34-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/binutils/2.34-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/binutils/2.34-GCCcore-9.3.0"
         },
         {
           "version": "2.34-GCCcore-9.3.0",
           "full": "binutils/2.34-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/binutils/2.34-GCCcore-9.3.0"
-        },
-        {
-          "version": "2.34",
-          "full": "binutils/2.34",
-          "default": false,
           "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/binutils/2.34"
+          "path": "/apps/eb/dev/skylake/modules/all/binutils/2.34-GCCcore-9.3.0"
         },
         {
           "version": "2.34",
@@ -3165,6 +3158,13 @@
           "default": false,
           "era": "legacy",
           "path": "/apps/eb/dev/skylake/modules/all/binutils/2.34"
+        },
+        {
+          "version": "2.34",
+          "full": "binutils/2.34",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/skylake/modules/all/binutils/2.34"
         },
         {
           "version": "2.35-GCCcore-10.2.0",
@@ -3268,15 +3268,15 @@
           "version": "2.39",
           "full": "binutils/2.39",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/binutils/2.39"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/binutils/2.39"
         },
         {
           "version": "2.39",
           "full": "binutils/2.39",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/binutils/2.39"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/binutils/2.39"
         },
         {
           "version": "2.40-GCCcore-12.3.0",
@@ -3815,13 +3815,6 @@
           "full": "Bison/3.5.3",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Bison/3.5.3"
-        },
-        {
-          "version": "3.5.3",
-          "full": "Bison/3.5.3",
-          "default": false,
-          "era": "legacy",
           "path": "/apps/eb/skylake/modules/all/Bison/3.5.3"
         },
         {
@@ -3830,6 +3823,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/Bison/3.5.3"
+        },
+        {
+          "version": "3.5.3",
+          "full": "Bison/3.5.3",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Bison/3.5.3"
         },
         {
           "version": "3.7.1-GCCcore-10.2.0",
@@ -3849,22 +3849,15 @@
           "version": "3.7.1",
           "full": "Bison/3.7.1",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/Bison/3.7.1"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Bison/3.7.1"
         },
         {
           "version": "3.7.1",
           "full": "Bison/3.7.1",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Bison/3.7.1"
-        },
-        {
-          "version": "3.7.6-GCCcore-10.3.0",
-          "full": "Bison/3.7.6-GCCcore-10.3.0",
-          "default": false,
           "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/Bison/3.7.6-GCCcore-10.3.0"
+          "path": "/apps/eb/skylake/modules/all/Bison/3.7.1"
         },
         {
           "version": "3.7.6-GCCcore-10.3.0",
@@ -3872,6 +3865,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/Bison/3.7.6-GCCcore-10.3.0"
+        },
+        {
+          "version": "3.7.6-GCCcore-10.3.0",
+          "full": "Bison/3.7.6-GCCcore-10.3.0",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/skylake/modules/all/Bison/3.7.6-GCCcore-10.3.0"
         },
         {
           "version": "3.7.6-GCCcore-11.2.0",
@@ -3884,15 +3884,15 @@
           "version": "3.7.6",
           "full": "Bison/3.7.6",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Bison/3.7.6"
+          "era": "legacy",
+          "path": "/apps/eb/skylake/modules/all/Bison/3.7.6"
         },
         {
           "version": "3.7.6",
           "full": "Bison/3.7.6",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/Bison/3.7.6"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Bison/3.7.6"
         },
         {
           "version": "3.8.2-GCCcore-11.3.0",
@@ -3905,15 +3905,15 @@
           "version": "3.8.2-GCCcore-12.2.0",
           "full": "Bison/3.8.2-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Bison/3.8.2-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/Bison/3.8.2-GCCcore-12.2.0"
         },
         {
           "version": "3.8.2-GCCcore-12.2.0",
           "full": "Bison/3.8.2-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/Bison/3.8.2-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Bison/3.8.2-GCCcore-12.2.0"
         },
         {
           "version": "3.8.2-GCCcore-12.3.0",
@@ -3933,15 +3933,15 @@
           "version": "3.8.2",
           "full": "Bison/3.8.2",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/Bison/3.8.2"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/Bison/3.8.2"
         },
         {
           "version": "3.8.2",
           "full": "Bison/3.8.2",
           "default": true,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/Bison/3.8.2"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/Bison/3.8.2"
         },
         {
           "version": "3.8.2",
@@ -5018,22 +5018,15 @@
           "version": "1.0.8-GCCcore-9.3.0",
           "full": "bzip2/1.0.8-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/bzip2/1.0.8-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/bzip2/1.0.8-GCCcore-9.3.0"
         },
         {
           "version": "1.0.8-GCCcore-9.3.0",
           "full": "bzip2/1.0.8-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/bzip2/1.0.8-GCCcore-9.3.0"
-        },
-        {
-          "version": "1.0.8-GCCcore-10.2.0",
-          "full": "bzip2/1.0.8-GCCcore-10.2.0",
-          "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/bzip2/1.0.8-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/bzip2/1.0.8-GCCcore-9.3.0"
         },
         {
           "version": "1.0.8-GCCcore-10.2.0",
@@ -5041,6 +5034,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/bzip2/1.0.8-GCCcore-10.2.0"
+        },
+        {
+          "version": "1.0.8-GCCcore-10.2.0",
+          "full": "bzip2/1.0.8-GCCcore-10.2.0",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/bzip2/1.0.8-GCCcore-10.2.0"
         },
         {
           "version": "1.0.8-GCCcore-10.3.0",
@@ -5736,15 +5736,15 @@
           "version": "2.1.0",
           "full": "CellRanger-ATAC/2.1.0",
           "default": true,
-          "era": "legacy",
-          "path": "/apps/eb/el8/common/modules/all/CellRanger-ATAC/2.1.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/CellRanger-ATAC/2.1.0"
         },
         {
           "version": "2.1.0",
           "full": "CellRanger-ATAC/2.1.0",
           "default": true,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/CellRanger-ATAC/2.1.0"
+          "era": "legacy",
+          "path": "/apps/eb/el8/common/modules/all/CellRanger-ATAC/2.1.0"
         }
       ],
       "n_versions": 4
@@ -5876,15 +5876,15 @@
           "version": "1.3.2",
           "full": "Cereal/1.3.2",
           "default": true,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/Cereal/1.3.2"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/Cereal/1.3.2"
         },
         {
           "version": "1.3.2",
           "full": "Cereal/1.3.2",
           "default": true,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/Cereal/1.3.2"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/Cereal/1.3.2"
         }
       ],
       "n_versions": 4
@@ -5953,9 +5953,9 @@
     },
     {
       "name": "CGAL",
-      "description": "The goal of the CGAL Open Source Project is to provide easy access to efficient  and reliable geometric algorithms in the form of a C++ library.",
+      "description": "The goal of the CGAL Open Source Project is to provide easy access to efficient\nand reliable geometric algorithms in the form of a C++ library.",
       "url": "https://www.cgal.org/",
-      "default": "4.14.3-gompi-2022a",
+      "default": "6.2.1-GCCcore-12.3.0",
       "eras": [
         "2020b",
         "legacy"
@@ -5971,12 +5971,19 @@
         {
           "version": "4.14.3-gompi-2022a",
           "full": "CGAL/4.14.3-gompi-2022a",
-          "default": true,
+          "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/CGAL/4.14.3-gompi-2022a"
+        },
+        {
+          "version": "6.2.1-GCCcore-12.3.0",
+          "full": "CGAL/6.2.1-GCCcore-12.3.0",
+          "default": true,
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/CGAL/6.2.1-GCCcore-12.3.0.lua"
         }
       ],
-      "n_versions": 2
+      "n_versions": 3
     },
     {
       "name": "cget",
@@ -6456,15 +6463,15 @@
           "version": "3.18.4-GCCcore-10.2.0",
           "full": "CMake/3.18.4-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/CMake/3.18.4-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/CMake/3.18.4-GCCcore-10.2.0"
         },
         {
           "version": "3.18.4-GCCcore-10.2.0",
           "full": "CMake/3.18.4-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/CMake/3.18.4-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/CMake/3.18.4-GCCcore-10.2.0"
         },
         {
           "version": "3.18.4",
@@ -6519,15 +6526,15 @@
           "version": "3.24.3-GCCcore-12.2.0",
           "full": "CMake/3.24.3-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/CMake/3.24.3-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/CMake/3.24.3-GCCcore-12.2.0"
         },
         {
           "version": "3.24.3-GCCcore-12.2.0",
           "full": "CMake/3.24.3-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/CMake/3.24.3-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/CMake/3.24.3-GCCcore-12.2.0"
         },
         {
           "version": "3.26.3-GCCcore-12.3.0",
@@ -6737,15 +6744,15 @@
           "version": "2.222-GCCcore-14.3.0",
           "full": "Compress-Raw-Zlib/2.222-GCCcore-14.3.0",
           "default": true,
-          "era": "2025b",
-          "path": "/apps/eb/el8/2025b/skylake/modules/all/Compress-Raw-Zlib/2.222-GCCcore-14.3.0.lua"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/Compress-Raw-Zlib/2.222-GCCcore-14.3.0"
         },
         {
           "version": "2.222-GCCcore-14.3.0",
           "full": "Compress-Raw-Zlib/2.222-GCCcore-14.3.0",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/Compress-Raw-Zlib/2.222-GCCcore-14.3.0"
+          "era": "2025b",
+          "path": "/apps/eb/el8/2025b/skylake/modules/all/Compress-Raw-Zlib/2.222-GCCcore-14.3.0.lua"
         }
       ],
       "n_versions": 4
@@ -7071,14 +7078,14 @@
           "full": "CPLEX/22.1.1",
           "default": true,
           "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/CPLEX/22.1.1"
+          "path": "/apps/eb/el7/common/modules/all/CPLEX/22.1.1"
         },
         {
           "version": "22.1.1",
           "full": "CPLEX/22.1.1",
           "default": true,
           "era": "legacy",
-          "path": "/apps/eb/el7/common/modules/all/CPLEX/22.1.1"
+          "path": "/apps/kir/eb/skylake/modules/all/CPLEX/22.1.1"
         }
       ],
       "n_versions": 6
@@ -7449,21 +7456,14 @@
           "full": "CUDA/10.1.243",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/CUDA/10.1.243"
+          "path": "/apps/eb/el8/common/modules/all/CUDA/10.1.243"
         },
         {
           "version": "10.1.243",
           "full": "CUDA/10.1.243",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/el8/common/modules/all/CUDA/10.1.243"
-        },
-        {
-          "version": "11.0.2-GCC-9.3.0",
-          "full": "CUDA/11.0.2-GCC-9.3.0",
-          "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/CUDA/11.0.2-GCC-9.3.0"
+          "path": "/apps/eb/skylake/modules/all/CUDA/10.1.243"
         },
         {
           "version": "11.0.2-GCC-9.3.0",
@@ -7471,6 +7471,13 @@
           "default": false,
           "era": "legacy",
           "path": "/apps/eb/dev/skylake/modules/all/CUDA/11.0.2-GCC-9.3.0"
+        },
+        {
+          "version": "11.0.2-GCC-9.3.0",
+          "full": "CUDA/11.0.2-GCC-9.3.0",
+          "default": false,
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/CUDA/11.0.2-GCC-9.3.0"
         },
         {
           "version": "11.1.1-GCC-10.2.0",
@@ -7518,15 +7525,15 @@
           "version": "11.7.0",
           "full": "CUDA/11.7.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/CUDA/11.7.0"
+          "era": "legacy",
+          "path": "/apps/eb/el8/common/modules/all/CUDA/11.7.0"
         },
         {
           "version": "11.7.0",
           "full": "CUDA/11.7.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/el8/common/modules/all/CUDA/11.7.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/CUDA/11.7.0"
         },
         {
           "version": "11.8.0",
@@ -7734,15 +7741,15 @@
           "version": "8.4.1.50-CUDA-11.7.0",
           "full": "cuDNN/8.4.1.50-CUDA-11.7.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/el8/common/modules/all/cuDNN/8.4.1.50-CUDA-11.7.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/cuDNN/8.4.1.50-CUDA-11.7.0"
         },
         {
           "version": "8.4.1.50-CUDA-11.7.0",
           "full": "cuDNN/8.4.1.50-CUDA-11.7.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/cuDNN/8.4.1.50-CUDA-11.7.0"
+          "era": "legacy",
+          "path": "/apps/eb/el8/common/modules/all/cuDNN/8.4.1.50-CUDA-11.7.0"
         },
         {
           "version": "8.5.0.96-CUDA-11.7.0",
@@ -7865,22 +7872,15 @@
           "version": "7.69.1-GCCcore-9.3.0",
           "full": "cURL/7.69.1-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/cURL/7.69.1-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/cURL/7.69.1-GCCcore-9.3.0"
         },
         {
           "version": "7.69.1-GCCcore-9.3.0",
           "full": "cURL/7.69.1-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/cURL/7.69.1-GCCcore-9.3.0"
-        },
-        {
-          "version": "7.72.0-GCCcore-10.2.0",
-          "full": "cURL/7.72.0-GCCcore-10.2.0",
-          "default": false,
           "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/cURL/7.72.0-GCCcore-10.2.0"
+          "path": "/apps/eb/2020b/skylake/modules/all/cURL/7.69.1-GCCcore-9.3.0"
         },
         {
           "version": "7.72.0-GCCcore-10.2.0",
@@ -7888,6 +7888,13 @@
           "default": false,
           "era": "legacy",
           "path": "/apps/eb/dev/skylake/modules/all/cURL/7.72.0-GCCcore-10.2.0"
+        },
+        {
+          "version": "7.72.0-GCCcore-10.2.0",
+          "full": "cURL/7.72.0-GCCcore-10.2.0",
+          "default": false,
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/cURL/7.72.0-GCCcore-10.2.0"
         },
         {
           "version": "7.76.0-GCCcore-10.3.0",
@@ -7925,18 +7932,18 @@
           "path": "/apps/eb/2020b/skylake/modules/all/cURL/7.86.0-GCCcore-12.2.0"
         },
         {
-          "version": "8.0.1-GCCcore-12.3.0-OpenSSL-1.1.1w",
-          "full": "cURL/8.0.1-GCCcore-12.3.0-OpenSSL-1.1.1w",
-          "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/cURL/8.0.1-GCCcore-12.3.0-OpenSSL-1.1.1w.lua"
-        },
-        {
           "version": "8.0.1-GCCcore-12.3.0OpenSSL-1.1.1w",
           "full": "cURL/8.0.1-GCCcore-12.3.0OpenSSL-1.1.1w",
           "default": false,
           "era": "legacy",
           "path": "/apps/kir/eb/skylake/modules/all/cURL/8.0.1-GCCcore-12.3.0OpenSSL-1.1.1w.lua"
+        },
+        {
+          "version": "8.0.1-GCCcore-12.3.0-OpenSSL-1.1.1w",
+          "full": "cURL/8.0.1-GCCcore-12.3.0-OpenSSL-1.1.1w",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/cURL/8.0.1-GCCcore-12.3.0-OpenSSL-1.1.1w.lua"
         },
         {
           "version": "8.0.1-GCCcore-12.3.0",
@@ -8038,15 +8045,15 @@
           "version": "4.4-GCCcore-12.2.0",
           "full": "cutadapt/4.4-GCCcore-12.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/cutadapt/4.4-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/cutadapt/4.4-GCCcore-12.2.0"
         },
         {
           "version": "4.4-GCCcore-12.2.0",
           "full": "cutadapt/4.4-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/cutadapt/4.4-GCCcore-12.2.0"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/cutadapt/4.4-GCCcore-12.2.0"
         },
         {
           "version": "4.9-GCCcore-12.3.0",
@@ -8339,15 +8346,15 @@
           "version": "18.1.32-GCCcore-9.3.0",
           "full": "DB/18.1.32-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/DB/18.1.32-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/DB/18.1.32-GCCcore-9.3.0"
         },
         {
           "version": "18.1.32-GCCcore-9.3.0",
           "full": "DB/18.1.32-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/DB/18.1.32-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/DB/18.1.32-GCCcore-9.3.0"
         },
         {
           "version": "18.1.40-GCCcore-10.2.0",
@@ -8536,15 +8543,15 @@
           "version": "4.055-GCC-14.3.0",
           "full": "DBD-mysql/4.055-GCC-14.3.0",
           "default": true,
-          "era": "2025b",
-          "path": "/apps/eb/el8/2025b/skylake/modules/all/DBD-mysql/4.055-GCC-14.3.0.lua"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/DBD-mysql/4.055-GCC-14.3.0"
         },
         {
           "version": "4.055-GCC-14.3.0",
           "full": "DBD-mysql/4.055-GCC-14.3.0",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/DBD-mysql/4.055-GCC-14.3.0"
+          "era": "2025b",
+          "path": "/apps/eb/el8/2025b/skylake/modules/all/DBD-mysql/4.055-GCC-14.3.0.lua"
         }
       ],
       "n_versions": 7
@@ -8800,15 +8807,15 @@
           "version": "4.5.2-GCCcore-12.2.0",
           "full": "DendroPy/4.5.2-GCCcore-12.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/DendroPy/4.5.2-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/DendroPy/4.5.2-GCCcore-12.2.0"
         },
         {
           "version": "4.5.2-GCCcore-12.2.0",
           "full": "DendroPy/4.5.2-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/DendroPy/4.5.2-GCCcore-12.2.0"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/DendroPy/4.5.2-GCCcore-12.2.0"
         },
         {
           "version": "4.5.2-GCCcore-12.3.0-Python-2.7.18",
@@ -8889,15 +8896,15 @@
           "version": "2.1.8-GCC-12.2.0",
           "full": "DIAMOND/2.1.8-GCC-12.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/DIAMOND/2.1.8-GCC-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/DIAMOND/2.1.8-GCC-12.2.0"
         },
         {
           "version": "2.1.8-GCC-12.2.0",
           "full": "DIAMOND/2.1.8-GCC-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/DIAMOND/2.1.8-GCC-12.2.0"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/DIAMOND/2.1.8-GCC-12.2.0"
         },
         {
           "version": "2.1.8-GCC-12.3.0",
@@ -9544,15 +9551,15 @@
           "version": "4.9.2",
           "full": "EasyBuild/4.9.2",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/EasyBuild/4.9.2"
+          "era": "legacy",
+          "path": "/apps/eb/el8/common/modules/all/EasyBuild/4.9.2.lua"
         },
         {
           "version": "4.9.2",
           "full": "EasyBuild/4.9.2",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/el8/common/modules/all/EasyBuild/4.9.2.lua"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/EasyBuild/4.9.2"
         },
         {
           "version": "4.9.4",
@@ -10250,15 +10257,15 @@
           "version": "2.4.9-GCCcore-12.2.0",
           "full": "expat/2.4.9-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/expat/2.4.9-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/expat/2.4.9-GCCcore-12.2.0"
         },
         {
           "version": "2.4.9-GCCcore-12.2.0",
           "full": "expat/2.4.9-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/expat/2.4.9-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/expat/2.4.9-GCCcore-12.2.0"
         },
         {
           "version": "2.5.0-GCCcore-12.3.0",
@@ -10557,14 +10564,14 @@
           "full": "FastQC/0.11.9-Java-11",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/FastQC/0.11.9-Java-11"
+          "path": "/apps/eb/dev/skylake/modules/all/FastQC/0.11.9-Java-11"
         },
         {
           "version": "0.11.9-Java-11",
           "full": "FastQC/0.11.9-Java-11",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/FastQC/0.11.9-Java-11"
+          "path": "/apps/eb/skylake/modules/all/FastQC/0.11.9-Java-11"
         },
         {
           "version": "0.12.1-Java-11",
@@ -10658,15 +10665,15 @@
           "version": "2.1.11-GCCcore-12.2.0",
           "full": "FastTree/2.1.11-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/FastTree/2.1.11-GCCcore-12.2.0"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/FastTree/2.1.11-GCCcore-12.2.0"
         },
         {
           "version": "2.1.11-GCCcore-12.2.0",
           "full": "FastTree/2.1.11-GCCcore-12.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/FastTree/2.1.11-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/FastTree/2.1.11-GCCcore-12.2.0"
         },
         {
           "version": "2.1.11-GCCcore-12.3.0",
@@ -10803,15 +10810,15 @@
           "version": "11.1.5.2",
           "full": "ffnvcodec/11.1.5.2",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/ffnvcodec/11.1.5.2"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/ffnvcodec/11.1.5.2"
         },
         {
           "version": "11.1.5.2",
           "full": "ffnvcodec/11.1.5.2",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/ffnvcodec/11.1.5.2"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/ffnvcodec/11.1.5.2"
         },
         {
           "version": "12.0.16.0",
@@ -10882,15 +10889,15 @@
           "version": "3.3.8-gompi-2020a",
           "full": "FFTW/3.3.8-gompi-2020a",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/FFTW/3.3.8-gompi-2020a"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/FFTW/3.3.8-gompi-2020a"
         },
         {
           "version": "3.3.8-gompi-2020a",
           "full": "FFTW/3.3.8-gompi-2020a",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/FFTW/3.3.8-gompi-2020a"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/FFTW/3.3.8-gompi-2020a"
         },
         {
           "version": "3.3.8-gompi-2020b",
@@ -11551,15 +11558,15 @@
           "version": "2.6.4-GCCcore-9.3.0",
           "full": "flex/2.6.4-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/flex/2.6.4-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/flex/2.6.4-GCCcore-9.3.0"
         },
         {
           "version": "2.6.4-GCCcore-9.3.0",
           "full": "flex/2.6.4-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/flex/2.6.4-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/flex/2.6.4-GCCcore-9.3.0"
         },
         {
           "version": "2.6.4-GCCcore-10.2.0",
@@ -11579,15 +11586,15 @@
           "version": "2.6.4-GCCcore-10.3.0",
           "full": "flex/2.6.4-GCCcore-10.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/flex/2.6.4-GCCcore-10.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/skylake/modules/all/flex/2.6.4-GCCcore-10.3.0"
         },
         {
           "version": "2.6.4-GCCcore-10.3.0",
           "full": "flex/2.6.4-GCCcore-10.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/flex/2.6.4-GCCcore-10.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/flex/2.6.4-GCCcore-10.3.0"
         },
         {
           "version": "2.6.4-GCCcore-11.2.0",
@@ -11635,15 +11642,15 @@
           "version": "2.6.4",
           "full": "flex/2.6.4",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/flex/2.6.4"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/flex/2.6.4"
         },
         {
           "version": "2.6.4",
           "full": "flex/2.6.4",
           "default": true,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/flex/2.6.4"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/flex/2.6.4"
         },
         {
           "version": "2.6.4",
@@ -11656,8 +11663,8 @@
           "version": "2.6.4",
           "full": "flex/2.6.4",
           "default": true,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/flex/2.6.4"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/flex/2.6.4"
         }
       ],
       "n_versions": 27
@@ -11992,22 +11999,15 @@
           "version": "2020a",
           "full": "foss/2020a",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/foss/2020a"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/foss/2020a"
         },
         {
           "version": "2020a",
           "full": "foss/2020a",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/foss/2020a"
-        },
-        {
-          "version": "2020b",
-          "full": "foss/2020b",
-          "default": false,
           "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/foss/2020b"
+          "path": "/apps/eb/dev/skylake/modules/all/foss/2020a"
         },
         {
           "version": "2020b",
@@ -12015,6 +12015,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/foss/2020b"
+        },
+        {
+          "version": "2020b",
+          "full": "foss/2020b",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/foss/2020b"
         },
         {
           "version": "2021a",
@@ -12290,15 +12297,15 @@
           "version": "2.10.1-GCCcore-9.3.0",
           "full": "freetype/2.10.1-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/freetype/2.10.1-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/freetype/2.10.1-GCCcore-9.3.0"
         },
         {
           "version": "2.10.1-GCCcore-9.3.0",
           "full": "freetype/2.10.1-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/freetype/2.10.1-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/freetype/2.10.1-GCCcore-9.3.0"
         },
         {
           "version": "2.10.3-GCCcore-10.2.0",
@@ -12411,15 +12418,15 @@
           "version": "1.0.10-GCCcore-11.2.0",
           "full": "FriBidi/1.0.10-GCCcore-11.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/FriBidi/1.0.10-GCCcore-11.2.0"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/FriBidi/1.0.10-GCCcore-11.2.0"
         },
         {
           "version": "1.0.10-GCCcore-11.2.0",
           "full": "FriBidi/1.0.10-GCCcore-11.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/FriBidi/1.0.10-GCCcore-11.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/FriBidi/1.0.10-GCCcore-11.2.0"
         },
         {
           "version": "1.0.12-GCCcore-11.3.0",
@@ -12788,15 +12795,15 @@
           "version": "10.2.0",
           "full": "GCC/10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/GCC/10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/GCC/10.2.0"
         },
         {
           "version": "10.2.0",
           "full": "GCC/10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/GCC/10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/GCC/10.2.0"
         },
         {
           "version": "10.3.0",
@@ -12937,22 +12944,15 @@
           "version": "10.2.0",
           "full": "GCCcore/10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/GCCcore/10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/GCCcore/10.2.0"
         },
         {
           "version": "10.2.0",
           "full": "GCCcore/10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/GCCcore/10.2.0"
-        },
-        {
-          "version": "10.3.0",
-          "full": "GCCcore/10.3.0",
-          "default": false,
           "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/GCCcore/10.3.0"
+          "path": "/apps/eb/2020b/skylake/modules/all/GCCcore/10.2.0"
         },
         {
           "version": "10.3.0",
@@ -12960,6 +12960,13 @@
           "default": false,
           "era": "legacy",
           "path": "/apps/eb/skylake/modules/all/GCCcore/10.3.0"
+        },
+        {
+          "version": "10.3.0",
+          "full": "GCCcore/10.3.0",
+          "default": false,
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/GCCcore/10.3.0"
         },
         {
           "version": "11.2.0",
@@ -12979,15 +12986,15 @@
           "version": "12.2.0",
           "full": "GCCcore/12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/GCCcore/12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/GCCcore/12.2.0"
         },
         {
           "version": "12.2.0",
           "full": "GCCcore/12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/GCCcore/12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/GCCcore/12.2.0"
         },
         {
           "version": "12.3.0",
@@ -13200,14 +13207,14 @@
           "full": "GDAL/3.0.2-foss-2019b-Python-3.7.4",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/GDAL/3.0.2-foss-2019b-Python-3.7.4"
+          "path": "/apps/eb/skylake/modules/all/GDAL/3.0.2-foss-2019b-Python-3.7.4"
         },
         {
           "version": "3.0.2-foss-2019b-Python-3.7.4",
           "full": "GDAL/3.0.2-foss-2019b-Python-3.7.4",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/GDAL/3.0.2-foss-2019b-Python-3.7.4"
+          "path": "/apps/eb/dev/skylake/modules/all/GDAL/3.0.2-foss-2019b-Python-3.7.4"
         },
         {
           "version": "3.0.4-foss-2020a-Python-3.8.2",
@@ -13401,15 +13408,15 @@
           "version": "2.42.6-GCCcore-11.2.0",
           "full": "Gdk-Pixbuf/2.42.6-GCCcore-11.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/Gdk-Pixbuf/2.42.6-GCCcore-11.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Gdk-Pixbuf/2.42.6-GCCcore-11.2.0"
         },
         {
           "version": "2.42.6-GCCcore-11.2.0",
           "full": "Gdk-Pixbuf/2.42.6-GCCcore-11.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Gdk-Pixbuf/2.42.6-GCCcore-11.2.0"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/Gdk-Pixbuf/2.42.6-GCCcore-11.2.0"
         },
         {
           "version": "2.42.8-GCCcore-11.3.0",
@@ -13473,15 +13480,15 @@
           "version": "2.3-GCCcore-11.2.0",
           "full": "GDRCopy/2.3-GCCcore-11.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/GDRCopy/2.3-GCCcore-11.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/GDRCopy/2.3-GCCcore-11.2.0"
         },
         {
           "version": "2.3-GCCcore-11.2.0",
           "full": "GDRCopy/2.3-GCCcore-11.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/GDRCopy/2.3-GCCcore-11.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/GDRCopy/2.3-GCCcore-11.2.0"
         },
         {
           "version": "2.3-GCCcore-11.3.0",
@@ -13697,15 +13704,15 @@
           "version": "0.20.1-GCCcore-9.3.0",
           "full": "gettext/0.20.1-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/gettext/0.20.1-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/gettext/0.20.1-GCCcore-9.3.0"
         },
         {
           "version": "0.20.1-GCCcore-9.3.0",
           "full": "gettext/0.20.1-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/gettext/0.20.1-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/gettext/0.20.1-GCCcore-9.3.0"
         },
         {
           "version": "0.20.1",
@@ -13753,15 +13760,15 @@
           "version": "0.21",
           "full": "gettext/0.21",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/gettext/0.21"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/gettext/0.21"
         },
         {
           "version": "0.21",
           "full": "gettext/0.21",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/gettext/0.21"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/gettext/0.21"
         },
         {
           "version": "0.21.1-GCCcore-12.2.0",
@@ -13788,8 +13795,8 @@
           "version": "0.21.1",
           "full": "gettext/0.21.1",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/gettext/0.21.1"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/gettext/0.21.1"
         },
         {
           "version": "0.21.1",
@@ -13802,8 +13809,8 @@
           "version": "0.21.1",
           "full": "gettext/0.21.1",
           "default": false,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/gettext/0.21.1"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/gettext/0.21.1"
         },
         {
           "version": "0.25-GCCcore-14.3.0",
@@ -13998,15 +14005,15 @@
           "version": "9.52-GCCcore-9.3.0",
           "full": "Ghostscript/9.52-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Ghostscript/9.52-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Ghostscript/9.52-GCCcore-9.3.0"
         },
         {
           "version": "9.52-GCCcore-9.3.0",
           "full": "Ghostscript/9.52-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Ghostscript/9.52-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Ghostscript/9.52-GCCcore-9.3.0"
         },
         {
           "version": "9.53.3-GCCcore-10.2.0",
@@ -14763,15 +14770,15 @@
           "version": "6.2.0-GCCcore-9.3.0",
           "full": "GMP/6.2.0-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/GMP/6.2.0-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/GMP/6.2.0-GCCcore-9.3.0"
         },
         {
           "version": "6.2.0-GCCcore-9.3.0",
           "full": "GMP/6.2.0-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/GMP/6.2.0-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/GMP/6.2.0-GCCcore-9.3.0"
         },
         {
           "version": "6.2.0-GCCcore-10.2.0",
@@ -15176,15 +15183,15 @@
           "version": "2020a",
           "full": "gompi/2020a",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/gompi/2020a"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/gompi/2020a"
         },
         {
           "version": "2020a",
           "full": "gompi/2020a",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/gompi/2020a"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/gompi/2020a"
         },
         {
           "version": "2020b",
@@ -15393,15 +15400,15 @@
           "version": "3.1-GCCcore-9.3.0",
           "full": "gperf/3.1-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/gperf/3.1-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/gperf/3.1-GCCcore-9.3.0"
         },
         {
           "version": "3.1-GCCcore-9.3.0",
           "full": "gperf/3.1-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/gperf/3.1-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/gperf/3.1-GCCcore-9.3.0"
         },
         {
           "version": "3.1-GCCcore-10.2.0",
@@ -15715,22 +15722,15 @@
           "version": "1.22.4-GCCcore-9.3.0",
           "full": "groff/1.22.4-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/groff/1.22.4-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/groff/1.22.4-GCCcore-9.3.0"
         },
         {
           "version": "1.22.4-GCCcore-9.3.0",
           "full": "groff/1.22.4-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/groff/1.22.4-GCCcore-9.3.0"
-        },
-        {
-          "version": "1.22.4-GCCcore-10.2.0",
-          "full": "groff/1.22.4-GCCcore-10.2.0",
-          "default": false,
           "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/groff/1.22.4-GCCcore-10.2.0"
+          "path": "/apps/eb/dev/skylake/modules/all/groff/1.22.4-GCCcore-9.3.0"
         },
         {
           "version": "1.22.4-GCCcore-10.2.0",
@@ -15738,6 +15738,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/groff/1.22.4-GCCcore-10.2.0"
+        },
+        {
+          "version": "1.22.4-GCCcore-10.2.0",
+          "full": "groff/1.22.4-GCCcore-10.2.0",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/groff/1.22.4-GCCcore-10.2.0"
         },
         {
           "version": "1.22.4-GCCcore-10.3.0",
@@ -15947,15 +15954,15 @@
           "version": "2.7-GCC-12.2.0",
           "full": "GSL/2.7-GCC-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/GSL/2.7-GCC-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/GSL/2.7-GCC-12.2.0"
         },
         {
           "version": "2.7-GCC-12.2.0",
           "full": "GSL/2.7-GCC-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/GSL/2.7-GCC-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/GSL/2.7-GCC-12.2.0"
         },
         {
           "version": "2.7-GCC-12.3.0",
@@ -16664,15 +16671,15 @@
           "version": "2.8.2-GCCcore-11.2.0",
           "full": "HarfBuzz/2.8.2-GCCcore-11.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/HarfBuzz/2.8.2-GCCcore-11.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/HarfBuzz/2.8.2-GCCcore-11.2.0"
         },
         {
           "version": "2.8.2-GCCcore-11.2.0",
           "full": "HarfBuzz/2.8.2-GCCcore-11.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/HarfBuzz/2.8.2-GCCcore-11.2.0"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/HarfBuzz/2.8.2-GCCcore-11.2.0"
         },
         {
           "version": "4.2.1-GCCcore-11.3.0",
@@ -17107,15 +17114,15 @@
           "version": "1.47.4",
           "full": "help2man/1.47.4",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/help2man/1.47.4"
+          "era": "legacy",
+          "path": "/apps/eb/skylake/modules/all/help2man/1.47.4"
         },
         {
           "version": "1.47.4",
           "full": "help2man/1.47.4",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/help2man/1.47.4"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/help2man/1.47.4"
         },
         {
           "version": "1.47.7-GCCcore-8.2.0",
@@ -17142,15 +17149,15 @@
           "version": "1.47.12-GCCcore-9.3.0",
           "full": "help2man/1.47.12-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/help2man/1.47.12-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/help2man/1.47.12-GCCcore-9.3.0"
         },
         {
           "version": "1.47.12-GCCcore-9.3.0",
           "full": "help2man/1.47.12-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/help2man/1.47.12-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/help2man/1.47.12-GCCcore-9.3.0"
         },
         {
           "version": "1.47.16-GCCcore-10.2.0",
@@ -17170,15 +17177,15 @@
           "version": "1.48.3-GCCcore-10.3.0",
           "full": "help2man/1.48.3-GCCcore-10.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/help2man/1.48.3-GCCcore-10.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/help2man/1.48.3-GCCcore-10.3.0"
         },
         {
           "version": "1.48.3-GCCcore-10.3.0",
           "full": "help2man/1.48.3-GCCcore-10.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/help2man/1.48.3-GCCcore-10.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/skylake/modules/all/help2man/1.48.3-GCCcore-10.3.0"
         },
         {
           "version": "1.48.3-GCCcore-11.2.0",
@@ -17405,15 +17412,15 @@
           "version": "2.2.1-gompi-2022b",
           "full": "HISAT2/2.2.1-gompi-2022b",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/HISAT2/2.2.1-gompi-2022b"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/HISAT2/2.2.1-gompi-2022b"
         },
         {
           "version": "2.2.1-gompi-2022b",
           "full": "HISAT2/2.2.1-gompi-2022b",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/HISAT2/2.2.1-gompi-2022b"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/HISAT2/2.2.1-gompi-2022b"
         },
         {
           "version": "2.2.1-gompi-2023a",
@@ -17667,15 +17674,15 @@
           "version": "1.11-GCC-10.2.0",
           "full": "HTSlib/1.11-GCC-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/HTSlib/1.11-GCC-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/HTSlib/1.11-GCC-10.2.0"
         },
         {
           "version": "1.11-GCC-10.2.0",
           "full": "HTSlib/1.11-GCC-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/HTSlib/1.11-GCC-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/HTSlib/1.11-GCC-10.2.0"
         },
         {
           "version": "1.12-GCC-9.3.0",
@@ -17917,15 +17924,15 @@
           "version": "2.2.0-GCCcore-10.2.0",
           "full": "hwloc/2.2.0-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/hwloc/2.2.0-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/hwloc/2.2.0-GCCcore-10.2.0"
         },
         {
           "version": "2.2.0-GCCcore-10.2.0",
           "full": "hwloc/2.2.0-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/hwloc/2.2.0-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/hwloc/2.2.0-GCCcore-10.2.0"
         },
         {
           "version": "2.4.1-GCCcore-10.3.0",
@@ -18246,15 +18253,15 @@
           "version": "66.1-GCCcore-9.3.0",
           "full": "ICU/66.1-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/ICU/66.1-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/ICU/66.1-GCCcore-9.3.0"
         },
         {
           "version": "66.1-GCCcore-9.3.0",
           "full": "ICU/66.1-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/ICU/66.1-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/ICU/66.1-GCCcore-9.3.0"
         },
         {
           "version": "67.1-GCCcore-10.2.0",
@@ -19305,15 +19312,15 @@
           "version": "0.51.0-GCCcore-9.3.0",
           "full": "intltool/0.51.0-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/intltool/0.51.0-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/intltool/0.51.0-GCCcore-9.3.0"
         },
         {
           "version": "0.51.0-GCCcore-9.3.0",
           "full": "intltool/0.51.0-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/intltool/0.51.0-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/intltool/0.51.0-GCCcore-9.3.0"
         },
         {
           "version": "0.51.0-GCCcore-10.2.0",
@@ -20146,7 +20153,7 @@
     },
     {
       "name": "jemalloc",
-      "description": "jemalloc is a general purpose malloc(3) implementation that emphasizes fragmentation avoidance and\n scalable concurrency support.",
+      "description": "jemalloc is a general purpose malloc(3) implementation that emphasizes fragmentation avoidance and  scalable concurrency support.",
       "url": "https://jemalloc.net",
       "default": "5.3.0-GCCcore-14.3.0",
       "eras": [
@@ -20245,15 +20252,15 @@
           "version": "5.3.0-GCCcore-14.3.0",
           "full": "jemalloc/5.3.0-GCCcore-14.3.0",
           "default": true,
-          "era": "2025b",
-          "path": "/apps/eb/el8/2025b/skylake/modules/all/jemalloc/5.3.0-GCCcore-14.3.0.lua"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/jemalloc/5.3.0-GCCcore-14.3.0"
         },
         {
           "version": "5.3.0-GCCcore-14.3.0",
           "full": "jemalloc/5.3.0-GCCcore-14.3.0",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/jemalloc/5.3.0-GCCcore-14.3.0"
+          "era": "2025b",
+          "path": "/apps/eb/el8/2025b/skylake/modules/all/jemalloc/5.3.0-GCCcore-14.3.0.lua"
         }
       ],
       "n_versions": 14
@@ -20496,15 +20503,15 @@
           "version": "1.0.5-GCCcore-14.3.0",
           "full": "Judy/1.0.5-GCCcore-14.3.0",
           "default": true,
-          "era": "2025b",
-          "path": "/apps/eb/el8/2025b/skylake/modules/all/Judy/1.0.5-GCCcore-14.3.0.lua"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/Judy/1.0.5-GCCcore-14.3.0"
         },
         {
           "version": "1.0.5-GCCcore-14.3.0",
           "full": "Judy/1.0.5-GCCcore-14.3.0",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/Judy/1.0.5-GCCcore-14.3.0"
+          "era": "2025b",
+          "path": "/apps/eb/el8/2025b/skylake/modules/all/Judy/1.0.5-GCCcore-14.3.0.lua"
         }
       ],
       "n_versions": 11
@@ -22188,15 +22195,15 @@
           "version": "2.1.12-GCCcore-10.2.0",
           "full": "libevent/2.1.12-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libevent/2.1.12-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/libevent/2.1.12-GCCcore-10.2.0"
         },
         {
           "version": "2.1.12-GCCcore-10.2.0",
           "full": "libevent/2.1.12-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libevent/2.1.12-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libevent/2.1.12-GCCcore-10.2.0"
         },
         {
           "version": "2.1.12-GCCcore-10.3.0",
@@ -22300,15 +22307,15 @@
           "version": "1.11.0-GCCcore-10.2.0",
           "full": "libfabric/1.11.0-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libfabric/1.11.0-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libfabric/1.11.0-GCCcore-10.2.0"
         },
         {
           "version": "1.11.0-GCCcore-10.2.0",
           "full": "libfabric/1.11.0-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libfabric/1.11.0-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/libfabric/1.11.0-GCCcore-10.2.0"
         },
         {
           "version": "1.12.1-GCCcore-10.3.0",
@@ -22407,15 +22414,15 @@
           "version": "3.3-GCCcore-9.3.0",
           "full": "libffi/3.3-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libffi/3.3-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/libffi/3.3-GCCcore-9.3.0"
         },
         {
           "version": "3.3-GCCcore-9.3.0",
           "full": "libffi/3.3-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libffi/3.3-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libffi/3.3-GCCcore-9.3.0"
         },
         {
           "version": "3.3-GCCcore-10.2.0",
@@ -22539,15 +22546,15 @@
           "version": "2.3.0-GCCcore-9.3.0",
           "full": "libgd/2.3.0-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libgd/2.3.0-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libgd/2.3.0-GCCcore-9.3.0"
         },
         {
           "version": "2.3.0-GCCcore-9.3.0",
           "full": "libgd/2.3.0-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libgd/2.3.0-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/libgd/2.3.0-GCCcore-9.3.0"
         },
         {
           "version": "2.3.0-GCCcore-10.2.0",
@@ -22815,15 +22822,15 @@
           "version": "9.0.1-GCCcore-9.3.0",
           "full": "libGLU/9.0.1-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libGLU/9.0.1-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libGLU/9.0.1-GCCcore-9.3.0"
         },
         {
           "version": "9.0.1-GCCcore-9.3.0",
           "full": "libGLU/9.0.1-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libGLU/9.0.1-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/libGLU/9.0.1-GCCcore-9.3.0"
         },
         {
           "version": "9.0.1-GCCcore-10.2.0",
@@ -22893,15 +22900,15 @@
           "version": "1.2.0-GCCcore-9.3.0",
           "full": "libglvnd/1.2.0-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libglvnd/1.2.0-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libglvnd/1.2.0-GCCcore-9.3.0"
         },
         {
           "version": "1.2.0-GCCcore-9.3.0",
           "full": "libglvnd/1.2.0-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libglvnd/1.2.0-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/libglvnd/1.2.0-GCCcore-9.3.0"
         },
         {
           "version": "1.3.2-GCCcore-10.2.0",
@@ -23549,15 +23556,15 @@
           "version": "0.16-GCCcore-10.2.0",
           "full": "libpciaccess/0.16-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libpciaccess/0.16-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/libpciaccess/0.16-GCCcore-10.2.0"
         },
         {
           "version": "0.16-GCCcore-10.2.0",
           "full": "libpciaccess/0.16-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libpciaccess/0.16-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libpciaccess/0.16-GCCcore-10.2.0"
         },
         {
           "version": "0.16-GCCcore-10.3.0",
@@ -23833,15 +23840,15 @@
           "version": "8.2-GCCcore-12.2.0",
           "full": "libreadline/8.2-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libreadline/8.2-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/libreadline/8.2-GCCcore-12.2.0"
         },
         {
           "version": "8.2-GCCcore-12.2.0",
           "full": "libreadline/8.2-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/libreadline/8.2-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libreadline/8.2-GCCcore-12.2.0"
         },
         {
           "version": "8.2-GCCcore-12.3.0",
@@ -24394,14 +24401,14 @@
           "full": "libtirpc/1.2.6-GCCcore-8.3.0",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/libtirpc/1.2.6-GCCcore-8.3.0"
+          "path": "/apps/eb/dev/skylake/modules/all/libtirpc/1.2.6-GCCcore-8.3.0"
         },
         {
           "version": "1.2.6-GCCcore-8.3.0",
           "full": "libtirpc/1.2.6-GCCcore-8.3.0",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libtirpc/1.2.6-GCCcore-8.3.0"
+          "path": "/apps/eb/skylake/modules/all/libtirpc/1.2.6-GCCcore-8.3.0"
         },
         {
           "version": "1.2.6-GCCcore-9.3.0",
@@ -24548,15 +24555,15 @@
           "version": "2.4.6-GCCcore-9.3.0",
           "full": "libtool/2.4.6-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libtool/2.4.6-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/libtool/2.4.6-GCCcore-9.3.0"
         },
         {
           "version": "2.4.6-GCCcore-9.3.0",
           "full": "libtool/2.4.6-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libtool/2.4.6-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libtool/2.4.6-GCCcore-9.3.0"
         },
         {
           "version": "2.4.6-GCCcore-10.2.0",
@@ -24604,15 +24611,15 @@
           "version": "2.4.7-GCCcore-12.2.0",
           "full": "libtool/2.4.7-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/libtool/2.4.7-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libtool/2.4.7-GCCcore-12.2.0"
         },
         {
           "version": "2.4.7-GCCcore-12.2.0",
           "full": "libtool/2.4.7-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libtool/2.4.7-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/libtool/2.4.7-GCCcore-12.2.0"
         },
         {
           "version": "2.4.7-GCCcore-12.3.0",
@@ -25016,15 +25023,15 @@
           "version": "2.9.10-GCCcore-9.3.0",
           "full": "libxml2/2.9.10-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/libxml2/2.9.10-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/libxml2/2.9.10-GCCcore-9.3.0"
         },
         {
           "version": "2.9.10-GCCcore-9.3.0",
           "full": "libxml2/2.9.10-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/libxml2/2.9.10-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/libxml2/2.9.10-GCCcore-9.3.0"
         },
         {
           "version": "2.9.10-GCCcore-10.2.0",
@@ -26056,15 +26063,15 @@
           "version": "2.10-GCCcore-14.3.0",
           "full": "LZO/2.10-GCCcore-14.3.0",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/LZO/2.10-GCCcore-14.3.0"
+          "era": "2025b",
+          "path": "/apps/eb/el8/2025b/skylake/modules/all/LZO/2.10-GCCcore-14.3.0.lua"
         },
         {
           "version": "2.10-GCCcore-14.3.0",
           "full": "LZO/2.10-GCCcore-14.3.0",
           "default": true,
-          "era": "2025b",
-          "path": "/apps/eb/el8/2025b/skylake/modules/all/LZO/2.10-GCCcore-14.3.0.lua"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/LZO/2.10-GCCcore-14.3.0"
         }
       ],
       "n_versions": 12
@@ -26156,22 +26163,15 @@
           "version": "1.4.18-GCCcore-9.3.0",
           "full": "M4/1.4.18-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/M4/1.4.18-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/M4/1.4.18-GCCcore-9.3.0"
         },
         {
           "version": "1.4.18-GCCcore-9.3.0",
           "full": "M4/1.4.18-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/M4/1.4.18-GCCcore-9.3.0"
-        },
-        {
-          "version": "1.4.18-GCCcore-10.2.0",
-          "full": "M4/1.4.18-GCCcore-10.2.0",
-          "default": false,
           "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/M4/1.4.18-GCCcore-10.2.0"
+          "path": "/apps/eb/2020b/skylake/modules/all/M4/1.4.18-GCCcore-9.3.0"
         },
         {
           "version": "1.4.18-GCCcore-10.2.0",
@@ -26181,11 +26181,11 @@
           "path": "/apps/eb/dev/skylake/modules/all/M4/1.4.18-GCCcore-10.2.0"
         },
         {
-          "version": "1.4.18-GCCcore-10.3.0",
-          "full": "M4/1.4.18-GCCcore-10.3.0",
+          "version": "1.4.18-GCCcore-10.2.0",
+          "full": "M4/1.4.18-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/M4/1.4.18-GCCcore-10.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/M4/1.4.18-GCCcore-10.2.0"
         },
         {
           "version": "1.4.18-GCCcore-10.3.0",
@@ -26195,11 +26195,11 @@
           "path": "/apps/eb/2020b/skylake/modules/all/M4/1.4.18-GCCcore-10.3.0"
         },
         {
-          "version": "1.4.18",
-          "full": "M4/1.4.18",
+          "version": "1.4.18-GCCcore-10.3.0",
+          "full": "M4/1.4.18-GCCcore-10.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/M4/1.4.18"
+          "era": "legacy",
+          "path": "/apps/eb/skylake/modules/all/M4/1.4.18-GCCcore-10.3.0"
         },
         {
           "version": "1.4.18",
@@ -26207,6 +26207,13 @@
           "default": false,
           "era": "legacy",
           "path": "/apps/eb/skylake/modules/all/M4/1.4.18"
+        },
+        {
+          "version": "1.4.18",
+          "full": "M4/1.4.18",
+          "default": false,
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/M4/1.4.18"
         },
         {
           "version": "1.4.19-GCCcore-11.2.0",
@@ -26247,8 +26254,8 @@
           "version": "1.4.19",
           "full": "M4/1.4.19",
           "default": false,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/M4/1.4.19"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/M4/1.4.19"
         },
         {
           "version": "1.4.19",
@@ -26268,8 +26275,8 @@
           "version": "1.4.19",
           "full": "M4/1.4.19",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/M4/1.4.19"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/M4/1.4.19"
         },
         {
           "version": "1.4.20-GCCcore-14.3.0",
@@ -26605,15 +26612,15 @@
           "version": "6.7-GCCcore-10.2.0",
           "full": "makeinfo/6.7-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/makeinfo/6.7-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/makeinfo/6.7-GCCcore-10.2.0"
         },
         {
           "version": "6.7-GCCcore-10.2.0",
           "full": "makeinfo/6.7-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/makeinfo/6.7-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/makeinfo/6.7-GCCcore-10.2.0"
         },
         {
           "version": "6.7-GCCcore-10.3.0-minimal",
@@ -26677,15 +26684,15 @@
           "version": "1.1.2-GCCcore-9.3.0",
           "full": "Mako/1.1.2-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Mako/1.1.2-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Mako/1.1.2-GCCcore-9.3.0"
         },
         {
           "version": "1.1.2-GCCcore-9.3.0",
           "full": "Mako/1.1.2-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Mako/1.1.2-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Mako/1.1.2-GCCcore-9.3.0"
         },
         {
           "version": "1.1.3-GCCcore-10.2.0",
@@ -26817,7 +26824,7 @@
     },
     {
       "name": "MariaDB",
-      "description": "MariaDB is an enhanced, drop-in replacement for MySQL. Included engines: myISAM, Aria, InnoDB, RocksDB, TokuDB, OQGraph, Mroonga.",
+      "description": "MariaDB is an enhanced, drop-in replacement for MySQL.\nIncluded engines: myISAM, Aria, InnoDB, RocksDB, TokuDB, OQGraph, Mroonga.",
       "url": "https://mariadb.org/",
       "default": "12.3.2-GCC-14.3.0",
       "eras": [
@@ -26901,15 +26908,15 @@
           "version": "12.3.2-GCC-14.3.0",
           "full": "MariaDB/12.3.2-GCC-14.3.0",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/MariaDB/12.3.2-GCC-14.3.0"
+          "era": "2025b",
+          "path": "/apps/eb/el8/2025b/skylake/modules/all/MariaDB/12.3.2-GCC-14.3.0.lua"
         },
         {
           "version": "12.3.2-GCC-14.3.0",
           "full": "MariaDB/12.3.2-GCC-14.3.0",
           "default": true,
-          "era": "2025b",
-          "path": "/apps/eb/el8/2025b/skylake/modules/all/MariaDB/12.3.2-GCC-14.3.0.lua"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/MariaDB/12.3.2-GCC-14.3.0"
         }
       ],
       "n_versions": 12
@@ -27138,15 +27145,15 @@
           "version": "3.2.1-foss-2020a-Python-3.8.2",
           "full": "matplotlib/3.2.1-foss-2020a-Python-3.8.2",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/matplotlib/3.2.1-foss-2020a-Python-3.8.2"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/matplotlib/3.2.1-foss-2020a-Python-3.8.2"
         },
         {
           "version": "3.2.1-foss-2020a-Python-3.8.2",
           "full": "matplotlib/3.2.1-foss-2020a-Python-3.8.2",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/matplotlib/3.2.1-foss-2020a-Python-3.8.2"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/matplotlib/3.2.1-foss-2020a-Python-3.8.2"
         },
         {
           "version": "3.2.1-intel-2020a-Python-3.8.2",
@@ -27766,25 +27773,6 @@
       "n_versions": 2
     },
     {
-      "name": "Metal",
-      "description": "Metal - Meta Analysis Helper. The METAL software is designed to facilitate meta-analysis of large  datasets (such as several whole genome scans) in a convenient, rapid and memory efficient manner.",
-      "url": "http://csg.sph.umich.edu/abecasis/Metal/",
-      "default": "2011-03-25-foss-2016a",
-      "eras": [
-        "legacy"
-      ],
-      "versions": [
-        {
-          "version": "2011-03-25-foss-2016a",
-          "full": "Metal/2011-03-25-foss-2016a",
-          "default": true,
-          "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/Metal/2011-03-25-foss-2016a"
-        }
-      ],
-      "n_versions": 1
-    },
-    {
       "name": "METAL",
       "description": "METAL is a tool for meta-analysis genomewide association  scans. METAL can combine either (a) test statistics and standard errors  or (b) p-values across studies (taking sample size and direction of effect  into account). METAL analysis is a convenient alternative to a direct  analysis of merged data from multiple studies. It is especially appropriate  when data from the individual studies cannot be analyzed together because  of differences in ethnicity, phenotype distribution, gender or constraints  in sharing of individual level data imposed. Meta-analysis results in little  or no loss of efficiency compared to analysis of a combined dataset including  data from all individual studies.",
       "url": "https://csg.sph.umich.edu/abecasis/METAL",
@@ -27799,6 +27787,25 @@
           "default": true,
           "era": "2023a",
           "path": "/apps/eb/el8/2023a/skylake/modules/all/METAL/2011-03-25-GCCcore-12.3.0"
+        }
+      ],
+      "n_versions": 1
+    },
+    {
+      "name": "Metal",
+      "description": "Metal - Meta Analysis Helper. The METAL software is designed to facilitate meta-analysis of large  datasets (such as several whole genome scans) in a convenient, rapid and memory efficient manner.",
+      "url": "http://csg.sph.umich.edu/abecasis/Metal/",
+      "default": "2011-03-25-foss-2016a",
+      "eras": [
+        "legacy"
+      ],
+      "versions": [
+        {
+          "version": "2011-03-25-foss-2016a",
+          "full": "Metal/2011-03-25-foss-2016a",
+          "default": true,
+          "era": "legacy",
+          "path": "/apps/eb/skylake/modules/all/Metal/2011-03-25-foss-2016a"
         }
       ],
       "n_versions": 1
@@ -29328,15 +29335,15 @@
           "version": "2.14.02-GCCcore-9.3.0",
           "full": "NASM/2.14.02-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/NASM/2.14.02-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/NASM/2.14.02-GCCcore-9.3.0"
         },
         {
           "version": "2.14.02-GCCcore-9.3.0",
           "full": "NASM/2.14.02-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/NASM/2.14.02-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/NASM/2.14.02-GCCcore-9.3.0"
         },
         {
           "version": "2.15.05-GCCcore-10.2.0",
@@ -29726,6 +29733,13 @@
           "version": "6.2",
           "full": "ncurses/6.2",
           "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/ncurses/6.2"
+        },
+        {
+          "version": "6.2",
+          "full": "ncurses/6.2",
+          "default": false,
           "era": "2023a",
           "path": "/apps/eb/el8/2023a/skylake/modules/all/ncurses/6.2"
         },
@@ -29735,13 +29749,6 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/ncurses/6.2"
-        },
-        {
-          "version": "6.2",
-          "full": "ncurses/6.2",
-          "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/ncurses/6.2"
         },
         {
           "version": "6.3-GCCcore-11.3.0",
@@ -29768,15 +29775,15 @@
           "version": "6.3",
           "full": "ncurses/6.3",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/ncurses/6.3"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/ncurses/6.3"
         },
         {
           "version": "6.3",
           "full": "ncurses/6.3",
           "default": false,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/ncurses/6.3"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/ncurses/6.3"
         },
         {
           "version": "6.3",
@@ -30519,15 +30526,15 @@
           "version": "1.10.0-GCCcore-9.3.0",
           "full": "Ninja/1.10.0-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Ninja/1.10.0-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Ninja/1.10.0-GCCcore-9.3.0"
         },
         {
           "version": "1.10.0-GCCcore-9.3.0",
           "full": "Ninja/1.10.0-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Ninja/1.10.0-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Ninja/1.10.0-GCCcore-9.3.0"
         },
         {
           "version": "1.10.1-GCCcore-10.2.0",
@@ -31202,15 +31209,15 @@
           "version": "2.0.16-GCCcore-12.2.0",
           "full": "numactl/2.0.16-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/numactl/2.0.16-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/numactl/2.0.16-GCCcore-12.2.0"
         },
         {
           "version": "2.0.16-GCCcore-12.2.0",
           "full": "numactl/2.0.16-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/numactl/2.0.16-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/numactl/2.0.16-GCCcore-12.2.0"
         },
         {
           "version": "2.0.16-GCCcore-12.3.0",
@@ -31548,15 +31555,15 @@
           "version": "6.4.8-CUDA-11.7.0",
           "full": "ont-guppy/6.4.8-CUDA-11.7.0",
           "default": true,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/ont-guppy/6.4.8-CUDA-11.7.0"
+          "era": "legacy",
+          "path": "/apps/eb/el8/common/modules/all/ont-guppy/6.4.8-CUDA-11.7.0"
         },
         {
           "version": "6.4.8-CUDA-11.7.0",
           "full": "ont-guppy/6.4.8-CUDA-11.7.0",
           "default": true,
-          "era": "legacy",
-          "path": "/apps/eb/el8/common/modules/all/ont-guppy/6.4.8-CUDA-11.7.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/ont-guppy/6.4.8-CUDA-11.7.0"
         }
       ],
       "n_versions": 5
@@ -31639,15 +31646,15 @@
           "version": "0.3.9-GCC-9.3.0",
           "full": "OpenBLAS/0.3.9-GCC-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/OpenBLAS/0.3.9-GCC-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/OpenBLAS/0.3.9-GCC-9.3.0"
         },
         {
           "version": "0.3.9-GCC-9.3.0",
           "full": "OpenBLAS/0.3.9-GCC-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/OpenBLAS/0.3.9-GCC-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/OpenBLAS/0.3.9-GCC-9.3.0"
         },
         {
           "version": "0.3.12-GCC-10.2.0",
@@ -31725,15 +31732,15 @@
           "version": "3.1.1-GCCcore-11.2.0",
           "full": "OpenEXR/3.1.1-GCCcore-11.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/OpenEXR/3.1.1-GCCcore-11.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/OpenEXR/3.1.1-GCCcore-11.2.0"
         },
         {
           "version": "3.1.1-GCCcore-11.2.0",
           "full": "OpenEXR/3.1.1-GCCcore-11.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/OpenEXR/3.1.1-GCCcore-11.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/OpenEXR/3.1.1-GCCcore-11.2.0"
         },
         {
           "version": "3.1.5-GCCcore-12.2.0",
@@ -31984,15 +31991,15 @@
           "version": "4.0.5-GCC-10.2.0",
           "full": "OpenMPI/4.0.5-GCC-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/OpenMPI/4.0.5-GCC-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/OpenMPI/4.0.5-GCC-10.2.0"
         },
         {
           "version": "4.0.5-GCC-10.2.0",
           "full": "OpenMPI/4.0.5-GCC-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/OpenMPI/4.0.5-GCC-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/OpenMPI/4.0.5-GCC-10.2.0"
         },
         {
           "version": "4.0.5-gcccuda-2020b",
@@ -32581,14 +32588,14 @@
           "full": "Pandoc/2.5",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/Pandoc/2.5"
+          "path": "/apps/eb/dev/skylake/modules/all/Pandoc/2.5"
         },
         {
           "version": "2.5",
           "full": "Pandoc/2.5",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Pandoc/2.5"
+          "path": "/apps/eb/skylake/modules/all/Pandoc/2.5"
         },
         {
           "version": "2.13",
@@ -33109,15 +33116,15 @@
           "version": "10.34-GCCcore-9.3.0",
           "full": "PCRE2/10.34-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/PCRE2/10.34-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/PCRE2/10.34-GCCcore-9.3.0"
         },
         {
           "version": "10.34-GCCcore-9.3.0",
           "full": "PCRE2/10.34-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/PCRE2/10.34-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/PCRE2/10.34-GCCcore-9.3.0"
         },
         {
           "version": "10.35-GCCcore-10.2.0",
@@ -33289,15 +33296,15 @@
           "version": "5.32.0-GCCcore-10.2.0",
           "full": "Perl/5.32.0-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Perl/5.32.0-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Perl/5.32.0-GCCcore-10.2.0"
         },
         {
           "version": "5.32.0-GCCcore-10.2.0",
           "full": "Perl/5.32.0-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Perl/5.32.0-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Perl/5.32.0-GCCcore-10.2.0"
         },
         {
           "version": "5.32.1-GCCcore-10.3.0-minimal",
@@ -33345,15 +33352,15 @@
           "version": "5.36.0-GCCcore-12.2.0",
           "full": "Perl/5.36.0-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Perl/5.36.0-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/Perl/5.36.0-GCCcore-12.2.0"
         },
         {
           "version": "5.36.0-GCCcore-12.2.0",
           "full": "Perl/5.36.0-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/Perl/5.36.0-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Perl/5.36.0-GCCcore-12.2.0"
         },
         {
           "version": "5.36.1-GCCcore-12.3.0",
@@ -33960,22 +33967,15 @@
           "version": "0.29.2-GCCcore-9.3.0",
           "full": "pkg-config/0.29.2-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/pkg-config/0.29.2-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/pkg-config/0.29.2-GCCcore-9.3.0"
         },
         {
           "version": "0.29.2-GCCcore-9.3.0",
           "full": "pkg-config/0.29.2-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/pkg-config/0.29.2-GCCcore-9.3.0"
-        },
-        {
-          "version": "0.29.2-GCCcore-10.2.0",
-          "full": "pkg-config/0.29.2-GCCcore-10.2.0",
-          "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/pkg-config/0.29.2-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/pkg-config/0.29.2-GCCcore-9.3.0"
         },
         {
           "version": "0.29.2-GCCcore-10.2.0",
@@ -33983,6 +33983,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/pkg-config/0.29.2-GCCcore-10.2.0"
+        },
+        {
+          "version": "0.29.2-GCCcore-10.2.0",
+          "full": "pkg-config/0.29.2-GCCcore-10.2.0",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/pkg-config/0.29.2-GCCcore-10.2.0"
         },
         {
           "version": "0.29.2-GCCcore-10.3.0",
@@ -34074,15 +34081,8 @@
           "version": "1.8.0",
           "full": "pkgconf/1.8.0",
           "default": false,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/pkgconf/1.8.0"
-        },
-        {
-          "version": "1.8.0",
-          "full": "pkgconf/1.8.0",
-          "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/pkgconf/1.8.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/pkgconf/1.8.0"
         },
         {
           "version": "1.8.0",
@@ -34095,15 +34095,15 @@
           "version": "1.8.0",
           "full": "pkgconf/1.8.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/pkgconf/1.8.0"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/pkgconf/1.8.0"
         },
         {
-          "version": "1.9.3-GCCcore-12.2.0",
-          "full": "pkgconf/1.9.3-GCCcore-12.2.0",
+          "version": "1.8.0",
+          "full": "pkgconf/1.8.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/pkgconf/1.9.3-GCCcore-12.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/pkgconf/1.8.0"
         },
         {
           "version": "1.9.3-GCCcore-12.2.0",
@@ -34111,6 +34111,13 @@
           "default": false,
           "era": "2022b",
           "path": "/apps/eb/2022b/skylake/modules/all/pkgconf/1.9.3-GCCcore-12.2.0"
+        },
+        {
+          "version": "1.9.3-GCCcore-12.2.0",
+          "full": "pkgconf/1.9.3-GCCcore-12.2.0",
+          "default": false,
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/pkgconf/1.9.3-GCCcore-12.2.0"
         },
         {
           "version": "1.9.5-GCCcore-12.3.0",
@@ -34270,14 +34277,14 @@
           "full": "PLINK/2.00a2.3_x86_64",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/el8/common/modules/all/PLINK/2.00a2.3_x86_64"
+          "path": "/apps/eb/skylake/modules/all/PLINK/2.00a2.3_x86_64"
         },
         {
           "version": "2.00a2.3_x86_64",
           "full": "PLINK/2.00a2.3_x86_64",
           "default": false,
           "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/PLINK/2.00a2.3_x86_64"
+          "path": "/apps/eb/el8/common/modules/all/PLINK/2.00a2.3_x86_64"
         },
         {
           "version": "2.00a2.3-GCC-10.3.0",
@@ -34828,15 +34835,15 @@
           "version": "1.1.alpha19",
           "full": "pplacer/1.1.alpha19",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/pplacer/1.1.alpha19"
+          "era": "legacy",
+          "path": "/apps/eb/skylake/modules/all/pplacer/1.1.alpha19"
         },
         {
           "version": "1.1.alpha19",
           "full": "pplacer/1.1.alpha19",
           "default": true,
-          "era": "legacy",
-          "path": "/apps/eb/skylake/modules/all/pplacer/1.1.alpha19"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/pplacer/1.1.alpha19"
         }
       ],
       "n_versions": 2
@@ -36628,22 +36635,15 @@
           "version": "3.8.2-GCCcore-9.3.0",
           "full": "Python/3.8.2-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Python/3.8.2-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Python/3.8.2-GCCcore-9.3.0"
         },
         {
           "version": "3.8.2-GCCcore-9.3.0",
           "full": "Python/3.8.2-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Python/3.8.2-GCCcore-9.3.0"
-        },
-        {
-          "version": "3.8.6-GCCcore-10.2.0",
-          "full": "Python/3.8.6-GCCcore-10.2.0",
-          "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Python/3.8.6-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Python/3.8.2-GCCcore-9.3.0"
         },
         {
           "version": "3.8.6-GCCcore-10.2.0",
@@ -36651,6 +36651,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/Python/3.8.6-GCCcore-10.2.0"
+        },
+        {
+          "version": "3.8.6-GCCcore-10.2.0",
+          "full": "Python/3.8.6-GCCcore-10.2.0",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Python/3.8.6-GCCcore-10.2.0"
         },
         {
           "version": "3.9.5-GCCcore-10.3.0-bare",
@@ -38484,25 +38491,6 @@
       "n_versions": 1
     },
     {
-      "name": "Regenie",
-      "description": "Regenie is a C++ program for whole genome regression modelling of large genome-wide  association studies.  It is developed and supported by a team of scientists at the Regeneron Genetics Center.",
-      "url": "https://rgcgithub.github.io/regenie",
-      "default": "4.0-GCC-12.3.0",
-      "eras": [
-        "2023a"
-      ],
-      "versions": [
-        {
-          "version": "4.0-GCC-12.3.0",
-          "full": "Regenie/4.0-GCC-12.3.0",
-          "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/Regenie/4.0-GCC-12.3.0"
-        }
-      ],
-      "n_versions": 1
-    },
-    {
       "name": "regenie",
       "description": "regenie is a C++ program for whole genome regression modelling of large genome-wide association studies. It is developed and supported by a team of scientists at the Regeneron Genetics Center.",
       "url": "https://rgcgithub.github.io/regenie/",
@@ -38527,6 +38515,25 @@
         }
       ],
       "n_versions": 2
+    },
+    {
+      "name": "Regenie",
+      "description": "Regenie is a C++ program for whole genome regression modelling of large genome-wide  association studies.  It is developed and supported by a team of scientists at the Regeneron Genetics Center.",
+      "url": "https://rgcgithub.github.io/regenie",
+      "default": "4.0-GCC-12.3.0",
+      "eras": [
+        "2023a"
+      ],
+      "versions": [
+        {
+          "version": "4.0-GCC-12.3.0",
+          "full": "Regenie/4.0-GCC-12.3.0",
+          "default": true,
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/Regenie/4.0-GCC-12.3.0"
+        }
+      ],
+      "n_versions": 1
     },
     {
       "name": "RELION",
@@ -39292,15 +39299,15 @@
           "version": "1.65.0-GCCcore-12.2.0",
           "full": "Rust/1.65.0-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/Rust/1.65.0-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Rust/1.65.0-GCCcore-12.2.0"
         },
         {
           "version": "1.65.0-GCCcore-12.2.0",
           "full": "Rust/1.65.0-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Rust/1.65.0-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/Rust/1.65.0-GCCcore-12.2.0"
         },
         {
           "version": "1.70.0-GCCcore-12.3.0",
@@ -39916,22 +39923,15 @@
           "version": "2.1.0-gompi-2020a",
           "full": "ScaLAPACK/2.1.0-gompi-2020a",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/ScaLAPACK/2.1.0-gompi-2020a"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/ScaLAPACK/2.1.0-gompi-2020a"
         },
         {
           "version": "2.1.0-gompi-2020a",
           "full": "ScaLAPACK/2.1.0-gompi-2020a",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/ScaLAPACK/2.1.0-gompi-2020a"
-        },
-        {
-          "version": "2.1.0-gompi-2020b",
-          "full": "ScaLAPACK/2.1.0-gompi-2020b",
-          "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/ScaLAPACK/2.1.0-gompi-2020b"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/ScaLAPACK/2.1.0-gompi-2020a"
         },
         {
           "version": "2.1.0-gompi-2020b",
@@ -39939,6 +39939,13 @@
           "default": false,
           "era": "legacy",
           "path": "/apps/eb/dev/skylake/modules/all/ScaLAPACK/2.1.0-gompi-2020b"
+        },
+        {
+          "version": "2.1.0-gompi-2020b",
+          "full": "ScaLAPACK/2.1.0-gompi-2020b",
+          "default": false,
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/ScaLAPACK/2.1.0-gompi-2020b"
         },
         {
           "version": "2.1.0-gompi-2021a-fb",
@@ -40316,15 +40323,15 @@
           "version": "0.23.1-foss-2020a-Python-3.8.2",
           "full": "scikit-learn/0.23.1-foss-2020a-Python-3.8.2",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/scikit-learn/0.23.1-foss-2020a-Python-3.8.2"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/scikit-learn/0.23.1-foss-2020a-Python-3.8.2"
         },
         {
           "version": "0.23.1-foss-2020a-Python-3.8.2",
           "full": "scikit-learn/0.23.1-foss-2020a-Python-3.8.2",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/scikit-learn/0.23.1-foss-2020a-Python-3.8.2"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/scikit-learn/0.23.1-foss-2020a-Python-3.8.2"
         },
         {
           "version": "0.23.1-intel-2020a-Python-3.8.2",
@@ -41754,8 +41761,8 @@
     },
     {
       "name": "SpaceRanger",
-      "description": "Space Ranger is a set of analysis pipelines that process Visium spatial RNA-seq output\nand brightfield microscope images in order to detect tissue, align reads, generate feature-spot matrices,\nperform clustering and gene expression analysis, and place spots in spatial context on the slide image.",
-      "url": "https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/what-is-space-ranger",
+      "description": "Space Ranger is a set of analysis pipelines that process Visium spatial RNA-seq output and brightfield microscope images in order to detect tissue, align reads, generate feature-spot matrices, perform clustering and gene expression analysis, and place spots in spatial context on the slide image.",
+      "url": "https://www.10xgenomics.com/support/software/space-ranger/latest",
       "default": "4.1.0",
       "eras": [
         "2020b",
@@ -41824,14 +41831,14 @@
           "full": "SpaceRanger/4.1.0",
           "default": true,
           "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/SpaceRanger/4.1.0.lua"
+          "path": "/apps/eb/el8/common/modules/all/SpaceRanger/4.1.0"
         },
         {
           "version": "4.1.0",
           "full": "SpaceRanger/4.1.0",
           "default": true,
           "era": "legacy",
-          "path": "/apps/eb/el8/common/modules/all/SpaceRanger/4.1.0"
+          "path": "/apps/kir/eb/skylake/modules/all/SpaceRanger/4.1.0.lua"
         }
       ],
       "n_versions": 10
@@ -41925,6 +41932,25 @@
         }
       ],
       "n_versions": 2
+    },
+    {
+      "name": "spdlog",
+      "description": "Very fast, header-only/compiled, C++ logging library.",
+      "url": "https://github.com/gabime/spdlog",
+      "default": "1.17.0-GCCcore-12.3.0",
+      "eras": [
+        "legacy"
+      ],
+      "versions": [
+        {
+          "version": "1.17.0-GCCcore-12.3.0",
+          "full": "spdlog/1.17.0-GCCcore-12.3.0",
+          "default": true,
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/spdlog/1.17.0-GCCcore-12.3.0.lua"
+        }
+      ],
+      "n_versions": 1
     },
     {
       "name": "spglib-python",
@@ -42107,15 +42133,15 @@
           "version": "3.33.0-GCCcore-10.2.0",
           "full": "SQLite/3.33.0-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/SQLite/3.33.0-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/SQLite/3.33.0-GCCcore-10.2.0"
         },
         {
           "version": "3.33.0-GCCcore-10.2.0",
           "full": "SQLite/3.33.0-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/SQLite/3.33.0-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/SQLite/3.33.0-GCCcore-10.2.0"
         },
         {
           "version": "3.35.4-GCCcore-10.3.0",
@@ -42213,15 +42239,15 @@
           "version": "3.0.5-gompi-2022b",
           "full": "SRA-Toolkit/3.0.5-gompi-2022b",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/SRA-Toolkit/3.0.5-gompi-2022b"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/SRA-Toolkit/3.0.5-gompi-2022b"
         },
         {
           "version": "3.0.5-gompi-2022b",
           "full": "SRA-Toolkit/3.0.5-gompi-2022b",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/SRA-Toolkit/3.0.5-gompi-2022b"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/SRA-Toolkit/3.0.5-gompi-2022b"
         },
         {
           "version": "3.0.10-gompi-2023a",
@@ -42840,15 +42866,15 @@
           "version": "4.0.1-GCCcore-9.3.0",
           "full": "SWIG/4.0.1-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/SWIG/4.0.1-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/SWIG/4.0.1-GCCcore-9.3.0"
         },
         {
           "version": "4.0.1-GCCcore-9.3.0",
           "full": "SWIG/4.0.1-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/SWIG/4.0.1-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/SWIG/4.0.1-GCCcore-9.3.0"
         },
         {
           "version": "4.0.2-GCCcore-10.2.0",
@@ -42986,15 +43012,15 @@
           "version": "2.1.1-GCCcore-9.3.0",
           "full": "Szip/2.1.1-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Szip/2.1.1-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Szip/2.1.1-GCCcore-9.3.0"
         },
         {
           "version": "2.1.1-GCCcore-9.3.0",
           "full": "Szip/2.1.1-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Szip/2.1.1-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Szip/2.1.1-GCCcore-9.3.0"
         },
         {
           "version": "2.1.1-GCCcore-10.2.0",
@@ -43258,15 +43284,15 @@
           "version": "2021.10.0-GCCcore-12.2.0",
           "full": "tbb/2021.10.0-GCCcore-12.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/kir/eb/skylake/modules/all/tbb/2021.10.0-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/tbb/2021.10.0-GCCcore-12.2.0"
         },
         {
           "version": "2021.10.0-GCCcore-12.2.0",
           "full": "tbb/2021.10.0-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/tbb/2021.10.0-GCCcore-12.2.0"
+          "era": "legacy",
+          "path": "/apps/kir/eb/skylake/modules/all/tbb/2021.10.0-GCCcore-12.2.0"
         },
         {
           "version": "2021.11.0-GCCcore-12.3.0",
@@ -43391,15 +43417,15 @@
           "version": "8.6.10-GCCcore-10.2.0",
           "full": "Tcl/8.6.10-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Tcl/8.6.10-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Tcl/8.6.10-GCCcore-10.2.0"
         },
         {
           "version": "8.6.10-GCCcore-10.2.0",
           "full": "Tcl/8.6.10-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Tcl/8.6.10-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Tcl/8.6.10-GCCcore-10.2.0"
         },
         {
           "version": "8.6.11-GCCcore-10.3.0",
@@ -43968,15 +43994,15 @@
           "version": "3.8.2-GCCcore-9.3.0",
           "full": "Tkinter/3.8.2-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Tkinter/3.8.2-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Tkinter/3.8.2-GCCcore-9.3.0"
         },
         {
           "version": "3.8.2-GCCcore-9.3.0",
           "full": "Tkinter/3.8.2-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Tkinter/3.8.2-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Tkinter/3.8.2-GCCcore-9.3.0"
         },
         {
           "version": "3.9.5-GCCcore-10.3.0",
@@ -45079,22 +45105,15 @@
           "version": "6.0-GCCcore-9.3.0",
           "full": "UnZip/6.0-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/UnZip/6.0-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/UnZip/6.0-GCCcore-9.3.0"
         },
         {
           "version": "6.0-GCCcore-9.3.0",
           "full": "UnZip/6.0-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/UnZip/6.0-GCCcore-9.3.0"
-        },
-        {
-          "version": "6.0-GCCcore-10.2.0",
-          "full": "UnZip/6.0-GCCcore-10.2.0",
-          "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/UnZip/6.0-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/UnZip/6.0-GCCcore-9.3.0"
         },
         {
           "version": "6.0-GCCcore-10.2.0",
@@ -45102,6 +45121,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/UnZip/6.0-GCCcore-10.2.0"
+        },
+        {
+          "version": "6.0-GCCcore-10.2.0",
+          "full": "UnZip/6.0-GCCcore-10.2.0",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/UnZip/6.0-GCCcore-10.2.0"
         },
         {
           "version": "6.0-GCCcore-10.3.0",
@@ -45128,15 +45154,15 @@
           "version": "6.0-GCCcore-12.2.0",
           "full": "UnZip/6.0-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/UnZip/6.0-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/UnZip/6.0-GCCcore-12.2.0"
         },
         {
           "version": "6.0-GCCcore-12.2.0",
           "full": "UnZip/6.0-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/UnZip/6.0-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/UnZip/6.0-GCCcore-12.2.0"
         },
         {
           "version": "6.0-GCCcore-12.3.0",
@@ -45176,15 +45202,15 @@
           "version": "11.0.667-i86linux32",
           "full": "USEARCH/11.0.667-i86linux32",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/USEARCH/11.0.667-i86linux32"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/USEARCH/11.0.667-i86linux32"
         },
         {
           "version": "11.0.667-i86linux32",
           "full": "USEARCH/11.0.667-i86linux32",
           "default": true,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/USEARCH/11.0.667-i86linux32"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/USEARCH/11.0.667-i86linux32"
         }
       ],
       "n_versions": 3
@@ -46200,15 +46226,15 @@
           "version": "20200222-GCCcore-9.3.0",
           "full": "X11/20200222-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/X11/20200222-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/X11/20200222-GCCcore-9.3.0"
         },
         {
           "version": "20200222-GCCcore-9.3.0",
           "full": "X11/20200222-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/X11/20200222-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/X11/20200222-GCCcore-9.3.0"
         },
         {
           "version": "20201008-GCCcore-10.2.0",
@@ -46639,15 +46665,15 @@
           "version": "2.0210-GCCcore-14.3.0",
           "full": "XML-LibXML/2.0210-GCCcore-14.3.0",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/XML-LibXML/2.0210-GCCcore-14.3.0"
+          "era": "2025b",
+          "path": "/apps/eb/el8/2025b/skylake/modules/all/XML-LibXML/2.0210-GCCcore-14.3.0.lua"
         },
         {
           "version": "2.0210-GCCcore-14.3.0",
           "full": "XML-LibXML/2.0210-GCCcore-14.3.0",
           "default": true,
-          "era": "2025b",
-          "path": "/apps/eb/el8/2025b/skylake/modules/all/XML-LibXML/2.0210-GCCcore-14.3.0.lua"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/XML-LibXML/2.0210-GCCcore-14.3.0"
         }
       ],
       "n_versions": 12
@@ -46737,15 +46763,15 @@
           "version": "1.19.2-GCCcore-10.2.0",
           "full": "xorg-macros/1.19.2-GCCcore-10.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/xorg-macros/1.19.2-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/xorg-macros/1.19.2-GCCcore-10.2.0"
         },
         {
           "version": "1.19.2-GCCcore-10.2.0",
           "full": "xorg-macros/1.19.2-GCCcore-10.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/xorg-macros/1.19.2-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/xorg-macros/1.19.2-GCCcore-10.2.0"
         },
         {
           "version": "1.19.3-GCCcore-10.3.0",
@@ -47002,22 +47028,15 @@
           "version": "5.2.5-GCCcore-9.3.0",
           "full": "XZ/5.2.5-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/XZ/5.2.5-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/XZ/5.2.5-GCCcore-9.3.0"
         },
         {
           "version": "5.2.5-GCCcore-9.3.0",
           "full": "XZ/5.2.5-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/XZ/5.2.5-GCCcore-9.3.0"
-        },
-        {
-          "version": "5.2.5-GCCcore-10.2.0",
-          "full": "XZ/5.2.5-GCCcore-10.2.0",
-          "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/XZ/5.2.5-GCCcore-10.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/XZ/5.2.5-GCCcore-9.3.0"
         },
         {
           "version": "5.2.5-GCCcore-10.2.0",
@@ -47025,6 +47044,13 @@
           "default": false,
           "era": "2020b",
           "path": "/apps/eb/2020b/skylake/modules/all/XZ/5.2.5-GCCcore-10.2.0"
+        },
+        {
+          "version": "5.2.5-GCCcore-10.2.0",
+          "full": "XZ/5.2.5-GCCcore-10.2.0",
+          "default": false,
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/XZ/5.2.5-GCCcore-10.2.0"
         },
         {
           "version": "5.2.5-GCCcore-10.3.0",
@@ -47051,15 +47077,15 @@
           "version": "5.2.7-GCCcore-12.2.0",
           "full": "XZ/5.2.7-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/XZ/5.2.7-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/XZ/5.2.7-GCCcore-12.2.0"
         },
         {
           "version": "5.2.7-GCCcore-12.2.0",
           "full": "XZ/5.2.7-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/XZ/5.2.7-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/XZ/5.2.7-GCCcore-12.2.0"
         },
         {
           "version": "5.4.2-GCCcore-12.3.0",
@@ -47404,15 +47430,15 @@
           "version": "3.0-GCCcore-11.2.0",
           "full": "Zip/3.0-GCCcore-11.2.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/Zip/3.0-GCCcore-11.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/Zip/3.0-GCCcore-11.2.0"
         },
         {
           "version": "3.0-GCCcore-11.2.0",
           "full": "Zip/3.0-GCCcore-11.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/Zip/3.0-GCCcore-11.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/Zip/3.0-GCCcore-11.2.0"
         },
         {
           "version": "3.0-GCCcore-11.3.0",
@@ -47525,22 +47551,15 @@
           "version": "1.2.11-GCCcore-9.3.0",
           "full": "zlib/1.2.11-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/zlib/1.2.11-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/zlib/1.2.11-GCCcore-9.3.0"
         },
         {
           "version": "1.2.11-GCCcore-9.3.0",
           "full": "zlib/1.2.11-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/zlib/1.2.11-GCCcore-9.3.0"
-        },
-        {
-          "version": "1.2.11-GCCcore-10.2.0",
-          "full": "zlib/1.2.11-GCCcore-10.2.0",
-          "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/zlib/1.2.11-GCCcore-10.2.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/zlib/1.2.11-GCCcore-9.3.0"
         },
         {
           "version": "1.2.11-GCCcore-10.2.0",
@@ -47550,11 +47569,11 @@
           "path": "/apps/eb/dev/skylake/modules/all/zlib/1.2.11-GCCcore-10.2.0"
         },
         {
-          "version": "1.2.11-GCCcore-10.3.0",
-          "full": "zlib/1.2.11-GCCcore-10.3.0",
+          "version": "1.2.11-GCCcore-10.2.0",
+          "full": "zlib/1.2.11-GCCcore-10.2.0",
           "default": false,
           "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/zlib/1.2.11-GCCcore-10.3.0"
+          "path": "/apps/eb/2020b/skylake/modules/all/zlib/1.2.11-GCCcore-10.2.0"
         },
         {
           "version": "1.2.11-GCCcore-10.3.0",
@@ -47562,6 +47581,13 @@
           "default": false,
           "era": "legacy",
           "path": "/apps/eb/skylake/modules/all/zlib/1.2.11-GCCcore-10.3.0"
+        },
+        {
+          "version": "1.2.11-GCCcore-10.3.0",
+          "full": "zlib/1.2.11-GCCcore-10.3.0",
+          "default": false,
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/zlib/1.2.11-GCCcore-10.3.0"
         },
         {
           "version": "1.2.11-GCCcore-11.2.0",
@@ -47595,15 +47621,15 @@
           "version": "1.2.12-GCCcore-12.2.0",
           "full": "zlib/1.2.12-GCCcore-12.2.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/zlib/1.2.12-GCCcore-12.2.0"
+          "era": "2022b",
+          "path": "/apps/eb/2022b/skylake/modules/all/zlib/1.2.12-GCCcore-12.2.0"
         },
         {
           "version": "1.2.12-GCCcore-12.2.0",
           "full": "zlib/1.2.12-GCCcore-12.2.0",
           "default": false,
-          "era": "2022b",
-          "path": "/apps/eb/2022b/skylake/modules/all/zlib/1.2.12-GCCcore-12.2.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/zlib/1.2.12-GCCcore-12.2.0"
         },
         {
           "version": "1.2.12",
@@ -47671,15 +47697,15 @@
           "version": "2.2.5-GCCcore-14.3.0",
           "full": "zlib-ng/2.2.5-GCCcore-14.3.0",
           "default": true,
-          "era": "2025b",
-          "path": "/apps/eb/el8/2025b/skylake/modules/all/zlib-ng/2.2.5-GCCcore-14.3.0.lua"
+          "era": "2023a",
+          "path": "/apps/eb/el8/2023a/skylake/modules/all/zlib-ng/2.2.5-GCCcore-14.3.0"
         },
         {
           "version": "2.2.5-GCCcore-14.3.0",
           "full": "zlib-ng/2.2.5-GCCcore-14.3.0",
           "default": true,
-          "era": "2023a",
-          "path": "/apps/eb/el8/2023a/skylake/modules/all/zlib-ng/2.2.5-GCCcore-14.3.0"
+          "era": "2025b",
+          "path": "/apps/eb/el8/2025b/skylake/modules/all/zlib-ng/2.2.5-GCCcore-14.3.0.lua"
         }
       ],
       "n_versions": 3
@@ -47722,15 +47748,15 @@
           "version": "1.4.4-GCCcore-9.3.0",
           "full": "zstd/1.4.4-GCCcore-9.3.0",
           "default": false,
-          "era": "legacy",
-          "path": "/apps/eb/dev/skylake/modules/all/zstd/1.4.4-GCCcore-9.3.0"
+          "era": "2020b",
+          "path": "/apps/eb/2020b/skylake/modules/all/zstd/1.4.4-GCCcore-9.3.0"
         },
         {
           "version": "1.4.4-GCCcore-9.3.0",
           "full": "zstd/1.4.4-GCCcore-9.3.0",
           "default": false,
-          "era": "2020b",
-          "path": "/apps/eb/2020b/skylake/modules/all/zstd/1.4.4-GCCcore-9.3.0"
+          "era": "legacy",
+          "path": "/apps/eb/dev/skylake/modules/all/zstd/1.4.4-GCCcore-9.3.0"
         },
         {
           "version": "1.4.5-GCCcore-10.2.0",
