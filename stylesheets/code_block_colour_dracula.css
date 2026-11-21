@@ -1,0 +1,47 @@
+/* Dracula theme */
+.dracula .highlight { background: #282a36 !important; color: #f8f8fa !important; }
+.dracula .highlight pre { background: #282a36 !important; }
+.dracula .highlight code { background: #282a36 !important; }
+.dracula .highlight .c { color: #6272a4 } /* Comment */
+.dracula .highlight .k { color: #ff79c6 } /* Keyword */
+.dracula .highlight .l { color: #bd93f9 } /* Literal */
+.dracula .highlight .n { color: #f8f8f2 } /* Name */
+.dracula .highlight .o { color: #ff79c6 } /* Operator */
+.dracula .highlight .p { color: #f8f8f2 } /* Punctuation */
+.dracula .highlight .cm { color: #6272a4 }
+.dracula .highlight .cp { color: #ff79c6 }
+.dracula .highlight .c1 { color: #6272a4 }
+.dracula .highlight .cs { color: #6272a4 }
+.dracula .highlight .kc { color: #bd93f9 }
+.dracula .highlight .kd { color: #8be9fd; font-style: italic }
+.dracula .highlight .kn { color: #ff79c6 }
+.dracula .highlight .kp { color: #ff79c6 }
+.dracula .highlight .kr { color: #ff79c6 }
+.dracula .highlight .kt { color: #8be9fd }
+.dracula .highlight .m { color: #bd93f9 }
+.dracula .highlight .s { color: #f1fa8c }
+.dracula .highlight .na { color: #50fa7b }
+.dracula .highlight .nb { color: #8be9fd; font-style: italic }
+.dracula .highlight .nc { color: #50fa7b }
+.dracula .highlight .no { color: #bd93f9 }
+.dracula .highlight .nd { color: #50fa7b }
+.dracula .highlight .nf { color: #50fa7b }
+.dracula .highlight .nn { color: #f8f8f2 }
+.dracula .highlight .nt { color: #ff79c6 }
+.dracula .highlight .nv { color: #8be9fd; font-style: italic }
+.dracula .highlight .ow { color: #ff79c6 }
+.dracula .highlight .mf { color: #bd93f9 }
+.dracula .highlight .mh { color: #bd93f9 }
+.dracula .highlight .mi { color: #bd93f9 }
+.dracula .highlight .mo { color: #bd93f9 }
+.dracula .highlight .sb { color: #f1fa8c }
+.dracula .highlight .sc { color: #f1fa8c }
+.dracula .highlight .sd { color: #f1fa8c }
+.dracula .highlight .s2 { color: #f1fa8c }
+.dracula .highlight .se { color: #f1fa8c }
+.dracula .highlight .sh { color: #f1fa8c }
+.dracula .highlight .si { color: #f1fa8c }
+.dracula .highlight .sx { color: #f1fa8c }
+.dracula .highlight .sr { color: #f1fa8c }
+.dracula .highlight .s1 { color: #f1fa8c }
+.dracula .highlight .ss { color: #f1fa8c }
