@@ -1,0 +1,22 @@
+{
+
+  "upcoming_maintenance": [
+    {
+      "date": "No Upcoming Maintenance",
+      "service": "",
+      "description": ""
+
+    }
+  ],
+  "services": [
+    {"name": "Login/Head Nodes", "status": "operational"},
+    {"name": "Submitting new HPC jobs", "status": "operational"},
+    {"name": "Job running on HPC", "status": "operational"},
+    {"name": "CPU/GPU nodes", "status": "operational"},
+    {"name": "HPC Storage", "status": "operational"},
+  {"name": "BMRC OpenOnDemand", "status": "operational"},
+    {"name": "Posit Workbench", "status": "operational"}
+  ]
+
+
+}

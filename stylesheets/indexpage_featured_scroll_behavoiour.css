@@ -1,0 +1,21 @@
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Featured section - starts visible for proper rendering */
+.featured-section {
+  margin-top: 2rem;
+  transition: opacity 0.5s ease-in, max-height 0.5s ease-in;
+}
+
+.featured-section.hidden {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+/* Optional: Add some spacing */
+#featured-posts {
+  padding-top: 1rem;
+}
